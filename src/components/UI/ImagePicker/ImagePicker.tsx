@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import { styled } from 'styled-components'
 import { useDropzone } from 'react-dropzone'
-import styled from 'styled-components'
+import isEmptyImagePicker from '../../../assets/image/isEmptyImagePicker.jpg'
+import Image from 'next/image'
 
 interface ImagePickerProps {
-  getImages: (file: File) => void
-  defaultValue?: any
   width?: string
   height?: string
   border?: string
@@ -15,41 +15,35 @@ interface ImagePickerProps {
 }
 
 export const ImagePicker = (props: ImagePickerProps) => {
-  const [images, setImages] = useState<string[]>([])
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined)
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    acceptedFiles.forEach((file) => {
-      const formData = new FormData()
-      formData.append('file', file)
+  const onDrop = (acceptedFiles: File[]) => {
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0]
       const reader = new FileReader()
-      reader.onload = () => {
-        setImages((prevState) => [...prevState, reader.result as string])
-        props.getImages(file)
+      reader.onloadend = () => {
+        setSelectedImage(reader.result as string)
       }
       reader.readAsDataURL(file)
-    })
-    setImages([])
-  }, [])
+    }
+  }
 
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
-    onDrop,
-    maxFiles: 1,
-    accept: ['image/jpeg', 'image/png', 'image/JPG'] as string[]
-  })
+  const { getRootProps, getInputProps } = useDropzone({ onDrop })
+
+  const IsTrueImage = () => {
+    if (selectedImage === undefined) {
+      return isEmptyImagePicker
+    } else {
+      return selectedImage
+    }
+  }
 
   return (
-    <ContainerDrop {...getRootProps()} {...props}>
-      <input {...getInputProps()} />
-      {images.length > 0 || props.defaultValue ? (
-        <ProverkaDlyaHovera>
-          <DropImage src={props.defaultValue || images[0]} />
-          <button onClick={open}>REPLACE</button>
-        </ProverkaDlyaHovera>
-      ) : isDragActive ? (
-        ''
-      ) : (
-        <DropText>Upload image</DropText>
-      )}
+    <ContainerDrop>
+      <div {...getRootProps()}>
+        <StyleImage src={IsTrueImage()} alt="image" width={0} height={0} objectFit="cover" />
+        <StyleInpFile {...getInputProps()} />
+      </div>
     </ContainerDrop>
   )
 }
@@ -63,7 +57,7 @@ const ContainerDrop = styled.div<ImagePickerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* cursor: pointer; */
+  cursor: pointer;
   overflow: hidden;
   button {
     display: none;
@@ -74,40 +68,13 @@ const ContainerDrop = styled.div<ImagePickerProps>`
   }
 `
 
-const DropImage = styled.img`
+const StyleInpFile = styled.input`
+  display: none;
+`
+
+const StyleImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 6px;
-`
-
-const DropText = styled.h1`
-  width: 60%;
-  height: 10%;
-  font-style: normal;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 18px;
-`
-
-const ProverkaDlyaHovera = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  &:hover {
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-      background: none;
-      opacity: 0.9;
-    }
-    button {
-      display: block;
-      position: absolute;
-      top: 9rem;
-      left: 3.5rem;
-    }
-  }
+  background-color: silver;
 `
