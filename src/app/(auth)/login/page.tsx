@@ -1,6 +1,6 @@
-import { FC } from 'react'
+'use client'
 
-const Page: FC = () => {
+const Page = () => {
    return <div>LOGIN</div>
 }
 

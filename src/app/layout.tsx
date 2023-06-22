@@ -1,4 +1,4 @@
-import Providers from '@/components/Provieders/Provieders'
+import Providers from '../components/Provieders/Provieders'
 import './globals.css'
 
 export const metadata = {
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
    return (
       <html lang="en">
-         <body data-my-attribute={true}>
+         <body>
             <Providers>{children}</Providers>
          </body>
       </html>
