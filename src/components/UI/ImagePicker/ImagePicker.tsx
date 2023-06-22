@@ -34,7 +34,7 @@ export const ImagePicker = (props: ImagePickerProps) => {
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
     maxFiles: 1,
-    accept: ['image/jpeg', 'image/png', 'image/JPG'] as any
+    accept: ['image/jpeg', 'image/png', 'image/JPG'] as string[]
   })
 
   return (
@@ -63,7 +63,7 @@ const ContainerDrop = styled.div<ImagePickerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  /* cursor: pointer; */
   overflow: hidden;
   button {
     display: none;
@@ -87,7 +87,6 @@ const DropText = styled.h1`
   font-style: normal;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'DINNextRoundedLTW04-Medium';
   line-height: 18px;
 `
 
@@ -101,7 +100,7 @@ const ProverkaDlyaHovera = styled.div`
       height: 100%;
       object-fit: cover;
       border-radius: 6px;
-      background: black;
+      background: none;
       opacity: 0.9;
     }
     button {

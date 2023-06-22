@@ -26,7 +26,7 @@ export const Button = (props: ButtonProps) => {
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  width: ${({ width }) => width || '100%'};
+  width: ${({ width }) => width || '400px'};
   height: ${({ height }) => height || '40px'};
   min-width: ${({ minwidth }) => minwidth || '100px'};
   background-color: ${({ backgroundcolor }) => backgroundcolor || '#1e00ff'};
@@ -44,7 +44,7 @@ const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   font-family: 'PT Sans', sans-serif;
   outline: none;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 
   &:hover {
     opacity: 75%;

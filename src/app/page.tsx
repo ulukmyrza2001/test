@@ -1,9 +1,8 @@
 'use client'
 
-import { Button } from '../components/UI/Buttons/Button'
-import { ImagePicker } from '../components/UI/ImagePicker/ImagePicker'
-import IsEmptyImagePicker from '../assets/image/isEmptyImagePicker.jpg'
 import { useState } from 'react'
+import { ImagePicker } from '../components/UI/ImagePicker/ImagePicker'
+import { Button } from '../components/UI/Buttons/Button'
 
 export default function Home() {
   const [asd, setasd] = useState()
@@ -12,5 +11,11 @@ export default function Home() {
     // Handle the selected image file
     console.log('Selected file:', file)
   }
-  return <main>CHEBER</main>
+  return (
+    <main>
+      CHEBER
+      <Button onClick={() => console.log('asd')}>Click me!</Button>
+      <ImagePicker getImages={handleGetImages} defaultValue="default-image.jpg" />
+    </main>
+  )
 }
