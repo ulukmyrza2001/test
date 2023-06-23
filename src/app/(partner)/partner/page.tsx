@@ -1,7 +1,7 @@
 'use client'
 
 const Page = () => {
-  return <div>Partnasder</div>
+  return <div>Partner</div>
 }
 
 export default Page
