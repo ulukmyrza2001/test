@@ -29,9 +29,9 @@ const StyledButton = styled.button<ButtonProps>`
   width: ${({ width }) => width || '400px'};
   height: ${({ height }) => height || '40px'};
   min-width: ${({ minwidth }) => minwidth || '100px'};
-  background-color: ${({ backgroundcolor }) => backgroundcolor || '#1e00ff'};
+  background-color: ${({ backgroundcolor }) => backgroundcolor || 'var(--ui-background-color)'};
   border-radius: ${({ borderRadius }) => borderRadius || '5px'};
-  color: ${({ color }) => color || '#ffffff'};
+  color: ${({ color }) => color || 'var(--ui-color)'};
   font-size: ${({ fontSize }) => fontSize || ''};
   font-weight: ${({ fontWeight }) => fontWeight || '700'};
   padding: ${({ padding }) => padding || '12px 18px'};
@@ -47,18 +47,19 @@ const StyledButton = styled.button<ButtonProps>`
   transition: 0.4s ease-in-out;
 
   &:hover {
-    opacity: 75%;
+    background-color: var(--ui-hover-background);
   }
 
   &:active {
-    color: white;
-    background-color: ${({ backgroundcoloractive }) => backgroundcoloractive || '#000750'};
+    color: var(--ui-color);
+    background-color: ${({ backgroundcoloractive }) =>
+      backgroundcoloractive || 'var(--ui-active-background)'};
   }
 
   &:disabled {
     cursor: not-allowed;
-    color: #7e7e7e;
-    border: #7e7e7e;
-    background-color: ${({ disabledColor }) => disabledColor || '#1c1b1f1f'};
+    color: 'var(--ui-disabled-color)';
+    border: 'var(--ui-disabled-color)';
+    background-color: ${({ disabledColor }) => disabledColor || 'var(--ui-disabled--background)'};
   }
 `
