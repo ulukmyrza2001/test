@@ -51,11 +51,11 @@ export function InputPhoneNumber(props: IinputPhoneNumber) {
 
 const InputNumberPhone = styled(PhoneInput)`
   & .form-control:active {
-    border: 1px solid #533fe3;
+    border: 1px solid var(--ui-background-color);
   }
 
   & .form-control:focus {
-    box-shadow: 0px 0px 1px 1px #533fe3;
+    box-shadow: 0px 0px 1px 1px var(--ui-background-color);
   }
 `
 

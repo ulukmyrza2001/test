@@ -29,8 +29,7 @@ export function InputPassword(props: InputPasswordProps) {
     <StyledContainer>
       {props.label && <StyledLabel htmlFor={props.label}>{props.label}</StyledLabel>}
       <StyledContainerInp>
-        <StyleInp type={show ? 'text' : 'password'} {...props} />
-
+        <StyledInput type={show ? 'text' : 'password'} {...props} />
         <StyledIcon onClick={() => setShow(!show)}>
           {show ? <VisibilityIcon /> : <VisibilityOffIcon />}
         </StyledIcon>
@@ -55,7 +54,7 @@ const StyledLabel = styled.label`
   font-family: 'PT Sans', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: #87939e;
+  color: var(--ui-disabled-color);
 `
 
 const StyledIcon = styled.span`
@@ -76,7 +75,7 @@ const StyledIcon = styled.span`
     font-size: 20px;
   }
 `
-const StyleInp = styled.input`
+const StyledInput = styled.input`
   width: ${({ width }: any) => width || '100%'};
   width: ${({ width }) => width || '100%'};
   height: ${({ height }) => height || ''};
@@ -85,24 +84,24 @@ const StyleInp = styled.input`
   padding: ${({ padding }: any) => padding || '10px'};
   border-radius: ${({ borderRadius }: any) => borderRadius || '5px'};
   letter-spacing: 0.6px;
-  color: ${({ color }) => color || 'gray'};
+  color: ${({ color }) => color || 'var(--ui-disabled--background)'};
   font-size: 16px;
   outline: none;
   transition: 0.2s;
-  background-color: ${({ background }: any) => background || '#ffffff'};
-  border: ${({ border }: any) => border || '1px solid #ced4da'};
+  background-color: ${({ background }: any) => background || 'var(--ui-color)'};
+  border: ${({ border }: any) => border || '1px solid var(--ui-color)'};
   padding-right: 50px;
 
   &::placeholder {
-    color: #d0d2d3;
+    color: var(--ui-disabled-color);
   }
 
   &:active {
-    border: 1px solid #533fe3;
+    border: 1px solid var(--ui-background-color);
   }
 
   &:focus {
-    box-shadow: 0px 0px 1px 1px #533fe3;
+    box-shadow: 0px 0px 1px 1px var(--ui-background-color);
   }
 
   &:disabled,

@@ -39,7 +39,7 @@ const StyledLabel = styled.label`
   font-family: 'PT Sans', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: #87939e;
+  color: var(--ui-disabled-color);
 `
 
 const InputStyled = styled.input<IinputProps>`
@@ -50,23 +50,23 @@ const InputStyled = styled.input<IinputProps>`
   padding: ${({ padding }) => padding || '10px'};
   border-radius: ${({ borderRadius }) => borderRadius || '5px'};
   letter-spacing: 0.6px;
-  color: ${({ color }) => color || 'gray'};
+  color: ${({ color }) => color || 'var(--ui-disabled--background)'};
   font-size: 16px;
   outline: none;
   transition: 0.2s;
-  background-color: ${({ background }) => background || '#ffffff'};
-  border: ${({ border }) => border || '1px solid #ced4da'};
+  background-color: ${({ background }) => background || 'var(--ui-color)'};
+  border: ${({ border }) => border || '1px solid var(--ui-color)'};
 
   &::placeholder {
-    color: #d0d2d3;
+    color: var(--ui-disabled-color);
   }
 
   &:active {
-    border: 1px solid #533fe3;
+    border: 1px solid var(--ui-background-color);
   }
 
   &:focus {
-    box-shadow: 0px 0px 1px 1px #533fe3;
+    box-shadow: 0px 0px 1px 1px var(--ui-background-color);
   }
 
   &:disabled,
