@@ -40,7 +40,7 @@ export const ImagePicker = (props: ImagePickerProps) => {
 
   return (
     <ContainerDrop>
-      <div {...getRootProps()}>
+      <div {...getRootProps()} {...props}>
         <StyleImage src={IsTrueImage()} alt="image" width={0} height={0} objectFit="cover" />
         <StyleInpFile {...getInputProps()} />
       </div>
@@ -61,11 +61,12 @@ const ContainerDrop = styled.div<ImagePickerProps>`
   overflow: hidden;
   button {
     display: none;
-    color: ${({ colorreplace }) => colorreplace || '#3a10e5'};
+    color: ${({ colorreplace }) => colorreplace || 'var(--ui-background-color)'};
   }
   h1 {
-    color: ${({ colordrop }) => colordrop || '#3a10e5'};
+    color: ${({ colordrop }) => colordrop || 'var(--ui-background-color)'};
   }
+  color: var(--ui-background-color);
 `
 
 const StyleInpFile = styled.input`
