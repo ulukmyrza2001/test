@@ -1,8 +1,18 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   border: none;
+   outline: none;
+   text-decoration: none;
+   list-style-type: none;
 }
-body {
-  padding: 50px;
+
+:root {
+   --ui-background-color: #3a10e5;
+   --ui-color: #fff;
+   --ui-active-background: #000d9d;
+   --ui-hover-background: #3617b5;
+   --ui-disabled-color: #7e7e7e;
+   --ui-disabled--background: #1c1b1f1f;
 }
