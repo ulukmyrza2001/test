@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
-import { LonelySelect } from '../components/UI/Select/LonelySelect'
+import React from 'react'
 
 export default function Home() {
   return <main>CHEBER</main>
