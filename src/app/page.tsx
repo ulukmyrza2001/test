@@ -1,5 +1,5 @@
 'use client'
 
 export default function Home() {
-  return <main>Cheber</main>
+  return <div>Cheber</div>
 }

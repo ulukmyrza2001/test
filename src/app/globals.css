@@ -9,6 +9,9 @@
   text-decoration: none;
   list-style-type: none;
 }
+.main {
+  margin-top: 70px;
+}
 
 body {
   background-color: var(--ui-color-white);
