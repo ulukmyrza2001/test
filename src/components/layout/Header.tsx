@@ -2,8 +2,19 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { useState } from 'react'
+import { Modal } from '../UI/Modal/Modal'
 
 export const Header = () => {
+  const [showmodal, setShowModal] = useState(false)
+
+  const showModalHandler = () => {
+    setShowModal(true)
+  }
+  const hideModalHandler = () => {
+    setShowModal(false)
+  }
+
   return (
     <ContainerHeader>
       <InnerHeader>
@@ -11,10 +22,11 @@ export const Header = () => {
           <Link href="/">Чебер</Link>
         </WrapperLogo>
         <WrapperNav>
-          <WrapperLocated>
+          <WrapperLocated onClick={() => showModalHandler()}>
             <LocationOnIcon />
             Бишкек
           </WrapperLocated>
+          <Modal active={showmodal}>asd</Modal>
           <Link href="partner">Стать партнером</Link>
           <Link href="login">Войти</Link>
         </WrapperNav>

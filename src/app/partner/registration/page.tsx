@@ -1,5 +1,6 @@
 'use client'
 
+import { Container } from '@/src/styles/ContainerStyle/Container'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function Registration() {
-  return <div>Partner Registration Page</div>
+  return <Container>Partner Registration Page</Container>
 }

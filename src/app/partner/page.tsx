@@ -1,5 +1,6 @@
 'use client'
 
+import { Container } from '@/src/styles/ContainerStyle/Container'
 import { Metadata } from 'next'
 
 interface Props {
@@ -19,5 +20,5 @@ export async function generateMetaData({ params: { city } }: Props): Promise<Met
 }
 
 export default function PartnerPage() {
-  return <div>Partner</div>
+  return <Container>Partner</Container>
 }

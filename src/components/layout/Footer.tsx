@@ -63,6 +63,7 @@ const ContainerFooter = styled.footer`
   -webkit-box-shadow: 0px 0px 3px 2px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 0px 3px 2px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 0px 3px 2px rgba(34, 60, 80, 0.2);
+  margin-top: 50px;
 `
 const InnerFooter = styled.div`
   width: 100%;
@@ -71,7 +72,7 @@ const InnerFooter = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  padding: 20px 0;
+  padding: 30px 0;
 `
 const WrapperLogo = styled.div`
   a {
