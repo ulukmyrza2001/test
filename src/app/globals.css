@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
@@ -23,4 +24,38 @@
    --ui-disabled-color: #7e7e7e;
    --ui-disabled--background: #1c1b1f1f;
    --main-backcolor: #3cf202;
+=======
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  list-style-type: none;
+}
+.main {
+  margin-top: 70px;
+}
+
+body {
+  background-color: var(--ui-color-white);
+  font-family: var(--font-family);
+}
+
+:root {
+  --ui-background-color: #3a10e5;
+  --ui-color-white: #ffffff;
+  --ui-active-background: #000d9d;
+  --ui-hover-background: #3617b5;
+  --ui-disabled-color: #7e7e7e;
+  --ui-disabled--background: #1c1b1f1f;
+  --ui-black: #000000;
+  /* FONT */
+  --font-family: 'Rubik', sans-serif;
+  --text: 12px;
+  --title: 16px;
+>>>>>>> a2fecdb54e28649c774907713e111cffccadf5e4
 }
