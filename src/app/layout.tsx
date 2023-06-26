@@ -2,8 +2,9 @@ import './globals.css'
 import { Metadata } from 'next'
 import Providers from '../components/Provieders/Provieders'
 import Natification from '../components/Natification/Natification'
-import { Header } from '../components/layout/Header'
-import { Footer } from '../components/layout/Footer'
+import { Header } from '../components/Header/Header'
+import { Footer } from '../components/Footer/Footer'
+import { NavBar } from '../components/Navbar/NavBar'
 
 export const metadata: Metadata = {
   title: 'Cheber',
@@ -14,13 +15,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Providers>
+        {/* <Natification>
           <main className="main">
             <Header />
-            <Natification>{children}</Natification>
+            {children}
             <Footer />
           </main>
-        </Providers>
+        </Natification> */}
+        <Header />
+        <main className="main">{children}</main>
+        <Footer />
       </body>
     </html>
   )

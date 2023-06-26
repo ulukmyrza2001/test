@@ -5,7 +5,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { useState } from 'react'
 import { Modal } from '../UI/Modal/Modal'
 
-export const Header = () => {
+export const NavBar = () => {
   const [showmodal, setShowModal] = useState(false)
 
   const showModalHandler = () => {

@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+.inner_wrapper {
+  width: 100%;
+  max-width: 1536px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  justify-content: initial;
+}
