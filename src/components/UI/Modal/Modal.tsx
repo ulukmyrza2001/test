@@ -1,23 +1,49 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
+import CancelIcon from '@mui/icons-material/Cancel'
+import { IconButton } from '@mui/material'
 
 interface ModalProps {
   active: boolean
+  handleClose: any
   children: ReactNode
+  title?: string
 }
 
-export const Modal = (props: ModalProps) => {
+export const Modal = ({ active, handleClose, children, title }: ModalProps) => {
   return (
-    <ModalWrapper className={props.active ? 'active' : ''}>
-      <ModalContent
-        className={props.active ? 'active' : ''}
-        onClick={(e: any) => e.stopPropagation()}
-      >
-        <div>{props.children}</div>
+    <ModalWrapper className={active ? 'active' : ''}>
+      <ModalContent className={active ? 'active' : ''} onClick={(e: any) => e.stopPropagation()}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}
+          >
+            <h2 className="title">{title ? title : 'Название'}</h2>
+            <h2 className="icon">
+              <IconButton onClick={() => handleClose()}>
+                <CancelIcon />
+              </IconButton>
+            </h2>
+          </div>
+          <div>{children}</div>
+        </div>
       </ModalContent>
     </ModalWrapper>
   )
 }
+
 const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;

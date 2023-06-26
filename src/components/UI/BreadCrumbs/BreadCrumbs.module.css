@@ -1,0 +1,21 @@
+.breadcrumbs {
+  width: 100%;
+}
+.link {
+  color: #7395ae;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+.wrapper_title {
+  font-size: 18px;
+  line-height: 27px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-family: sans-serif;
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
