@@ -3,5 +3,5 @@
 import React from 'react'
 
 export default function Home() {
-  return <main>CHEBER</main>
+  return <div>Cheber</div>
 }

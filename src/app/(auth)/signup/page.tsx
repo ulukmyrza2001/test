@@ -1,12 +1,12 @@
 'use client'
 
-import { Metadata } from 'next'
 import { Container } from '@/src/styles/ContainerStyle/Container'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Login | Cheber'
+  title: 'Sign-Up | Cheber'
 }
 
 export default function Login() {
-  return <Container>Login</Container>
+  return <Container>Sign-Up</Container>
 }
