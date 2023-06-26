@@ -3,7 +3,7 @@
 import { styled } from 'styled-components'
 import { IconButton } from '@mui/material'
 import ContentLoader from 'react-content-loader'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import BookmarkIcon from '@mui/icons-material/Bookmark'
 import GradeIcon from '@mui/icons-material/Grade'
 
 interface IServiceCard {
@@ -14,12 +14,13 @@ interface IServiceCard {
   namecolor?: string
   locationcolor?: string
   ratingcolor?: string
-  isLoading: boolean
+  isloading?: boolean
 }
 export const ServiceCard = (props: IServiceCard) => {
+  const { isloading, ...restProps } = props
   return (
-    <StyleCard {...props}>
-      {props.isLoading === true ? (
+    <StyleCard {...restProps}>
+      {isloading === true ? (
         <StyleSkeleton viewBox="0 0 500 280" height={350} width={400}>
           <rect x="3" y="3" rx="10" ry="10" width="400" height="180" />
           <rect x="6" y="190" rx="0" ry="0" width="400" height="20" />
@@ -29,7 +30,7 @@ export const ServiceCard = (props: IServiceCard) => {
       ) : (
         <StyleInnerContain>
           <IconButton className="like">
-            <FavoriteBorderIcon />
+            <BookmarkIcon />
           </IconButton>
           <StyleImgContainner>
             <img
@@ -37,16 +38,16 @@ export const ServiceCard = (props: IServiceCard) => {
               alt="AMG"
             />
           </StyleImgContainner>
-          <StyleInfo {...props}>
-            <StyleNaming {...props}>
+          <StyleInfo {...restProps}>
+            <StyleNaming {...restProps}>
               <h4>Барбершоп</h4>
               <h3>Garage</h3>
               <p>Байтик Баатыра 84</p>
             </StyleNaming>
 
-            <StyleStatus {...props}>
+            <StyleStatus {...restProps}>
               <h3>
-                <GradeIcon />
+                <GradeIcon className="Icon" sx={{ color: 'goldenrod' }} />
                 4.7
               </h3>
               <p>1000 сом</p>
@@ -61,35 +62,49 @@ export const ServiceCard = (props: IServiceCard) => {
 const StyleSkeleton = styled(ContentLoader)`
   width: 100%;
   height: 100%;
-  border-radius: 6px;
+  border-radius: 12px;
 `
 
 const StyleInnerContain = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 12px;
 `
 
 const StyleCard = styled.div<IServiceCard>`
   width: ${({ width }) => width || '400px'};
-  height: ${({ height }) => height || '350px'};
+  height: ${({ height }) => height || '270px'};
   border-radius: ${({ borderradius }) => borderradius || '6px'};
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 6px;
+  transition: 0.6s;
+  padding: 12px;
   .like {
     position: absolute;
-    top: 3%;
-    right: 3%;
+    top: 5%;
+    right: 5%;
     z-index: 4;
-    color: #b84141;
+    color: #33a011;
+    background-color: whitesmoke;
+
+    backdrop-filter: blur(20px);
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+  }
+  .like:hover {
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.1);
   }
   &:hover {
     img {
       transform: scale(1.1);
     }
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.1);
   }
 `
 const StyleImgContainner = styled.div`
@@ -112,7 +127,7 @@ const StyleInfo = styled.div`
 `
 const StyleNaming = styled.div<IServiceCard>`
   h4 {
-    color: ${({ typecolor }) => typecolor || 'goldenrod'};
+    color: ${({ typecolor }) => typecolor || '#33a011'};
     font-weight: 500;
   }
   h3 {
@@ -134,6 +149,9 @@ const StyleStatus = styled.div<IServiceCard>`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: ${({ ratingcolor }) => ratingcolor || 'goldenrod'};
+    color: ${({ ratingcolor }) => ratingcolor || 'black'};
+    & .icon {
+      color: goldenrod;
+    }
   }
 `
