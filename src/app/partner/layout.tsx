@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Welcome to the Partner'
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function PartnerLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <h1>Partner</h1>
