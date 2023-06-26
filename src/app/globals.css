@@ -15,6 +15,7 @@
 
 body {
   background-color: var(--ui-color-white);
+  font-family: var(--font-family);
 }
 
 :root {
@@ -24,4 +25,9 @@ body {
   --ui-hover-background: #3617b5;
   --ui-disabled-color: #7e7e7e;
   --ui-disabled--background: #1c1b1f1f;
+  --ui-black: #000000;
+  /* FONT */
+  --font-family: 'Rubik', sans-serif;
+  --text: 12px;
+  --title: 16px;
 }

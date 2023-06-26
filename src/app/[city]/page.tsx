@@ -11,7 +11,12 @@ interface CityProps {
     city: string
   }
 }
+export async function generateMetadata({ params: { city } }: CityProps): Promise<Metadata> {
+  return {
+    title: city
+  }
+}
 
 export default function MainPage({ params: { city } }: CityProps) {
-  return <div>City route {city}</div>
+  return <div>City route = {city}</div>
 }
