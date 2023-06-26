@@ -4,9 +4,9 @@ import { Container } from '@/src/styles/ContainerStyle/Container'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Sign-Up | Cheber'
+  title: 'Login | Cheber'
 }
 
 export default function Login() {
-  return <Container>Sign-Up</Container>
+  return <Container>Login</Container>
 }
