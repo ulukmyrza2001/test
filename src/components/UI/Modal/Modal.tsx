@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 import CancelIcon from '@mui/icons-material/Cancel'
-import styles from './Modal.module.css'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
+import styles from './Modal.module.css'
 
 interface ModalProps {
   active: boolean
