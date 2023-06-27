@@ -1,6 +1,16 @@
 import React from 'react'
-import { Container } from '../styles/ContainerStyle/Container'
+import Admin from './admin/page'
+import UserPage from './user/page'
 
 export default function Home() {
-  return <Container>Cheber</Container>
+  const role = 'USER'
+
+  const roleComponents = {
+    ADMIN: <Admin />,
+    USER: <UserPage />
+  }
+
+  const component = roleComponents[role] || <UserPage />
+
+  return component
 }
