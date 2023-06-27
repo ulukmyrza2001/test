@@ -2,6 +2,7 @@ import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { styled } from 'styled-components'
+import style from './InputMask.module.css'
 
 interface IinputNumberMask {
   label?: string
@@ -23,9 +24,13 @@ interface IinputNumberMask {
 export function InputNumberMask(props: IinputNumberMask) {
   const { onChange, value, onKeyDown, disabled, label, ...restProps } = props
   return (
-    <StyledContainer>
-      {label && <StyledLabel htmlFor={label}>{label}</StyledLabel>}
-      <InputNumberPhone
+    <div className={style.wrapper}>
+      {label && (
+        <label className={style.label} htmlFor={label}>
+          {label}
+        </label>
+      )}
+      <PhoneInput
         country={'kg'}
         onChange={onChange}
         onlyCountries={['kg', 'kz', 'uz']}
@@ -46,7 +51,7 @@ export function InputNumberMask(props: IinputNumberMask) {
         value={value}
         masks={{ kg: '(...)...-...', kz: '(...)...-..-..', uz: '-..-...-....' }}
       />
-    </StyledContainer>
+    </div>
   )
 }
 
@@ -77,17 +82,4 @@ const InputNumberPhone = styled(PhoneInput)`
   & .flag {
     border-radius: 2px;
   }
-`
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`
-
-const StyledLabel = styled.label`
-  font-family: 'PT Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #87939e;
 `
