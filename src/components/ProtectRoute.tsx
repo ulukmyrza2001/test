@@ -22,8 +22,6 @@ export const ProtectRoute = ({ children, role, router }: ProtectProps) => {
     const { pathname } = router
     const isAllowed = allowedRoutes.some((route) => pathname?.startsWith(route))
 
-    console.log(isAllowed)
-
     if (!isAllowed) {
       router.push('/')
     }
