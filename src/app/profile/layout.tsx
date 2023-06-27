@@ -1,10 +1,10 @@
-import { Metadata } from 'next'
 import { Container } from '@/src/styles/ContainerStyle/Container'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Login | Cheber'
+  title: 'Profile | Cheber'
 }
 
-export default function LoginLayout({ children }: { children: React.ReactNode }) {
+export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   return <Container>{children}</Container>
 }
