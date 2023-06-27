@@ -2,6 +2,7 @@ import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { styled } from 'styled-components'
+import style from './InputPhoneNumber.module.css'
 
 interface IinputPhoneNumber {
   label?: string
@@ -29,45 +30,28 @@ interface IinputPhoneNumber {
 }
 
 export function InputPhoneNumber(props: IinputPhoneNumber) {
+  const { label, type, onChange, value, disabled, onKeyDown, countries, country, ...preProps } =
+    props
   return (
-    <StyledContainer>
-      {props.label && <StyledLabel htmlFor={props.label}>{props.label}</StyledLabel>}
-      <InputNumberPhone
-        country={props.country}
-        onChange={props.onChange}
-        onlyCountries={props.countries}
+    <div className={style.wrapper}>
+      {label && (
+        <label className={style.label} htmlFor={label}>
+          {label}
+        </label>
+      )}
+      <PhoneInput
+        country={country}
+        onChange={onChange}
+        onlyCountries={countries}
         enableLongNumbers={false}
         countryCodeEditable={false}
-        inputStyle={{ ...props }}
+        inputStyle={{ ...preProps }}
         dropdownStyle={{
           boxShadow: 'none',
           width: '16em'
         }}
-        value={props.value}
+        value={value}
       />
-    </StyledContainer>
+    </div>
   )
 }
-
-const InputNumberPhone = styled(PhoneInput)`
-  & .form-control:active {
-    border: 1px solid var(--ui-background-color);
-  }
-
-  & .form-control:focus {
-    box-shadow: 0px 0px 1px 1px var(--ui-background-color);
-  }
-`
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`
-
-const StyledLabel = styled.label`
-  font-family: 'PT Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #87939e;
-`

@@ -9,10 +9,6 @@ interface Props {
   }
 }
 
-export const metadata: Metadata = {
-  title: 'Partner | Cheber'
-}
-
 export async function generateMetaData({ params: { city } }: Props): Promise<Metadata> {
   return {
     title: city
@@ -20,5 +16,5 @@ export async function generateMetaData({ params: { city } }: Props): Promise<Met
 }
 
 export default function PartnerPage() {
-  return <Container>Partner</Container>
+  return <div>Partner</div>
 }
