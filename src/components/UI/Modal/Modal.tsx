@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react'
-import styled from 'styled-components'
 import CancelIcon from '@mui/icons-material/Cancel'
-import { IconButton } from '@mui/material'
+import styles from './Modal.module.css'
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
 
 interface ModalProps {
   active: boolean
@@ -10,69 +11,37 @@ interface ModalProps {
   title?: string
 }
 
-export const Modal = ({ active, handleClose, children, title }: ModalProps) => {
-  return (
-    <ModalWrapper className={active ? 'active' : ''}>
-      <ModalContent className={active ? 'active' : ''} onClick={(e: any) => e.stopPropagation()}>
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column'
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between'
-            }}
-          >
-            <h2 className="title">{title ? title : 'Название'}</h2>
-            <h2 className="icon">
-              <IconButton onClick={() => handleClose()}>
-                <CancelIcon />
-              </IconButton>
-            </h2>
-          </div>
-          <div>{children}</div>
-        </div>
-      </ModalContent>
-    </ModalWrapper>
-  )
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  borderRadius: '8px',
+  p: 2
 }
 
-const ModalWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  opacity: 0;
-  pointer-events: none;
-  padding: 0 30px;
-
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-`
-
-const ModalContent = styled.div`
-  padding: 20px;
-  border-radius: 8px;
-  background-color: white;
-  transform: scale(0.4);
-  transition: 0.4s all;
-  &.active {
-    transform: scale(1);
-  }
-`
+export const ModalComponent = ({ active, handleClose, children, title }: ModalProps) => {
+  return (
+    <Modal
+      open={active}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box sx={style}>
+        <div className={styles.inner_Modal} onClick={(e: any) => e.stopPropagation()}>
+          <div className={styles.flex_inner_modal}>
+            <div className={styles.row_inner_modal}>
+              <h3 className={styles.title}>{title ? title : ''}</h3>
+              <CancelIcon onClick={() => handleClose()} className={styles.cancel_icons} />
+            </div>
+            <div>{children}</div>
+          </div>
+        </div>
+      </Box>
+    </Modal>
+  )
+}

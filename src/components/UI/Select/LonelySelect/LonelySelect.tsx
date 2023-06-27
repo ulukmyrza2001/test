@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import styled from 'styled-components'
+import style from './LonelySelect.module.css'
 
 interface LonelySelectProps {
   options: { label: string; value: string | number }[] | []
@@ -26,8 +26,8 @@ export const LonelySelect = ({
   isDisabled = false
 }: LonelySelectProps) => {
   return (
-    <StyledLonelySelect>
-      <StyledLabel>{label}</StyledLabel>
+    <div className={style.wrapper}>
+      <div className={style.label}>{label}</div>
       <Select
         options={options}
         placeholder={placeholder}
@@ -39,21 +39,6 @@ export const LonelySelect = ({
         isDisabled={isLoading || isDisabled}
         isSearchable={true}
       />
-    </StyledLonelySelect>
+    </div>
   )
 }
-
-const StyledLonelySelect = styled.div`
-  width: 100%;
-  min-width: 200px;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`
-const StyledLabel = styled.div`
-  font-family: 'PT Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #87939e;
-`

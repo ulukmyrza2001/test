@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.label {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #87939e;
+}
+
+.flag-dropdown {
+    background: none;
+  }
+.flag-dropdown:hover {
+    background: none;
+  }
+.flag-dropdown.open > .selected-flag {
+      background: none;
+  }
+
+.selected-flag.open {
+    background: none;
+  }
+.selected-flag:hover {
+    background: none;
+  }
+
+.flag-dropdown.open {
+    background: none;
+  }
+.flag {
+    border-radius: 2px;
+  }
