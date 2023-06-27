@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Admin from './admin/page'
 import UserPage from './user/page'
