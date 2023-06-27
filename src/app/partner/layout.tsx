@@ -1,28 +1,20 @@
+import '../globals.css'
 import { Container } from '@/src/styles/ContainerStyle/Container'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Footer } from '../../components/Footer/Footer'
+import { PartnerHeader } from '@/src/components/Header/PartnerHeader/PartnerHeader'
 
 export const metadata: Metadata = {
-  title: 'Partner | Cheber',
-  description: 'Welcome to the Partner'
+  title: 'Partner',
+  description: 'Welcome to the cheber'
 }
 
 export default function PartnerLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Container>
-      <h1>Partner</h1>
-      <ul>
-        <li>
-          <Link href="/">Cheber</Link>
-        </li>
-        <li>
-          <Link href="/partner">partner</Link>
-        </li>
-        <li>
-          <Link href="/partner/registration">registration</Link>
-        </li>
-      </ul>
-      {children}
-    </Container>
+    <>
+      <PartnerHeader />
+      <main className="main">{children}</main>
+    </>
   )
 }
