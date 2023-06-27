@@ -20,5 +20,5 @@ export async function generateMetaData({ params: { city } }: Props): Promise<Met
 }
 
 export default function PartnerPage() {
-  return <Container>Partner</Container>
+  return <div>Partner</div>
 }

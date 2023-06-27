@@ -31,8 +31,8 @@ export const Header = () => {
           <ModalComponent active={showmodal} handleClose={hideModalHandler}>
             asd
           </ModalComponent>
-          <Link href="partner">Стать партнером</Link>
-          <Link href="login">Войти</Link>
+          <Link href="/partner">Стать партнером</Link>
+          <Link href="/login">Войти</Link>
         </div>
       </div>
     </header>

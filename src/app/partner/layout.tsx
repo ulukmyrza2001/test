@@ -1,3 +1,4 @@
+import { Container } from '@/src/styles/ContainerStyle/Container'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PartnerLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <Container>
       <h1>Partner</h1>
       <ul>
         <li>
@@ -22,6 +23,6 @@ export default function PartnerLayout({ children }: { children: React.ReactNode 
         </li>
       </ul>
       {children}
-    </div>
+    </Container>
   )
 }
