@@ -91,12 +91,17 @@ export const ContainerSlider = ({
 
 const StyledContainerSlider = styled.div`
   width: 100%;
+  .slick-track {
+    display: flex;
+    gap: 10px;
+  }
 `
 const StyledContainerNextArrow = styled.div<{ $typeButton: boolean }>`
   margin: 0 20px;
   position: absolute;
-  top: ${({ $typeButton }) => ($typeButton ? '0' : '')};
-  left: calc(100% - 50px);
+  top: ${({ $typeButton }) => ($typeButton ? '0' : '40%')};
+  left: ${({ $typeButton }) => ($typeButton ? 'calc(100% - 50px)' : 'calc(100% - 15px)')};
+  transform: ${({ $typeButton }) => ($typeButton ? '' : 'translateY(-50%)')};
   width: 28px;
   height: 28px;
   border: 1px solid #acacac;
@@ -112,18 +117,18 @@ const StyledContainerNextArrow = styled.div<{ $typeButton: boolean }>`
   }
 `
 const StyledContainerPrevArrow = styled.div<{ $typeButton: boolean }>`
-  margin: 0 -20px;
-  position: relative;
-  top: ${({ $typeButton }) => ($typeButton ? '0' : '')};
-  left: ${({ $typeButton }) => ($typeButton ? 'calc(100% - 50px)' : '-10px')};
-  margin-bottom: 5px;
+  margin: ${({ $typeButton }) => ($typeButton ? '5px -20px' : '0')};
+  position: ${({ $typeButton }) => ($typeButton ? 'relative' : 'absolute')};
+  top: ${({ $typeButton }) => ($typeButton ? '0' : '40%')};
+  left: ${({ $typeButton }) => ($typeButton ? 'calc(100% - 50px)' : '-35px')};
+  transform: ${({ $typeButton }) =>
+    $typeButton ? 'rotate(180deg)' : 'translateY(-50%) rotate(180deg);'};
   width: 28px;
   height: 28px;
   border: 1px solid #acacac;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: rotate(180deg);
   align-items: center;
   border-radius: 100%;
   cursor: pointer;
@@ -144,7 +149,7 @@ const StyledContainerDots = styled.div`
 const StyledContainerAppendDots = styled.div<{ $active: string }>`
   width: 6px;
   height: ${({ $active }) => ($active === 'slick-active' ? '26px' : '16px')};
-  background-color: ${({ $active }) => ($active === 'slick-active' ? '#3A10E5' : '#3A10E533')};
+  background-color: ${({ $active }) => ($active === 'slick-active' ? 'gray' : '#acacac')};
   border-radius: 20px;
   transition: 300ms;
 `
