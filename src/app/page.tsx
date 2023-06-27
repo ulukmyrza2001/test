@@ -1,7 +1,6 @@
-'use client'
-
 import React from 'react'
+import { Container } from '../styles/ContainerStyle/Container'
 
 export default function Home() {
-  return <div>Cheber</div>
+  return <Container>Cheber</Container>
 }

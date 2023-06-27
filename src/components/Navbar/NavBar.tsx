@@ -3,10 +3,9 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { useState } from 'react'
-import React from 'react'
-import { ModalComponent } from '../UI/Modal/Modal'
+import { Modal } from '../UI/Modal/Modal'
 
-export const Header = () => {
+export const NavBar = () => {
   const [showmodal, setShowModal] = useState(false)
 
   const showModalHandler = () => {
@@ -27,9 +26,9 @@ export const Header = () => {
             <LocationOnIcon />
             Бишкек
           </WrapperLocated>
-          <ModalComponent active={showmodal} handleClose={hideModalHandler}>
+          <Modal active={showmodal} handleClose={hideModalHandler}>
             asd
-          </ModalComponent>
+          </Modal>
           <Link href="partner">Стать партнером</Link>
           <Link href="login">Войти</Link>
         </WrapperNav>

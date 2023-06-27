@@ -7,7 +7,7 @@ interface ProvidersProps {
   children: ReactNode
 }
 
-const Natification: FC<ProvidersProps> = ({ children }) => {
+export const Natification: FC<ProvidersProps> = ({ children }) => {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
@@ -15,5 +15,3 @@ const Natification: FC<ProvidersProps> = ({ children }) => {
     </>
   )
 }
-
-export default Natification

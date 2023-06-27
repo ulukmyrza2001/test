@@ -1,4 +1,5 @@
 .breadcrumbs {
+<<<<<<< HEAD
     width: 100%;
 }
 
@@ -15,9 +16,29 @@
 
 .titlecontainer {
     font-size: 18px;
+=======
+  width: 100%;
+}
+.link {
+  color: #7395ae;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+.wrapper_title {
+  font-size: 18px;
+>>>>>>> e89b095b6028ea1c2640fdc4b6540109edeccd19
   line-height: 27px;
   box-sizing: border-box;
   font-weight: 400;
   font-family: sans-serif;
   color: black;
+<<<<<<< HEAD
 }
+=======
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+>>>>>>> e89b095b6028ea1c2640fdc4b6540109edeccd19
