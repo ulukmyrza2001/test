@@ -87,18 +87,21 @@ export const NavBar = () => {
           speed={400}
           slidesToShow={7}
           slidesToScroll={1}
+          swipeToSlide={true}
           autoplay={false}
           arrowAndprev={true}
           typeButton={false}
+          variableWidth={false}
+          
         >
           {NAVBAR_DATA.map((item: { name: string; icon: any; link: string }) => {
             return (
-              <Link key={item.link} className={styles.container_card} href={item.link}>
+              <div key={item.link} className={styles.container_card}>
                 <div className={styles.card_title}>{item.name}</div>
                 <div className={styles.card_icon}>
                   {React.createElement(item?.icon, { size: '30' })}
                 </div>
-              </Link>
+              </div>
             )
           })}
         </ContainerSlider>
