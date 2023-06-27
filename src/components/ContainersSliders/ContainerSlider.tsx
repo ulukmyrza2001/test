@@ -10,12 +10,14 @@ import './ContainerSlider.css'
 //speed - Скорость прокрутки Slider
 //slidesToShow - На экране выходить сколько вы дали
 //slidesToScroll - Количество прокрутки
+//swipeToSlide - Включить перетаскивание/пролистывание независимо от `slidesToScroll`
 //initialSlide - Первоначальное slider
 //autoplay - Авто Slider
 //autoplaySpeed - Скорость авто Slider
 //pauseOnHover - Остоновит через Hover Slider работает при autoplay
 //arrowAndprev - Показывает кнопки
 //typeButton - изменяет места кнопки
+//variableWidth - auto width or custom width
 
 function SampleNextArrow(props: any) {
   const { onClick, typeButton } = props
@@ -73,6 +75,8 @@ export const ContainerSlider = ({
   pauseOnHover?: boolean
   arrowAndprev: boolean
   typeButton: boolean
+  swipeToSlide: boolean
+  variableWidth: boolean
 }) => {
   const settings = {
     dots: props.dots,
@@ -84,6 +88,9 @@ export const ContainerSlider = ({
     autoplay: props.autoplay,
     autoplaySpeed: props.autoplaySpeed,
     pauseOnHover: props.pauseOnHover,
+    swipeToSlide: props.swipeToSlide,
+    variableWidth: props.variableWidth,
+    accessibility: true,
     nextArrow: props.arrowAndprev && <SampleNextArrow typeButton={props.typeButton} />,
     prevArrow: props.arrowAndprev && <SamplePrevArrow typeButton={props.typeButton} />,
     appendDots: (dots: any) => <AppendDots dots={dots} />

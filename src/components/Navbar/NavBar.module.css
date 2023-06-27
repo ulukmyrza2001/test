@@ -15,6 +15,7 @@
   background-color: #f0ecec;
   border-radius: 8px;
   padding: 7px;
+  cursor: pointer;
 }
 .card_title {
   width: 100%;
