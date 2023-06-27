@@ -26,7 +26,9 @@ export const Header = () => {
             <LocationOnIcon />
             Бишкек
           </WrapperLocated>
-          <Modal active={showmodal}>asd</Modal>
+          <Modal active={showmodal} handleClose={hideModalHandler}>
+            asd
+          </Modal>
           <Link href="partner">Стать партнером</Link>
           <Link href="login">Войти</Link>
         </WrapperNav>

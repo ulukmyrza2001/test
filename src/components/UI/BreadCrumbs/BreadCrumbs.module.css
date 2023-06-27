@@ -1,0 +1,23 @@
+.breadcrumbs {
+    width: 100%;
+}
+
+.navlink {
+    color: #7395AE;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.navlink:hover {
+    text-decoration: underline;
+}
+
+.titlecontainer {
+    font-size: 18px;
+  line-height: 27px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-family: sans-serif;
+  color: black;
+}
