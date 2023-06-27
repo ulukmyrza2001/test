@@ -1,7 +1,6 @@
 'use client'
 
 import { Metadata } from 'next'
-import styled from 'styled-components'
 
 export const metadata: Metadata = {
   title: 'MainPage | Cheber'

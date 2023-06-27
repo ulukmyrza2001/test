@@ -1,12 +1,14 @@
 'use client'
-import Link from 'next/link'
-import styles from './Header.module.css'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { useState } from 'react'
-import { ModalComponent } from '../UI/Modal/Modal'
+import Link from 'next/link'
+import styles from './UserHeader.module.css'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import LoginForm from '../../LoginForm/LoginForm'
+import { ModalComponent } from '../../UI/Modal/Modal'
 
-export const Header = () => {
-  const [showmodal, setShowModal] = useState(false)
+export const UserHeader = () => {
+  const [showModal, setShowModal] = useState(false)
+  const [showLoginModal, setShowLoginModal] = useState(false)
 
   const showModalHandler = () => {
     setShowModal(true)
@@ -28,11 +30,14 @@ export const Header = () => {
             <LocationOnIcon />
             Бишкек
           </div>
-          <ModalComponent active={showmodal} handleClose={hideModalHandler}>
+          <ModalComponent active={showModal} handleClose={hideModalHandler}>
             asd
           </ModalComponent>
           <Link href="/partner">Стать партнером</Link>
-          <Link href="/login">Войти</Link>
+          <div className={styles.wrapper_located} onClick={() => setShowLoginModal(true)}>
+            Войти
+          </div>
+          <LoginForm active={showLoginModal} setActive={setShowLoginModal} />
         </div>
       </div>
     </header>
