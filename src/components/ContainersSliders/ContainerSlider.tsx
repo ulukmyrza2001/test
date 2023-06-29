@@ -77,6 +77,7 @@ export const ContainerSlider = ({
   typeButton: boolean
   swipeToSlide: boolean
   variableWidth: boolean
+  label?: string
 }) => {
   const [screenWidth, setScreenWidth] = useState(1000)
 
@@ -122,7 +123,7 @@ export const ContainerSlider = ({
   }
   return (
     <div className="container_slider">
-      {props.typeButton && <span className="header_title">HELLO</span>}
+      {props.typeButton && <span className="header_title">{props.label}</span>}
       <Slider {...settings}>{React.Children.toArray(children)}</Slider>
     </div>
   )
