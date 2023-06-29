@@ -17,19 +17,19 @@ export const ServiceCard = (props: IServiceCard) => {
   const { isloading, ...restProps } = props
   return (
     <Card className={style.main}>
-      <CardActionArea style={{ ...restProps }} className={style.mainwrapper}>
-        {isloading === true ? (
-          <ContentLoader viewBox="0 0 500 280" height={350} width={400}>
-            <rect x="3" y="3" rx="10" ry="10" width="400" height="180" />
-            <rect x="6" y="190" rx="0" ry="0" width="400" height="20" />
-            <rect x="4" y="215" rx="0" ry="0" width="400" height="20" />
-            <rect x="4" y="242" rx="0" ry="0" width="400" height="20" />
-          </ContentLoader>
-        ) : (
+      {isloading === true ? (
+        <ContentLoader viewBox="0 0 500 280" height={350} width={400}>
+          <rect x="3" y="3" rx="10" ry="10" width="400" height="180" />
+          <rect x="6" y="190" rx="0" ry="0" width="400" height="20" />
+          <rect x="4" y="215" rx="0" ry="0" width="400" height="20" />
+          <rect x="4" y="242" rx="0" ry="0" width="400" height="20" />
+        </ContentLoader>
+      ) : (
+        <CardActionArea style={{ ...restProps }} className={style.mainwrapper}>
           <div className={style.wrapper}>
-            <IconButton className={style.marking}>
+            <div className={style.marking}>
               <BookmarkIcon />
-            </IconButton>
+            </div>
             <div className={style.imgcontainer}>
               <img
                 className={style.img}
@@ -52,8 +52,8 @@ export const ServiceCard = (props: IServiceCard) => {
               </div>
             </div>
           </div>
-        )}
-      </CardActionArea>
+        </CardActionArea>
+      )}
     </Card>
   )
 }
