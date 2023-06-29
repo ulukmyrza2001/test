@@ -1,8 +1,8 @@
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
 import { styled } from 'styled-components'
 import style from './InputMask.module.css'
+import 'react-phone-input-2/lib/style.css'
 
 interface IinputNumberMask {
   label?: string
@@ -23,6 +23,27 @@ interface IinputNumberMask {
 
 export function InputNumberMask(props: IinputNumberMask) {
   const { onChange, value, onKeyDown, disabled, label, ...restProps } = props
+
+  const inputStyle = {
+    ...restProps,
+    border: '0.5px solid silver',
+    width: '300px',
+    height: '50px',
+    backgroundColor: 'transparent' // Remove background color
+  }
+
+  const buttonStyle = {
+    background: 'transparent !important',
+    border: 'none',
+
+    '&.selected-flag, &.open': {
+      background: 'red !important'
+    },
+    '&:hover, &:active': {
+      background: 'red !important'
+    }
+  }
+
   return (
     <div className={style.wrapper}>
       {label && (
@@ -36,11 +57,8 @@ export function InputNumberMask(props: IinputNumberMask) {
         onlyCountries={['kg', 'kz', 'uz']}
         enableLongNumbers={false}
         countryCodeEditable={false}
-        inputStyle={{ ...restProps, border: '0.5px solid silver' }}
-        buttonStyle={{
-          border: 'none',
-          backgroundColor: 'none'
-        }}
+        inputStyle={style}
+        buttonClass={style['country-selector-button']}
         dropdownStyle={{
           boxShadow: 'none',
           width: '16em',

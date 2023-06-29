@@ -1,0 +1,43 @@
+.css-ahj2mt-MuiTypography-root {
+    font-size: 12PX;
+    font-weight: 300;
+    color: green;
+}
+
+/* Стили для FormControl */
+.FormControl {
+    margin-bottom: 10px; /* Пример отступа снизу */
+  }
+  
+  /* Стили для FormLabel */
+  .FormLabel {
+    font-size: 16px; /* Пример размера шрифта */
+    font-weight: bold; /* Пример насыщенности шрифта */
+    margin-bottom: 5px; /* Пример отступа снизу */
+  }
+  
+  /* Стили для RadioGroup */
+  .RadioGroup {
+    display: flex; /* Пример использования flexbox для выравнивания элементов */
+    flex-direction: column; /* Пример вертикального расположения элементов */
+  }
+  
+  /* Стили для FormControlLabel */
+  .FormControlLabel {
+    margin-bottom: 5px; /* Пример отступа снизу */
+  }
+  
+  /* Стили для Radio */
+  .Radio {
+    margin-right: 5px; /* Пример отступа справа */
+  }
+
+  .css-ahj2mt-MuiTypography-root {
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    color: blueviolet;
+}

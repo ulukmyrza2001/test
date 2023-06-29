@@ -1,7 +1,38 @@
+.form-control {
+  background-color: aqua !important;
+} 
+
+.react-tel-input,
+.selected-flag:hover,
+.selected-flag:focus {
+  background-color: transparent;
+  border: none;
+}
+
+.react-tel-input .form-control {
+  background-color: transparent;
+  border: none;
+}
+
+.react-tel-input, .flag-dropdown {
+background-color: transparent;
+border: none;
+}
+
+.country-selector-button:hover,
+.country-selector-button:active,
+.country-selector-button.selected-flag,
+.country-selector-button.open {
+  background: transparent;
+}
+
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; 
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
 }
 
 .label {
