@@ -2,7 +2,7 @@ import React from 'react'
 import style from './Button.module.css'
 
 interface ButtonProps {
-  onClick: (value: any) => void
+  onClick?: (value: any) => void
   width?: string
   height?: string
   minWidth?: string
@@ -16,6 +16,7 @@ interface ButtonProps {
   margin?: string
   disabled?: boolean
   children: React.ReactNode
+  type?: string
 }
 
 export const Button = (props: ButtonProps) => {

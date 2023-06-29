@@ -33,6 +33,7 @@ export default function UserPage() {
       name: 'Снятие покрытия'
     }
   ]
+
   return (
     <ClientLayout>
       <NavBar />
