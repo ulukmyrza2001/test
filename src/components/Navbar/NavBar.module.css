@@ -8,6 +8,7 @@
 .container_inside_navbar {
   width: 94%;
   height: 100%;
+  max-width: 1536px;
 }
 .container_card {
   width: 180px !important;

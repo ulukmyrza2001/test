@@ -2,6 +2,8 @@
   width: 100%;
 }
 .slick-track {
+  width: 100% !important;
+  max-width: 100% !important;
   display: flex !important;
   gap: 10px !important;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import 'slick-carousel/slick/slick.css'
@@ -78,6 +78,21 @@ export const ContainerSlider = ({
   swipeToSlide: boolean
   variableWidth: boolean
 }) => {
+  const [screenWidth, setScreenWidth] = useState(1000)
+
+  useEffect(() => {
+    function handleResize() {
+      const width =
+        window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+      setScreenWidth(width)
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const settings = {
     dots: props.dots,
     infinite: props.infinite,
@@ -91,8 +106,12 @@ export const ContainerSlider = ({
     swipeToSlide: props.swipeToSlide,
     variableWidth: props.variableWidth,
     accessibility: true,
-    nextArrow: props.arrowAndprev && <SampleNextArrow typeButton={props.typeButton} />,
-    prevArrow: props.arrowAndprev && <SamplePrevArrow typeButton={props.typeButton} />,
+    nextArrow: props.arrowAndprev && screenWidth > 600 && (
+      <SampleNextArrow typeButton={props.typeButton} />
+    ),
+    prevArrow: props.arrowAndprev && screenWidth > 600 && (
+      <SamplePrevArrow typeButton={props.typeButton} />
+    ),
     appendDots: (dots: any) => <AppendDots dots={dots} />
   }
   return (

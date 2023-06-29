@@ -91,8 +91,7 @@ export const NavBar = () => {
           autoplay={false}
           arrowAndprev={true}
           typeButton={false}
-          variableWidth={false}
-          
+          variableWidth={true}
         >
           {NAVBAR_DATA.map((item: { name: string; icon: any; link: string }) => {
             return (
