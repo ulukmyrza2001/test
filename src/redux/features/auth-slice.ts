@@ -3,11 +3,14 @@ import { AuthState, SetUserDataPayload } from '@/src/common/auth/Iauth'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-hot-toast'
 
+// http://ec2-3-75-181-112.eu-central-1.compute.amazonaws.com/api/auth/authentication
+// http://ec2-35-156-171-186.eu-central-1.compute.amazonaws.com/api/auth/authentication
+
 export const SignUp = createAsyncThunk(
   'auth/SignUp',
   async ({ userData }: SetUserDataPayload, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('/auth/authentication', userData)
+      const response = await axiosInstance.post('auth/authentication', userData)
       toast.success('Successfully toasted!')
       return response.data
     } catch (error) {
@@ -34,7 +37,7 @@ export const Login = createAsyncThunk(
 const initialState: AuthState = {
   token: null,
   authId: '',
-  role: null,
+  role: 'USER',
   isAuthenticated: false,
   phoneNumber: ''
 }

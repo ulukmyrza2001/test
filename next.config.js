@@ -7,7 +7,8 @@ const nextConfig = {
     domains: ['lh3.googleusercontent.com']
   },
   env: {
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    DEV_URL: process.env.DEV_URL
   }
 }
 

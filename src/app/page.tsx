@@ -3,16 +3,26 @@
 import React from 'react'
 import Admin from './admin/page'
 import UserPage from './user/page'
+import SuperAdmin from './super-admin/page'
+import Owner from './owner/page'
+import { useAppSelector } from '../redux/store'
 
 export default function Home() {
-  const role = 'USER'
+  const { role } = useAppSelector((state) => state.auth)
 
-  const roleComponents = {
-    ADMIN: <Admin />,
-    USER: <UserPage />
+  switch (role) {
+    case 'USER':
+      return <UserPage />
+    case 'SUPER_ADMIN':
+      return <SuperAdmin />
+    case 'OWNER':
+      return <Owner />
+    case 'ADMIN':
+      return <Admin />
+    default:
+      ;<UserPage />
+      break
   }
 
-  const component = roleComponents[role] || <UserPage />
-
-  return component
+  return
 }

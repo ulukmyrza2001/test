@@ -2,12 +2,14 @@ import axios, { AxiosInstance } from 'axios'
 import { _KEY_AUTH } from '../utils/constants/constants'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.DEV_URL,
   timeout: 5000
 })
 
 axiosInstance.interceptors.request.use((config) => {
   const data = localStorage.getItem(_KEY_AUTH)
+
+  console.log(process.env.DEV_URL)
 
   const convertObj = data ? JSON.parse(data).token : null
 

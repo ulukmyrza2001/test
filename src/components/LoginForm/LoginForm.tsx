@@ -14,7 +14,7 @@ interface LoginProps {
 }
 
 interface FormData {
-  phoneNumber: number
+  phoneNumber: string
   password: string
 }
 
@@ -28,7 +28,14 @@ export default function LoginForm({ active, setActive }: LoginProps) {
   } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (data: any) => {
-    dispatch(SignUp({ userData: data }))
+    dispatch(
+      SignUp({
+        userData: {
+          phoneNumber: `+${data.phoneNumber}`,
+          password: data.password
+        }
+      })
+    )
     setActive(false)
   }
 
