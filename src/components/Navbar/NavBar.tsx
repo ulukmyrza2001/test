@@ -1,76 +1,117 @@
-'use client'
-import Link from 'next/link'
-import styled from 'styled-components'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { useState } from 'react'
-import { Modal } from '../UI/Modal/Modal'
+import React from 'react'
+import styles from './NavBar.module.css'
+import { ContainerSlider } from '../ContainersSliders/ContainerSlider'
+import { HiMiniScissors } from 'react-icons/hi2'
+import { GiBeard, GiDoctorFace } from 'react-icons/gi'
+import { BiBody } from 'react-icons/bi'
+import { FaTooth, FaHandHoldingHeart } from 'react-icons/fa'
+import { FaPersonRays } from 'react-icons/fa6'
+import {
+  MdOutlineMedicalServices,
+  MdOutlineFaceRetouchingNatural,
+  MdOutlineFace2
+} from 'react-icons/md'
+import { SiBritishairways } from 'react-icons/si'
+import { GiEyelashes, GiFlowerTwirl } from 'react-icons/gi'
+
+const NAVBAR_DATA = [
+  {
+    name: 'Парикмахерские услуги',
+    icon: HiMiniScissors,
+    link: '/barber'
+  },
+  {
+    name: 'Для мужчин',
+    icon: GiBeard,
+    link: '/barber'
+  },
+  {
+    name: 'Ногтевой сервис',
+    icon: FaHandHoldingHeart,
+    link: '/barber'
+  },
+  {
+    name: 'Удаление волос',
+    icon: MdOutlineFaceRetouchingNatural,
+    link: '/barber'
+  },
+  {
+    name: 'Ресницы',
+    icon: GiEyelashes,
+    link: '/barber'
+  },
+  {
+    name: 'Брови',
+    icon: SiBritishairways,
+    link: '/barber'
+  },
+  {
+    name: 'Уход за телом',
+    icon: BiBody,
+    link: '/barber'
+  },
+  {
+    name: 'Косметология',
+    icon: GiDoctorFace,
+    link: '/barber'
+  },
+  {
+    name: 'Макияж',
+    icon: MdOutlineFace2,
+    link: '/barber'
+  },
+  {
+    name: 'Стоматология',
+    icon: FaTooth,
+    link: '/barber'
+  },
+  {
+    name: 'Медицинские услуги',
+    icon: MdOutlineMedicalServices,
+    link: '/barber'
+  },
+  {
+    name: 'Тату и пирсинг',
+    icon: GiFlowerTwirl,
+    link: '/barber'
+  },
+  {
+    name: 'Коррекция фигуры',
+    icon: FaPersonRays,
+    link: '/barber'
+  }
+]
 
 export const NavBar = () => {
-  const [showmodal, setShowModal] = useState(false)
-
-  const showModalHandler = () => {
-    setShowModal(true)
-  }
-  const hideModalHandler = () => {
-    setShowModal(false)
-  }
-
   return (
-    <ContainerHeader>
-      <InnerHeader>
-        <WrapperLogo>
-          <Link href="/">Чебер</Link>
-        </WrapperLogo>
-        <WrapperNav>
-          <WrapperLocated onClick={() => showModalHandler()}>
-            <LocationOnIcon />
-            Бишкек
-          </WrapperLocated>
-          <Modal active={showmodal} handleClose={hideModalHandler}>
-            asd
-          </Modal>
-          <Link href="partner">Стать партнером</Link>
-          <Link href="login">Войти</Link>
-        </WrapperNav>
-      </InnerHeader>
-    </ContainerHeader>
+    <div className={styles.container_navbar}>
+      <div className={styles.container_inside_navbar}>
+        <ContainerSlider
+          dots={false}
+          infinite={true}
+          speed={400}
+          slidesToShow={7}
+          slidesToScroll={1}
+          swipeToSlide={true}
+          autoplay={true}
+          autoplaySpeed={2000}
+          pauseOnHover={true}
+          arrowAndprev={true}
+          typeButton={false}
+          variableWidth={true}
+        >
+          {NAVBAR_DATA.map((item: { name: string; icon: any; link: string }) => {
+            return (
+              <div key={item.link} className={styles.container_card}>
+                <div className={styles.card_title}>{item.name}</div>
+                <div className={styles.card_icon}>
+                  {React.createElement(item?.icon, { size: '30' })}
+                </div>
+              </div>
+            )
+          })}
+        </ContainerSlider>
+      </div>
+    </div>
   )
 }
-
-const ContainerHeader = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
-  top: 0;
-  -webkit-box-shadow: 0px 1px 3px 2px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 1px 3px 2px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 1px 3px 2px rgba(34, 60, 80, 0.2);
-`
-const InnerHeader = styled.div`
-  width: 100%;
-  max-width: 1536px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  a {
-    color: var(--ui-black);
-  }
-`
-const WrapperLogo = styled.div`
-  a {
-    font-size: 23px;
-  }
-`
-const WrapperNav = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-`
-const WrapperLocated = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`

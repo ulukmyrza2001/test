@@ -1,20 +1,12 @@
 'use client'
 
+import PartnerLayout from '@/src/app/partner/layout'
 import { Container } from '@/src/styles/ContainerStyle/Container'
-import { Metadata } from 'next'
-
-interface Props {
-  params: {
-    city: string
-  }
-}
-
-export async function generateMetaData({ params: { city } }: Props): Promise<Metadata> {
-  return {
-    title: city
-  }
-}
 
 export default function PartnerPage() {
-  return <div>Partner</div>
+  return (
+    <PartnerLayout>
+      <Container>Partner</Container>
+    </PartnerLayout>
+  )
 }

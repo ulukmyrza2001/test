@@ -1,6 +1,6 @@
 'use client'
 
-import { IconButton } from '@mui/material'
+import { Card, CardActionArea, IconButton } from '@mui/material'
 import ContentLoader from 'react-content-loader'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import GradeIcon from '@mui/icons-material/Grade'
@@ -12,10 +12,11 @@ interface IServiceCard {
   borderRadius?: string
   isloading?: boolean
 }
+
 export const ServiceCard = (props: IServiceCard) => {
   const { isloading, ...restProps } = props
   return (
-    <div style={{ ...restProps }} className={style.main}>
+    <Card className={style.main}>
       {isloading === true ? (
         <ContentLoader viewBox="0 0 500 280" height={350} width={400}>
           <rect x="3" y="3" rx="10" ry="10" width="400" height="180" />
@@ -24,34 +25,35 @@ export const ServiceCard = (props: IServiceCard) => {
           <rect x="4" y="242" rx="0" ry="0" width="400" height="20" />
         </ContentLoader>
       ) : (
-        <div className={style.wrapper}>
-          <IconButton className={style.marking}>
-            <BookmarkIcon />
-          </IconButton>
-          <div className={style.imgcontainer}>
-            <img
-              className={style.img}
-              src="https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2020/07/29184719/Cover-20.png"
-              alt="AMG"
-            />
-          </div>
-          <div className={style.info}>
-            <div>
-              <h4 className={style.type}>Барбершоп</h4>
-              <h3 className={style.name}>Garage</h3>
-              <p className={style.location}>Байтик Баатыра 84</p>
+        <CardActionArea style={{ ...restProps }} className={style.mainwrapper}>
+          <div className={style.wrapper}>
+            <div className={style.marking}>
+              <BookmarkIcon />
             </div>
-
-            <div className={style.reviewcontainer}>
-              <h3 className={style.review}>
-                <GradeIcon className={style.star} sx={{ color: 'goldenrod' }} />
-                4.7
-              </h3>
-              <p>1000 сом</p>
+            <div className={style.imgcontainer}>
+              <img
+                className={style.img}
+                src="https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2020/07/29184719/Cover-20.png"
+                alt="AMG"
+              />
+            </div>
+            <div className={style.info}>
+              <div>
+                <h4 className={style.type}>Барбершоп</h4>
+                <h3 className={style.name}>Garage</h3>
+                <p className={style.location}>Байтик Баатыра 84</p>
+              </div>
+              <div className={style.reviewcontainer}>
+                <h3 className={style.review}>
+                  <GradeIcon className={style.star} sx={{ color: 'goldenrod' }} />
+                  4.7
+                </h3>
+                <p>1000 сом</p>
+              </div>
             </div>
           </div>
-        </div>
+        </CardActionArea>
       )}
-    </div>
+    </Card>
   )
 }
