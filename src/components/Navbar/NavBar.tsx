@@ -1,77 +1,83 @@
 import React from 'react'
 import styles from './NavBar.module.css'
 import { ContainerSlider } from '../ContainersSliders/ContainerSlider'
-import { GrStatusUnknown } from 'react-icons/gr'
+import { HiMiniScissors } from 'react-icons/hi2'
+import { GiBeard, GiDoctorFace } from 'react-icons/gi'
+import { BiBody } from 'react-icons/bi'
+import { FaTooth, FaHandHoldingHeart } from 'react-icons/fa'
+import { FaPersonRays } from 'react-icons/fa6'
+import {
+  MdOutlineMedicalServices,
+  MdOutlineFaceRetouchingNatural,
+  MdOutlineFace2
+} from 'react-icons/md'
+import { SiBritishairways } from 'react-icons/si'
+import { GiEyelashes, GiFlowerTwirl } from 'react-icons/gi'
 
 const NAVBAR_DATA = [
   {
     name: 'Парикмахерские услуги',
-    icon: GrStatusUnknown,
+    icon: HiMiniScissors,
     link: '/barber'
   },
   {
     name: 'Для мужчин',
-    icon: GrStatusUnknown,
+    icon: GiBeard,
     link: '/barber'
   },
   {
     name: 'Ногтевой сервис',
-    icon: GrStatusUnknown,
+    icon: FaHandHoldingHeart,
     link: '/barber'
   },
   {
     name: 'Удаление волос',
-    icon: GrStatusUnknown,
+    icon: MdOutlineFaceRetouchingNatural,
     link: '/barber'
   },
   {
     name: 'Ресницы',
-    icon: GrStatusUnknown,
+    icon: GiEyelashes,
     link: '/barber'
   },
   {
     name: 'Брови',
-    icon: GrStatusUnknown,
+    icon: SiBritishairways,
     link: '/barber'
   },
   {
     name: 'Уход за телом',
-    icon: GrStatusUnknown,
+    icon: BiBody,
     link: '/barber'
   },
   {
     name: 'Косметология',
-    icon: GrStatusUnknown,
+    icon: GiDoctorFace,
     link: '/barber'
   },
   {
     name: 'Макияж',
-    icon: GrStatusUnknown,
+    icon: MdOutlineFace2,
     link: '/barber'
   },
   {
     name: 'Стоматология',
-    icon: GrStatusUnknown,
+    icon: FaTooth,
     link: '/barber'
   },
   {
     name: 'Медицинские услуги',
-    icon: GrStatusUnknown,
+    icon: MdOutlineMedicalServices,
     link: '/barber'
   },
   {
     name: 'Тату и пирсинг',
-    icon: GrStatusUnknown,
-    link: '/barber'
-  },
-  {
-    name: 'Татуаж',
-    icon: GrStatusUnknown,
+    icon: GiFlowerTwirl,
     link: '/barber'
   },
   {
     name: 'Коррекция фигуры',
-    icon: GrStatusUnknown,
+    icon: FaPersonRays,
     link: '/barber'
   }
 ]
