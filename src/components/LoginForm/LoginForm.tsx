@@ -4,7 +4,9 @@ import styles from './LoginForm.module.css'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { ModalComponent } from '@/src/components/UI/Modal/Modal'
 import { Button } from '../UI/Buttons/Button/Button'
-import { InputNumberMask } from '../UI/Inputs/InputMask/InputMask'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/src/redux/store'
+import { SignUp } from '@/src/redux/features/auth-slice'
 
 interface LoginProps {
   active: boolean
@@ -12,11 +14,13 @@ interface LoginProps {
 }
 
 interface FormData {
-  numberField: number
-  passwordField: string
+  phoneNumber: number
+  password: string
 }
 
 export default function LoginForm({ active, setActive }: LoginProps) {
+  const dispatch = useDispatch<AppDispatch>()
+
   const {
     register,
     handleSubmit,
@@ -24,7 +28,8 @@ export default function LoginForm({ active, setActive }: LoginProps) {
   } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (data: any) => {
-    console.log(data)
+    dispatch(SignUp({ userData: data }))
+    setActive(false)
   }
 
   const hideLoginModal = () => {
@@ -41,9 +46,9 @@ export default function LoginForm({ active, setActive }: LoginProps) {
           <input
             className={styles.input}
             type="number"
-            {...register('numberField', { required: true })}
+            {...register('phoneNumber', { required: true })}
           />
-          {errors.numberField && <span>This field is required</span>}
+          {errors.phoneNumber && <span>This field is required</span>}
         </div>
         <div className={styles.input_wrapper}>
           <label htmlFor="password" className="label">
@@ -52,9 +57,9 @@ export default function LoginForm({ active, setActive }: LoginProps) {
           <input
             className={styles.input}
             type="password"
-            {...register('passwordField', { required: true })}
+            {...register('password', { required: true })}
           />
-          {errors.passwordField && <span>This field is required</span>}
+          {errors.password && <span>This field is required</span>}
         </div>
         <Button type="submit">Submit</Button>
       </form>

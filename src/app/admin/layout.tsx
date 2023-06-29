@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+
   return (
     <ProtectRoute role="admin" router={router}>
       <main className="main">{children}</main>
