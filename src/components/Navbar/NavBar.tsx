@@ -88,7 +88,9 @@ export const NavBar = () => {
           slidesToShow={7}
           slidesToScroll={1}
           swipeToSlide={true}
-          autoplay={false}
+          autoplay={true}
+          autoplaySpeed={2000}
+          pauseOnHover={true}
           arrowAndprev={true}
           typeButton={false}
           variableWidth={true}

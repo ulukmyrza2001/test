@@ -41,7 +41,6 @@ export const ServiceCard = (props: IServiceCard) => {
               <h3 className={style.name}>Garage</h3>
               <p className={style.location}>Байтик Баатыра 84</p>
             </div>
-
             <div className={style.reviewcontainer}>
               <h3 className={style.review}>
                 <GradeIcon className={style.star} sx={{ color: 'goldenrod' }} />
