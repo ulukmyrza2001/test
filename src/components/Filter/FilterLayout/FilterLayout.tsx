@@ -28,11 +28,15 @@ export const Filterlayout = () => {
     setExpanded(isExpanded ? panel : false)
   }
 
-  const [value, setValue] = React.useState<string | undefined>('')
+  const [value, setValue] = React.useState<{
+    rate: ChangeEvent<HTMLInputElement> | string
+    type: ChangeEvent<HTMLInputElement> | string
+  }>({
+    rate: '',
+    type: ''
+  })
 
-  const handleChangeType = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-  }
+  console.log(value)
 
   return (
     <Accordion
@@ -77,27 +81,26 @@ export const Filterlayout = () => {
           </Typography>
 
           <FormControl>
-            <FormLabel
-              id="demo-radio-buttons-group-label"
-              sx={{
-                color: 'red'
-              }}
-            >
-              Тип
-            </FormLabel>
+            <FormLabel id="demo-radio-buttons-group-label">Тип</FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
-              value={value}
-              onChange={handleChangeType}
+              value={value.type}
+              onChange={(e) =>
+                setValue({
+                  ...value,
+                  type: e.target.value
+                })
+              }
               sx={{
-                fontSize: '16px',
                 fontWeight: '400',
                 '*': {
-                  fontSize: '16px'
+                  fontSize: '14px !important',
+                  color: 'black'
                 }
               }}
+              row={false}
             >
               <FormControlLabel value="Restourent" control={<Radio />} label="Ресторан" />
               <FormControlLabel value="Clinic" control={<Radio />} label="Клиники" />
@@ -105,7 +108,13 @@ export const Filterlayout = () => {
             </RadioGroup>
           </FormControl>
 
-          <FormGroup>
+          <FormGroup
+            sx={{
+              '*': {
+                fontSize: '15px !important'
+              }
+            }}
+          >
             <Typography variant="body2">По цене</Typography>
             <FormControlLabel control={<Checkbox />} label="Низкая цена" />
             <FormControlLabel control={<Checkbox />} label="Средняя цена" />
@@ -118,27 +127,26 @@ export const Filterlayout = () => {
           </Grid>
 
           <FormControl>
-            <FormLabel
-              id="demo-radio-buttons-group-label"
-              sx={{
-                color: 'red'
-              }}
-            >
-              Рейтинг
-            </FormLabel>
+            <FormLabel id="demo-radio-buttons-group-label">Рейтинг</FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
-              value={value}
-              onChange={handleChangeType}
+              value={value.rate}
+              onChange={(e) =>
+                setValue({
+                  ...value,
+                  rate: e.target.value
+                })
+              }
               sx={{
-                fontSize: '16px',
                 fontWeight: '400',
                 '*': {
-                  fontSize: '16px'
+                  fontSize: '14px !important',
+                  color: 'black'
                 }
               }}
+              row={false}
             >
               <FormControlLabel value="Restourent" control={<Radio />} label="С любым рейтингом" />
               <FormControlLabel value="Clinic" control={<Radio />} label="С рейтингом более 4,0" />
@@ -146,7 +154,13 @@ export const Filterlayout = () => {
             </RadioGroup>
           </FormControl>
 
-          <FormGroup>
+          <FormGroup
+            sx={{
+              '*': {
+                fontSize: '15px !important'
+              }
+            }}
+          >
             <Typography variant="body2">Дополнительно</Typography>
             <FormControlLabel control={<Checkbox />} label="Со скидкой" />
             <FormControlLabel control={<Checkbox />} label="С экспресс услугами" />

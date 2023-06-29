@@ -1,53 +1,61 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import styled from 'styled-components'
+import './ContainerSlider.css'
 
 //dots - Внизу показывает на каком Slider
 //infinte - Slider работает бесконечно
 //speed - Скорость прокрутки Slider
 //slidesToShow - На экране выходить сколько вы дали
 //slidesToScroll - Количество прокрутки
+//swipeToSlide - Включить перетаскивание/пролистывание независимо от `slidesToScroll`
 //initialSlide - Первоначальное slider
 //autoplay - Авто Slider
 //autoplaySpeed - Скорость авто Slider
 //pauseOnHover - Остоновит через Hover Slider работает при autoplay
 //arrowAndprev - Показывает кнопки
 //typeButton - изменяет места кнопки
+//variableWidth - auto width or custom width
 
 function SampleNextArrow(props: any) {
   const { onClick, typeButton } = props
   return (
-    <StyledContainerNextArrow onClick={onClick} $typeButton={typeButton}>
+    <div
+      className={typeButton ? 'slider_button_true_next' : 'slider_button_false_next'}
+      onClick={onClick}
+    >
       <NavigateNextIcon />
-    </StyledContainerNextArrow>
+    </div>
   )
 }
 
 function SamplePrevArrow(props: any) {
   const { onClick, typeButton } = props
   return (
-    <StyledContainerPrevArrow onClick={onClick} $typeButton={typeButton}>
+    <div
+      className={typeButton ? 'slider_button_true_prev' : 'slider_button_false_prev'}
+      onClick={onClick}
+    >
       <NavigateNextIcon />
-    </StyledContainerPrevArrow>
+    </div>
   )
 }
 
 function AppendDots(props: any) {
   return (
-    <StyledContainerDots>
+    <div className="container_dots">
       {props.dots.map((item: any) => {
         return (
-          <StyledContainerAppendDots
+          <div
             onClick={item.props.children.props.onClick}
             key={item.key}
-            $active={item.props.className}
+            className={item.props.className === 'slick-active' ? 'dots_true' : 'dots_false'}
           />
         )
       })}
-    </StyledContainerDots>
+    </div>
   )
 }
 
@@ -67,7 +75,25 @@ export const ContainerSlider = ({
   pauseOnHover?: boolean
   arrowAndprev: boolean
   typeButton: boolean
+  swipeToSlide: boolean
+  variableWidth: boolean
+  label?: string
 }) => {
+  const [screenWidth, setScreenWidth] = useState(1000)
+
+  useEffect(() => {
+    function handleResize() {
+      const width =
+        window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+      setScreenWidth(width)
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const settings = {
     dots: props.dots,
     infinite: props.infinite,
@@ -78,78 +104,27 @@ export const ContainerSlider = ({
     autoplay: props.autoplay,
     autoplaySpeed: props.autoplaySpeed,
     pauseOnHover: props.pauseOnHover,
-    nextArrow: props.arrowAndprev && <SampleNextArrow typeButton={props.typeButton} />,
-    prevArrow: props.arrowAndprev && <SamplePrevArrow typeButton={props.typeButton} />,
+    swipeToSlide: props.swipeToSlide,
+    variableWidth: props.variableWidth,
+    accessibility: true,
+    nextArrow:
+      props.arrowAndprev && !props.typeButton ? (
+        screenWidth > 600 && <SampleNextArrow typeButton={props.typeButton} />
+      ) : (
+        <SampleNextArrow typeButton={props.typeButton} />
+      ),
+    prevArrow:
+      props.arrowAndprev && !props.typeButton ? (
+        screenWidth > 600 && <SamplePrevArrow typeButton={props.typeButton} />
+      ) : (
+        <SamplePrevArrow typeButton={props.typeButton} />
+      ),
     appendDots: (dots: any) => <AppendDots dots={dots} />
   }
   return (
-    <StyledContainerSlider>
+    <div className="container_slider">
+      {props.typeButton && <span className="header_title">{props.label}</span>}
       <Slider {...settings}>{React.Children.toArray(children)}</Slider>
-    </StyledContainerSlider>
+    </div>
   )
 }
-
-const StyledContainerSlider = styled.div`
-  width: 100%;
-  .slick-track {
-    display: flex;
-    gap: 10px;
-  }
-`
-const StyledContainerNextArrow = styled.div<{ $typeButton: boolean }>`
-  margin: 0 20px;
-  position: absolute;
-  top: ${({ $typeButton }) => ($typeButton ? '0' : '40%')};
-  left: ${({ $typeButton }) => ($typeButton ? 'calc(100% - 50px)' : 'calc(100% - 15px)')};
-  transform: ${({ $typeButton }) => ($typeButton ? '' : 'translateY(-50%)')};
-  width: 28px;
-  height: 28px;
-  border: 1px solid #acacac;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  cursor: pointer;
-  &:hover {
-    border: 1.5px solid #acacac;
-    box-shadow: 0px 0px 4px 1px #acacac;
-  }
-`
-const StyledContainerPrevArrow = styled.div<{ $typeButton: boolean }>`
-  margin: ${({ $typeButton }) => ($typeButton ? '5px -20px' : '0')};
-  position: ${({ $typeButton }) => ($typeButton ? 'relative' : 'absolute')};
-  top: ${({ $typeButton }) => ($typeButton ? '0' : '40%')};
-  left: ${({ $typeButton }) => ($typeButton ? 'calc(100% - 50px)' : '-35px')};
-  transform: ${({ $typeButton }) =>
-    $typeButton ? 'rotate(180deg)' : 'translateY(-50%) rotate(180deg);'};
-  width: 28px;
-  height: 28px;
-  border: 1px solid #acacac;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  cursor: pointer;
-  &:hover {
-    border: 1.5px solid #acacac;
-    box-shadow: 0px 0px 4px 1px #acacac;
-  }
-`
-const StyledContainerDots = styled.div`
-  width: 100%;
-  height: 30px;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
-`
-const StyledContainerAppendDots = styled.div<{ $active: string }>`
-  width: 6px;
-  height: ${({ $active }) => ($active === 'slick-active' ? '26px' : '16px')};
-  background-color: ${({ $active }) => ($active === 'slick-active' ? 'gray' : '#acacac')};
-  border-radius: 20px;
-  transition: 300ms;
-`
