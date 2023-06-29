@@ -38,9 +38,9 @@ export default function UserPage() {
     <ClientLayout>
       <NavBar />
       <Container>
-        {DATA.map((item) => {
+        {DATA.map((item, index) => {
           return (
-            <div style={{ width: '100%' }}>
+            <div key={index} style={{ width: '100%' }}>
               <ContainerSlider
                 dots={false}
                 infinite={true}
