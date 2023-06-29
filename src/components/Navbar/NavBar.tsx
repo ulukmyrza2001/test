@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import styles from './NavBar.module.css'
 import { ContainerSlider } from '../ContainersSliders/ContainerSlider'
 import { GrStatusUnknown } from 'react-icons/gr'
