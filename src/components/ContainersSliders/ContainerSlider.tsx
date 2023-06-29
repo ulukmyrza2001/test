@@ -106,16 +106,23 @@ export const ContainerSlider = ({
     swipeToSlide: props.swipeToSlide,
     variableWidth: props.variableWidth,
     accessibility: true,
-    nextArrow: props.arrowAndprev && screenWidth > 600 && (
-      <SampleNextArrow typeButton={props.typeButton} />
-    ),
-    prevArrow: props.arrowAndprev && screenWidth > 600 && (
-      <SamplePrevArrow typeButton={props.typeButton} />
-    ),
+    nextArrow:
+      props.arrowAndprev && !props.typeButton ? (
+        screenWidth > 600 && <SampleNextArrow typeButton={props.typeButton} />
+      ) : (
+        <SampleNextArrow typeButton={props.typeButton} />
+      ),
+    prevArrow:
+      props.arrowAndprev && !props.typeButton ? (
+        screenWidth > 600 && <SamplePrevArrow typeButton={props.typeButton} />
+      ) : (
+        <SamplePrevArrow typeButton={props.typeButton} />
+      ),
     appendDots: (dots: any) => <AppendDots dots={dots} />
   }
   return (
     <div className="container_slider">
+      {props.typeButton && <span className="header_title">HELLO</span>}
       <Slider {...settings}>{React.Children.toArray(children)}</Slider>
     </div>
   )
