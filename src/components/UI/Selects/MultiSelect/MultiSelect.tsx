@@ -1,34 +1,35 @@
 import React from 'react'
+import style from './MultiSelect.module.css'
 import Select from 'react-select'
-import style from './LonelySelect.module.css'
 
-interface LonelySelectProps {
+interface MultiSelectProps {
   options: { label: string; value: string | number }[] | []
   label: string
   placeholder: string
   noOptionsMessage: (obj: { inputValue: string }) => React.ReactNode
-  value: { label: string; value: string | number } | null
+  value: { label: string; value: string | number }[] | []
   onChange: (e: any) => void
   isClearable: boolean
   isLoading: boolean
   isDisabled: boolean
 }
 
-export const LonelySelect = ({
+export const MultiSelect = ({
   options = [],
   label = '',
   placeholder = '',
   noOptionsMessage = () => null,
-  value = null,
+  value = [],
   onChange = () => {},
   isClearable = false,
   isLoading = false,
   isDisabled = false
-}: LonelySelectProps) => {
+}: MultiSelectProps) => {
   return (
     <div className={style.wrapper}>
       <div className={style.label}>{label}</div>
       <Select
+        isMulti
         options={options}
         placeholder={placeholder}
         noOptionsMessage={noOptionsMessage}
