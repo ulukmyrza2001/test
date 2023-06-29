@@ -5,9 +5,6 @@ import { Container } from '@/src/styles/ContainerStyle/Container'
 import { NavBar } from '@/src/components/Navbar/NavBar'
 import { ContainerSlider } from '@/src/components/ContainersSliders/ContainerSlider'
 import { ServiceCard } from '@/src/components/Cards/ServiceCard/ServiceCard'
-import { InputNumberMask } from '@/src/components/UI/Inputs/InputMask/InputMask'
-import { Filterlayout } from '@/src/components/Filter/FilterLayout/FilterLayout'
-import { useState } from 'react'
 
 export default function UserPage() {
   const DATA = [
@@ -37,11 +34,8 @@ export default function UserPage() {
     }
   ]
 
-  const [value, setValue] = useState('')
   return (
     <ClientLayout>
-      <InputNumberMask value={value} onChange={(e) => e} />
-      <Filterlayout />
       <NavBar />
       <Container>
         {DATA.map((item) => {
