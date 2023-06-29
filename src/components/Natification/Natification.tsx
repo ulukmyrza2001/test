@@ -15,3 +15,6 @@ export const Natification: FC<ProvidersProps> = ({ children }) => {
     </>
   )
 }
+
+// toast.success('Successfully toasted!')
+// toast.error("This didn't work.")

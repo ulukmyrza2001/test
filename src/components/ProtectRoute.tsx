@@ -6,7 +6,9 @@ import { useRouter } from 'next/router'
 // Define your roles and their corresponding routes
 const rolePermissions: Record<string, string[]> = {
   user: ['/', '/profile'],
-  admin: ['/admin']
+  admin: ['/admin'],
+  super_admin: ['/super-admin'],
+  owner: ['owner']
 }
 
 interface ProtectProps {
@@ -20,7 +22,7 @@ export const ProtectRoute = ({ children, role, router }: ProtectProps) => {
 
   useEffect(() => {
     const { pathname } = router
-    const isAllowed = allowedRoutes.some((route) => pathname?.startsWith(route))
+    const isAllowed = allowedRoutes?.some((route) => pathname?.startsWith(route))
 
     if (!isAllowed) {
       router.push('/')
