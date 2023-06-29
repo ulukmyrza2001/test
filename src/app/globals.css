@@ -40,6 +40,13 @@ body {
   letter-spacing: 0.5px;
   font-weight: 400;
 }
+.label {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #87939e;
+}
+
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button {
   -webkit-appearance: none;

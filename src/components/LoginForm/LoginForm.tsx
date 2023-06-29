@@ -3,6 +3,8 @@ import React from 'react'
 import styles from './LoginForm.module.css'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { ModalComponent } from '@/src/components/UI/Modal/Modal'
+import { Button } from '../UI/Buttons/Button/Button'
+import { InputNumberMask } from '../UI/Inputs/InputMask/InputMask'
 
 interface LoginProps {
   active: boolean
@@ -32,18 +34,29 @@ export default function LoginForm({ active, setActive }: LoginProps) {
   return (
     <ModalComponent active={active} handleClose={hideLoginModal}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div>
-          <label>Number Field:</label>
-          <input type="number" {...register('numberField', { required: true })} />
+        <div className={styles.input_wrapper}>
+          <label htmlFor="number" className="label">
+            Телефон:
+          </label>
+          <input
+            className={styles.input}
+            type="number"
+            {...register('numberField', { required: true })}
+          />
           {errors.numberField && <span>This field is required</span>}
         </div>
-        <div>
-          <label>Password Field:</label>
-          <input type="password" {...register('passwordField', { required: true })} />
+        <div className={styles.input_wrapper}>
+          <label htmlFor="password" className="label">
+            Пароль:
+          </label>
+          <input
+            className={styles.input}
+            type="password"
+            {...register('passwordField', { required: true })}
+          />
           {errors.passwordField && <span>This field is required</span>}
         </div>
-
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </ModalComponent>
   )
