@@ -16,10 +16,10 @@ body {
   margin-top: 70px;
 }
 :root {
-  --ui-background-color: #3a10e5;
+  --ui-background-color: #33a011;
   --ui-color-white: #ffffff;
-  --ui-active-background: #000d9d;
-  --ui-hover-background: #3617b5;
+  --ui-active-background: #32a01196;
+  --ui-hover-background: #32a011ec;
   --ui-disabled-color: #7e7e7e;
   --ui-disabled--background: #1c1b1f1f;
   --ui-black: #000000;
