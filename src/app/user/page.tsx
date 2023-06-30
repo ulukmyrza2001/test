@@ -40,7 +40,7 @@ export default function UserPage() {
       <Container>
         {DATA.map((item, index) => {
           return (
-            <div key={index} style={{ width: '100%' }}>
+            <div key={index + 1} style={{ width: '100%' }}>
               <ContainerSlider
                 dots={false}
                 infinite={true}
