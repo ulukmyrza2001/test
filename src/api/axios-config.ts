@@ -9,8 +9,6 @@ const axiosInstance: AxiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   const data = localStorage.getItem(_KEY_AUTH)
 
-  console.log(process.env.DEV_URL)
-
   const convertObj = data ? JSON.parse(data).token : null
 
   if (convertObj !== null) {
