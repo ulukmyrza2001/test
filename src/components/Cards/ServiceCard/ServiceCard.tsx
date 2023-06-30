@@ -27,9 +27,9 @@ export const ServiceCard = (props: IServiceCard) => {
           </ContentLoader>
         ) : (
           <div className={style.wrapper}>
-            <IconButton className={style.marking}>
+            <div className={style.marking}>
               <BookmarkIcon />
-            </IconButton>
+            </div>
             <div className={style.imgcontainer}>
               <img
                 className={style.img}

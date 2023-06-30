@@ -1,1 +1,1 @@
-export const _KEY_AUTH = 'USER_BREATHOFPRODUCTION_DATA'
+export const _KEY_AUTH = 'USER_CHEBER_DATA'
