@@ -1,0 +1,37 @@
+.container_main {
+  width: 200px;
+  height: 100vh;
+  background-color: gainsboro;
+}
+.button_open_close {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gray;
+  background-color: white;
+  position: absolute;
+  left: 190px;
+}
+.container_card {
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.card_main {
+  width: 90%;
+  height: 40px;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
