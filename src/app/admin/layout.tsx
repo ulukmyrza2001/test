@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Metadata } from 'next'
 import { ProtectRoute } from '@/src/components/ProtectRoute'
 import { useAppSelector } from '@/src/redux/store'
+import { Dashboard } from '@/src/components/Dashboard/Dashboard'
 
 export const metadata: Metadata = {
   title: 'Admin',
@@ -17,7 +18,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <ProtectRoute role={role} router={router}>
-      <main className="main">{children}</main>
+      <main className="dasboard_admin">
+        <Dashboard />
+        {children}
+      </main>
     </ProtectRoute>
   )
 }

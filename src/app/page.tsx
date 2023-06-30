@@ -10,7 +10,7 @@ import { useAppSelector } from '../redux/store'
 export default function Home() {
   const { role } = useAppSelector((state) => state.auth)
 
-  switch (role) {
+  switch ('ADMIN') {
     case 'USER':
       return <UserPage />
     case 'SUPER_ADMIN':
