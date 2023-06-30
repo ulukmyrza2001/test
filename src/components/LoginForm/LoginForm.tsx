@@ -30,10 +30,7 @@ export default function LoginForm({ active, setActive }: LoginProps) {
   const onSubmit: SubmitHandler<FormData> = (data: any) => {
     dispatch(
       SignUp({
-        userData: {
-          phoneNumber: `+${data.phoneNumber}`,
-          password: data.password
-        }
+        userData: data
       })
     )
     setActive(false)
@@ -52,7 +49,7 @@ export default function LoginForm({ active, setActive }: LoginProps) {
           </label>
           <input
             className={styles.input}
-            type="number"
+            type="text"
             {...register('phoneNumber', { required: true })}
           />
           {errors.phoneNumber && <span>This field is required</span>}
