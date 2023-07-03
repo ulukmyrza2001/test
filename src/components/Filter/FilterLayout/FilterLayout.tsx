@@ -36,19 +36,20 @@ export const Filterlayout = () => {
 		type: '',
 	})
 
-	console.log(value)
-
 	return (
 		<Accordion
 			expanded={expanded === 'panel1'}
 			onChange={handleChange('panel1')}
-			sx={{ width: '300px' }}>
+			sx={{ width: '300px' }}
+		>
 			<AccordionSummary
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls='panel1bh-content'
-				id='panel1bh-header'>
+				id='panel1bh-header'
+			>
 				<Typography
-					sx={{ color: 'text.secondary', marginRight: '10px' }}>
+					sx={{ color: 'text.secondary', marginRight: '10px' }}
+				>
 					<TuneIcon />
 				</Typography>
 				<Typography sx={{ width: '15%', flexShrink: 0 }}>
@@ -61,7 +62,8 @@ export const Filterlayout = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						gap: '20px',
-					}}>
+					}}
+				>
 					<Typography
 						variant='body2'
 						sx={{
@@ -74,7 +76,8 @@ export const Filterlayout = () => {
 							':hover': {
 								color: 'greenyellow',
 							},
-						}}>
+						}}
+					>
 						Сбросить
 						<RestartAltIcon
 							sx={{ width: '18px', height: '18px' }}
@@ -103,7 +106,8 @@ export const Filterlayout = () => {
 									color: 'black',
 								},
 							}}
-							row={false}>
+							row={false}
+						>
 							<FormControlLabel
 								value='Restourent'
 								control={<Radio />}
@@ -127,7 +131,8 @@ export const Filterlayout = () => {
 							'*': {
 								fontSize: '15px !important',
 							},
-						}}>
+						}}
+					>
 						<Typography variant='body2'>По цене</Typography>
 						<FormControlLabel
 							control={<Checkbox />}
@@ -173,7 +178,8 @@ export const Filterlayout = () => {
 									color: 'black',
 								},
 							}}
-							row={false}>
+							row={false}
+						>
 							<FormControlLabel
 								value='Restourent'
 								control={<Radio />}
@@ -197,7 +203,8 @@ export const Filterlayout = () => {
 							'*': {
 								fontSize: '15px !important',
 							},
-						}}>
+						}}
+					>
 						<Typography variant='body2'>Дополнительно</Typography>
 						<FormControlLabel
 							control={<Checkbox />}
