@@ -18,8 +18,11 @@ export const ADMIN_ROUTES = {
 	DEFAULT: {
 		path: '/',
 	},
-	DASHBOARD: {
-		path: '/dashboard',
+	MASTER: {
+		path: '/masters',
+	},
+	SERVICES: {
+		path: '/services',
 	},
 }
 
