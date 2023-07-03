@@ -1,6 +1,35 @@
-.form-control {
+.form-control:hover {
   background-color: aqua !important;
 } 
+
+button:hover,
+button:active,
+button.open {
+  background-color: transparent;
+}
+
+.InputMask_btn__OxsYI {
+  background-color: transparent !important;
+}
+
+.btn:hover,
+.btn:active,
+.btn.open {
+  background-color: red;
+  border: none;
+}
+
+.form-control {
+  background-color: red;
+}
+
+.flag-dropdown {
+  background-color: red;
+}
+
+.selected-flag.open {
+  background-color: red;
+}
 
 .react-tel-input,
 .selected-flag:hover,
@@ -65,3 +94,8 @@ border: none;
 .flag {
     border-radius: 2px;
   }
+
+.btn {
+  border: none;
+  background-color: red;
+}

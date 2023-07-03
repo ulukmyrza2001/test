@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './Dasboard.module.css'
 import { HiMenuAlt3, HiOutlineMenu } from 'react-icons/hi'
 import { Link, Outlet, useLocation } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { Divider } from '@mui/material'
 import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
 
 export const AdminOutlet = () => {
-	const [open, setOpen] = useState<boolean>(false)
+	const [open, setOpen] = useState(false)
 
 	const locations = useLocation()
 
