@@ -23,6 +23,7 @@ export default function LoginForm({ active, setActive }: LoginProps) {
 
 	const onSubmit: SubmitHandler<FormData> = (data: any) => {
 		setActive(false)
+		console.log(data)
 	}
 
 	const hideLoginModal = () => {
