@@ -1,4 +1,3 @@
-import { lazy } from 'react'
 import { AdminRoutes } from './AdminRoutes'
 import { SuperAdmin } from './SuperAdmin'
 import { UserRoutes } from './UserRoutes'
@@ -9,8 +8,6 @@ export const AppRoutes = () => {
 	switch (role) {
 		// case 'SUPER_ADMIN':
 		// 	return <SuperAdmin />
-		// case 'OWNER':
-		// 	return <AdminRoutes />
 		// case 'ADMIN':
 		// 	return <AdminRoutes />
 		case 'USER':

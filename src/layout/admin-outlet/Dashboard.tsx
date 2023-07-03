@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './Dasboard.module.css'
 import { HiMenuAlt3, HiOutlineMenu } from 'react-icons/hi'
 import { Link, Outlet, useLocation } from 'react-router-dom'
@@ -9,7 +9,13 @@ import { MdOutlineDashboard } from 'react-icons/md'
 import { GiMasterOfArms } from 'react-icons/gi'
 import { FaServicestack } from 'react-icons/fa6'
 
-export const Dashboard = () => {
+export const AdminOutlet = () => {
+	useEffect(() => {
+		document.title = 'Admin'
+		return () => {
+			document.title = 'Cheber' // Reset the title when the component unmounts
+		}
+	}, [])
 	const [open, setOpen] = useState<any>(false)
 
 	const locations = useLocation()
@@ -28,13 +34,15 @@ export const Dashboard = () => {
 					open
 						? style.container_inside_dashboard_open
 						: style.container_inside_dashboard_close
-				}>
+				}
+			>
 				<div
 					className={
 						open
 							? style.card_dashboard_open
 							: style.card_dashboard_close
-					}>
+					}
+				>
 					<div className={style.dashboard_header}>
 						{open ? (
 							<HiMenuAlt3
@@ -65,7 +73,8 @@ export const Dashboard = () => {
 											  item.subLink
 											? style.dashboard_card_inside_active
 											: style.dashboard_card_inside
-									}>
+									}
+								>
 									<div>
 										{React.createElement(item?.icon, {
 											size: '20',
@@ -76,7 +85,8 @@ export const Dashboard = () => {
 											open
 												? style.dashboard_title_open
 												: style.dashboard_title_close
-										}>
+										}
+									>
 										{item?.name}
 									</h3>
 								</Link>
@@ -95,7 +105,8 @@ export const Dashboard = () => {
 								open
 									? style.dashboard_title_open
 									: style.dashboard_title_close
-							}>
+							}
+						>
 							Выйти
 						</h3>
 					</div>

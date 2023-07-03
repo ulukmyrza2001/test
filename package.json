@@ -24,7 +24,7 @@
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
     "framer-motion": "^10.12.18",
-    "js-cookie": "^3.0.5",
+    "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
