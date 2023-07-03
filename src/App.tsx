@@ -1,7 +1,12 @@
 import React from 'react'
+import { Dashboard } from './layout/Dashboard/Dashboard'
 
 function App() {
-	return <div className='App'>App</div>
+	return (
+		<div className='App'>
+			<Dashboard />
+		</div>
+	)
 }
 
 export default App
