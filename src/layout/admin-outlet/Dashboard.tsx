@@ -3,28 +3,19 @@ import style from './Dasboard.module.css'
 import { HiMenuAlt3, HiOutlineMenu } from 'react-icons/hi'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { BiLogIn } from 'react-icons/bi'
+import { BsFillPeopleFill } from 'react-icons/bs'
 import { Divider } from '@mui/material'
-import { IoCalendarNumber } from 'react-icons/io5'
-import { MdOutlineDashboard } from 'react-icons/md'
-import { GiMasterOfArms } from 'react-icons/gi'
-import { FaServicestack } from 'react-icons/fa6'
+import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
 
 export const AdminOutlet = () => {
-	useEffect(() => {
-		document.title = 'Admin'
-		return () => {
-			document.title = 'Cheber' // Reset the title when the component unmounts
-		}
-	}, [])
-	const [open, setOpen] = useState<any>(false)
+	const [open, setOpen] = useState(false)
 
 	const locations = useLocation()
 
 	const DATA_DASHBOARD = [
-		{ name: 'Dashboard', link: '/', icon: MdOutlineDashboard },
-		{ name: 'Календарь', link: '/calendar', icon: IoCalendarNumber },
-		{ name: 'Мастеры', link: '/masters', icon: GiMasterOfArms },
-		{ name: 'Услуги', link: '/services', icon: FaServicestack },
+		{ name: 'Календарь', link: '/', icon: FaCalendarDays },
+		{ name: 'Мастеры', link: '/masters', icon: BsFillPeopleFill },
+		{ name: 'Услуги', link: '/services', icon: FaFolderOpen },
 	]
 
 	return (
@@ -34,15 +25,13 @@ export const AdminOutlet = () => {
 					open
 						? style.container_inside_dashboard_open
 						: style.container_inside_dashboard_close
-				}
-			>
+				}>
 				<div
 					className={
 						open
 							? style.card_dashboard_open
 							: style.card_dashboard_close
-					}
-				>
+					}>
 					<div className={style.dashboard_header}>
 						{open ? (
 							<HiMenuAlt3
@@ -73,8 +62,7 @@ export const AdminOutlet = () => {
 											  item.subLink
 											? style.dashboard_card_inside_active
 											: style.dashboard_card_inside
-									}
-								>
+									}>
 									<div>
 										{React.createElement(item?.icon, {
 											size: '20',
@@ -85,8 +73,7 @@ export const AdminOutlet = () => {
 											open
 												? style.dashboard_title_open
 												: style.dashboard_title_close
-										}
-									>
+										}>
 										{item?.name}
 									</h3>
 								</Link>
@@ -105,8 +92,7 @@ export const AdminOutlet = () => {
 								open
 									? style.dashboard_title_open
 									: style.dashboard_title_close
-							}
-						>
+							}>
 							Выйти
 						</h3>
 					</div>
