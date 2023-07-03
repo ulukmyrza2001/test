@@ -5,7 +5,7 @@ import { PartnerOutlet } from '../layout/partner-outlet'
 // PAGE
 import { UserPage } from '../pages/user'
 import { PartnerPage } from '../pages/partner'
-import { NotFoundPage } from '../pages/error/NotFoundPage'
+import { NotFoundPage } from '../pages/error/error-404/NotFoundPage'
 import { ContactsPage } from '../pages/user/сontacts'
 
 export const UserRoutes = () => {
