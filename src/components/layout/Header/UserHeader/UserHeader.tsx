@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './UserHeader.module.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import LoginForm from '../../LoginForm/LoginForm'
-import { ModalComponent } from '../../UI/Modal/Modal'
+import LoginForm from '../../../LoginForm/LoginForm'
+import { ModalComponent } from '../../../UI/Modal/Modal'
 import { FaUserCircle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
@@ -30,13 +30,15 @@ export const UserHeader = () => {
 				<div className={styles.wrapper_nav}>
 					<div
 						className={styles.wrapper_located}
-						onClick={() => showModalHandler()}>
+						onClick={() => showModalHandler()}
+					>
 						<LocationOnIcon />
 						Бишкек
 					</div>
 					<ModalComponent
 						active={showModal}
-						handleClose={hideModalHandler}>
+						handleClose={hideModalHandler}
+					>
 						asd
 					</ModalComponent>
 					<Link to='/partner'>Стать партнером</Link>
@@ -51,7 +53,8 @@ export const UserHeader = () => {
 					) : (
 						<div
 							className={styles.wrapper_located}
-							onClick={() => setShowLoginModal(true)}>
+							onClick={() => setShowLoginModal(true)}
+						>
 							Войти
 						</div>
 					)}

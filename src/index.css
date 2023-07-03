@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	text-decoration: none;
+	list-style-type: none;
+}
+body {
+	background-color: var(--ui-color-white);
+	font-family: var(--font-family);
+}
+.main {
+	margin-top: 70px;
+}
+:root {
+	--ui-background-color: #33a011;
+	--ui-color-white: #ffffff;
+	--ui-active-background: #32a01196;
+	--ui-hover-background: #32a011ec;
+	--ui-disabled-color: #7e7e7e;
+	--ui-disabled--background: #1c1b1f1f;
+	--ui-black: #000000;
+	/* FONT */
+	--font-family: 'Rubik', sans-serif;
+	--text: 12px;
+	--title: 16px;
+}
+.text {
+	color: #383b3e;
+	font-size: 12px;
+	letter-spacing: 0.5px;
+	font-weight: 400;
+}
+.title {
+	color: #212529;
+	font-size: 20px;
+	letter-spacing: 0.5px;
+	font-weight: 400;
+}
+.label {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	color: #87939e;
+}
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
