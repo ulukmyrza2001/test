@@ -1,15 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { AdminOutlet } from '../layout/admin-outlet/Dashboard'
 import { AdminPage } from '../pages/admin'
-
-const ADMIN_ROUTES = {
-	DEFAULT: {
-		path: '/',
-	},
-	DASHBOARD: {
-		path: '/dashboard',
-	},
-}
+import { ADMIN_ROUTES } from '../utils/constants/routes'
 
 export const AdminRoutes = () => {
 	return (
