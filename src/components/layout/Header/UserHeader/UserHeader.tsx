@@ -42,6 +42,7 @@ export const UserHeader = () => {
 						asd
 					</ModalComponent>
 					<Link to='/partner'>Стать партнером</Link>
+					<Link to='/contacts'>Контакты</Link>
 					{phoneNumber ? (
 						<Link to='/profile'>
 							<FaUserCircle

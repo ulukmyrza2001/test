@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './Dasboard.module.css'
 import { HiMenuAlt3, HiOutlineMenu } from 'react-icons/hi'
 import { Link, Outlet, useLocation } from 'react-router-dom'
@@ -10,6 +10,12 @@ import { GiMasterOfArms } from 'react-icons/gi'
 import { FaServicestack } from 'react-icons/fa6'
 
 export const AdminOutlet = () => {
+	useEffect(() => {
+		document.title = 'Admin'
+		return () => {
+			document.title = 'Cheber' // Reset the title when the component unmounts
+		}
+	}, [])
 	const [open, setOpen] = useState<any>(false)
 
 	const locations = useLocation()

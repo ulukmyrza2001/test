@@ -33,4 +33,7 @@ export const USER_ROUTES = {
 	PARTNER: {
 		path: '/partner',
 	},
+	CONTACTS: {
+		path: '/contacts',
+	},
 }
