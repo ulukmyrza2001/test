@@ -1,8 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
+import config from '../config.json'
 import { _KEY_AUTH } from '../utils/constants/constants'
 
 const axiosInstance: AxiosInstance = axios.create({
-	baseURL: process.env.DEV_URL,
+	baseURL: config.BASE_URL,
 	timeout: 5000,
 })
 
