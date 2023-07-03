@@ -71,8 +71,6 @@ export const UserHeader = () => {
 		fetchLocation()
 	}, [latitude, longitude])
 
-	console.log(location)
-
 	return (
 		<header className={styles.header}>
 			<div className={styles.inner_header}>
