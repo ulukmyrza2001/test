@@ -1,0 +1,4 @@
+{
+    "API_URL":"http://ec2-35-156-171-186.eu-central-1.compute.amazonaws.com/api",
+    "DEV_URL":"http://ec2-35-156-171-186.eu-central-1.compute.amazonaws.com/api"
+}
