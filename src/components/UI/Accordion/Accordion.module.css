@@ -10,17 +10,11 @@
   letter-spacing: 0.5px;
   font-weight: 400;
 }
-.questionText {
-  background: #f5f5f5;
-  color: #7e7e7e;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 14px;
-}
+
 .title {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 20px auto;
-  gap: 5px;
+  gap: 5px; */
   color: var(--ui-black);
 }
 
