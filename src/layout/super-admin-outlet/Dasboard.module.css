@@ -1,6 +1,9 @@
 .container_dashboard {
 	width: 100vw;
 }
+.wrapper_outlet {
+	margin: 2rem 0 1rem 10px;
+}
 .container_inside_dashboard_open {
 	max-width: 95vw;
 	display: flex;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import style from './Dasboard.module.css'
+import styles from './Dasboard.module.css'
 import {
 	HiOutlineSpeakerphone,
 	HiOutlineMenu,
@@ -29,22 +29,22 @@ export const SuperAdminOutlet = () => {
 	]
 
 	return (
-		<div className={style.container_dashboard}>
+		<div className={styles.container_dashboard}>
 			<section
 				className={
 					open
-						? style.container_inside_dashboard_open
-						: style.container_inside_dashboard_close
+						? styles.container_inside_dashboard_open
+						: styles.container_inside_dashboard_close
 				}
 			>
 				<div
 					className={
 						open
-							? style.card_dashboard_open
-							: style.card_dashboard_close
+							? styles.card_dashboard_open
+							: styles.card_dashboard_close
 					}
 				>
-					<div className={style.dashboard_header}>
+					<div className={styles.dashboard_header}>
 						{open ? (
 							<HiMenuAlt3
 								size={26}
@@ -59,7 +59,7 @@ export const SuperAdminOutlet = () => {
 							/>
 						)}
 					</div>
-					<div className={style.dashboard_main}>
+					<div className={styles.dashboard_main}>
 						{DATA_DASHBOARD?.map((item: any, i: number) => (
 							<React.Fragment key={i}>
 								<Link
@@ -69,11 +69,11 @@ export const SuperAdminOutlet = () => {
 										`/${
 											locations.pathname.split('/')[1]
 										}` === item.link
-											? style.dashboard_card_inside_active
+											? styles.dashboard_card_inside_active
 											: locations.pathname ===
 											  item.subLink
-											? style.dashboard_card_inside_active
-											: style.dashboard_card_inside
+											? styles.dashboard_card_inside_active
+											: styles.dashboard_card_inside
 									}
 								>
 									<div>
@@ -84,8 +84,8 @@ export const SuperAdminOutlet = () => {
 									<h3
 										className={
 											open
-												? style.dashboard_title_open
-												: style.dashboard_title_close
+												? styles.dashboard_title_open
+												: styles.dashboard_title_close
 										}
 									>
 										{item?.name}
@@ -97,22 +97,24 @@ export const SuperAdminOutlet = () => {
 					<br />
 					<Divider sx={{ zIndex: 1, background: 'white' }} />
 					<br />
-					<div className={style.dashboard_title_logaut}>
+					<div className={styles.dashboard_title_logaut}>
 						<div>
 							<BiLogIn size={20} />
 						</div>
 						<h3
 							className={
 								open
-									? style.dashboard_title_open
-									: style.dashboard_title_close
+									? styles.dashboard_title_open
+									: styles.dashboard_title_close
 							}
 						>
 							Выйти
 						</h3>
 					</div>
 				</div>
-				<Outlet />
+				<div className={styles.wrapper_outlet}>
+					<Outlet />
+				</div>
 			</section>
 		</div>
 	)
