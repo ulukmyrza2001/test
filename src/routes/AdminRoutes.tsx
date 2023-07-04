@@ -4,6 +4,7 @@ import { ADMIN_ROUTES } from '../utils/constants/routes'
 import { Calendar } from '../pages/admin/Calendar/Calendar'
 import { Master } from '../pages/admin/Master/MasterPage/MasterPage'
 import { Services } from '../pages/admin/Services/ServicesPage/ServicesPage'
+import { BranchesPage } from '../pages/admin/Branches/BranchesPage/BranchesPage'
 
 export const AdminRoutes = () => {
 	return (
@@ -17,6 +18,10 @@ export const AdminRoutes = () => {
 				<Route
 					path={ADMIN_ROUTES.SERVICES.path}
 					element={<Services />}
+				/>
+				<Route
+					path={ADMIN_ROUTES.BRANCHES.path}
+					element={<BranchesPage />}
 				/>
 			</Route>
 		</Routes>
