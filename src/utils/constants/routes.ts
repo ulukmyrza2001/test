@@ -33,6 +33,12 @@ export const USER_ROUTES = {
 	NOT_FOUND_PAGE: {
 		path: '*',
 	},
+	PROFILE: {
+		path: '/profile',
+	},
+	HISTORY: {
+		path: '/history',
+	},
 	PARTNER: {
 		path: '/partner',
 	},
