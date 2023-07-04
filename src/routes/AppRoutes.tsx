@@ -1,22 +1,20 @@
-import { lazy } from 'react'
-import { AdminRoutes } from './AdminRoutes'
-import { SuperAdmin } from './SuperAdmin'
-import { UserRoutes } from './UserRoutes'
+import { AdminRoutes } from "./AdminRoutes";
+import { SuperAdmin } from "./SuperAdmin";
+import { UserRoutes } from "./UserRoutes";
+import Cookies from "js-cookie";
 
 export const AppRoutes = () => {
-	const role = 'USER'
+  const role = Cookies.get("role");
 
-	switch (role) {
-		// case 'SUPER_ADMIN':
-		// 	return <SuperAdmin />
-		// case 'OWNER':
-		// 	return <AdminRoutes />
-		// case 'ADMIN':
-		// 	return <AdminRoutes />
-		case 'USER':
-			return <UserRoutes />
+  switch (role) {
+    case "SUPER_ADMIN":
+      return <SuperAdmin />;
+    case "ADMIN":
+      return <AdminRoutes />;
+    case "USER":
+      return <UserRoutes />;
 
-		default:
-			return <UserRoutes />
-	}
-}
+    default:
+      return <UserRoutes />;
+  }
+};

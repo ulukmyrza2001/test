@@ -1,4 +1,3 @@
-const SuperAdminPage = () => {
+export const SuperAdminPage = () => {
 	return <div>SuperAdminPage</div>
 }
-export default SuperAdminPage
