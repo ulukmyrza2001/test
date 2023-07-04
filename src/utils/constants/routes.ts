@@ -24,6 +24,9 @@ export const ADMIN_ROUTES = {
 	SERVICES: {
 		path: '/services',
 	},
+	BRANCHES: {
+		path: '/branches',
+	},
 }
 
 export const USER_ROUTES = {
