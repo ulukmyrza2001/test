@@ -17,7 +17,6 @@ export const AdminOutlet = () => {
 		{ name: 'Календарь', link: '/', icon: FaCalendarDays },
 		{ name: 'Мастеры', link: '/masters', icon: BsFillPeopleFill },
 		{ name: 'Услуги', link: '/services', icon: FaFolderOpen },
-		{ name: 'Филиалы', link: '/branches', icon: MdAddHomeWork },
 	]
 
 	return (
