@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { Container } from '../../../styles/ContainerStyle/Container'
 
-export const ContactsPage = () => {
+export const HistoryPage = () => {
 	useEffect(() => {
-		document.title = 'Contacts | Cheber'
+		document.title = 'History | Cheber'
 		return () => {
 			document.title = 'Cheber' // Reset the title when the component unmounts
 		}
 	}, [])
-	return <Container>ContactsPage</Container>
+	return <Container>HistoryPage</Container>
 }
