@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { LocatedModal } from './locatedModal'
 
 export const UserHeader = () => {
 	const [showModal, setShowModal] = useState(false)
@@ -99,12 +100,10 @@ export const UserHeader = () => {
 						<LocationOnIcon />
 						{location}
 					</div>
-					<ModalComponent
-						active={showModal}
-						handleClose={hideModalHandler}
-					>
-						asd
-					</ModalComponent>
+					<LocatedModal
+						showModal={showModal}
+						hideModalHandler={hideModalHandler}
+					/>
 					<Link to='/partner'>Стать партнером</Link>
 					<Link to='/contacts'>Контакты</Link>
 					{role ? (
