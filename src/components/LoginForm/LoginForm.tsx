@@ -34,7 +34,6 @@ export default function LoginForm({ active, setActive }: LoginProps) {
         userData: data,
       })
     );
-    console.log(data);
     setActive(false);
   };
 
