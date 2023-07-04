@@ -1,6 +1,6 @@
 .containerSwiper {
   .--swiper-pagination-color {
-    color: '#fff';
+    color: "#fff";
   }
   padding: 20px;
   .swiper-button-next:after,
