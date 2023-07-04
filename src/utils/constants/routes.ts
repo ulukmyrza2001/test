@@ -45,4 +45,7 @@ export const USER_ROUTES = {
 	CONTACTS: {
 		path: '/contacts',
 	},
+	BRANCHS: {
+		path: '/:id',
+	},
 }

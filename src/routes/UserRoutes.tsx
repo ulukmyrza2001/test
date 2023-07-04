@@ -9,6 +9,7 @@ import { NotFoundPage } from '../pages/error/error-404/NotFoundPage'
 import { ContactsPage } from '../pages/user/сontacts'
 import { ProfilePage } from '../pages/user/profile'
 import { HistoryPage } from '../pages/user/history'
+import { Branchs } from '../pages/user/branchs'
 
 export const UserRoutes = () => {
 	return (
@@ -27,6 +28,7 @@ export const UserRoutes = () => {
 					path={USER_ROUTES.HISTORY.path}
 					element={<HistoryPage />}
 				/>
+				<Route path={USER_ROUTES.BRANCHS.path} element={<Branchs />} />
 			</Route>
 			<Route path={USER_ROUTES.PARTNER.path} element={<PartnerOutlet />}>
 				<Route
