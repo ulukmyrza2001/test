@@ -15,6 +15,7 @@ export const UserHeader = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const role = Cookies.get("role");
 
+
   const showModalHandler = () => {
     setShowModal(true);
   };
@@ -22,7 +23,7 @@ export const UserHeader = () => {
     setShowModal(false);
   };
 
-  // MAP
+
   const [latitude, setLatitude] = useState<number | null>(null);
   const [longitude, setLongitude] = useState<number | null>(null);
   const [location, setLocation] = useState("");
@@ -42,6 +43,7 @@ export const UserHeader = () => {
       toast.error("Geolocation is not supported by this browser.!");
     }
   }, []);
+
 
   useEffect(() => {
     const fetchLocation = async () => {

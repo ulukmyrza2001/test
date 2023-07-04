@@ -1,15 +1,15 @@
-import React from 'react'
+import style from './BreadCrumbs.module.css'
 import { Link } from 'react-router-dom'
 import { Breadcrumbs } from '@mui/material'
 import { ThreeDots } from 'react-loader-spinner'
-import style from './BreadCrumbs.module.css'
 
 export function BreadCrumbs({ paths }: any) {
 	return (
 		<Breadcrumbs
 			aria-label='breadcrumbs'
 			separator='/'
-			className={style.breadcrumbs}>
+			className={style.breadcrumbs}
+		>
 			{paths.map((path: any, index: number) => {
 				const lastIndex = index === paths.length - 1
 				return lastIndex ? (

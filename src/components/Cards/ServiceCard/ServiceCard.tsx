@@ -5,6 +5,7 @@ import GradeIcon from "@mui/icons-material/Grade";
 import style from "./ServiceCard.module.css";
 import { Link } from "react-router-dom";
 
+
 interface IServiceCard {
   width?: string;
   height?: string;
