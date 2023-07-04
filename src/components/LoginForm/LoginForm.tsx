@@ -28,15 +28,15 @@ export default function LoginForm({ active, setActive }: LoginProps) {
 		formState: { errors },
 	} = useForm<FormData>()
 
-	const onSubmit: SubmitHandler<FormData> = (data: any) => {
-		dispatch(
-			SignUp({
-				userData: data,
-			}),
-		)
-		console.log(data)
-		setActive(false)
-	}
+  const onSubmit: SubmitHandler<FormData> = (data: any) => {
+    dispatch(
+      SignUp({
+        userData: data,
+      })
+    );
+    setActive(false);
+  };
+
 
 	const hideLoginModal = () => {
 		setActive(false)
