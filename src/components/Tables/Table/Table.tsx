@@ -11,6 +11,8 @@ export interface TableProps {
 		headerName: string
 		field: string
 		flex: number
+		valueGetter?: any | undefined
+		renderCell?: any | undefined
 	}[]
 	data: any
 	loading: boolean
@@ -58,7 +60,8 @@ export function Table(props: TableProps) {
 							labelId='demo-simple-select-label'
 							id='demo-simple-select'
 							value={props?.paginationValue?.pageSize}
-							onChange={handleChange}>
+							onChange={handleChange}
+						>
 							<MenuItem value={10}>10</MenuItem>
 							<MenuItem value={20}>20</MenuItem>
 						</Select>
