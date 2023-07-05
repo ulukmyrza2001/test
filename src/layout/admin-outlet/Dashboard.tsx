@@ -6,6 +6,7 @@ import { BiLogIn } from 'react-icons/bi'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { Divider } from '@mui/material'
 import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
+import { MdAddHomeWork } from 'react-icons/md'
 
 export const AdminOutlet = () => {
 	const [open, setOpen] = useState(false)

@@ -1,4 +1,3 @@
-import React from 'react'
 import GradeIcon from '@mui/icons-material/Grade'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import ContentLoader from 'react-content-loader'

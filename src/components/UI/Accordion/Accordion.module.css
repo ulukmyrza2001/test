@@ -1,0 +1,40 @@
+.MuiPaper-root {
+  box-shadow: none;
+  border-bottom: 0.1px solid #c9c4c4;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.service {
+  color: #212529;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+.title {
+  /* display: grid;
+  grid-template-columns: 20px auto;
+  gap: 5px; */
+  color: var(--ui-black);
+}
+
+.timePrice {
+  color: var(--ui-disabled-color);
+}
+.iconLink {
+  text-align: center;
+  color: var(--ui-disabled-color);
+  font-size: 30px;
+}
+.iconLink svg:hover {
+  color: #fff;
+  width: auto;
+  height: auto;
+  background: #1cd44c;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.blockItem {
+  display: flex;
+  justify-content: space-between;
+}

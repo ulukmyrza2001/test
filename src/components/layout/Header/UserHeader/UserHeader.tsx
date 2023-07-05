@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { LocatedModal } from './locatedModal'
 
 export const UserHeader = () => {
 	const [showModal, setShowModal] = useState(false)
@@ -23,7 +22,6 @@ export const UserHeader = () => {
 		setShowModal(false)
 	}
 
-	// MAP
 	const [latitude, setLatitude] = useState<number | null>(null)
 	const [longitude, setLongitude] = useState<number | null>(null)
 	const [location, setLocation] = useState('')
@@ -80,7 +78,14 @@ export const UserHeader = () => {
 	const handleClick = (event: any) => {
 		setAnchorEl(event.currentTarget)
 	}
+
 	const handleClose = () => {
+		setAnchorEl(null)
+	}
+
+	const logOut = () => {
+		Cookies.remove('role')
+		Cookies.remove('token')
 		setAnchorEl(null)
 	}
 
@@ -100,10 +105,12 @@ export const UserHeader = () => {
 						<LocationOnIcon />
 						{location}
 					</div>
-					<LocatedModal
-						showModal={showModal}
-						hideModalHandler={hideModalHandler}
-					/>
+					<ModalComponent
+						active={showModal}
+						handleClose={hideModalHandler}
+					>
+						asd
+					</ModalComponent>
 					<Link to='/partner'>Стать партнером</Link>
 					<Link to='/contacts'>Контакты</Link>
 					{role ? (
@@ -137,7 +144,7 @@ export const UserHeader = () => {
 										История записей
 									</Link>
 								</MenuItem>
-								<MenuItem onClick={handleClose}>Выйти</MenuItem>
+								<MenuItem onClick={logOut}>Выйти</MenuItem>
 							</Menu>
 						</div>
 					) : (
