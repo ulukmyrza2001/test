@@ -12,15 +12,14 @@ import { FiUsers } from 'react-icons/fi'
 import { Divider } from '@mui/material'
 import Cookies from 'js-cookie'
 
-export const SuperAdminOutlet = () => {
+export const MasterOutlet = () => {
 	const [open, setOpen] = useState(false)
 
 	const locations = useLocation()
 
 	const DATA_DASHBOARD = [
 		{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
-		{ name: 'Компания', link: '/company', icon: FiUsers },
-		{ name: 'Тариф', link: '/tariffs', icon: MdInfoOutline },
+		{ name: 'Пользователи', link: '/users', icon: FiUsers },
 		{
 			name: 'Объявления',
 			link: '/announcements',
