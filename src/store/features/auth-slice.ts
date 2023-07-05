@@ -13,6 +13,7 @@ export const SignUp = createAsyncThunk(
 			)
 			document.cookie = `role=${response.data.role}; path=/`
 			document.cookie = `token=${response.data.token}; path=/`
+			document.cookie = `isAuthenticated=${true}; path=/`
 			toast.success('Successfully toasted!')
 			return response.data
 		} catch (error) {

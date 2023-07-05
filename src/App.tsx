@@ -3,20 +3,19 @@ import { AppRoutes } from './routes/AppRoutes'
 import { useSelector } from 'react-redux'
 
 function App() {
-	const { token, role } = useSelector((state: any) => state.auth)
+	const { token, role, isAuthenticated } = useSelector(
+		(state: any) => state.auth,
+	)
 
 	useEffect(() => {
 		if (token) {
 			document.cookie = `role=${role}; path=/`
 			document.cookie = `token=${token}; path=/`
+			document.cookie = `isAuthenticated=${isAuthenticated}; path=/`
 		}
 	}, [token, role])
 
-	return (
-		<div>
-			<AppRoutes />
-		</div>
-	)
+	return <div>{AppRoutes() || null}</div>
 }
 
 export default App

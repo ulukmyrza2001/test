@@ -84,9 +84,10 @@ export const UserHeader = () => {
 	}
 
 	const logOut = () => {
+		document.cookie = `isAuthenticated=${false}; path=/`
 		Cookies.remove('role')
 		Cookies.remove('token')
-		setAnchorEl(null)
+		window.location.reload()
 	}
 
 	return (
@@ -100,15 +101,13 @@ export const UserHeader = () => {
 				<div className={styles.wrapper_nav}>
 					<div
 						className={styles.wrapper_located}
-						onClick={() => showModalHandler()}
-					>
+						onClick={() => showModalHandler()}>
 						<LocationOnIcon />
 						{location}
 					</div>
 					<ModalComponent
 						active={showModal}
-						handleClose={hideModalHandler}
-					>
+						handleClose={hideModalHandler}>
 						asd
 					</ModalComponent>
 					<Link to='/partner'>Стать партнером</Link>
@@ -132,8 +131,7 @@ export const UserHeader = () => {
 								onClose={handleClose}
 								MenuListProps={{
 									'aria-labelledby': 'basic-button',
-								}}
-							>
+								}}>
 								<MenuItem onClick={handleClose}>
 									<Link to='/profile' className={styles.link}>
 										Личный кабинет
@@ -150,8 +148,7 @@ export const UserHeader = () => {
 					) : (
 						<div
 							className={styles.wrapper_located}
-							onClick={() => setShowLoginModal(true)}
-						>
+							onClick={() => setShowLoginModal(true)}>
 							Войти
 						</div>
 					)}
