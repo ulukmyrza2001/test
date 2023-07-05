@@ -10,6 +10,7 @@ import { BiLogIn, BiSupport } from 'react-icons/bi'
 import { MdInfoOutline, MdHome } from 'react-icons/md'
 import { FiUsers } from 'react-icons/fi'
 import { Divider } from '@mui/material'
+import Cookies from 'js-cookie'
 
 export const SuperAdminOutlet = () => {
 	const [open, setOpen] = useState(false)
@@ -27,6 +28,12 @@ export const SuperAdminOutlet = () => {
 		},
 		{ name: 'Поддержка', link: '/supports', icon: BiSupport },
 	]
+	const logOut = () => {
+		document.cookie = `isAuthenticated=${false}; path=/`
+		Cookies.remove('role')
+		Cookies.remove('token')
+		window.location.reload()
+	}
 
 	return (
 		<div className={styles.container_dashboard}>
@@ -98,7 +105,7 @@ export const SuperAdminOutlet = () => {
 					<Divider sx={{ zIndex: 1, background: 'white' }} />
 					<br />
 					<div className={styles.dashboard_title_logaut}>
-						<div>
+						<div onClick={logOut}>
 							<BiLogIn size={20} />
 						</div>
 						<h3
