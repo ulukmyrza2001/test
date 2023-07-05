@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import style from './Dasboard.module.css'
 import { HiMenuAlt3, HiOutlineMenu } from 'react-icons/hi'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { BiLogIn } from 'react-icons/bi'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { Divider } from '@mui/material'
 import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
+import Cookies from 'js-cookie'
 
 export const AdminOutlet = () => {
 	const [open, setOpen] = useState(false)
@@ -17,6 +18,13 @@ export const AdminOutlet = () => {
 		{ name: 'Мастеры', link: '/masters', icon: BsFillPeopleFill },
 		{ name: 'Услуги', link: '/services', icon: FaFolderOpen },
 	]
+
+	function handleLogaut() {
+		document.cookie = `isAuthenticated=${false}; path=/`
+		Cookies.remove('role')
+		Cookies.remove('token')
+		window.location.reload()
+	}
 
 	return (
 		<div className={style.container_dashboard}>
@@ -83,7 +91,9 @@ export const AdminOutlet = () => {
 					<br />
 					<Divider sx={{ zIndex: 1, background: 'white' }} />
 					<br />
-					<div className={style.dashboard_title_logaut}>
+					<div
+						className={style.dashboard_title_logaut}
+						onClick={() => handleLogaut()}>
 						<div>
 							<BiLogIn size={20} />
 						</div>

@@ -13,6 +13,21 @@ export const SUPER_ADMIN_ROUTES = {
 	DASHBOARD: {
 		path: '/dashboard',
 	},
+	ANNOUNCEMENTS: {
+		path: '/announcements',
+	},
+	COMPANY: {
+		path: '/company',
+	},
+	TARIFFS: {
+		path: '/tariffs',
+	},
+	SUPPORT: {
+		path: '/supports',
+	},
+	NEW_CLIENT: {
+		path: '/clients/create-client',
+	},
 }
 export const ADMIN_ROUTES = {
 	DEFAULT: {
