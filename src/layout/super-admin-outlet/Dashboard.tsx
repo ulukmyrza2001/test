@@ -18,7 +18,7 @@ export const SuperAdminOutlet = () => {
 
 	const DATA_DASHBOARD = [
 		{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
-		{ name: 'Заказчики', link: '/customers', icon: FiUsers },
+		{ name: 'Компания', link: '/company', icon: FiUsers },
 		{ name: 'Тариф', link: '/tariffs', icon: MdInfoOutline },
 		{
 			name: 'Объявления',

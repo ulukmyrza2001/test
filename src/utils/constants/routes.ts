@@ -14,19 +14,19 @@ export const SUPER_ADMIN_ROUTES = {
 		path: '/dashboard',
 	},
 	ANNOUNCEMENTS: {
-		path: 'announcements',
+		path: '/announcements',
 	},
-	CUSTOMERS: {
-		path: 'customers',
+	COMPANY: {
+		path: '/company',
 	},
 	TARIFFS: {
-		path: 'tariffs',
+		path: '/tariffs',
 	},
 	SUPPORT: {
-		path: 'supports',
+		path: '/supports',
 	},
 	NEW_CLIENT: {
-		path: 'clients/create-client',
+		path: '/clients/create-client',
 	},
 }
 export const ADMIN_ROUTES = {

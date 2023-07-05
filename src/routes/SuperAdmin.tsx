@@ -3,7 +3,7 @@ import { SuperAdminOutlet } from '../layout/super-admin-outlet/Dashboard'
 import { SuperAdminPage } from '../pages/super-admin'
 import { SUPER_ADMIN_ROUTES } from '../utils/constants/routes'
 import { AnnouncementsPage } from '../pages/super-admin/announcements'
-import { CustomersPage } from '../pages/super-admin/customers'
+import { СompanyPage } from '../pages/super-admin/company'
 import { SupportsPage } from '../pages/super-admin/supports'
 import { TariffsPage } from '../pages/super-admin/tariffs'
 
@@ -29,8 +29,8 @@ export const SuperAdmin = () => {
 					element={<AnnouncementsPage />}
 				/>
 				<Route
-					path={SUPER_ADMIN_ROUTES.CUSTOMERS.path}
-					element={<CustomersPage />}
+					path={SUPER_ADMIN_ROUTES.COMPANY.path}
+					element={<СompanyPage />}
 				/>
 				<Route
 					path={SUPER_ADMIN_ROUTES.SUPPORT.path}
