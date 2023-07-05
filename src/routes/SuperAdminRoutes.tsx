@@ -8,7 +8,7 @@ import { SupportsPage } from '../pages/super-admin/supports'
 import { TariffsPage } from '../pages/super-admin/tariffs'
 import { CreateCompany } from '../pages/super-admin/company/create-company'
 
-export const SuperAdmin = () => {
+export const SuperAdminRoutes = () => {
 	return (
 		<Routes>
 			<Route

@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
 import { OwnerPage } from '../pages/owner'
-import { MasterPage } from '../pages/master'
 import { AdminRoutes } from './AdminRoutes'
-import { SuperAdmin } from './SuperAdmin'
+import { SuperAdminRoutes } from './SuperAdminRoutes'
 import { UserRoutes } from './UserRoutes'
+import { MasterRoutes } from './MasterRoutes'
 
 export const AppRoutes = () => {
 	const role = Cookies.get('role')
@@ -12,13 +12,13 @@ export const AppRoutes = () => {
 	if (isAuthenticated) {
 		switch (role) {
 			case 'SUPER_ADMIN':
-				return <SuperAdmin />
+				return <SuperAdminRoutes />
 			case 'OWNER':
 				return <OwnerPage />
 			case 'ADMIN':
 				return <AdminRoutes />
 			case 'MASTER':
-				return <MasterPage />
+				return <MasterRoutes />
 			case 'USER':
 				return <UserRoutes />
 			default:

@@ -70,3 +70,21 @@ export const USER_ROUTES = {
 		path: '/privacy',
 	},
 }
+
+export const MASTER_ROUTES = {
+	DEFAULT: {
+		path: '/',
+	},
+	DASHBOARD: {
+		path: '/dashboard',
+	},
+	USERS: {
+		path: '/users',
+	},
+	ANNOUNCEMENTS: {
+		path: '/announcements',
+	},
+	SUPPORT: {
+		path: '/supports',
+	},
+}
