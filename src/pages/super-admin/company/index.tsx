@@ -7,6 +7,7 @@ import { Button } from '../../../components/UI/Buttons/Button/Button'
 import { getCompanies } from '../../../store/features/company-slice'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from 'redux'
+import { useNavigate } from 'react-router'
 
 export const СompanyPage = () => {
 	const { companies, isLoadingCompanies } = useSelector(
@@ -14,6 +15,7 @@ export const СompanyPage = () => {
 	)
 
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		dispatch(getCompanies() as unknown as AnyAction)
@@ -79,12 +81,17 @@ export const СompanyPage = () => {
 			},
 		},
 	]
+	const navigateCreateCompanyPage = (item: any) => {
+		navigate('/company/create')
+	}
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
-				<h1 className='name_page'>Компания</h1>
+				<h1 className='name_page'>Компании</h1>
 				<div>
-					<Button>Добавить</Button>
+					<Button onClick={navigateCreateCompanyPage}>
+						Добавить
+					</Button>
 				</div>
 			</div>
 			<br />

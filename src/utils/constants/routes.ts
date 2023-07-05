@@ -13,11 +13,14 @@ export const SUPER_ADMIN_ROUTES = {
 	DASHBOARD: {
 		path: '/dashboard',
 	},
-	ANNOUNCEMENTS: {
-		path: '/announcements',
-	},
 	COMPANY: {
 		path: '/company',
+	},
+	CREATE_COMPANY: {
+		path: '/company/create',
+	},
+	ANNOUNCEMENTS: {
+		path: '/announcements',
 	},
 	TARIFFS: {
 		path: '/tariffs',
