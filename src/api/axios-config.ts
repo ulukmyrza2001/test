@@ -1,32 +1,31 @@
-
-import axios, { AxiosInstance } from "axios";
-import { _KEY_AUTH } from "../utils/constants/constants";
-import config from "../config.json";
+import axios, { AxiosInstance } from 'axios'
+import config from '../config.json'
+import Cookies from 'js-cookie'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: config.DEV_URL,
-  timeout: 5000,
-});
+	baseURL: config.DEV_URL,
+	timeout: 5000,
+})
 
 axiosInstance.interceptors.request.use((config) => {
-  const data = localStorage.getItem(_KEY_AUTH);
+	const data = Cookies.get('token')
 
-  const convertObj = data ? JSON.parse(data).token : null;
+	const convertObj = data ? data : null
 
-  if (convertObj !== null) {
-    config.headers.Authorization = `Bearer ${convertObj}`;
-  } else {
-    config.headers.Authorization = "";
-  }
+	if (convertObj !== null) {
+		config.headers.Authorization = `Bearer ${convertObj}`
+	} else {
+		config.headers.Authorization = ''
+	}
 
-  return config;
-});
+	return config
+})
 
 axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+	(response) => response,
+	(error) => {
+		return Promise.reject(error)
+	},
+)
 
-export default axiosInstance;
+export default axiosInstance

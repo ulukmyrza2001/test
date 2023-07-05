@@ -2,19 +2,21 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axiosInstance from '../../api/axios-config'
 
 interface CalendarProps {
-	dataCalendar: {
-		appointmentId: number | null
-		startTime: string
-		endTime: string
-		description: string
-		appointmentStatus: string
-		userId: number | null
-		userFirstName: string
-		userLastName: string
-		masterId: number | null
-		masterFirstName: string
-		masterLastName: string
-	}[]
+	dataCalendar:
+		| {
+				appointmentId: number | null
+				startTime: string
+				endTime: string
+				description: string
+				appointmentStatus: string
+				userId: number | null
+				userFirstName: string
+				userLastName: string
+				masterId: number | null
+				masterFirstName: string
+				masterLastName: string
+		  }[]
+		| []
 	isLoadingCalendar: boolean
 }
 interface CalendarGerProps {
@@ -46,21 +48,7 @@ export const getCalendar = createAsyncThunk(
 )
 
 const initialState: CalendarProps = {
-	dataCalendar: [
-		{
-			appointmentId: null,
-			startTime: '',
-			endTime: '',
-			description: '',
-			appointmentStatus: '',
-			userId: null,
-			userFirstName: '',
-			userLastName: '',
-			masterId: null,
-			masterFirstName: '',
-			masterLastName: '',
-		},
-	],
+	dataCalendar: [],
 	isLoadingCalendar: false,
 }
 

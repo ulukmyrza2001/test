@@ -22,7 +22,6 @@ export const UserHeader = () => {
 		setShowModal(false)
 	}
 
-	// MAP
 	const [latitude, setLatitude] = useState<number | null>(null)
 	const [longitude, setLongitude] = useState<number | null>(null)
 	const [location, setLocation] = useState('')
@@ -79,8 +78,16 @@ export const UserHeader = () => {
 	const handleClick = (event: any) => {
 		setAnchorEl(event.currentTarget)
 	}
+
 	const handleClose = () => {
 		setAnchorEl(null)
+	}
+
+	const logOut = () => {
+		document.cookie = `isAuthenticated=${false}; path=/`
+		Cookies.remove('role')
+		Cookies.remove('token')
+		window.location.reload()
 	}
 
 	return (
@@ -94,15 +101,13 @@ export const UserHeader = () => {
 				<div className={styles.wrapper_nav}>
 					<div
 						className={styles.wrapper_located}
-						onClick={() => showModalHandler()}
-					>
+						onClick={() => showModalHandler()}>
 						<LocationOnIcon />
 						{location}
 					</div>
 					<ModalComponent
 						active={showModal}
-						handleClose={hideModalHandler}
-					>
+						handleClose={hideModalHandler}>
 						asd
 					</ModalComponent>
 					<Link to='/partner'>Стать партнером</Link>
@@ -126,8 +131,7 @@ export const UserHeader = () => {
 								onClose={handleClose}
 								MenuListProps={{
 									'aria-labelledby': 'basic-button',
-								}}
-							>
+								}}>
 								<MenuItem onClick={handleClose}>
 									<Link to='/profile' className={styles.link}>
 										Личный кабинет
@@ -138,14 +142,13 @@ export const UserHeader = () => {
 										История записей
 									</Link>
 								</MenuItem>
-								<MenuItem onClick={handleClose}>Выйти</MenuItem>
+								<MenuItem onClick={logOut}>Выйти</MenuItem>
 							</Menu>
 						</div>
 					) : (
 						<div
 							className={styles.wrapper_located}
-							onClick={() => setShowLoginModal(true)}
-						>
+							onClick={() => setShowLoginModal(true)}>
 							Войти
 						</div>
 					)}
