@@ -10,6 +10,7 @@ import { ContactsPage } from '../pages/user/сontacts'
 import { ProfilePage } from '../pages/user/profile'
 import { HistoryPage } from '../pages/user/history'
 import { Branchs } from '../pages/user/branchs'
+import { PrivacyPage } from '../pages/user/privacy'
 
 export const UserRoutes = () => {
 	return (
@@ -29,6 +30,10 @@ export const UserRoutes = () => {
 					element={<HistoryPage />}
 				/>
 				<Route path={USER_ROUTES.BRANCHS.path} element={<Branchs />} />
+				<Route
+					path={USER_ROUTES.PRIVACY.path}
+					element={<PrivacyPage />}
+				/>
 			</Route>
 			<Route path={USER_ROUTES.PARTNER.path} element={<PartnerOutlet />}>
 				<Route

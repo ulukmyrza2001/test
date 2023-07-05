@@ -26,14 +26,14 @@ export const Footer = () => {
 					</Link>
 				</div>
 				<div className={styles.wrapper_links}>
-					<Link to='/'>
-						<p className='text'>Стать партнером</p>
+					<Link to='/privacy'>
+						<p className='text'>Политика конфиденциальности</p>
 					</Link>
 					<Link to='/'>
-						<p className='text'>Контакты</p>
+						<p className='text'>Пользовательское соглашение</p>
 					</Link>
 					<Link to='/'>
-						<p className='text'>Карта сайта</p>
+						<p className='text'>Правила онлайн оплаты</p>
 					</Link>
 				</div>
 				<div className={styles.wrapper_links}>
