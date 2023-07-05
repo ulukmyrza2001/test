@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
 import styles from './Company.module.css'
 import { IconButton } from '@mui/material'
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
 import { Table } from '../../../components/Tables/Table/Table'
 import { Button } from '../../../components/UI/Buttons/Button/Button'
-import { useEffect } from 'react'
 import { getCompanies } from '../../../store/features/company-slice'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from 'redux'
@@ -12,8 +12,6 @@ export const СompanyPage = () => {
 	const { companies, isLoadingCompanies } = useSelector(
 		(state: any) => state.companies,
 	)
-
-	console.log(companies)
 
 	const dispatch = useDispatch()
 
