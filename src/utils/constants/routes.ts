@@ -66,4 +66,7 @@ export const USER_ROUTES = {
 	BRANCHS: {
 		path: '/:id',
 	},
+	PRIVACY: {
+		path: '/privacy',
+	},
 }
