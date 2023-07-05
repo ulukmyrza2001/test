@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Company.module.css'
 import { IconButton } from '@mui/material'
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
@@ -8,11 +8,14 @@ import { getCompanies } from '../../../store/features/company-slice'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from 'redux'
 import { useNavigate } from 'react-router'
+import { ErrorModal } from '../../../components/Error-modal/ErrorModal'
 
 export const СompanyPage = () => {
 	const { companies, isLoadingCompanies } = useSelector(
 		(state: any) => state.companies,
 	)
+
+	const [showDeleteModal, setShowDeleteModal] = useState(false)
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -20,6 +23,11 @@ export const СompanyPage = () => {
 	useEffect(() => {
 		dispatch(getCompanies() as unknown as AnyAction)
 	}, [dispatch])
+
+	const showDeleteModalHandler = (event: React.MouseEvent, item: any) => {
+		// event.stopPropagation()
+		setShowDeleteModal(true)
+	}
 
 	const HeaderСompany = [
 		{
@@ -63,7 +71,9 @@ export const СompanyPage = () => {
 				return (
 					<div>
 						<IconButton
-							// onClick={(event) => showDeleteModal(item, event)}
+							onClick={(event) =>
+								showDeleteModalHandler(item, event)
+							}
 							children={
 								<AiOutlineDelete cursor='pointer' size={22} />
 							}
@@ -101,6 +111,11 @@ export const СompanyPage = () => {
 				loading={isLoadingCompanies}
 				pagination={true}
 				index={false}
+			/>
+			<ErrorModal
+				showModal={showDeleteModal}
+				setShowDeleteModal={setShowDeleteModal}
+				button='Удалить'
 			/>
 		</div>
 	)
