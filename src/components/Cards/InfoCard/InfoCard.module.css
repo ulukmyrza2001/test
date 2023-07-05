@@ -1,0 +1,88 @@
+.blockCard {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+}
+.headerCard {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  padding-bottom: 15px;
+  align-items: start;
+}
+.headerCard svg {
+  cursor: pointer;
+}
+.header_card_title :nth-child(1) {
+  font-size: 20px;
+  font-weight: 500;
+}
+.header_card_title :nth-child(2) {
+  font-size: 16px;
+  font-weight: 400;
+  color: #c2c2c2;
+}
+.recordGrades {
+  padding: 15px 0;
+  height: auto;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+}
+
+.grades {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  width: 30%;
+  height: auto;
+}
+
+.record {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  padding-left: 26px;
+  align-items: center;
+  height: 22px;
+  font-size: 18px;
+}
+.record span {
+  display: flex;
+  gap: 5px;
+  color: #c2c2c2;
+  align-items: center;
+}
+
+.about_address div {
+  color: #c2c2c2;
+  display: grid;
+  grid-template-columns: 30px auto;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.time_picker {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.time_picker p {
+  display: flex;
+  align-items: center;
+}
+.time_picker p span {
+  color: #1cd44c;
+}
+.schedules {
+  padding: 15px;
+}
+.time_week {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px;
+}
