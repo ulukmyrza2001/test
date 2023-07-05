@@ -7,26 +7,67 @@ import {
 } from 'react-icons/hi'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { BiLogIn, BiSupport } from 'react-icons/bi'
-import { MdInfoOutline, MdHome } from 'react-icons/md'
+import { MdHome, MdInfoOutline } from 'react-icons/md'
 import { FiUsers } from 'react-icons/fi'
 import { Divider } from '@mui/material'
+import Cookies from 'js-cookie'
+import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
+import { BsFillPeopleFill } from 'react-icons/bs'
 
-export const SuperAdminOutlet = () => {
+export const DashboardOutlet = () => {
 	const [open, setOpen] = useState(false)
 
 	const locations = useLocation()
+	const role = Cookies.get('role')
 
-	const DATA_DASHBOARD = [
-		{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
-		{ name: 'Компания', link: '/company', icon: FiUsers },
-		{ name: 'Тариф', link: '/tariffs', icon: MdInfoOutline },
-		{
-			name: 'Объявления',
-			link: '/announcements',
-			icon: HiOutlineSpeakerphone,
-		},
-		{ name: 'Поддержка', link: '/supports', icon: BiSupport },
-	]
+	const logOut = () => {
+		document.cookie = `isAuthenticated=${false}; path=/`
+		Cookies.remove('role')
+		Cookies.remove('token')
+		window.location.reload()
+	}
+
+	const roleDashboard = () => {
+		switch (role) {
+			case 'SUPER_ADMIN':
+				return [
+					{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
+					{ name: 'Компания', link: '/company', icon: FiUsers },
+					{ name: 'Тариф', link: '/tariffs', icon: MdInfoOutline },
+					{
+						name: 'Объявления',
+						link: '/announcements',
+						icon: HiOutlineSpeakerphone,
+					},
+					{ name: 'Поддержка', link: '/supports', icon: BiSupport },
+				]
+			case 'OWNER':
+				break
+			case 'ADMIN':
+				return [
+					{ name: 'Календарь', link: '/', icon: FaCalendarDays },
+					{
+						name: 'Мастеры',
+						link: '/masters',
+						icon: BsFillPeopleFill,
+					},
+					{ name: 'Услуги', link: '/services', icon: FaFolderOpen },
+				]
+			case 'MASTER':
+				return [
+					{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
+					{ name: 'Пользователи', link: '/users', icon: FiUsers },
+					{
+						name: 'Объявления',
+						link: '/announcements',
+						icon: HiOutlineSpeakerphone,
+					},
+					{ name: 'Поддержка', link: '/supports', icon: BiSupport },
+				]
+			default:
+				break
+		}
+	}
 
 	return (
 		<div className={styles.container_dashboard}>
@@ -60,7 +101,7 @@ export const SuperAdminOutlet = () => {
 						)}
 					</div>
 					<div className={styles.dashboard_main}>
-						{DATA_DASHBOARD?.map((item: any, i: number) => (
+						{roleDashboard()?.map((item: any, i: number) => (
 							<React.Fragment key={i}>
 								<Link
 									to={item?.link}
@@ -98,7 +139,7 @@ export const SuperAdminOutlet = () => {
 					<Divider sx={{ zIndex: 1, background: 'white' }} />
 					<br />
 					<div className={styles.dashboard_title_logaut}>
-						<div>
+						<div onClick={logOut}>
 							<BiLogIn size={20} />
 						</div>
 						<h3
