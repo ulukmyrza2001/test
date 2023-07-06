@@ -14,6 +14,8 @@ function App() {
 			document.cookie = `isAuthenticated=${isAuthenticated}; path=/`
 		}
 	}, [token, role])
+	console.log('asd')
+	console.log('asd')
 
 	return <div>{AppRoutes() || null}</div>
 }
