@@ -16,8 +16,6 @@ function App() {
 	}, [token, role])
 	console.log('asd')
 	console.log('asd')
-	console.log('asd')
-	console.log('asd')
 
 	return <div>{AppRoutes() || null}</div>
 }
