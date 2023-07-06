@@ -99,6 +99,7 @@ export const TableData = (props: TableProps) => {
           ".MuiDataGrid-row:nth-child(even)": {
             backgroundColor: "#f3f1f1",
           },
+          transition: "0.5s",
         }}
         columns={props.columns}
         rows={props.index ? indexedData : props.data}

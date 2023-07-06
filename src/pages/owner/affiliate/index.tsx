@@ -3,7 +3,7 @@ import { InputNumberMask } from "../../../components/UI/Inputs/InputMask/InputMa
 import styles from "./Announcement.module.css";
 
 export const AffiliatePage = () => {
-  const [value, setValue] = useState("+");
+  const [value, setValue] = useState("");
   console.log(value);
   return (
     <div>

@@ -81,8 +81,8 @@ export const OwnerPage = () => {
     <div>
       <TableData
         columns={HeaderSize}
-        data={Data}
-        loading={false}
+        data={branchData}
+        loading={isLoadingBranch}
         pagination={false}
         index={false}
       />
