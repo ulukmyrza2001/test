@@ -2,7 +2,7 @@ import { Card, CardActionArea } from "@mui/material";
 import ContentLoader from "react-content-loader";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
-import style from "./ServiceCard.module.css";
+import styles from "./ServiceCard.module.css";
 import { Link } from "react-router-dom";
 
 
@@ -17,8 +17,8 @@ export const ServiceCard = (props: IServiceCard) => {
   const { isloading, ...restProps } = props;
   return (
     <Link to="/1">
-      <Card className={style.main}>
-        <CardActionArea style={{ ...restProps }} className={style.mainwrapper}>
+      <Card className={styles.main}>
+        <CardActionArea style={{ ...restProps }} className={styles.mainwrapper}>
           {isloading ? (
             <ContentLoader viewBox="0 0 500 280" height={350} width={400}>
               <rect x="3" y="3" rx="10" ry="10" width="400" height="180" />
@@ -27,27 +27,27 @@ export const ServiceCard = (props: IServiceCard) => {
               <rect x="4" y="242" rx="0" ry="0" width="400" height="20" />
             </ContentLoader>
           ) : (
-            <div className={style.wrapper}>
-              <div className={style.marking}>
+            <div className={styles.wrapper}>
+              <div className={styles.marking}>
                 <BookmarkIcon />
               </div>
-              <div className={style.imgcontainer}>
+              <div className={styles.imgcontainer}>
                 <img
-                  className={style.img}
+                  className={styles.img}
                   src="https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2020/07/29184719/Cover-20.png"
                   alt="AMG"
                 />
               </div>
-              <div className={style.info}>
+              <div className={styles.info}>
                 <div>
-                  <h4 className={style.type}>Барбершоп</h4>
-                  <h3 className={style.name}>Garage</h3>
-                  <p className={style.location}>Байтик Баатыра 84</p>
+                  <h4 className={styles.type}>Барбершоп</h4>
+                  <h3 className={styles.name}>Garage</h3>
+                  <p className={styles.location}>Байтик Баатыра 84</p>
                 </div>
-                <div className={style.reviewcontainer}>
-                  <h3 className={style.review}>
+                <div className={styles.reviewcontainer}>
+                  <h3 className={styles.review}>
                     <GradeIcon
-                      className={style.star}
+                      className={styles.star}
                       sx={{ color: "goldenrod" }}
                     />
                     4.7

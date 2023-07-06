@@ -1,7 +1,7 @@
 import GradeIcon from '@mui/icons-material/Grade'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import ContentLoader from 'react-content-loader'
-import style from './ReviewCard.module.css'
+import styles from './ReviewCard.module.css'
 
 interface IreviewCard {
 	isloading: boolean
@@ -55,20 +55,20 @@ export const ReviewCard = (props: IreviewCard) => {
 					/>
 				</ContentLoader>
 			) : (
-				<div className={style.wrapper}>
-					<div className={style.topside}>
-						<div className={style.avatar}>
+				<div className={styles.wrapper}>
+					<div className={styles.topside}>
+						<div className={styles.avatar}>
 							<img
-								className={style.img}
+								className={styles.img}
 								src='https://img.freepik.com/free-icon/user_318-644325.jpg'
 								alt='avatar'
 							/>
 						</div>
-						<h4 className={style.name}>Name</h4>
-						<h5 className={style.specialist}>Specialist</h5>
+						<h4 className={styles.name}>Name</h4>
+						<h5 className={styles.specialist}>Specialist</h5>
 					</div>
-					<div className={style.mainside}>
-						<span className={style.review}>
+					<div className={styles.mainside}>
+						<span className={styles.review}>
 							Оценка: 4.7
 							<GradeIcon
 								sx={{
@@ -79,15 +79,15 @@ export const ReviewCard = (props: IreviewCard) => {
 							/>
 						</span>
 					</div>
-					<div className={style.downside}>
-						<p className={style.comment}>
+					<div className={styles.downside}>
+						<p className={styles.comment}>
 							Lorem ipsum dolor sit amet, consectetur adipisicing
 							elit. Soluta obcaecati eaque minus temporibus in
 							voluptatibus cum quaerat sed unde! Blanditiis,
 							consectetur accusamus molestiae quaerat explicabo
 							corrupti id itaque impedit odio?
 						</p>
-						<span className={style.date}>
+						<span className={styles.date}>
 							Геннера
 							<FiberManualRecordIcon
 								sx={{ width: '10px', height: '10px' }}

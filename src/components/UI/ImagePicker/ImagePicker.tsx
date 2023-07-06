@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import isEmptyImagePicker from '../../../assets/image/isEmptyImagePicker.jpg'
-import style from './ImagePicker.module.css'
+import styles from './ImagePicker.module.css'
 
 interface ImagePickerProps {
 	width?: string
@@ -40,9 +40,9 @@ export const ImagePicker = (props: ImagePickerProps) => {
 
 	return (
 		<div>
-			<div className={style.containerdrop} {...getRootProps()} {...props}>
+			<div className={styles.containerdrop} {...getRootProps()} {...props}>
 				<img
-					className={style.img}
+					className={styles.img}
 					src={IsTrueImage()}
 					alt='image'
 					width={0}

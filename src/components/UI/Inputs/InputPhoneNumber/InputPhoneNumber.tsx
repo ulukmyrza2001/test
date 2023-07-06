@@ -1,7 +1,7 @@
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import style from './InputPhoneNumber.module.css'
+import styles from './InputPhoneNumber.module.css'
 
 interface IinputPhoneNumber {
 	label?: string
@@ -41,9 +41,9 @@ export function InputPhoneNumber(props: IinputPhoneNumber) {
 		...preProps
 	} = props
 	return (
-		<div className={style.wrapper}>
+		<div className={styles.wrapper}>
 			{label && (
-				<label className={style.label} htmlFor={label}>
+				<label className={styles.label} htmlFor={label}>
 					{label}
 				</label>
 			)}
