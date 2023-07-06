@@ -5,6 +5,7 @@ import { Calendar } from '../pages/admin/calendar/Calendar'
 import { Master } from '../pages/admin/Master/masterPage/MasterPage'
 import { Services } from '../pages/admin/Services/servicesPage/ServicesPage'
 
+
 export const AdminRoutes = () => {
 	return (
 		<Routes>
