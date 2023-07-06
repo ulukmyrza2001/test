@@ -45,8 +45,8 @@ export const adminsDelete = createAsyncThunk(
   }
 );
 
-export const adminsPut = createAsyncThunk(
-  "admins/put",
+export const adminsIdPut = createAsyncThunk(
+  "adminsId/put",
   async ({ adminId, AdminsData }: any, { rejectWithValuew }: any) => {
     try {
       const response = await axiosInstance.put(`admins/${adminId}`, AdminsData);
@@ -64,8 +64,8 @@ const initialState: any = {
   isLoadindOwner: false,
 };
 
-export const OwnerSlice = createSlice({
-  name: "owwner",
+export const adminSlice = createSlice({
+  name: "admin",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -106,13 +106,13 @@ export const OwnerSlice = createSlice({
 
     //-------------------------------------------------------->
 
-    builder.addCase(adminsPut.pending, (state) => {
+    builder.addCase(adminsIdPut.pending, (state) => {
       state.isLoadindOwner = true;
     });
-    builder.addCase(adminsPut.fulfilled, (state) => {
+    builder.addCase(adminsIdPut.fulfilled, (state) => {
       state.isLoadindOwner = false;
     });
-    builder.addCase(adminsPut.rejected, (state) => {
+    builder.addCase(adminsIdPut.rejected, (state) => {
       state.isLoadindOwner = false;
     });
   },

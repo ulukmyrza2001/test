@@ -43,7 +43,7 @@ export const ModalComponent = ({
         >
           <div className={styles.flex_inner_modal}>
             <div className={styles.row_inner_modal}>
-              <h1 className={styles.title}>{title ? title : ""}</h1>
+              <h1 className={styles.titleh1}>{title ? title : ""}</h1>
               <CancelIcon
                 onClick={() => handleClose()}
                 className={styles.cancel_icons}
