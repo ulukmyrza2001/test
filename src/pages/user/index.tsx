@@ -35,13 +35,6 @@ export const UserPage = () => {
   return (
     <Fragment>
       <NavBar />
-      <div
-        style={{
-          width: "500px",
-          height: "280px",
-          margin: "0 auto",
-        }}
-      ></div>
       <Container>
         {DATA.map((item, index) => {
           return (

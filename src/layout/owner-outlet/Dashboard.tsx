@@ -7,19 +7,19 @@ import {
 } from "react-icons/hi";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { BiLogIn, BiSupport } from "react-icons/bi";
-import { MdHome } from "react-icons/md";
+import { MdInfoOutline, MdHome } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
 import { Divider } from "@mui/material";
 import Cookies from "js-cookie";
 
-export const MasterOutlet = () => {
+export const OwnerOutlet = () => {
   const [open, setOpen] = useState(false);
 
   const locations = useLocation();
 
   const DATA_DASHBOARD = [
     { name: "Dashboard", link: "/dashboard", icon: MdHome },
-    { name: "Пользователи", link: "/users", icon: FiUsers },
+    { name: "Админы", link: "/admins", icon: FiUsers },
     {
       name: "Объявления",
       link: "/announcements",
@@ -98,8 +98,8 @@ export const MasterOutlet = () => {
           <br />
           <Divider sx={{ zIndex: 1, background: "white" }} />
           <br />
-          <div className={styles.dashboard_title_logaut}>
-            <div onClick={logOut}>
+          <div className={styles.dashboard_title_logaut} onClick={logOut}>
+            <div>
               <BiLogIn size={20} />
             </div>
             <h3
