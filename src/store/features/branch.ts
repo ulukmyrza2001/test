@@ -28,12 +28,9 @@ export const getBranches = createAsyncThunk(
 
 export const postBranch = createAsyncThunk(
   "branch/post",
-  async ({ companyId, brancheData }: any, { rejectWithValue }) => {
+  async ({ brancheData }: any, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post(
-        `branches/${companyId}`,
-        brancheData
-      );
+      const response = await axiosInstance.post(`branches`, brancheData);
       toast.success("Успешный успех!");
       return response;
     } catch (error) {
