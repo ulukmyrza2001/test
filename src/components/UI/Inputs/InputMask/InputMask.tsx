@@ -1,11 +1,10 @@
-import styles from "./InputMask.module.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 interface IinputNumberMask {
   label?: string;
-  onChange?: (value: string) => void | any;
-  value?: string | undefined;
+  onChange: (value: string) => void | any;
+  value: string | undefined;
   disabled?: boolean;
   width?: string;
   height?: string;
@@ -22,49 +21,28 @@ interface IinputNumberMask {
 export function InputNumberMask(props: IinputNumberMask) {
   const { onChange, value, onKeyDown, disabled, label, ...restProps } = props;
 
-  const inputStyle = {
-    ...restProps,
-    border: "0.5px solid silver",
-    width: "300px",
-    height: "50px",
-    backgroundColor: "transparent", // Remove background color
-  };
-
-  const buttonStyle = {
-    background: "transparent !important",
-    border: "none",
-
-    "&.selected-flag, &.open": {
-      background: "red !important",
-    },
-    "&:hover, &:active": {
-      background: "red !important",
-    },
+  const handleChange = (value: string) => {
+    onChange("+" + value);
   };
 
   return (
-    <div className={styles.wrapper}>
-      {label && (
-        <label className={styles.label} htmlFor={label}>
-          {label}
-        </label>
-      )}
+    <div>
+      {label && <label htmlFor={label}>{label}</label>}
       <PhoneInput
         {...props}
         country={"kg"}
-        onChange={onChange}
+        onChange={handleChange}
         onlyCountries={["kg", "kz", "uz"]}
         enableLongNumbers={false}
         countryCodeEditable={false}
         inputStyle={{
-          width: "370px",
+          width: "100%",
           height: "40px",
+          border: "1px solid #e0d5d5",
         }}
-        buttonClass={styles.btn}
         buttonStyle={{
-          backgroundColor: "transparent",
-          borderRadius: "16px",
-          border: "none",
+          background: "white",
+          border: "1px solid #e0d5d5",
         }}
         value={value}
         masks={{

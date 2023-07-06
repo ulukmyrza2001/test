@@ -3,8 +3,8 @@ import { OWNER_ROUTES } from "../utils/constants/routes";
 import { OwnerOutlet } from "../layout/owner-outlet/Dashboard";
 import { AdminsPage } from "../pages/owner/admins";
 import { OwnerPage } from "../pages/owner";
-import { AnnouncementPage } from "../pages/owner/announcements";
 import { SupportPage } from "../pages/owner/supports";
+import { AffiliatePage } from "../pages/owner/affiliate";
 
 export const OwnerRoutes = () => {
   return (
@@ -16,10 +16,7 @@ export const OwnerRoutes = () => {
         />
         <Route path={OWNER_ROUTES.DASHBOARD.path} element={<OwnerPage />} />
         <Route path={OWNER_ROUTES.ADMINS.path} element={<AdminsPage />} />
-        <Route
-          path={OWNER_ROUTES.ANNOUNCEMENTS.path}
-          element={<AnnouncementPage />}
-        />
+        <Route path={OWNER_ROUTES.AFFILIATE.path} element={<AffiliatePage />} />
         <Route path={OWNER_ROUTES.SUPPORT.path} element={<SupportPage />} />
       </Route>
     </Routes>
