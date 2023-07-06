@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styles from './Dasboard.module.css'
+import React, { useState } from "react";
+import styles from "./Dasboard.module.css";
 import {
 	HiOutlineSpeakerphone,
 	HiOutlineMenu,

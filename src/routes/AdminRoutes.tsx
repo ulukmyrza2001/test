@@ -1,16 +1,17 @@
 import { Route, Routes } from 'react-router'
 import { ADMIN_ROUTES } from '../utils/constants/routes'
+import { DashboardOutlet } from '../layout/dashboard/Dashboard'
 import { Calendar } from '../pages/admin/calendar/Calendar'
 import { Master } from '../pages/admin/master/masterPage/MasterPage'
 import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
-import { DashboardOutlet } from '../layout/dashboard/Dashboard'
 
 export const AdminRoutes = () => {
 	return (
 		<Routes>
 			<Route
 				path={ADMIN_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}>
+				element={<DashboardOutlet />}
+			>
 				<Route
 					path={ADMIN_ROUTES.DEFAULT.path}
 					element={<Calendar />}
