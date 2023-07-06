@@ -2,11 +2,11 @@ import { SetStateAction, Dispatch } from 'react'
 import { ModalComponent } from '../../../../../components/UI/Modal/Modal'
 import { Input } from '../../../../../components/UI/Inputs/Input/Input'
 import { InputPassword } from '../../../../../components/UI/Inputs/InputPassword/InputPassword'
-import { InputPhoneNumber } from '../../../../../components/UI/Inputs/InputPhoneNumber/InputPhoneNumber'
 import { Button } from '../../../../../components/UI/Buttons/Button/Button'
 import { useDispatch } from 'react-redux'
 import { putMaster } from '../../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
+import { InputNumberMask } from '../../../../../components/UI/Inputs/InputMask/InputMask'
 
 interface MasterUpdateModalProps {
 	masterData: {
@@ -123,10 +123,8 @@ export const MasterUpdateModal = ({
 						handleChangeLastName(value.target.value)
 					}
 				/>
-				<InputPhoneNumber
+				<InputNumberMask
 					label='Номер'
-					country='kg'
-					countries={['kg', 'kz', 'ru']}
 					value={masterData.authInfoRequest.phoneNumber}
 					onChange={(value) => handleChangePhoneNumber(value)}
 				/>
