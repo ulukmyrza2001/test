@@ -15,8 +15,6 @@ function App() {
 		}
 	}, [token, role])
 
-	console.log('test')
-
 	return <div>{AppRoutes() || null}</div>
 }
 
