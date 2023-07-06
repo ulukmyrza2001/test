@@ -5,10 +5,10 @@ import { InputPassword } from '../../../../../components/UI/Inputs/InputPassword
 import { InputPhoneNumber } from '../../../../../components/UI/Inputs/InputPhoneNumber/InputPhoneNumber'
 import { Button } from '../../../../../components/UI/Buttons/Button/Button'
 import { useDispatch } from 'react-redux'
-import { postMaster } from '../../../../../store/features/master-slice'
+import { putMaster } from '../../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 
-interface MasterAddModalProps {
+interface MasterUpdateModalProps {
 	masterData: {
 		firstName: string
 		lastName: string
@@ -35,14 +35,16 @@ interface MasterAddModalProps {
 		masterModalAdd: boolean
 		masterModalUpdate: boolean
 	}) => void
+	masterId: number
 }
 
-export const MasterAddModal = ({
+export const MasterUpdateModal = ({
 	masterData,
 	setMasterData,
 	masterModal,
 	setMasterModal,
-}: MasterAddModalProps) => {
+	masterId,
+}: MasterUpdateModalProps) => {
 	const dispatch = useDispatch()
 
 	//function
@@ -62,8 +64,8 @@ export const MasterAddModal = ({
 		})
 	}
 
-	function handlePost() {
-		dispatch(postMaster({ masterData }) as unknown as AnyAction)
+	function handlePut() {
+		dispatch(putMaster({ masterId, masterData }) as unknown as AnyAction)
 		handleClose()
 	}
 
@@ -103,7 +105,7 @@ export const MasterAddModal = ({
 
 	return (
 		<ModalComponent
-			active={masterModal.masterModalAdd}
+			active={masterModal.masterModalUpdate}
 			handleClose={handleClose}
 			title='Добавить мастер'>
 			<div>
@@ -138,7 +140,7 @@ export const MasterAddModal = ({
 			</div>
 			<div>
 				<Button onClick={() => handleClose()}>Отмена</Button>
-				<Button onClick={() => handlePost()}>Сохранить</Button>
+				<Button onClick={() => handlePut()}>Сохранить</Button>
 			</div>
 		</ModalComponent>
 	)
