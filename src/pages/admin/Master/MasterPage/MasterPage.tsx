@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Table } from '../../../../components/Tables/Table/Table'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMaster } from '../../../../store/features/master-slice'
+import {
+	deleteMaster,
+	getMaster,
+} from '../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { IconButton } from '@mui/material'
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
 import { Button } from '../../../../components/UI/Buttons/Button/Button'
 import { MasterAddModal } from './masterAddModal/MasterAddModal'
+import { MasterUpdateModal } from './masterUpdateModal/MasterUpdateModal'
 
 interface MasterTableDataProps {
 	firstName: string
@@ -30,13 +34,35 @@ export const Master = () => {
 			password: '',
 		},
 	})
-
 	const [masterModal, setMasterModal] = useState({
 		masterModalAdd: false,
 		masterModalUpdate: false,
 	})
+	const [masterId, setMasterId] = useState(0)
 
 	const dispatch = useDispatch()
+
+	//function
+
+	function handleDelete(masterId: number) {
+		dispatch(deleteMaster({ masterId }) as unknown as AnyAction)
+	}
+
+	function handleUpdate(row: MasterTableDataProps) {
+		setMasterId(row.id)
+		setMasterModal({
+			masterModalAdd: false,
+			masterModalUpdate: true,
+		})
+		setMasterData({
+			firstName: row.firstName,
+			lastName: row.lastName,
+			authInfoRequest: {
+				phoneNumber: row.phoneNumber,
+				password: '',
+			},
+		})
+	}
 
 	//useEffect
 
@@ -73,13 +99,13 @@ export const Master = () => {
 				return (
 					<div>
 						<IconButton
-							onClick={(event) => console.log(event)}
+							onClick={(event) => handleDelete(row.id)}
 							children={
 								<AiOutlineDelete cursor='pointer' size={22} />
 							}
 						/>
 						<IconButton
-							onClick={(event) => console.log(event)}
+							onClick={(event) => handleUpdate(row)}
 							children={
 								<AiOutlineEdit cursor='pointer' size={22} />
 							}
@@ -97,6 +123,13 @@ export const Master = () => {
 				setMasterModal={setMasterModal}
 				masterData={masterData}
 				setMasterData={setMasterData}
+			/>
+			<MasterUpdateModal
+				masterModal={masterModal}
+				setMasterModal={setMasterModal}
+				masterData={masterData}
+				setMasterData={setMasterData}
+				masterId={masterId}
 			/>
 			<div style={{ margin: '30px' }}>
 				<Button
