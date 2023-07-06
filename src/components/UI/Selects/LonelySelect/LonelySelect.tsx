@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import style from './LonelySelect.module.css'
+import styles from './LonelySelect.module.css'
 
 interface LonelySelectProps {
   options: { label: string; value: string | number }[] | []
@@ -26,8 +26,8 @@ export const LonelySelect = ({
   isDisabled = false
 }: LonelySelectProps) => {
   return (
-    <div className={style.wrapper}>
-      <div className={style.label}>{label}</div>
+    <div className={styles.wrapper}>
+      <div className={styles.label}>{label}</div>
       <Select
         options={options}
         placeholder={placeholder}

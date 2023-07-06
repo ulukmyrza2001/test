@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Button.module.css'
+import styles from './Button.module.css'
 
 interface ButtonProps {
 	onClick?: (value: any) => void
@@ -24,7 +24,7 @@ export const Button = (props: ButtonProps) => {
 	return (
 		<button
 			className={
-				props.type === 'cancel' ? style.cancel_button : style.button
+				props.type === 'cancel' ? styles.cancel_button : styles.button
 			}
 			onClick={onClick}
 			style={preProps}
