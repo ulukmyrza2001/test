@@ -61,7 +61,9 @@ export const Calendar = () => {
 					masterID: [],
 				}) as unknown as AnyAction,
 			).then(() => {
-				setGlobalLoading(false)
+				setTimeout(() => {
+					setGlobalLoading(false)
+				}, 300)
 			})
 		}
 	}, [thisData])
