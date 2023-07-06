@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 interface Accordion {
   id: number;
   name: string;
-  icon: string;
+  icon?: string;
   subCategoryServices:
     | {
         id: number;
@@ -20,20 +20,12 @@ interface Accordion {
         serviceResponses: {
           id: number;
           name: string;
-          price: number;
-          duration: {
-            seconds: number;
-            nano: number;
-            negative: boolean;
-            zero: boolean;
-            units:
-              | {
-                  dateBased: boolean;
-                  timeBased: boolean;
-                  durationEstimated: boolean;
-                }[]
-              | [];
-          };
+          serviceResponses: {
+            id: number;
+            name: string;
+            price: number;
+            duration: number;
+          }[];
         };
       }[]
     | [];
@@ -51,7 +43,10 @@ export const AccordionUi = (props: any) => {
         }) => {
           return (
             <div key={el.id}>
-              <Accordion className={styles["MuiPaper-root"]}>
+              <Accordion
+                className={styles["MuiPaper-root"]}
+                sx={{ boxShadow: "none" }}
+              >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -75,6 +70,7 @@ export const AccordionUi = (props: any) => {
                       return (
                         <Accordion
                           className={styles["MuiPaper-root"]}
+                          sx={{ boxShadow: "none" }}
                           key={item.id}
                         >
                           <AccordionSummary
@@ -84,13 +80,13 @@ export const AccordionUi = (props: any) => {
                           >
                             <Typography>{item?.name}</Typography>
                           </AccordionSummary>
-                          <AccordionDetails>
+                          <AccordionDetails className={styles.details}>
                             {item?.serviceResponses?.map(
                               (elem: {
                                 id: number;
                                 name: string;
                                 price: number;
-                                duration: { seconds: number; nano: number };
+                                duration: number;
                               }) => {
                                 return (
                                   <div
@@ -102,8 +98,7 @@ export const AccordionUi = (props: any) => {
                                       <p className={styles.timePrice}>
                                         {elem?.price} сом{" "}
                                         <BiSolidCircle size={8} />{" "}
-                                        {elem?.duration.seconds}
-                                        {elem?.duration.nano}
+                                        {elem?.duration} минут
                                       </p>
                                     </div>
                                     <Link to={"#"} className={styles.iconLink}>

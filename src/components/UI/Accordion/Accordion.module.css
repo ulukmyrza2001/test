@@ -12,9 +12,6 @@
 }
 
 .title {
-  /* display: grid;
-  grid-template-columns: 20px auto;
-  gap: 5px; */
   color: var(--ui-black);
 }
 
@@ -37,4 +34,9 @@
 .blockItem {
   display: flex;
   justify-content: space-between;
+}
+.details{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
