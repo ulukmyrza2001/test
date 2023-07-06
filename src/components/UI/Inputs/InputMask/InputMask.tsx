@@ -1,4 +1,4 @@
-import style from "./InputMask.module.css";
+import styles from "./InputMask.module.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -43,9 +43,9 @@ export function InputNumberMask(props: IinputNumberMask) {
   };
 
   return (
-    <div className={style.wrapper}>
+    <div className={styles.wrapper}>
       {label && (
-        <label className={style.label} htmlFor={label}>
+        <label className={styles.label} htmlFor={label}>
           {label}
         </label>
       )}
@@ -60,7 +60,7 @@ export function InputNumberMask(props: IinputNumberMask) {
           width: "370px",
           height: "40px",
         }}
-        buttonClass={style.btn}
+        buttonClass={styles.btn}
         buttonStyle={{
           backgroundColor: "transparent",
           borderRadius: "16px",

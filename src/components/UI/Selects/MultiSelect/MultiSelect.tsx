@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './MultiSelect.module.css'
+import styles from './MultiSelect.module.css'
 import Select from 'react-select'
 
 interface MultiSelectProps {
@@ -26,8 +26,8 @@ export const MultiSelect = ({
   isDisabled = false
 }: MultiSelectProps) => {
   return (
-    <div className={style.wrapper}>
-      <div className={style.label}>{label}</div>
+    <div className={styles.wrapper}>
+      <div className={styles.label}>{label}</div>
       <Select
         isMulti
         options={options}

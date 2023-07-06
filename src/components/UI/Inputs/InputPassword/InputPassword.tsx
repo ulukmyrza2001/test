@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import style from './InputPassword.module.css'
+import styles from './InputPassword.module.css'
 
 interface InputPasswordProps {
 	label?: string
@@ -36,19 +36,19 @@ export function InputPassword(props: InputPasswordProps) {
 	} = props
 	const [show, setShow] = useState(false)
 	return (
-		<div className={style.wrapper}>
+		<div className={styles.wrapper}>
 			{label && (
-				<label className={style.label} htmlFor={label}>
+				<label className={styles.label} htmlFor={label}>
 					{label}
 				</label>
 			)}
-			<div className={style.inpcontainer}>
+			<div className={styles.inpcontainer}>
 				<input
-					className={style.input}
+					className={styles.input}
 					type={show ? 'text' : 'password'}
 					{...preProps}
 				/>
-				<span className={style.icon} onClick={() => setShow(!show)}>
+				<span className={styles.icon} onClick={() => setShow(!show)}>
 					{show ? <VisibilityIcon /> : <VisibilityOffIcon />}
 				</span>
 			</div>
