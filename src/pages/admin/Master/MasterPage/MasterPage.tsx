@@ -116,8 +116,6 @@ export const Master = () => {
 		},
 	]
 
-	console.log(masterData)
-
 	return (
 		<div>
 			<MasterAddModal
