@@ -69,6 +69,9 @@ export const USER_ROUTES = {
   PRIVACY: {
     path: "/privacy",
   },
+  TERMS: {
+    path: "/terms",
+  },
 };
 
 export const MASTER_ROUTES = {

@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react'
-import style from './Input.module.css'
+import styles from './Input.module.css'
 
 interface IinputProps {
 	label?: string
@@ -32,14 +32,14 @@ export const Input = (props: IinputProps) => {
 		...perProps
 	} = props
 	return (
-		<div className={style.wrapper}>
+		<div className={styles.wrapper}>
 			{label && (
-				<label className={style.label} htmlFor={label}>
+				<label className={styles.label} htmlFor={label}>
 					{label}
 				</label>
 			)}
 			<input
-				className={style.input}
+				className={styles.input}
 				name={props.label}
 				style={perProps}
 				type={type}

@@ -1,4 +1,4 @@
-import style from './BreadCrumbs.module.css'
+import styles from './BreadCrumbs.module.css'
 import { Link } from 'react-router-dom'
 import { Breadcrumbs } from '@mui/material'
 import { ThreeDots } from 'react-loader-spinner'
@@ -8,12 +8,12 @@ export function BreadCrumbs({ paths }: any) {
 		<Breadcrumbs
 			aria-label='breadcrumbs'
 			separator='/'
-			className={style.breadcrumbs}
+			className={styles.breadcrumbs}
 		>
 			{paths.map((path: any, index: number) => {
 				const lastIndex = index === paths.length - 1
 				return lastIndex ? (
-					<div key={path.path} className={style.titlecontainer}>
+					<div key={path.path} className={styles.titlecontainer}>
 						{path.isLoading ? (
 							<ThreeDots
 								height='30'
@@ -29,7 +29,7 @@ export function BreadCrumbs({ paths }: any) {
 					</div>
 				) : (
 					<Link key={path.path} to={path.to}>
-						<a className={style.navlink}>
+						<a className={styles.navlink}>
 							{path.isLoading ? (
 								<ThreeDots
 									height='30'
