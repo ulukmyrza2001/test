@@ -9,7 +9,6 @@ import { AiOutlineRightCircle } from "react-icons/ai";
 import styles from "./Accordion.module.css";
 import { Link } from "react-router-dom";
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 interface Accordion {
   id: number;
   name: string;
