@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router'
 import { ADMIN_ROUTES } from '../utils/constants/routes'
 import { DashboardOutlet } from '../layout/dashboard/Dashboard'
-import { Master } from '../pages/admin/master/masterPage/MasterPage'
-import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
 import { Calendar } from '../pages/admin/calendar/Calendar'
+import { Master } from '../pages/admin/Master/masterPage/MasterPage'
+import { Services } from '../pages/admin/Services/servicesPage/ServicesPage'
+
 
 export const AdminRoutes = () => {
 	return (
