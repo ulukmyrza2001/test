@@ -10,7 +10,8 @@ export const AdminRoutes = () => {
 		<Routes>
 			<Route
 				path={ADMIN_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}>
+				element={<DashboardOutlet />}
+			>
 				<Route
 					path={ADMIN_ROUTES.DEFAULT.path}
 					element={<Calendar />}
