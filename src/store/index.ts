@@ -5,6 +5,7 @@ import { calendarSlice } from "./features/calendar-slice";
 import { companiesSlice } from "./features/company-slice";
 import { categoryServiceSlice } from "./features/category-service";
 import { OwnerSlice } from "./features/owner-slice";
+import { branchSlice } from "./features/branch";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     companies: companiesSlice.reducer,
     categoryService: categoryServiceSlice.reducer,
     owner: OwnerSlice.reducer,
+    branch: branchSlice.reducer,
   },
 });
 

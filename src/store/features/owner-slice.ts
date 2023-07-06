@@ -7,8 +7,7 @@ export const adminsGet = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get("admins");
-      console.log(response);
-      return response;
+      return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
     }
@@ -24,7 +23,7 @@ export const adminsRegistration = createAsyncThunk(
         AdminsData
       );
       toast.success("Создание прошло успешно!");
-      return response;
+      return response.data;
     } catch (error) {
       toast.error((error as Error).message);
       return rejectWithValue((error as Error).message);

@@ -7,8 +7,9 @@ import {
 } from "react-icons/hi";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { BiLogIn, BiSupport } from "react-icons/bi";
-import { MdInfoOutline, MdHome } from "react-icons/md";
+import { MdHome } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { Divider } from "@mui/material";
 import Cookies from "js-cookie";
 
@@ -19,12 +20,12 @@ export const OwnerOutlet = () => {
 
   const DATA_DASHBOARD = [
     { name: "Dashboard", link: "/dashboard", icon: MdHome },
-    { name: "Админы", link: "/admins", icon: FiUsers },
     {
-      name: "Объявления",
-      link: "/announcements",
-      icon: HiOutlineSpeakerphone,
+      name: "Филиалы",
+      link: "/affiliate",
+      icon: HiOutlineBuildingOffice2,
     },
+    { name: "Админы", link: "/admins", icon: FiUsers },
     { name: "Поддержка", link: "/supports", icon: BiSupport },
   ];
   const logOut = () => {

@@ -99,11 +99,11 @@ export const OWNER_ROUTES = {
   DASHBOARD: {
     path: "/dashboard",
   },
+  AFFILIATE: {
+    path: "/affiliate",
+  },
   ADMINS: {
     path: "/admins",
-  },
-  ANNOUNCEMENTS: {
-    path: "/announcements",
   },
   SUPPORT: {
     path: "/supports",
