@@ -75,7 +75,7 @@ export const Master = () => {
 	const HEADER_DATA_MASTER = [
 		{
 			headerName: '№',
-			field: 'id',
+			field: 'index',
 			flex: 15,
 		},
 		{
@@ -144,10 +144,10 @@ export const Master = () => {
 			</div>
 			<Table
 				columns={HEADER_DATA_MASTER}
+				data={dataMaster}
 				loading={isLoadingMaster}
 				pagination={true}
 				index={true}
-				data={dataMaster}
 			/>
 		</div>
 	)
