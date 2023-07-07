@@ -15,14 +15,10 @@ body {
 	background-color: white;
 }
 .main {
-	padding-top: 70px;
+	padding-top: 65px;
 }
 .barber {
 	background-color: #858585;
-	background-image: url('./assets/image/barber.svg');
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
 }
 .barber-text {
 	color: white !important;

@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import styles from './Beauty.module.css'
 import AboutSalon from '../../../assets/image/about-salon.svg'
 import BannerSalon from '../../../assets/image/salon.svg'
@@ -10,6 +10,12 @@ import { ReactComponent as Icon4 } from '../../../assets/icons/005-toiletries (T
 import { ReviewContent } from './review-content'
 
 export const BeautySalonPage = () => {
+	useEffect(() => {
+		document.title = 'Beauty Salon | Cheber'
+		return () => {
+			document.title = 'Cheber' // Reset the title when the component unmounts
+		}
+	}, [])
 	return (
 		<Fragment>
 			<Container>
