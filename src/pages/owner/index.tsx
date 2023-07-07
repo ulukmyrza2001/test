@@ -21,21 +21,21 @@ export const OwnerPage = () => {
     {
       headerName: "№",
       field: "id",
-      flex: 1,
+      flex: 3,
       searchtable: false,
     },
     {
-      headerName: "Адрес ",
+      headerName: "Адрес",
       field: "address",
       flex: 10,
     },
     {
-      headerName: "Номер ",
+      headerName: "Номер",
       field: "phoneNumber",
       flex: 10,
     },
     {
-      headerName: "Дата ",
+      headerName: "Дата",
       field: "localData",
       flex: 10,
     },
@@ -62,28 +62,13 @@ export const OwnerPage = () => {
     },
   ];
 
-  const Data = [
-    {
-      name: "black",
-      id: 1,
-    },
-    {
-      name: "white",
-      id: 2,
-    },
-    {
-      name: "silver",
-      id: 3,
-    },
-  ];
-
   return (
     <div>
       <TableData
         columns={HeaderSize}
-        data={branchData}
+        data={[]}
         loading={isLoadingBranch}
-        pagination={false}
+        pagination={true}
         index={false}
       />
     </div>

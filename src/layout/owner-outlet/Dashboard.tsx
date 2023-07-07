@@ -7,7 +7,7 @@ import {
 } from "react-icons/hi";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { BiLogIn, BiSupport } from "react-icons/bi";
-import { MdHome } from "react-icons/md";
+import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { FiUsers } from "react-icons/fi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { Divider } from "@mui/material";
@@ -19,7 +19,7 @@ export const OwnerOutlet = () => {
   const locations = useLocation();
 
   const DATA_DASHBOARD = [
-    { name: "Dashboard", link: "/dashboard", icon: MdHome },
+    { name: "Dashboard", link: "/dashboard", icon: TbDeviceDesktopAnalytics },
     {
       name: "Филиалы",
       link: "/affiliate",

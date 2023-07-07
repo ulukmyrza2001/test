@@ -39,7 +39,7 @@
 }
 .titlestile {
   width: 100%;
-  color: #002b55;
+  color: var(--ui-background-color);
   font-size: 25px;
   letter-spacing: 0.5px;
   font-weight: 400;

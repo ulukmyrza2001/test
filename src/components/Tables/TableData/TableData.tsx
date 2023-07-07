@@ -88,9 +88,13 @@ export const TableData = (props: TableProps) => {
           height: "100%",
           minHeight: "370px",
           maxHeight: "600px",
-          borderRadius: 1,
+          borderRadius: 2,
           background: "free",
           zIndex: "0",
+          outline: "none",
+          border: "1px solid var(--ui-background-color)",
+          transition: "0.5s",
+          color: "var(--ui-disabled-color)",
           ".MuiDataGrid-cell": {
             border: "none !important",
             outline: "none !important",
@@ -99,10 +103,16 @@ export const TableData = (props: TableProps) => {
           ".MuiDataGrid-row:nth-child(even)": {
             backgroundColor: "#f3f1f1",
           },
-          transition: "0.5s",
+          "& .css-umlzv5-MuiDataGrid-root .MuiDataGrid-columnHeader:focus, & .css-umlzv5-MuiDataGrid-root .MuiDataGrid-cell:focus":
+            {
+              outline: "1px solid red !important",
+            },
+          "*": {
+            outline: "none !important",
+          },
         }}
         columns={props.columns}
-        rows={props.index ? indexedData : props.data}
+        rows={props.index ? indexedData : props?.data}
         onRowClick={props.onClickCard}
         loading={props.loading}
         slots={{

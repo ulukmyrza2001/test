@@ -1,0 +1,84 @@
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: var(--ui-background-color);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px var(--ui-active-background);
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 16px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px var(--ui-active-background);
+}
+
+.caption {
+  color: var(--ui-disabled-color);
+}
+
+.admc_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.content {
+  border: 1px solid var(--ui-background-color);
+  border-radius: 8px;
+  height: 600px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inp_place {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 700px;
+}
