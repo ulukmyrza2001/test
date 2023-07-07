@@ -1,6 +1,8 @@
+import './index.css'
 import { useEffect } from 'react'
 import { AppRoutes } from './routes/AppRoutes'
 import { useSelector } from 'react-redux'
+import { useLocation, useParams } from 'react-router-dom'
 
 function App() {
 	const { token, role, isAuthenticated } = useSelector(
@@ -15,7 +17,10 @@ function App() {
 		}
 	}, [token, role])
 
-	return <div>{AppRoutes() || null}</div>
+	const { pathname } = useLocation()
+	const path = pathname.slice(1)
+
+	return <div className={`App ${path}`}>{AppRoutes() || null}</div>
 }
 
 export default App

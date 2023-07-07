@@ -11,18 +11,6 @@ interface ModalProps {
   title?: string;
 }
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  borderRadius: "8px",
-  p: 2,
-};
-
 export const ModalComponent = ({
   active,
   handleClose,
@@ -35,15 +23,27 @@ export const ModalComponent = ({
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
-      <Box sx={style}>
+      <Box
+        sx={{
+          boxShadow: 24,
+          borderRadius: "8px",
+          bgcolor: "background.paper",
+          p: 2,
+        }}
+      >
         <div
           className={styles.inner_Modal}
           onClick={(e: any) => e.stopPropagation()}
         >
           <div className={styles.flex_inner_modal}>
             <div className={styles.row_inner_modal}>
-              <h1 className={styles.titleh1}>{title ? title : ""}</h1>
+              <h1 className={styles.titlestile}>{title ? title : ""}</h1>
               <CancelIcon
                 onClick={() => handleClose()}
                 className={styles.cancel_icons}

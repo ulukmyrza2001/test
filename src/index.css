@@ -9,11 +9,23 @@
 	list-style-type: none;
 }
 body {
-	background-color: var(--ui-color-white);
 	font-family: var(--font-family);
 }
+.App {
+	background-color: white;
+}
 .main {
-	margin-top: 70px;
+	padding-top: 70px;
+}
+.barber {
+	background-color: #858585;
+	background-image: url('./assets/image/barber.svg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.barber-text {
+	color: white !important;
 }
 :root {
 	--ui-background-color: #33a011;

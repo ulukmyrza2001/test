@@ -5,12 +5,14 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import LoginForm from '../../../LoginForm/LoginForm'
 import { ModalComponent } from '../../../UI/Modal/Modal'
 import { FaUserCircle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 
 export const UserHeader = () => {
+	const { pathname } = useLocation()
+	const path = pathname.slice(1)
 	const [showModal, setShowModal] = useState(false)
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const role = Cookies.get('role')
@@ -90,28 +92,87 @@ export const UserHeader = () => {
 		window.location.reload()
 	}
 
+	const [isScrolled, setIsScrolled] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollTop = window.pageYOffset
+			setIsScrolled(scrollTop > 0)
+		}
+
+		window.addEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
+
+	const stylesHcange = () => {
+		if (path === 'barber' && isScrolled) {
+			return {
+				background: '#3a3a3a',
+			}
+		} else if (path === '') {
+			return {
+				background: 'white',
+			}
+		}
+	}
+
 	return (
-		<header className={styles.header}>
+		<header className={styles.header} style={stylesHcange()}>
 			<div className={styles.inner_header}>
 				<div>
-					<Link to='/' className={styles.logo}>
+					<Link
+						to='/'
+						className={styles.logo}
+						style={
+							path === 'barber'
+								? { color: 'white' }
+								: { color: 'black' }
+						}
+					>
 						Чебер
 					</Link>
 				</div>
 				<div className={styles.wrapper_nav}>
 					<div
 						className={styles.wrapper_located}
-						onClick={() => showModalHandler()}>
+						onClick={() => showModalHandler()}
+						style={
+							path === 'barber'
+								? { color: 'white' }
+								: { color: 'black' }
+						}
+					>
 						<LocationOnIcon />
 						{location}
 					</div>
 					<ModalComponent
 						active={showModal}
-						handleClose={hideModalHandler}>
+						handleClose={hideModalHandler}
+					>
 						asd
 					</ModalComponent>
-					<Link to='/partner'>Стать партнером</Link>
-					<Link to='/contacts'>Контакты</Link>
+					<Link
+						to='/partner'
+						style={
+							path === 'barber'
+								? { color: 'white' }
+								: { color: 'black' }
+						}
+					>
+						Стать партнером
+					</Link>
+					<Link
+						to='/contacts'
+						style={
+							path === 'barber'
+								? { color: 'white' }
+								: { color: 'black' }
+						}
+					>
+						Контакты
+					</Link>
 					{role ? (
 						<div>
 							<FaUserCircle
@@ -131,7 +192,8 @@ export const UserHeader = () => {
 								onClose={handleClose}
 								MenuListProps={{
 									'aria-labelledby': 'basic-button',
-								}}>
+								}}
+							>
 								<MenuItem onClick={handleClose}>
 									<Link to='/profile' className={styles.link}>
 										Личный кабинет
@@ -147,8 +209,14 @@ export const UserHeader = () => {
 						</div>
 					) : (
 						<div
+							style={
+								path === 'barber'
+									? { color: 'white' }
+									: { color: 'black' }
+							}
 							className={styles.wrapper_located}
-							onClick={() => setShowLoginModal(true)}>
+							onClick={() => setShowLoginModal(true)}
+						>
 							Войти
 						</div>
 					)}

@@ -1,6 +1,6 @@
 .footer {
 	width: 100%;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -13,7 +13,7 @@
 .inner_footer {
 	width: 100%;
 	max-width: 1536px;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
