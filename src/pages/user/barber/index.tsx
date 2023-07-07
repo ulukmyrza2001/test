@@ -1,17 +1,31 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import styles from './Barber.module.css'
+import Img from '../../../assets/image/imgBarber.png'
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { CgShapeRhombus } from 'react-icons/cg'
-import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
-import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
-import Img from '../../../assets/image/imgBarber.png'
-import Img1 from '../../../assets/image/imgBarber2.png'
-import BackSliderImg from '../../../assets/image/barberSlide.svg'
+import { AboutContent } from './aboutContent'
+import { ServicesContent } from './servicesContent'
+import { ServicesBranchContent } from './servicesBranchContent'
+import BannerBarber from '../../../assets/image/barber.svg'
 
 export const BarberPage = () => {
+	useEffect(() => {
+		document.title = 'Barber | Cheber'
+		return () => {
+			document.title = 'Cheber' // Reset the title when the component unmounts
+		}
+	}, [])
 	return (
 		<Fragment>
-			<Container>
+			<Container
+				backColor={{
+					backgroundImage: `url(${BannerBarber})`,
+					backgroundPosition: 'center',
+					backgroundSize: 'cover',
+					backgroundRepeat: 'no-repeat',
+					padding: '2rem',
+				}}
+			>
 				<div className={styles.header}>
 					<span>Home</span>
 					<span>News</span>
@@ -71,44 +85,10 @@ export const BarberPage = () => {
 				</div>
 			</Container>
 			<br />
-			<Container backColor={{ backgroundColor: 'black' }}>
-				<div className={styles.wrapper_about}>
-					<div className={styles.wrapper_img_about}>
-						<img src={Img1} alt='IMG' />
-					</div>
-					<div className={styles.wrapper_map}>asdasd</div>
-				</div>
-			</Container>
-			<Container
-				backColor={{
-					backgroundImage: `url(${BackSliderImg})`,
-					backgroundPosition: 'center',
-					backgroundSize: 'cover',
-					backgroundRepeat: 'no-repeat',
-					padding: '2rem',
-				}}
-			>
-				<ContainerSlider
-					dots={false}
-					infinite={true}
-					speed={400}
-					slidesToShow={4}
-					slidesToScroll={1}
-					swipeToSlide={true}
-					autoplay={false}
-					pauseOnHover={true}
-					arrowAndprev={true}
-					typeButton={true}
-					variableWidth={true}
-				>
-					<ServiceCard />
-					<ServiceCard />
-					<ServiceCard />
-					<ServiceCard />
-					<ServiceCard />
-					<ServiceCard />
-				</ContainerSlider>
-			</Container>
+			<AboutContent />
+			<br />
+			<ServicesBranchContent />
+			<ServicesContent />
 		</Fragment>
 	)
 }

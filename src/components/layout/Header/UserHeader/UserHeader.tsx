@@ -111,7 +111,7 @@ export const UserHeader = () => {
 		if (path === 'barber') {
 			if (isScrolled) {
 				return {
-					background: '#3a3a3a',
+					background: '#858585',
 				}
 			}
 		} else if (path === 'beauty-salon') {

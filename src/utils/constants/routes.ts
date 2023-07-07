@@ -79,6 +79,9 @@ export const USER_ROUTES = {
 	BARBER: {
 		path: '/barber',
 	},
+	APPOINTMENT_BARBER: {
+		path: '/barber/usluga/:id',
+	},
 	BEAUTY_SALON: {
 		path: '/beauty-salon',
 	},

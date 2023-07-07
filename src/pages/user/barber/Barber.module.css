@@ -58,19 +58,3 @@
 .wrapper_slider {
 	width: 45%;
 }
-.wrapper_about {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	padding: 0 5rem;
-}
-
-.wrapper_img_about {
-	width: 50%;
-}
-.wrapper_img_about img {
-	width: 100%;
-}
-.wrapper_map {
-	width: 50%;
-}

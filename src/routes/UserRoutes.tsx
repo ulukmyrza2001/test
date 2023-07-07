@@ -14,6 +14,7 @@ import { PrivacyPage } from '../pages/user/privacy'
 import { TermsPage } from '../pages/user/terms'
 import { FilterPage } from '../pages/user/filter'
 import { BeautySalonPage } from '../pages/user/beauty-salon'
+import { AppointmenBarberPage } from '../pages/user/barber/appointment'
 
 export const UserRoutes = () => {
 	return (
@@ -43,6 +44,10 @@ export const UserRoutes = () => {
 				<Route
 					path={USER_ROUTES.BARBER.path}
 					element={<BarberPage />}
+				/>
+				<Route
+					path={USER_ROUTES.APPOINTMENT_BARBER.path}
+					element={<AppointmenBarberPage />}
 				/>
 				<Route
 					path={USER_ROUTES.BEAUTY_SALON.path}
