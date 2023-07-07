@@ -163,14 +163,16 @@ export const MasterPage = () => {
 					Добавит мастер
 				</Button>
 			</div>
-			<Table
-				columns={HEADER_DATA_MASTER}
-				data={dataMaster}
-				loading={isLoadingMaster}
-				pagination={true}
-				index={true}
-				onClickCard={(row) => handleToGo(row.id)}
-			/>
+			<div>
+				<Table
+					columns={HEADER_DATA_MASTER}
+					data={dataMaster}
+					loading={isLoadingMaster}
+					pagination={true}
+					index={true}
+					onClickCard={(row) => handleToGo(row.id)}
+				/>
+			</div>
 		</div>
 	)
 }
