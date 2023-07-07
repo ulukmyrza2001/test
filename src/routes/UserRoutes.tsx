@@ -9,9 +9,12 @@ import { NotFoundPage } from '../pages/error/error-404/NotFoundPage'
 import { ContactsPage } from '../pages/user/сontacts'
 import { ProfilePage } from '../pages/user/profile'
 import { HistoryPage } from '../pages/user/history'
-import { Branchs } from '../pages/user/branchs'
+import { BarberPage } from '../pages/user/barber'
 import { PrivacyPage } from '../pages/user/privacy'
 import { TermsPage } from '../pages/user/terms'
+import { FilterPage } from '../pages/user/filter'
+import { BeautySalonPage } from '../pages/user/beauty-salon'
+import { AppointmenBarberPage } from '../pages/user/barber/appointment'
 
 export const UserRoutes = () => {
 	return (
@@ -30,10 +33,25 @@ export const UserRoutes = () => {
 					path={USER_ROUTES.HISTORY.path}
 					element={<HistoryPage />}
 				/>
-				<Route path={USER_ROUTES.BRANCHS.path} element={<Branchs />} />
+				<Route
+					path={USER_ROUTES.FILTER.path}
+					element={<FilterPage />}
+				/>
 				<Route
 					path={USER_ROUTES.PRIVACY.path}
 					element={<PrivacyPage />}
+				/>
+				<Route
+					path={USER_ROUTES.BARBER.path}
+					element={<BarberPage />}
+				/>
+				<Route
+					path={USER_ROUTES.APPOINTMENT_BARBER.path}
+					element={<AppointmenBarberPage />}
+				/>
+				<Route
+					path={USER_ROUTES.BEAUTY_SALON.path}
+					element={<BeautySalonPage />}
 				/>
 				<Route path={USER_ROUTES.TERMS.path} element={<TermsPage />} />
 			</Route>

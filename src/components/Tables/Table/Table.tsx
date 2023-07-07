@@ -1,4 +1,4 @@
-import styles from './Table.module.css'
+import './Table.css'
 import LinearProgress from '@mui/material/LinearProgress'
 import { DataGrid } from '@mui/x-data-grid'
 import { InputLabel, Pagination } from '@mui/material'
@@ -49,7 +49,7 @@ export function Table(props: TableProps) {
 			})
 		}
 		return (
-			<div className={styles.container_table_footer_pagination}>
+			<div className='container_table_footer_pagination'>
 				{props.pagination || (
 					<>
 						<InputLabel id='demo-simple-select-label'>
@@ -60,8 +60,7 @@ export function Table(props: TableProps) {
 							labelId='demo-simple-select-label'
 							id='demo-simple-select'
 							value={props?.paginationValue?.pageSize}
-							onChange={handleChange}
-						>
+							onChange={handleChange}>
 							<MenuItem value={10}>10</MenuItem>
 							<MenuItem value={20}>20</MenuItem>
 						</Select>
@@ -79,7 +78,7 @@ export function Table(props: TableProps) {
 
 	function CustomNoRowsOverlay() {
 		return (
-			<div className={styles.container_no_rows_table}>
+			<div className='container_no_rows_table'>
 				<img src={NoRowsTable} alt='IMG...' />
 				<h1>Пусто</h1>
 			</div>
@@ -87,7 +86,7 @@ export function Table(props: TableProps) {
 	}
 
 	return (
-		<div className={styles.container_table}>
+		<div className='container_table'>
 			<DataGrid
 				sx={{
 					width: '100%',

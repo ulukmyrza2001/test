@@ -9,11 +9,19 @@
 	list-style-type: none;
 }
 body {
-	background-color: var(--ui-color-white);
 	font-family: var(--font-family);
 }
+.App {
+	background-color: white;
+}
 .main {
-	margin-top: 70px;
+	padding-top: 65px;
+}
+.barber {
+	background-color: #858585;
+}
+.barber-text {
+	color: white !important;
 }
 :root {
 	--ui-background-color: #33a011;

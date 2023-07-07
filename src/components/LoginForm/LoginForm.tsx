@@ -74,7 +74,7 @@ export default function LoginForm({ active, setActive }: LoginProps) {
             <div className={styles.input_wrapper}>
               <InputNumberMask
                 label="Телефон:"
-                onChange={(value) => setValue("phoneNumber", `+${value}`)}
+                onChange={(value) => setValue("phoneNumber", value)}
                 value={watch("phoneNumber")}
               />
               {errors.phoneNumber && <span>This field is required</span>}
