@@ -1,0 +1,14 @@
+.Box {
+  border-bottom: 1;
+  border-color: divider;
+  color: #5460e6;
+  span {
+    color: #5460e6 !important;
+  }
+  & .MuiTabs-scrollButtons.Mui-disabled {
+    opacity: 0.3;
+  }
+  & .MuiTabs-root {
+    width: 100%;
+  }
+}
