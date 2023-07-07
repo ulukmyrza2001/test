@@ -19,67 +19,67 @@ const NAVBAR_DATA = [
 	{
 		name: 'Парикмахерские услуги',
 		icon: HiMiniScissors,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Для мужчин',
 		icon: GiBeard,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Ногтевой сервис',
 		icon: FaHandHoldingHeart,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Удаление волос',
 		icon: MdOutlineFaceRetouchingNatural,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Ресницы',
 		icon: GiEyelashes,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Брови',
 		icon: SiBritishairways,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Уход за телом',
 		icon: BiBody,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Косметология',
 		icon: GiDoctorFace,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Макияж',
 		icon: MdOutlineFace2,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Стоматология',
 		icon: FaTooth,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Медицинские услуги',
 		icon: MdOutlineMedicalServices,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Тату и пирсинг',
 		icon: GiFlowerTwirl,
-		link: '/barber',
+		link: '/filter',
 	},
 	{
 		name: 'Коррекция фигуры',
 		icon: FaPersonRays,
-		link: '/barber',
+		link: '/filter',
 	},
 ]
 

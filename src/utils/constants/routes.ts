@@ -67,7 +67,7 @@ export const USER_ROUTES = {
 		path: '/barber',
 	},
 	FILTER: {
-		path: '/barber',
+		path: '/filter',
 	},
 	PRIVACY: {
 		path: '/privacy',
