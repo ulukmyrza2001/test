@@ -24,6 +24,9 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+.barber-text {
+	color: white !important;
+}
 :root {
 	--ui-background-color: #33a011;
 	--ui-color-white: #ffffff;
