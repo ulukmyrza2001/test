@@ -64,7 +64,7 @@ export const USER_ROUTES = {
 		path: '/contacts',
 	},
 	BRANCHS: {
-		path: '/branch',
+		path: '/barber',
 	},
 	FILTER: {
 		path: '/barber',

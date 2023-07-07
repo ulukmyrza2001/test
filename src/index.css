@@ -12,13 +12,13 @@ body {
 	font-family: var(--font-family);
 }
 .App {
-	background-color: white !important;
+	background-color: white;
 }
 .main {
 	padding-top: 70px;
 }
-.branch {
-	background-color: gray;
+.barber {
+	background-color: #858585;
 	background-image: url('./assets/image/barber.svg');
 	background-position: center;
 	background-size: cover;

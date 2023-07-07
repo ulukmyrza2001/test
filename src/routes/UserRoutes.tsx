@@ -9,7 +9,7 @@ import { NotFoundPage } from '../pages/error/error-404/NotFoundPage'
 import { ContactsPage } from '../pages/user/сontacts'
 import { ProfilePage } from '../pages/user/profile'
 import { HistoryPage } from '../pages/user/history'
-import { Branchs } from '../pages/user/branchs'
+import { BarberPage } from '../pages/user/barber'
 import { PrivacyPage } from '../pages/user/privacy'
 import { TermsPage } from '../pages/user/terms'
 import { FilterPage } from '../pages/user/filter'
@@ -31,7 +31,10 @@ export const UserRoutes = () => {
 					path={USER_ROUTES.HISTORY.path}
 					element={<HistoryPage />}
 				/>
-				<Route path={USER_ROUTES.BRANCHS.path} element={<Branchs />} />
+				<Route
+					path={USER_ROUTES.BRANCHS.path}
+					element={<BarberPage />}
+				/>
 				<Route
 					path={USER_ROUTES.FILTER.path}
 					element={<FilterPage />}

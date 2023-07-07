@@ -107,7 +107,7 @@ export const UserHeader = () => {
 	}, [])
 
 	const stylesHcange = () => {
-		if (path === 'branch' && isScrolled) {
+		if (path === 'barber' && isScrolled) {
 			return {
 				background: '#3a3a3a',
 			}
@@ -126,7 +126,7 @@ export const UserHeader = () => {
 						to='/'
 						className={styles.logo}
 						style={
-							path === 'branch'
+							path === 'barber'
 								? { color: 'white' }
 								: { color: 'black' }
 						}
@@ -139,7 +139,7 @@ export const UserHeader = () => {
 						className={styles.wrapper_located}
 						onClick={() => showModalHandler()}
 						style={
-							path === 'branch'
+							path === 'barber'
 								? { color: 'white' }
 								: { color: 'black' }
 						}
@@ -156,7 +156,7 @@ export const UserHeader = () => {
 					<Link
 						to='/partner'
 						style={
-							path === 'branch'
+							path === 'barber'
 								? { color: 'white' }
 								: { color: 'black' }
 						}
@@ -166,7 +166,7 @@ export const UserHeader = () => {
 					<Link
 						to='/contacts'
 						style={
-							path === 'branch'
+							path === 'barber'
 								? { color: 'white' }
 								: { color: 'black' }
 						}
@@ -210,7 +210,7 @@ export const UserHeader = () => {
 					) : (
 						<div
 							style={
-								path === 'branch'
+								path === 'barber'
 									? { color: 'white' }
 									: { color: 'black' }
 							}
