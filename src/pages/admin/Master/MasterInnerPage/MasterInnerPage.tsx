@@ -1,8 +1,30 @@
+import { useEffect } from 'react'
+import { useParams } from 'react-router'
 import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
 import { Button } from '../../../../components/UI/Buttons/Button/Button'
+import { getMasterById } from '../../../../store/features/master-slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { AnyAction } from 'redux'
 import styles from './MasterInnerPage.module.css'
 
 export const MasterInnerPage = () => {
+	const { dataMasterById } = useSelector((state: any) => state.master)
+
+	const { masterID } = useParams()
+	const dispatch = useDispatch()
+
+	//useEffect
+
+	useEffect(() => {
+		dispatch(getMasterById({ masterID }) as unknown as AnyAction)
+	}, [])
+
+	//function
+
+	//const
+
+	console.log(dataMasterById)
+
 	const BREAD_CRUMBS_MASTER = [
 		{
 			name: 'Мастеры',
@@ -23,9 +45,7 @@ export const MasterInnerPage = () => {
 					Добавит мастер
 				</Button>
 			</div>
-			<div>
-				
-			</div>
+			<div></div>
 		</div>
 	)
 }
