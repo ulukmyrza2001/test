@@ -30,12 +30,13 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
   } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = (data: any) => {
-
     dispatch(
       RegistrationUser({
         userData: data,
       })
-    );
+    ).then(() => {
+      window.location.reload();
+    });
     setActive(false);
   };
   return (
@@ -53,7 +54,6 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
           <span>Значение должно быть больше или равно 3 буквы</span>
         )}
       </div>
-      {/* lk */}
       <div className={styles.input_wrapper}>
         <label htmlFor="lastName" className="label">
           Фамилия:
@@ -67,13 +67,10 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
           <span>Значение должно быть больше или равно 3 буквы</span>
         )}
       </div>
-      {/* lk */}
       <div className={styles.input_wrapper}>
         <InputNumberMask
           label="Телефон:"
-          onChange={(value) =>
-            setValue("authInfoRequest.phoneNumber", `+${value}`)
-          }
+          onChange={(value) => setValue("authInfoRequest.phoneNumber", value)}
           value={watch("authInfoRequest.phoneNumber")}
         />
         {errors.authInfoRequest?.phoneNumber && (
