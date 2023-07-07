@@ -1,0 +1,34 @@
+.review {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	color: #cda582;
+	font-size: 30px;
+}
+.review_card {
+	padding: 1rem;
+	max-width: 400px;
+	background-color: #fbf3ea;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 20px;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+.review p {
+	margin-bottom: 20px;
+}
+
+.wrapper_review_header {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+.wrapper_user_name {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}

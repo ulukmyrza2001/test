@@ -1,16 +1,16 @@
+import { Fragment } from 'react'
 import styles from './Barber.module.css'
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { CgShapeRhombus } from 'react-icons/cg'
-import Img from '../../../assets/image/imgBarber.png'
-import Img1 from '../../../assets/image/imgBarber2.png'
 import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
 import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
+import Img from '../../../assets/image/imgBarber.png'
+import Img1 from '../../../assets/image/imgBarber2.png'
 import BackSliderImg from '../../../assets/image/barberSlide.svg'
-import { NavBar } from '../../../components/Navbar/NavBar'
 
 export const BarberPage = () => {
 	return (
-		<>
+		<Fragment>
 			<Container>
 				<div className={styles.header}>
 					<span>Home</span>
@@ -109,6 +109,6 @@ export const BarberPage = () => {
 					<ServiceCard />
 				</ContainerSlider>
 			</Container>
-		</>
+		</Fragment>
 	)
 }
