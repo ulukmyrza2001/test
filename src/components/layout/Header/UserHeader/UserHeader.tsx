@@ -108,17 +108,19 @@ export const UserHeader = () => {
 	}, [])
 
 	const stylesHcange = () => {
-		if (path === 'barber' && isScrolled) {
-			return {
-				background: '#3a3a3a',
-			}
-		} else if (path === '') {
-			return {
-				background: 'white',
+		if (path === 'barber') {
+			if (isScrolled) {
+				return {
+					background: '#3a3a3a',
+				}
 			}
 		} else if (path === 'beauty-salon') {
 			return {
 				background: '#cda582',
+			}
+		} else {
+			return {
+				background: 'white',
 			}
 		}
 	}
