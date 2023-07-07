@@ -36,8 +36,11 @@ export const ADMIN_ROUTES = {
 	DEFAULT: {
 		path: '/',
 	},
-	MASTER: {
+	MASTERS: {
 		path: '/masters',
+	},
+	MASTER: {
+		path: '/master/:masterID',
 	},
 	SERVICES: {
 		path: '/services',

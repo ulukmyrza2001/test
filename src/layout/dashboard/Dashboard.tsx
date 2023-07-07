@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styles from "./Dasboard.module.css";
+import React, { useState } from 'react'
+import styles from './Dasboard.module.css'
 import {
 	HiOutlineSpeakerphone,
 	HiOutlineMenu,
@@ -13,6 +13,7 @@ import { Divider } from '@mui/material'
 import Cookies from 'js-cookie'
 import { FaCalendarDays, FaFolderOpen } from 'react-icons/fa6'
 import { BsFillPeopleFill } from 'react-icons/bs'
+import { HiOutlineBuildingOffice2 } from 'react-icons/hi2'
 
 export const DashboardOutlet = () => {
 	const [open, setOpen] = useState(false)
@@ -42,7 +43,16 @@ export const DashboardOutlet = () => {
 					{ name: 'Поддержка', link: '/supports', icon: BiSupport },
 				]
 			case 'OWNER':
-				break
+				return [
+					{ name: 'Dashboard', link: '/dashboard', icon: MdHome },
+					{
+						name: 'Филиалы',
+						link: '/affiliate',
+						icon: HiOutlineBuildingOffice2,
+					},
+					{ name: 'Админы', link: '/admins', icon: FiUsers },
+					{ name: 'Поддержка', link: '/supports', icon: BiSupport },
+				]
 			case 'ADMIN':
 				return [
 					{ name: 'Календарь', link: '/', icon: FaCalendarDays },
@@ -76,15 +86,13 @@ export const DashboardOutlet = () => {
 					open
 						? styles.container_inside_dashboard_open
 						: styles.container_inside_dashboard_close
-				}
-			>
+				}>
 				<div
 					className={
 						open
 							? styles.card_dashboard_open
 							: styles.card_dashboard_close
-					}
-				>
+					}>
 					<div className={styles.dashboard_header}>
 						{open ? (
 							<HiMenuAlt3
@@ -115,8 +123,7 @@ export const DashboardOutlet = () => {
 											  item.subLink
 											? styles.dashboard_card_inside_active
 											: styles.dashboard_card_inside
-									}
-								>
+									}>
 									<div>
 										{React.createElement(item?.icon, {
 											size: '20',
@@ -127,8 +134,7 @@ export const DashboardOutlet = () => {
 											open
 												? styles.dashboard_title_open
 												: styles.dashboard_title_close
-										}
-									>
+										}>
 										{item?.name}
 									</h3>
 								</Link>
@@ -147,8 +153,7 @@ export const DashboardOutlet = () => {
 								open
 									? styles.dashboard_title_open
 									: styles.dashboard_title_close
-							}
-						>
+							}>
 							Выйти
 						</h3>
 					</div>
