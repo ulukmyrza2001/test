@@ -63,9 +63,7 @@ export const USER_ROUTES = {
 	CONTACTS: {
 		path: '/contacts',
 	},
-	BRANCHS: {
-		path: '/barber',
-	},
+
 	FILTER: {
 		path: '/filter',
 	},
@@ -74,6 +72,12 @@ export const USER_ROUTES = {
 	},
 	TERMS: {
 		path: '/terms',
+	},
+	BARBER: {
+		path: '/barber',
+	},
+	BEAUTY_SALON: {
+		path: '/beauty-salon',
 	},
 }
 

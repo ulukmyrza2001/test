@@ -24,6 +24,9 @@
 }
 .logo {
 	font-size: 23px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 .wrapper_nav {
 	display: flex;

@@ -9,6 +9,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { ReactComponent as BeautyIcon } from '../../../../assets/icons/beauty.svg'
 
 export const UserHeader = () => {
 	const { pathname } = useLocation()
@@ -115,6 +116,26 @@ export const UserHeader = () => {
 			return {
 				background: 'white',
 			}
+		} else if (path === 'beauty-salon') {
+			return {
+				background: '#cda582',
+			}
+		}
+	}
+
+	const colorText = () => {
+		if (path === 'barber') {
+			return {
+				color: 'white',
+			}
+		} else if (path === '') {
+			return {
+				color: 'black',
+			}
+		} else if (path === 'beauty-salon') {
+			return {
+				color: 'white',
+			}
 		}
 	}
 
@@ -122,27 +143,22 @@ export const UserHeader = () => {
 		<header className={styles.header} style={stylesHcange()}>
 			<div className={styles.inner_header}>
 				<div>
-					<Link
-						to='/'
-						className={styles.logo}
-						style={
-							path === 'barber'
-								? { color: 'white' }
-								: { color: 'black' }
-						}
-					>
-						Чебер
+					<Link to='/' className={styles.logo} style={colorText()}>
+						Чебер{' '}
+						{path === 'beauty-salon' ? (
+							<BeautyIcon color='white' />
+						) : path === 'barber' ? (
+							<span>💈</span>
+						) : (
+							''
+						)}
 					</Link>
 				</div>
 				<div className={styles.wrapper_nav}>
 					<div
 						className={styles.wrapper_located}
 						onClick={() => showModalHandler()}
-						style={
-							path === 'barber'
-								? { color: 'white' }
-								: { color: 'black' }
-						}
+						style={colorText()}
 					>
 						<LocationOnIcon />
 						{location}
@@ -153,24 +169,10 @@ export const UserHeader = () => {
 					>
 						asd
 					</ModalComponent>
-					<Link
-						to='/partner'
-						style={
-							path === 'barber'
-								? { color: 'white' }
-								: { color: 'black' }
-						}
-					>
+					<Link to='/partner' style={colorText()}>
 						Стать партнером
 					</Link>
-					<Link
-						to='/contacts'
-						style={
-							path === 'barber'
-								? { color: 'white' }
-								: { color: 'black' }
-						}
-					>
+					<Link to='/contacts' style={colorText()}>
 						Контакты
 					</Link>
 					{role ? (
@@ -209,11 +211,7 @@ export const UserHeader = () => {
 						</div>
 					) : (
 						<div
-							style={
-								path === 'barber'
-									? { color: 'white' }
-									: { color: 'black' }
-							}
+							style={colorText()}
 							className={styles.wrapper_located}
 							onClick={() => setShowLoginModal(true)}
 						>
