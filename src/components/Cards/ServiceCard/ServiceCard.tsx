@@ -16,7 +16,7 @@ interface IServiceCard {
 export const ServiceCard = (props: IServiceCard) => {
   const { isloading, ...restProps } = props;
   return (
-    <Link to="/1">
+    <Link to="/branch">
       <Card className={styles.main}>
         <CardActionArea style={{ ...restProps }} className={styles.mainwrapper}>
           {isloading ? (
