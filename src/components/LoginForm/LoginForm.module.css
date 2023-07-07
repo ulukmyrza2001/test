@@ -1,16 +1,22 @@
 .form {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
 .input_wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .input {
-	border-radius: 5px;
-	padding: 10px 5px;
-	border: 0.5px solid #cacaca;
+  border-radius: 5px;
+  padding: 10px 5px;
+  border: 0.5px solid #cacaca;
+}
+.title {
+  font-size: 24px;
+  margin-top: 15px;
 }

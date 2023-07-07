@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import styles from "./TabsBasic.module.css";
 
 interface IUiTabs {
+  color?: string;
   children?: React.ReactNode;
   index?: number;
   matches?: string;
@@ -29,7 +30,7 @@ function a11yProps(index: number) {
 }
 
 export const TabsBasic = (props: IUiTabs) => {
-  const { matches, value, onChange, tabsValue, children } = props;
+  const { matches, value, onChange, tabsValue, children, color } = props;
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -47,7 +48,7 @@ export const TabsBasic = (props: IUiTabs) => {
           sx={!matches ? { width: "100%" } : { width: "800px" }}
           TabIndicatorProps={{
             style: {
-              backgroundColor: "#5460e6",
+              backgroundColor: color ? color : "#33a011",
             },
           }}
         >
@@ -55,7 +56,7 @@ export const TabsBasic = (props: IUiTabs) => {
             return (
               <Tab
                 style={{
-                  color: "#5460e6",
+                  color: color ? color : "#33a011",
                 }}
                 // onClick={() => item?.onClickHandler()}
                 label={item.title}
