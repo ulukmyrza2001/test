@@ -1,4 +1,6 @@
 import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
+import { Button } from '../../../../components/UI/Buttons/Button/Button'
+import styles from './MasterInnerPage.module.css'
 
 export const MasterInnerPage = () => {
 	const BREAD_CRUMBS_MASTER = [
@@ -14,9 +16,16 @@ export const MasterInnerPage = () => {
 		},
 	]
 	return (
-		<div>
-			<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
-			<div>MasterInnerPage</div>
+		<div className={styles.container_master_inner_page}>
+			<div className={styles.container_master_inner_header}>
+				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
+				<Button width='180px' onClick={() => console.log('abu')}>
+					Добавит мастер
+				</Button>
+			</div>
+			<div>
+				
+			</div>
 		</div>
 	)
 }
