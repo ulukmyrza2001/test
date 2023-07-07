@@ -3,6 +3,10 @@ import { Container } from '../../../styles/ContainerStyle/Container'
 import { CgShapeRhombus } from 'react-icons/cg'
 import Img from '../../../assets/image/imgBarber.png'
 import Img1 from '../../../assets/image/imgBarber2.png'
+import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
+import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
+import BackSliderImg from '../../../assets/image/barberSlide.svg'
+import { NavBar } from '../../../components/Navbar/NavBar'
 
 export const BarberPage = () => {
 	return (
@@ -74,6 +78,36 @@ export const BarberPage = () => {
 					</div>
 					<div className={styles.wrapper_map}>asdasd</div>
 				</div>
+			</Container>
+			<Container
+				backColor={{
+					backgroundImage: `url(${BackSliderImg})`,
+					backgroundPosition: 'center',
+					backgroundSize: 'cover',
+					backgroundRepeat: 'no-repeat',
+					padding: '2rem',
+				}}
+			>
+				<ContainerSlider
+					dots={false}
+					infinite={true}
+					speed={400}
+					slidesToShow={4}
+					slidesToScroll={1}
+					swipeToSlide={true}
+					autoplay={false}
+					pauseOnHover={true}
+					arrowAndprev={true}
+					typeButton={true}
+					variableWidth={true}
+				>
+					<ServiceCard />
+					<ServiceCard />
+					<ServiceCard />
+					<ServiceCard />
+					<ServiceCard />
+					<ServiceCard />
+				</ContainerSlider>
 			</Container>
 		</>
 	)
