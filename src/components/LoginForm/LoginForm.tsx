@@ -69,33 +69,35 @@ export default function LoginForm({ active, setActive }: LoginProps) {
         onChange={handleChange}
       >
         <TabPanel index={0} value={tabValue}>
-          <h1>Логин</h1>
-          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            <div className={styles.input_wrapper}>
-              <InputNumberMask
-                label="Телефон:"
-                onChange={(value) => setValue("phoneNumber", value)}
-                value={watch("phoneNumber")}
-              />
-              {errors.phoneNumber && <span>This field is required</span>}
-            </div>
-            <div className={styles.input_wrapper}>
-              <label htmlFor="password" className="label">
-                Пароль:
-              </label>
-              <input
-                className={styles.input}
-                type="password"
-                {...register("password", { required: true })}
-              />
-              {errors.password && <span>This field is required</span>}
-            </div>
-            <Button type="submit">Submit</Button>
-          </form>
+          <div className={styles.login}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <div className={styles.input_wrapper}>
+                <InputNumberMask
+                  label="Телефон:"
+                  onChange={(value) => setValue("phoneNumber", value)}
+                  value={watch("phoneNumber")}
+                />
+                {errors.phoneNumber && <span>This field is required</span>}
+              </div>
+              <div className={styles.input_wrapper}>
+                <label htmlFor="password" className="label">
+                  Пароль:
+                </label>
+                <input
+                  className={styles.input}
+                  type="password"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && <span>This field is required</span>}
+              </div>
+              <Button type="submit">Submit</Button>
+            </form>
+          </div>
         </TabPanel>
         <TabPanel index={1} value={tabValue}>
-          <h1>Регистрация</h1>
-          <RegistrationForm setActive={setActive} />
+          <div className={styles.registration}>
+            <RegistrationForm setActive={setActive} />
+          </div>
         </TabPanel>
       </TabsBasic>
     </ModalComponent>
