@@ -28,7 +28,7 @@ export function BreadCrumbs({ paths }: any) {
 					</div>
 				) : (
 					<Link key={path.path} to={path.to}>
-						<a className={styles.navlink}>
+						<span className={styles.navlink}>
 							{path.isLoading ? (
 								<ThreeDots
 									height='30'
@@ -41,7 +41,7 @@ export function BreadCrumbs({ paths }: any) {
 							) : (
 								path.name
 							)}
-						</a>
+						</span>
 					</Link>
 				)
 			})}

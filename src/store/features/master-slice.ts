@@ -11,10 +11,19 @@ interface MasterProps {
 				phoneNumber: string
 		  }[]
 		| []
+	dataMasterById: {
+		id: number
+		firstName: string
+		lastName: string
+		phoneNumber: string
+	} | null
 	isLoadingMaster: boolean
 }
 interface deleteMasterProps {
 	masterId: number
+}
+interface getMasterByIdProps {
+	masterID: number | string | undefined
 }
 interface postMasterProps {
 	masterData: {
@@ -43,6 +52,18 @@ export const getMaster = createAsyncThunk(
 	async (_, { rejectWithValue }) => {
 		try {
 			const response = await axiosInstance.get('/v1/masters')
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const getMasterById = createAsyncThunk(
+	'master/getMasterById',
+	async ({ masterID }: getMasterByIdProps, { rejectWithValue }) => {
+		try {
+			const response = await axiosInstance.get(`/v1/masters/${masterID}`)
 			return response.data
 		} catch (error) {
 			rejectWithValue((error as Error).message)
@@ -105,6 +126,7 @@ export const putMaster = createAsyncThunk(
 
 const initialState: MasterProps = {
 	dataMaster: [],
+	dataMasterById: null,
 	isLoadingMaster: false,
 }
 
@@ -123,6 +145,17 @@ export const masterSlice = createSlice({
 			state.dataMaster = action.payload
 		}),
 		builder.addCase(getMaster.rejected, (state) => {
+			state.isLoadingMaster = false
+		}),
+
+		builder.addCase(getMasterById.pending, (state) => {
+			state.isLoadingMaster = true
+		}),
+		builder.addCase(getMasterById.fulfilled, (state, action) => {
+			state.isLoadingMaster = false
+			state.dataMasterById = action.payload
+		}),
+		builder.addCase(getMasterById.rejected, (state) => {
 			state.isLoadingMaster = false
 		}),
 
