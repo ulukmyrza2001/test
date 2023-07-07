@@ -63,17 +63,21 @@ export const USER_ROUTES = {
 	CONTACTS: {
 		path: '/contacts',
 	},
-	BRANCHS: {
-		path: '/barber',
-	},
+
 	FILTER: {
-		path: '/barber',
+		path: '/filter',
 	},
 	PRIVACY: {
 		path: '/privacy',
 	},
 	TERMS: {
 		path: '/terms',
+	},
+	BARBER: {
+		path: '/barber',
+	},
+	BEAUTY_SALON: {
+		path: '/beauty-salon',
 	},
 }
 

@@ -13,6 +13,7 @@ import { BarberPage } from '../pages/user/barber'
 import { PrivacyPage } from '../pages/user/privacy'
 import { TermsPage } from '../pages/user/terms'
 import { FilterPage } from '../pages/user/filter'
+import { BeautySalonPage } from '../pages/user/beauty-salon'
 
 export const UserRoutes = () => {
 	return (
@@ -32,16 +33,20 @@ export const UserRoutes = () => {
 					element={<HistoryPage />}
 				/>
 				<Route
-					path={USER_ROUTES.BRANCHS.path}
-					element={<BarberPage />}
-				/>
-				<Route
 					path={USER_ROUTES.FILTER.path}
 					element={<FilterPage />}
 				/>
 				<Route
 					path={USER_ROUTES.PRIVACY.path}
 					element={<PrivacyPage />}
+				/>
+				<Route
+					path={USER_ROUTES.BARBER.path}
+					element={<BarberPage />}
+				/>
+				<Route
+					path={USER_ROUTES.BEAUTY_SALON.path}
+					element={<BeautySalonPage />}
 				/>
 				<Route path={USER_ROUTES.TERMS.path} element={<TermsPage />} />
 			</Route>
