@@ -119,22 +119,24 @@ export const ContainerSlider = ({
 		swipeToSlide: props.swipeToSlide,
 		variableWidth: props.variableWidth,
 		accessibility: true,
-		nextArrow:
-			props.arrowAndprev && !props.typeButton ? (
+		nextArrow: props.arrowAndprev ? (
+			!props.typeButton ? (
 				screenWidth > 600 ? (
 					<SampleNextArrow typeButton={props.typeButton} />
 				) : undefined
 			) : (
 				<SampleNextArrow typeButton={props.typeButton} />
-			),
-		prevArrow:
-			props.arrowAndprev && !props.typeButton ? (
+			)
+		) : undefined,
+		prevArrow: props.arrowAndprev ? (
+			!props.typeButton ? (
 				screenWidth > 600 ? (
 					<SamplePrevArrow typeButton={props.typeButton} />
 				) : undefined
 			) : (
 				<SamplePrevArrow typeButton={props.typeButton} />
-			),
+			)
+		) : undefined,
 		appendDots: (dots: any) => <AppendDots dots={dots} />,
 	}
 	return (
