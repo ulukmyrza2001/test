@@ -1,7 +1,7 @@
 .breadcrumbs {
 	width: 100%;
 }
-.link {
+.navlink {
 	color: #7395ae;
 	text-decoration: none;
 	font-size: 18px;
@@ -15,7 +15,6 @@
 	font-family: sans-serif;
 	color: black;
 }
-
-.link:hover {
+.navlink:hover {
 	text-decoration: underline;
 }
