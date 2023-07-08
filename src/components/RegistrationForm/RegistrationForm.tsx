@@ -6,6 +6,8 @@ import { InputNumberMask } from "../UI/Inputs/InputMask/InputMask";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { RegistrationUser } from "../../store/features/auth-slice";
+import { Input } from "../UI/Inputs/Input/Input";
+import { InputPassword } from "../UI/Inputs/InputPassword/InputPassword";
 
 interface LoginProps {
   active?: boolean;
@@ -42,12 +44,11 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.input_wrapper}>
-        <label htmlFor="firstName" className="label">
-          Имя:
-        </label>
-        <input
-          className={styles.input}
+        <Input
+          label="Имя:"
+          placeholder="Имя:"
           type="text"
+          htmlFor="firstName"
           {...register("firstName", { min: 3, required: true })}
         />
         {errors.firstName && (
@@ -55,12 +56,11 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
         )}
       </div>
       <div className={styles.input_wrapper}>
-        <label htmlFor="lastName" className="label">
-          Фамилия:
-        </label>
-        <input
-          className={styles.input}
+        <Input
+          label="Фамилия:"
+          placeholder="Фамилия:"
           type="text"
+          htmlFor="lastName"
           {...register("lastName", { min: 3, required: true })}
         />
         {errors.lastName && (
@@ -78,11 +78,10 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
         )}
       </div>
       <div className={styles.input_wrapper}>
-        <label htmlFor="password" className="label">
-          Пароль:
-        </label>
-        <input
-          className={styles.input}
+        <InputPassword
+          label="Пароль"
+          placeholder="Пароль"
+          htmlFor="password"
           type="password"
           {...register(`authInfoRequest.password`, { min: 6, required: true })}
         />
@@ -90,6 +89,7 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
           <span>Пароль должен содержать больше или равно 6 значение </span>
         )}
       </div>
+
       <Button type="submit">Submit</Button>
     </form>
   );
