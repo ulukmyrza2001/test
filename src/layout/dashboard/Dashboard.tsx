@@ -118,7 +118,12 @@ export const DashboardOutlet = () => {
 									key={i}
 									className={
 										`/${
-											locations.pathname.split('/')[1]
+											locations.pathname.split('/')[1] ===
+											'master'
+												? 'masters'
+												: locations.pathname.split(
+														'/',
+												  )[1]
 										}` === item.link
 											? styles.dashboard_card_inside_active
 											: locations.pathname ===
