@@ -10,7 +10,6 @@ import { SignUp } from "../../store/features/auth-slice";
 import { TabsBasic } from "../UI/Tabs/TabsBasic/TabsBasic";
 import { TabPanel } from "../UI/Tabs/TabPanel/TabPanel";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import { InputPassword } from "../UI/Inputs/InputPassword/InputPassword";
 
 interface LoginProps {
   active: boolean;
@@ -81,10 +80,11 @@ export default function LoginForm({ active, setActive }: LoginProps) {
                 {errors.phoneNumber && <span>This field is required</span>}
               </div>
               <div className={styles.input_wrapper}>
-                <InputPassword
-                  label="Пароль:"
-                  placeholder="Пароль:"
-                  htmlFor="password"
+                <label htmlFor="password" className="label">
+                  Пароль:
+                </label>
+                <input
+                  className={styles.input}
                   type="password"
                   {...register("password", { required: true })}
                 />
