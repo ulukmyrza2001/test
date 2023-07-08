@@ -79,8 +79,8 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
       </div>
       <div className={styles.input_wrapper}>
         <InputPassword
-          label="Пароль"
-          placeholder="Пароль"
+          label="Пароль:"
+          placeholder="Пароль:"
           htmlFor="password"
           type="password"
           {...register(`authInfoRequest.password`, { min: 6, required: true })}
