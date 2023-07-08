@@ -1,6 +1,6 @@
 .form {
   width: 350px;
-  height: auto;
+  height: 370px;
   display: flex;
   flex-direction: column;
   gap: 20px;
