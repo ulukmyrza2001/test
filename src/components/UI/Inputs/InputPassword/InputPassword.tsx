@@ -46,7 +46,7 @@ export function InputPassword(props: InputPasswordProps) {
       )}
       <div className={styles.inpcontainer}>
         <input
-          
+          placeholder={placeholder}
           className={styles.input}
           type={show ? "text" : "password"}
           {...preProps}

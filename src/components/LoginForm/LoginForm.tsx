@@ -82,8 +82,8 @@ export default function LoginForm({ active, setActive }: LoginProps) {
               </div>
               <div className={styles.input_wrapper}>
                 <InputPassword
-                  label="Пароль"
-                  placeholder="Пароль"
+                  label="Пароль:"
+                  placeholder="Пароль:"
                   htmlFor="password"
                   type="password"
                   {...register("password", { required: true })}
