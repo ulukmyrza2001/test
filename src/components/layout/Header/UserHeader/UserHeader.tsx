@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { ReactComponent as BeautyIcon } from '../../../../assets/icons/beauty.svg'
+import { GiBeard } from 'react-icons/gi'
 
 export const UserHeader = () => {
 	const { pathname } = useLocation()
@@ -134,7 +135,7 @@ export const UserHeader = () => {
 						{path === 'beauty-salon' ? (
 							<BeautyIcon color='white' />
 						) : path === 'barber' ? (
-							<span>💈</span>
+							<GiBeard fontSize={25} />
 						) : (
 							''
 						)}
