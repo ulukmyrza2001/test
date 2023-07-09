@@ -147,20 +147,12 @@ export const ServicesBranchContent = () => {
 						label='Акции'
 						{...a11yProps(1)}
 					/>
-					<Tab
-						className={styles.tabs_name}
-						label='Работы'
-						{...a11yProps(2)}
-					/>
 				</Tabs>
 				<TabPanel value={value} index={0}>
 					<AccordionUi data={data} />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
 					Item Two
-				</TabPanel>
-				<TabPanel value={value} index={2}>
-					Item Three
 				</TabPanel>
 			</Box>
 		</Container>
