@@ -1,4 +1,4 @@
 {
-    "API_URL":"http://ec2-3-75-97-223.eu-central-1.compute.amazonaws.com/api",
-    "DEV_URL":"http://ec2-3-75-97-223.eu-central-1.compute.amazonaws.com/api"
+	"API_URL": "http://ec2-3-75-97-223.eu-central-1.compute.amazonaws.com/api",
+	"DEV_URL": "http://ec2-3-75-97-223.eu-central-1.compute.amazonaws.com/api"
 }

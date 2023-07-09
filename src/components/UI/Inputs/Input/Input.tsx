@@ -4,8 +4,8 @@ import styles from "./Input.module.css";
 interface IinputProps {
   label?: string;
   type?: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  value: string | number | readonly string[] | undefined;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number | readonly string[] | undefined;
   placeholder?: string;
   disabled?: boolean;
   width?: string;
@@ -17,6 +17,7 @@ interface IinputProps {
   background?: string;
   border?: string;
   color?: string;
+  htmlFor?: string;
   onKeyDown?: (value: any) => void;
 }
 
@@ -28,13 +29,14 @@ export const Input = (props: IinputProps) => {
     value,
     placeholder,
     disabled,
+    htmlFor,
     onKeyDown,
     ...perProps
   } = props;
   return (
     <div className={styles.wrapper}>
       {label && (
-        <label className={styles.label} htmlFor={label}>
+        <label className={styles.label} htmlFor={htmlFor}>
           {label}
         </label>
       )}

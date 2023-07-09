@@ -5,7 +5,7 @@ import {
 	HiOutlineMenu,
 	HiMenuAlt3,
 } from 'react-icons/hi'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { BiLogIn, BiSupport } from 'react-icons/bi'
 import { MdHome, MdInfoOutline } from 'react-icons/md'
 import { FiUsers } from 'react-icons/fi'
@@ -19,12 +19,14 @@ export const DashboardOutlet = () => {
 	const [open, setOpen] = useState(false)
 
 	const locations = useLocation()
+	const navigate = useNavigate()
 	const role = Cookies.get('role')
 
 	const logOut = () => {
 		document.cookie = `isAuthenticated=${false}; path=/`
 		Cookies.remove('role')
 		Cookies.remove('token')
+		navigate('/')
 		window.location.reload()
 	}
 
@@ -116,7 +118,12 @@ export const DashboardOutlet = () => {
 									key={i}
 									className={
 										`/${
-											locations.pathname.split('/')[1]
+											locations.pathname.split('/')[1] ===
+											'master'
+												? 'masters'
+												: locations.pathname.split(
+														'/',
+												  )[1]
 										}` === item.link
 											? styles.dashboard_card_inside_active
 											: locations.pathname ===

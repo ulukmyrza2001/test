@@ -1,5 +1,6 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import styles from "./InputMask.module.css";
 
 interface IinputNumberMask {
   label?: string;
@@ -27,9 +28,13 @@ export function InputNumberMask(props: IinputNumberMask) {
 
   return (
     <div>
-      {label && <label htmlFor={label}>{label}</label>}
+      {label && (
+        <label className={styles.label} htmlFor={label}>
+          {label}
+        </label>
+      )}
       <PhoneInput
-        {...props}
+        {...restProps}
         country={"kg"}
         onChange={handleChange}
         onlyCountries={["kg", "kz", "uz"]}
@@ -38,8 +43,8 @@ export function InputNumberMask(props: IinputNumberMask) {
         inputStyle={{
           width: "100%",
           height: "40px",
-          border: "1px solid var(--ui-disabled-color)",
-          color: "var(--ui-disabled-color)",
+          border: "1px solid #e0d5d5",
+          // color: "#7e7e7e",
         }}
         buttonStyle={{
           background: "white",

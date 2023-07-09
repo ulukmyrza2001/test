@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ModalComponent } from "../UI/Modal/Modal";
@@ -6,6 +7,9 @@ import { InputNumberMask } from "../UI/Inputs/InputMask/InputMask";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { SignUp } from "../../store/features/auth-slice";
+import { TabsBasic } from "../UI/Tabs/TabsBasic/TabsBasic";
+import { TabPanel } from "../UI/Tabs/TabPanel/TabPanel";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 interface LoginProps {
   active: boolean;
@@ -17,7 +21,19 @@ interface FormData {
   password: string;
 }
 
+const TABS_LOGIN = [
+  {
+    id: 1,
+    title: "Логин",
+  },
+  {
+    id: 2,
+    title: "Регистрация",
+  },
+];
+
 export default function LoginForm({ active, setActive }: LoginProps) {
+  const [tabValue, setTabValue] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
 
   const {
@@ -35,7 +51,10 @@ export default function LoginForm({ active, setActive }: LoginProps) {
       })
     );
     setActive(false);
-    console.log(data);
+  };
+
+  const handleChange = (_: any, newValue: number) => {
+    setTabValue(newValue);
   };
 
   const hideLoginModal = () => {
@@ -44,28 +63,43 @@ export default function LoginForm({ active, setActive }: LoginProps) {
 
   return (
     <ModalComponent active={active} handleClose={hideLoginModal}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.input_wrapper}>
-          <InputNumberMask
-            label="Телефон:"
-            onChange={(value) => setValue("phoneNumber", value)}
-            value={watch("phoneNumber")}
-          />
-          {errors.phoneNumber && <span>This field is required</span>}
-        </div>
-        <div className={styles.input_wrapper}>
-          <label htmlFor="password" className="label">
-            Пароль:
-          </label>
-          <input
-            className={styles.input}
-            type="password"
-            {...register("password", { required: true })}
-          />
-          {errors.password && <span>This field is required</span>}
-        </div>
-        <Button type="submit">Submit</Button>
-      </form>
+      <TabsBasic
+        tabsValue={TABS_LOGIN}
+        value={tabValue}
+        onChange={handleChange}
+      >
+        <TabPanel index={0} value={tabValue}>
+          <div className={styles.login}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <div className={styles.input_wrapper}>
+                <InputNumberMask
+                  label="Телефон:"
+                  onChange={(value) => setValue("phoneNumber", value)}
+                  value={watch("phoneNumber")}
+                />
+                {errors.phoneNumber && <span>This field is required</span>}
+              </div>
+              <div className={styles.input_wrapper}>
+                <label htmlFor="password" className="label">
+                  Пароль:
+                </label>
+                <input
+                  className={styles.input}
+                  type="password"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && <span>This field is required</span>}
+              </div>
+              <Button type="submit">Submit</Button>
+            </form>
+          </div>
+        </TabPanel>
+        <TabPanel index={1} value={tabValue}>
+          <div className={styles.registration}>
+            <RegistrationForm setActive={setActive} />
+          </div>
+        </TabPanel>
+      </TabsBasic>
     </ModalComponent>
   );
 }

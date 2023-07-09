@@ -5,9 +5,13 @@
 	padding: 20px;
 	border: 1px solid #c2c3c4;
 	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 .container_master_header {
 	width: 100%;
 	display: flex;
+	align-items: flex-end;
 	justify-content: space-around;
 }

@@ -1,0 +1,132 @@
+.container_master_inner_page {
+	width: 100%;
+	height: 96vh;
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid #c2c3c4;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.container_master_inner_header {
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.container_main_master_inner_page {
+	width: 100%;
+	border-top: 1px solid #c2c3c4;
+	border-bottom: 1px solid #c2c3c4;
+	padding: 10px;
+	display: flex;
+	gap: 10px;
+}
+.container_master_main_avatar {
+	width: 220px;
+	min-width: 220px;
+}
+.container_master_avatar {
+	width: 150px;
+	height: 150px;
+	border: 1px solid #c2c3c4;
+	border-radius: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.container_master_image {
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+	object-fit: cover;
+}
+.container_master_card_info {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	gap: 8px;
+}
+.master_fullname_title {
+	font-size: 20px;
+	font-weight: 400;
+}
+.container_master_shedule_typeone_active {
+	width: 100%;
+	transition-duration: 500ms;
+	border: 1px solid #c2c3c4;
+}
+.master_schedule_datepicker {
+	width: 210px;
+	height: 40px;
+	margin: 10px;
+	border-radius: 12px;
+	border: 1px solid #c2c3c4;
+	font-size: 12px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.container_schedule_typeone_dayofweek {
+	width: 25px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border-right: 1px solid #c2c3c4;
+}
+.container_schedule_card {
+	font-size: 14px;
+	color: #acacac;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.container_schedule_typeone {
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+}
+.container_schedule_typetwo_timeofweek {
+	width: 100%;
+	height: 25px;
+	border-top: 1px solid #c2c3c4;
+	display: flex;
+	justify-content: space-around;
+}
+.container_schedule_bottom_card {
+	width: 10%;
+	font-size: 12px;
+	color: #acacac;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.on_the_right_container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	gap: 3px;
+	margin-left: 2px;
+	margin-right: 2px;
+	padding-top: 2px;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+.schedules_insides_container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	gap: 3px;
+	justify-content: space-around;
+}
+.schedules_inside_card {
+	width: 100%;
+	height: 100%;
+	border: 1.5px dashed #acacac;
+}

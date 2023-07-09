@@ -4,7 +4,7 @@ import Img from '../../../assets/image/imgBarber.png'
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { CgShapeRhombus } from 'react-icons/cg'
 import { AboutContent } from './aboutContent'
-import { ServicesContent } from './servicesContent'
+import { OurWorkContent } from './ourWorkContent'
 import { ServicesBranchContent } from './servicesBranchContent'
 import BannerBarber from '../../../assets/image/barber.svg'
 
@@ -88,7 +88,7 @@ export const BarberPage = () => {
 			<AboutContent />
 			<br />
 			<ServicesBranchContent />
-			<ServicesContent />
+			<OurWorkContent />
 		</Fragment>
 	)
 }

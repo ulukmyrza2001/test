@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { ReactComponent as BeautyIcon } from '../../../../assets/icons/beauty.svg'
+import { GiBeard } from 'react-icons/gi'
 
 export const UserHeader = () => {
 	const { pathname } = useLocation()
@@ -93,26 +94,10 @@ export const UserHeader = () => {
 		window.location.reload()
 	}
 
-	const [isScrolled, setIsScrolled] = useState(false)
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.pageYOffset
-			setIsScrolled(scrollTop > 0)
-		}
-
-		window.addEventListener('scroll', handleScroll)
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [])
-
 	const stylesHcange = () => {
 		if (path === 'barber') {
-			if (isScrolled) {
-				return {
-					background: '#858585',
-				}
+			return {
+				background: '#858585',
 			}
 		} else if (path === 'beauty-salon') {
 			return {
@@ -150,7 +135,7 @@ export const UserHeader = () => {
 						{path === 'beauty-salon' ? (
 							<BeautyIcon color='white' />
 						) : path === 'barber' ? (
-							<span>💈</span>
+							<GiBeard fontSize={25} />
 						) : (
 							''
 						)}
