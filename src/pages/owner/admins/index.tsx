@@ -35,11 +35,10 @@ export const AdminsPage = () => {
 
   useEffect(() => {
     dispatch(adminsGet() as unknown as AnyAction);
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (itemId: any, event: React.MouseEvent) => {
     event.stopPropagation();
-    console.log(itemId);
     dispatch(
       adminsDelete({
         adminId: itemId,
@@ -49,7 +48,6 @@ export const AdminsPage = () => {
 
   const handleEdit = (item: any, event: React.MouseEvent) => {
     event.stopPropagation();
-    console.log(item.id);
     setData({
       ...data,
       adminId: item.id,

@@ -12,8 +12,29 @@ import { getRegionSelect } from "../../../../store/features/region-slice";
 import { getCitySelect } from "../../../../store/features/city-slice";
 import { putBranch } from "../../../../store/features/branch-slice";
 
-export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
+export const EditAffilate = ({
+  isOpen,
+  setIsOpen,
+  data,
+  setData,
+}: {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+  data: {
+    phoneNumber: string;
+    countryId: { label: string; value: number } | null;
+    branchId: any;
+    regionId: { label: string; value: number } | null;
+    cityId: { label: string; value: number } | null;
+    street: string;
+    latitude: null | number;
+    longitude: null | number;
+  };
+  setData: any;
+}) => {
   const dispatch = useDispatch();
+
+  const [validation, setValidation] = useState(false);
 
   const { countriesData, isLoadingCountries } = useSelector(
     (state: any) => state.countries
@@ -26,7 +47,7 @@ export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
   const { cityData, isLoadingCity } = useSelector((state: any) => state.city);
 
   useEffect(() => {
-    if (countriesData.length === 0) {
+    if (countriesData === null) {
       dispatch(getCountriesSelect() as never as AnyAction);
     }
     if (data.countryId !== null) {
@@ -36,7 +57,7 @@ export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
         }) as never as AnyAction
       );
     }
-  }, [data.countryId]);
+  }, [data.countryId, countriesData, dispatch]);
 
   useEffect(() => {
     if (data.regionId !== null) {
@@ -46,12 +67,23 @@ export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
         }) as never as AnyAction
       );
     }
-  }, [data.regionId]);
+  }, [data.regionId, dispatch]);
+
+  useEffect(() => {
+    const isValid =
+      data.phoneNumber !== "" &&
+      data.countryId !== null &&
+      data.regionId !== null &&
+      data.cityId !== null &&
+      data.street !== "";
+
+    setValidation(isValid);
+  }, [data]);
 
   const handlePost = () => {
     dispatch(
       putBranch({
-        branchId: data.branchId,
+        branchId: data?.branchId,
         branchData: {
           regionId: data.regionId?.value,
           cityId: data.regionId?.value,
@@ -173,7 +205,9 @@ export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
           >
             Закрыть
           </Button>
-          <Button onClick={handlePost}>Сохранить</Button>
+          <Button onClick={handlePost} disabled={!validation}>
+            Сохранить
+          </Button>
         </div>
       </div>
     </ModalComponent>

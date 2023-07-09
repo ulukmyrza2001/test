@@ -8,7 +8,6 @@ export const getSubCategorySelect = createAsyncThunk(
       const response = await axiosInstance.get(
         `sub-category-service/select/${categoryServiceId}`
       );
-      console.log(response);
       return response;
     } catch (error) {
       rejectWithValue((error as Error).message);

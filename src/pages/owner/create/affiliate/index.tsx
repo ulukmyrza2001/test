@@ -15,6 +15,7 @@ import { getCitySelect } from "../../../../store/features/city-slice";
 export const CreateAffiliate = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [valiation, setValidation] = useState(false);
   const [data, setData] = useState<{
     phoneNumber: string;
     countryId: { label: string; value: number } | null;
@@ -44,7 +45,7 @@ export const CreateAffiliate = () => {
   const { cityData, isLoadingCity } = useSelector((state: any) => state.city);
 
   useEffect(() => {
-    if (countriesData.length === 0) {
+    if (data.countryId === null) {
       dispatch(getCountriesSelect() as never as AnyAction);
     }
     if (data.countryId !== null) {
@@ -54,7 +55,7 @@ export const CreateAffiliate = () => {
         }) as never as AnyAction
       );
     }
-  }, [data.countryId]);
+  }, [data.countryId, dispatch]);
 
   useEffect(() => {
     if (data.regionId !== null) {
@@ -64,7 +65,18 @@ export const CreateAffiliate = () => {
         }) as never as AnyAction
       );
     }
-  }, [data.regionId]);
+  }, [data.regionId, dispatch]);
+
+  useEffect(() => {
+    const isValid =
+      data.phoneNumber !== "" &&
+      data.countryId !== null &&
+      data.regionId !== null &&
+      data.cityId !== null &&
+      data.street !== "";
+
+    setValidation(isValid);
+  }, [data]);
 
   const Reset = () => {
     setData({
@@ -216,7 +228,9 @@ export const CreateAffiliate = () => {
           >
             Сбросить
           </Button>
-          <Button onClick={hundlePost}>Сохранить</Button>
+          <Button onClick={hundlePost} disabled={!valiation}>
+            Сохранить
+          </Button>
         </div>
       </div>
     </div>

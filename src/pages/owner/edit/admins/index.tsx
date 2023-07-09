@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { ModalComponent } from "../../../../components/UI/Modal/Modal";
 import Styles from "./style.module.css";
-import { LonelySelect } from "../../../../components/UI/Selects/LonelySelect/LonelySelect";
 import { Input } from "../../../../components/UI/Inputs/Input/Input";
 import { InputNumberMask } from "../../../../components/UI/Inputs/InputMask/InputMask";
 import { Button } from "../../../../components/UI/Buttons/Button/Button";
 import { useDispatch } from "react-redux";
 import { AnyAction } from "@reduxjs/toolkit";
 import { adminsIdPut } from "../../../../store/features/admin-slice";
+import { useEffect, useState } from "react";
 
 export const EditAdmins = ({ isOpen, setIsOpen, data, setData }: any) => {
   const dispatch = useDispatch();
@@ -29,6 +28,17 @@ export const EditAdmins = ({ isOpen, setIsOpen, data, setData }: any) => {
     setIsOpen(false);
   };
 
+  const [validation, setValidation] = useState(false);
+
+  useEffect(() => {
+    const isValid =
+      data.phoneNumber !== "" &&
+      data.branchId !== null &&
+      data.lastName !== "" &&
+      data.firstName !== "";
+    setValidation(isValid);
+  }, [data]);
+
   const Reset = () => {
     setData({
       ...data,
@@ -41,7 +51,7 @@ export const EditAdmins = ({ isOpen, setIsOpen, data, setData }: any) => {
     <ModalComponent
       active={isOpen}
       handleClose={() => Reset()}
-      title="Изменение Филиала"
+      title="Изменение Админа"
     >
       <div className={Styles.content}>
         <div className={Styles.inp_place}>
@@ -104,7 +114,9 @@ export const EditAdmins = ({ isOpen, setIsOpen, data, setData }: any) => {
           >
             Закрыть
           </Button>
-          <Button onClick={handlePost}>Сохранить</Button>
+          <Button onClick={handlePost} disabled={!validation}>
+            Сохранить
+          </Button>
         </div>
       </div>
     </ModalComponent>
