@@ -33,10 +33,11 @@ export const adminsRegistration = createAsyncThunk(
 
 export const adminsDelete = createAsyncThunk(
   "admins/delete",
-  async ({ adminId }: any, { rejectWithValue }) => {
+  async ({ adminId }: any, { rejectWithValue, dispatch }) => {
     try {
       const response = await axiosInstance.delete(`admins/${adminId}`);
       toast.success("Удаление прошло успешно!");
+      dispatch(adminsGet());
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -47,10 +48,11 @@ export const adminsDelete = createAsyncThunk(
 
 export const adminsIdPut = createAsyncThunk(
   "adminsId/put",
-  async ({ adminId, AdminsData }: any, { rejectWithValuew }: any) => {
+  async ({ adminId, AdminsData }: any, { rejectWithValuew, dispatch }: any) => {
     try {
       const response = await axiosInstance.put(`admins/${adminId}`, AdminsData);
       toast.success("Изменения прошло успешно!");
+      dispatch(adminsGet());
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -61,7 +63,7 @@ export const adminsIdPut = createAsyncThunk(
 
 const initialState: any = {
   adminData: [],
-  isLoadindOwner: false,
+  isLoadingAdmin: false,
 };
 
 export const adminSlice = createSlice({
@@ -70,50 +72,50 @@ export const adminSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(adminsGet.pending, (state) => {
-      state.isLoadindOwner = true;
+      state.isLoadingAdmin = true;
     });
     builder.addCase(adminsGet.fulfilled, (state, action) => {
       state.adminData = action.payload;
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
     builder.addCase(adminsGet.rejected, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
 
     //-------------------------------------------------------->
 
     builder.addCase(adminsRegistration.pending, (state) => {
-      state.isLoadindOwner = true;
+      state.isLoadingAdmin = true;
     });
     builder.addCase(adminsRegistration.fulfilled, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
     builder.addCase(adminsRegistration.rejected, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
 
     //-------------------------------------------------------->
 
     builder.addCase(adminsDelete.pending, (state) => {
-      state.isLoadindOwner = true;
+      state.isLoadingAdmin = true;
     });
     builder.addCase(adminsDelete.fulfilled, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
     builder.addCase(adminsDelete.rejected, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
 
     //-------------------------------------------------------->
 
     builder.addCase(adminsIdPut.pending, (state) => {
-      state.isLoadindOwner = true;
+      state.isLoadingAdmin = true;
     });
     builder.addCase(adminsIdPut.fulfilled, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
     builder.addCase(adminsIdPut.rejected, (state) => {
-      state.isLoadindOwner = false;
+      state.isLoadingAdmin = false;
     });
   },
 });
