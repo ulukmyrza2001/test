@@ -160,7 +160,7 @@ export const MasterPage = () => {
 							masterModalUpdate: false,
 						})
 					}>
-					Добавит мастер
+					Добавить мастер
 				</Button>
 			</div>
 			<div>
