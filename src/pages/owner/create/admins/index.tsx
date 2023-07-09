@@ -15,14 +15,7 @@ export const CreateAdmin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { branchData, isLoadingBranch } = useSelector(
-    (state: any) => state.branch
-  );
-
-  useEffect(() => {
-    dispatch(getBranchesOwner() as unknown as AnyAction);
-  }, []);
-
+  const [validation, setValidation] = useState(false);
   const [data, setData] = useState<{
     phoneNumber: string;
     branchId: { label: string; value: string | number } | null;
@@ -36,6 +29,25 @@ export const CreateAdmin = () => {
     firstName: "",
     password: "",
   });
+
+  const { branchData, isLoadingBranch } = useSelector(
+    (state: any) => state.branch
+  );
+
+  useEffect(() => {
+    dispatch(getBranchesOwner() as unknown as AnyAction);
+  }, [dispatch]);
+
+  useEffect(() => {
+    const isValid =
+      data.phoneNumber !== "" &&
+      data.branchId !== null &&
+      data.lastName !== "" &&
+      data.firstName !== "" &&
+      data.password !== "";
+
+    setValidation(isValid);
+  }, [data]);
 
   const Reset = () => {
     setData({
@@ -102,7 +114,7 @@ export const CreateAdmin = () => {
                 label: item.address,
               };
             })}
-            isLoading={false}
+            isLoading={isLoadingBranch}
             placeholder="Выберите филиал"
             isClearable={false}
             isDisabled={false}
@@ -167,7 +179,9 @@ export const CreateAdmin = () => {
           >
             Сбросить
           </Button>
-          <Button onClick={handlePost}>Сохранить</Button>
+          <Button onClick={handlePost} disabled={!validation}>
+            Сохранить
+          </Button>
         </div>
       </div>
     </div>

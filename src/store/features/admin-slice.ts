@@ -14,9 +14,21 @@ export const adminsGet = createAsyncThunk(
   }
 );
 
+interface postAdmin {
+  branchId: any;
+  AdminsData: {
+    firstName: string;
+    lastName: string;
+    authInfoRequest: {
+      phoneNumber: string;
+      password: string;
+    };
+  };
+}
+
 export const adminsRegistration = createAsyncThunk(
   "admins/registration",
-  async ({ branchId, AdminsData }: any, { rejectWithValue }) => {
+  async ({ branchId, AdminsData }: postAdmin, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post(
         `admins/registration/${branchId}`,
@@ -33,7 +45,7 @@ export const adminsRegistration = createAsyncThunk(
 
 export const adminsDelete = createAsyncThunk(
   "admins/delete",
-  async ({ adminId }: any, { rejectWithValue, dispatch }) => {
+  async ({ adminId }: { adminId: number }, { rejectWithValue, dispatch }) => {
     try {
       const response = await axiosInstance.delete(`admins/${adminId}`);
       toast.success("Удаление прошло успешно!");
@@ -46,9 +58,24 @@ export const adminsDelete = createAsyncThunk(
   }
 );
 
+interface putAdmin {
+  adminId: number;
+  AdminsData: {
+    firstName: string;
+    lastName: string;
+    authInfoRequest: {
+      phoneNumber: string;
+      password: string;
+    };
+  };
+}
+
 export const adminsIdPut = createAsyncThunk(
   "adminsId/put",
-  async ({ adminId, AdminsData }: any, { rejectWithValuew, dispatch }: any) => {
+  async (
+    { adminId, AdminsData }: putAdmin,
+    { rejectWithValuew, dispatch }: any
+  ) => {
     try {
       const response = await axiosInstance.put(`admins/${adminId}`, AdminsData);
       toast.success("Изменения прошло успешно!");

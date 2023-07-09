@@ -6,7 +6,6 @@ export const getCategoryServiceSelect = createAsyncThunk(
   async () => {
     try {
       const response = await axiosInstance.get(`category-service/select`);
-      console.log(response);
       return response;
     } catch {}
   }

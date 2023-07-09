@@ -6,7 +6,6 @@ export const getCategorySelect = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`categories/select`);
-      console.log(response);
       return response;
     } catch (error) {
       rejectWithValue((error as Error).message);

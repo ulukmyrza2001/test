@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 export const getBrancheById = createAsyncThunk(
   "byIdBranches/all",
-  async ({ branchId }: any, { rejectWithValue }) => {
+  async ({ branchId }: { branchId: number }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`branches/${branchId}`);
       return response.data;
@@ -31,7 +31,6 @@ export const getBranchesOwner = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get("branches/owner");
-      console.log(response.data);
       return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
@@ -68,7 +67,7 @@ export const postBranch = createAsyncThunk(
 
 export const deleteBranch = createAsyncThunk(
   "branch/delete",
-  async ({ branchId }: any, { rejectWithValue, dispatch }) => {
+  async ({ branchId }: { branchId: number }, { rejectWithValue, dispatch }) => {
     try {
       const response = await axiosInstance.delete(`branches/${branchId}`);
       toast.success("Успешно удалено!");
@@ -81,9 +80,24 @@ export const deleteBranch = createAsyncThunk(
   }
 );
 
+interface putData {
+  branchId: number;
+
+  branchData: {
+    phoneNumber: string;
+    regionId: number | undefined;
+    cityId: number | undefined;
+    addressRequest: {
+      name: string;
+      latitude: number | null;
+      longitude: number | null;
+    };
+  };
+}
+
 export const putBranch = createAsyncThunk(
   "branch/put",
-  async ({ branchId, branchData }: any, { rejectWithValue }) => {
+  async ({ branchId, branchData }: putData, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.put(
         `branches/${branchId}`,

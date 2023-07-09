@@ -23,7 +23,8 @@ export const AffiliatePage = () => {
 
   const [data, setData] = useState<{
     phoneNumber: string;
-    branchId: { label: string; value: number } | null;
+    countryId: { label: string; value: number } | null;
+    branchId: { label: string; value: number } | null | number;
     regionId: { label: string; value: number } | null;
     cityId: { label: string; value: number } | null;
     street: string;
@@ -31,6 +32,7 @@ export const AffiliatePage = () => {
     longitude: null | number;
   }>({
     phoneNumber: "",
+    countryId: null,
     branchId: null,
     regionId: null,
     cityId: null,
@@ -41,7 +43,7 @@ export const AffiliatePage = () => {
 
   useEffect(() => {
     dispatch(getBranchesOwner() as unknown as AnyAction);
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (itemId: any, event: React.MouseEvent) => {
     event.stopPropagation();
@@ -54,7 +56,6 @@ export const AffiliatePage = () => {
 
   const handleEdit = (item: any, event: React.MouseEvent) => {
     event.stopPropagation();
-    console.log(item);
     setData({
       ...data,
       branchId: item.id,
