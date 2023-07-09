@@ -38,11 +38,12 @@ export function InputNumberMask(props: IinputNumberMask) {
         inputStyle={{
           width: "100%",
           height: "40px",
-          border: "1px solid #e0d5d5",
+          border: "1px solid var(--ui-disabled-color)",
+          color: "var(--ui-disabled-color)",
         }}
         buttonStyle={{
           background: "white",
-          border: "1px solid #e0d5d5",
+          border: "0.3px solid var(--ui-disabled-color)",
         }}
         value={value}
         masks={{

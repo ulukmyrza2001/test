@@ -2,39 +2,71 @@ import { InputNumberMask } from "../../../../components/UI/Inputs/InputMask/Inpu
 import { LonelySelect } from "../../../../components/UI/Selects/LonelySelect/LonelySelect";
 import Styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../../../components/UI/Buttons/Button/Button";
 import { Input } from "../../../../components/UI/Inputs/Input/Input";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranchesOwner } from "../../../../store/features/branch-slice";
+import { AnyAction } from "@reduxjs/toolkit";
+import { InputPassword } from "../../../../components/UI/Inputs/InputPassword/InputPassword";
+import { adminsRegistration } from "../../../../store/features/admin-slice";
 
 export const CreateAdmin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { branchData, isLoadingBranch } = useSelector(
+    (state: any) => state.branch
+  );
+
+  useEffect(() => {
+    dispatch(getBranchesOwner() as unknown as AnyAction);
+  }, []);
+
   const [data, setData] = useState<{
     phoneNumber: string;
     branchId: { label: string; value: string | number } | null;
-    lasstName: string;
+    lastName: string;
     firstName: string;
     password: string;
   }>({
     phoneNumber: "",
     branchId: null,
-    lasstName: "",
+    lastName: "",
     firstName: "",
     password: "",
   });
 
   const Reset = () => {
     setData({
-      phoneNumber: "",
+      phoneNumber: "+996",
       branchId: null,
-      lasstName: "",
+      lastName: "",
       firstName: "",
       password: "",
     });
   };
+
+  const handlePost = () => {
+    dispatch(
+      adminsRegistration({
+        branchId: data.branchId?.value,
+        AdminsData: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          authInfoRequest: {
+            phoneNumber: data.phoneNumber,
+            password: data.password,
+          },
+        },
+      }) as never as AnyAction
+    );
+    Reset();
+  };
   return (
     <div className={Styles.admc}>
       <div className={Styles.admc_wrapper}>
-        <h1 className={Styles.caption}>Создание Админам</h1>
+        <h1 className={Styles.caption}>Создание Админа</h1>
         <button className={Styles.Btn} onClick={() => navigate("/admins")}>
           К админам
           <svg
@@ -47,7 +79,7 @@ export const CreateAdmin = () => {
           >
             {" "}
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
             />{" "}
           </svg>
@@ -64,7 +96,12 @@ export const CreateAdmin = () => {
                 branchId: e,
               })
             }
-            options={[]}
+            options={branchData?.map((item: any) => {
+              return {
+                value: item.id,
+                label: item.address,
+              };
+            })}
             isLoading={false}
             placeholder="Выберите филиал"
             isClearable={false}
@@ -73,27 +110,29 @@ export const CreateAdmin = () => {
           />
           <Input
             label="Фамилия"
-            value={data.password}
+            value={data.lastName}
             onChange={(e) =>
               setData({
                 ...data,
-                password: e.target.value,
+                lastName: e.target.value,
               })
             }
             border="1px solid silver"
             placeholder="Введите фамилию"
+            color="black"
           />
           <Input
             label="Имя"
-            value={data.password}
+            value={data.firstName}
             onChange={(e) =>
               setData({
                 ...data,
-                password: e.target.value,
+                firstName: e.target.value,
               })
             }
             border="1px solid silver"
             placeholder="Введите имя"
+            color="black"
           />
           <InputNumberMask
             label="Номер телефона"
@@ -105,8 +144,8 @@ export const CreateAdmin = () => {
               })
             }
           />
-          <Input
-            label="Улица"
+          <InputPassword
+            label="Пароль"
             value={data.password}
             onChange={(e) =>
               setData({
@@ -115,7 +154,8 @@ export const CreateAdmin = () => {
               })
             }
             border="1px solid silver"
-            placeholder="Введите местоположение"
+            placeholder="Придумайте пароль"
+            color="black"
           />
         </div>
         <div className={Styles.control}>
@@ -127,7 +167,7 @@ export const CreateAdmin = () => {
           >
             Сбросить
           </Button>
-          <Button>Сохранить</Button>
+          <Button onClick={handlePost}>Сохранить</Button>
         </div>
       </div>
     </div>

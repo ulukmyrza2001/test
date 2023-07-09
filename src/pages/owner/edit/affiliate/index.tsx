@@ -1,26 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalComponent } from "../../../../components/UI/Modal/Modal";
 import Styles from "./style.module.css";
 import { LonelySelect } from "../../../../components/UI/Selects/LonelySelect/LonelySelect";
 import { Input } from "../../../../components/UI/Inputs/Input/Input";
 import { InputNumberMask } from "../../../../components/UI/Inputs/InputMask/InputMask";
 import { Button } from "../../../../components/UI/Buttons/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { AnyAction } from "@reduxjs/toolkit";
+import { getCountriesSelect } from "../../../../store/features/countries-slice";
+import { getRegionSelect } from "../../../../store/features/region-slice";
+import { getCitySelect } from "../../../../store/features/city-slice";
+import { putBranch } from "../../../../store/features/branch-slice";
 
-export const EditAffilate = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [data, setData] = useState<{
-    phoneNumber: string;
-    countryId: { label: string; value: string | number } | null;
-    regionId: { label: string; value: string | number } | null;
-    cityId: { label: string; value: string | number } | null;
-    street: string;
-  }>({
-    phoneNumber: "",
-    countryId: null,
-    regionId: null,
-    cityId: null,
-    street: "",
-  });
+export const EditAffilate = ({ isOpen, setIsOpen, data, setData }: any) => {
+  const dispatch = useDispatch();
+
+  const { countriesData, isLoadingCountries } = useSelector(
+    (state: any) => state.countries
+  );
+
+  const { regionData, isLoadingRegion } = useSelector(
+    (state: any) => state.region
+  );
+
+  const { cityData, isLoadingCity } = useSelector((state: any) => state.city);
+
+  useEffect(() => {
+    if (countriesData.length === 0) {
+      dispatch(getCountriesSelect() as never as AnyAction);
+    }
+    if (data.countryId !== null) {
+      dispatch(
+        getRegionSelect({
+          countryId: data.countryId?.value,
+        }) as never as AnyAction
+      );
+    }
+  }, [data.countryId]);
+
+  useEffect(() => {
+    if (data.regionId !== null) {
+      dispatch(
+        getCitySelect({
+          regionId: data.regionId?.value,
+        }) as never as AnyAction
+      );
+    }
+  }, [data.regionId]);
+
+  const handlePost = () => {
+    dispatch(
+      putBranch({
+        branchId: data.branchId,
+        branchData: {
+          regionId: data.regionId?.value,
+          cityId: data.regionId?.value,
+          phoneNumber: data.phoneNumber,
+          addressRequest: {
+            name: data.street,
+            latitude: data.latitude,
+            longitude: data.longitude,
+          },
+        },
+      }) as unknown as AnyAction
+    );
+    setIsOpen(false);
+  };
 
   return (
     <ModalComponent
@@ -39,18 +84,28 @@ export const EditAffilate = () => {
                 countryId: e,
               })
             }
-            options={[]}
-            isLoading={false}
+            options={countriesData.map((item: any) => {
+              return {
+                label: item.name,
+                value: item.addressId,
+              };
+            })}
+            isLoading={isLoadingCountries}
             placeholder="Выберите страну"
             isClearable={false}
             isDisabled={false}
-            noOptionsMessage={() => "sorry fuck you"}
+            noOptionsMessage={() => "Пусто"}
           />
           <LonelySelect
-            options={[]}
+            options={regionData?.map((item: any) => {
+              return {
+                label: item.name,
+                value: item.addressId,
+              };
+            })}
             label="Регион"
             placeholder="Выберите регион"
-            noOptionsMessage={() => "sorry fuck you"}
+            noOptionsMessage={() => "С начало выберите страну"}
             value={data.regionId}
             onChange={(e) =>
               setData({
@@ -59,7 +114,7 @@ export const EditAffilate = () => {
               })
             }
             isClearable={false}
-            isLoading={false}
+            isLoading={isLoadingRegion}
             isDisabled={false}
           />
           <LonelySelect
@@ -71,12 +126,17 @@ export const EditAffilate = () => {
                 cityId: e,
               })
             }
-            options={[]}
-            isLoading={false}
+            options={cityData?.map((item: any) => {
+              return {
+                label: item.name,
+                value: item.addressId,
+              };
+            })}
+            isLoading={isLoadingCity}
             placeholder="Выберите город"
             isClearable={false}
             isDisabled={false}
-            noOptionsMessage={() => "sorry fuck you"}
+            noOptionsMessage={() => "С начало выберите регион"}
           />
           <InputNumberMask
             label="Номер телефона"
@@ -87,6 +147,8 @@ export const EditAffilate = () => {
                 phoneNumber: e,
               })
             }
+            color="var(--ui-disabled-color)"
+            border="1px solid silver"
           />
           <Input
             label="Улица"
@@ -97,6 +159,7 @@ export const EditAffilate = () => {
                 street: e.target.value,
               })
             }
+            color="var(--ui-disabled-color)"
             border="1px solid silver"
             placeholder="Введите местоположение"
           />
@@ -108,9 +171,9 @@ export const EditAffilate = () => {
             border="1px solid var(--ui-background-color)"
             onClick={() => setIsOpen(false)}
           >
-            Сбросить
+            Закрыть
           </Button>
-          <Button>Сохранить</Button>
+          <Button onClick={handlePost}>Сохранить</Button>
         </div>
       </div>
     </ModalComponent>

@@ -1,26 +1,24 @@
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { TableData } from "../../components/Tables/TableData/TableData";
-import { IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
-import { getBranches } from "../../store/features/branch";
+import { getBranchesOwner } from "../../store/features/branch-slice";
+import { Table } from "../../components/Tables/Table/Table";
+import Styles from "./Style.module.css";
 
 export const OwnerPage = () => {
   const dispatch = useDispatch();
   const { branchData, isLoadingBranch } = useSelector(
     (state: any) => state.branch
   );
-  console.log(branchData);
 
   useEffect(() => {
-    dispatch(getBranches() as unknown as AnyAction);
+    dispatch(getBranchesOwner() as unknown as AnyAction);
   }, []);
 
   const HeaderSize = [
     {
       headerName: "№",
-      field: "id",
+      field: "index",
       flex: 3,
       searchtable: false,
     },
@@ -34,43 +32,29 @@ export const OwnerPage = () => {
       field: "phoneNumber",
       flex: 10,
     },
-    {
-      headerName: "Дата",
-      field: "localData",
-      flex: 10,
-    },
-
-    {
-      headerName: "Действие",
-      field: "action",
-      width: 150,
-      stickyEnd: true,
-      renderCell: (item: any) => {
-        return (
-          <div>
-            <IconButton
-              onClick={() => console.log(4)}
-              children={<AiOutlineDelete cursor="pointer" size={22} />}
-            />
-            <IconButton
-              onClick={() => console.log(6)}
-              children={<AiOutlineEdit cursor="pointer" size={22} />}
-            />
-          </div>
-        );
-      },
-    },
   ];
 
   return (
-    <div>
-      <TableData
-        columns={HeaderSize}
-        data={[]}
-        loading={isLoadingBranch}
-        pagination={true}
-        index={false}
-      />
+    <div className={Styles.dashboard}>
+      <div className={Styles.dashboard_wrapper}>
+        <h1 className={Styles.caption}>Dashboard</h1>
+      </div>
+      <div className={Styles.content}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Table
+            columns={HeaderSize}
+            data={branchData}
+            loading={isLoadingBranch}
+            pagination={true}
+            index={true}
+          />
+        </div>
+      </div>
     </div>
   );
 };

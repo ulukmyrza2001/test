@@ -1,13 +1,114 @@
+import { IconButton } from "@mui/material";
 import { EditAffilate } from "../edit/affiliate";
 import Styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {
+  deleteBranch,
+  getBranchesOwner,
+} from "../../../store/features/branch-slice";
+import { AnyAction } from "@reduxjs/toolkit";
+import { Table } from "../../../components/Tables/Table/Table";
 
 export const AffiliatePage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { branchData, isLoadingBranch } = useSelector(
+    (state: any) => state.branch
+  );
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [data, setData] = useState<{
+    phoneNumber: string;
+    branchId: { label: string; value: number } | null;
+    regionId: { label: string; value: number } | null;
+    cityId: { label: string; value: number } | null;
+    street: string;
+    latitude: null | number;
+    longitude: null | number;
+  }>({
+    phoneNumber: "",
+    branchId: null,
+    regionId: null,
+    cityId: null,
+    street: "",
+    latitude: null,
+    longitude: null,
+  });
+
+  useEffect(() => {
+    dispatch(getBranchesOwner() as unknown as AnyAction);
+  }, []);
+
+  const handleDelete = (itemId: any, event: React.MouseEvent) => {
+    event.stopPropagation();
+    dispatch(
+      deleteBranch({
+        branchId: itemId,
+      }) as never as AnyAction
+    );
+  };
+
+  const handleEdit = (item: any, event: React.MouseEvent) => {
+    event.stopPropagation();
+    console.log(item);
+    setData({
+      ...data,
+      branchId: item.id,
+      phoneNumber: item.phoneNumber,
+    });
+    setIsOpen(true);
+  };
+
+  const HEADER_DATA_OWNER = [
+    {
+      headerName: "№",
+      field: "index",
+      flex: 3,
+    },
+    {
+      headerName: "Адрес",
+      field: "address",
+      flex: 10,
+    },
+    {
+      headerName: "Номер",
+      field: "phoneNumber",
+      flex: 10,
+    },
+
+    {
+      headerName: "Действие",
+      field: "action",
+      flex: 5,
+      renderCell: (item: any) => {
+        return (
+          <div>
+            <IconButton
+              onClick={(event) => handleDelete(item.id, event)}
+              children={<AiOutlineDelete cursor="pointer" size={22} />}
+            />
+            <IconButton
+              onClick={(event) => handleEdit(item.row, event)}
+              children={<AiOutlineEdit cursor="pointer" size={22} />}
+            />
+          </div>
+        );
+      },
+    },
+  ];
 
   return (
     <div className={Styles.afl}>
-      <EditAffilate />
+      <EditAffilate
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        data={data}
+        setData={setData}
+      />
       <div className={Styles.afl_wrapper}>
         <h1 className={Styles.caption}>Филиалы</h1>
         <button
@@ -20,7 +121,22 @@ export const AffiliatePage = () => {
           </svg>
         </button>
       </div>
-      <div className={Styles.content}></div>
+      <div className={Styles.content}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Table
+            columns={HEADER_DATA_OWNER}
+            data={branchData}
+            loading={isLoadingBranch}
+            pagination={true}
+            index={true}
+          />
+        </div>
+      </div>
     </div>
   );
 };

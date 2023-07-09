@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Table } from '../../../../components/Tables/Table/Table'
+import styles from './Master.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	deleteMaster,
@@ -11,6 +12,8 @@ import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
 import { Button } from '../../../../components/UI/Buttons/Button/Button'
 import { MasterAddModal } from './masterAddModal/MasterAddModal'
 import { MasterUpdateModal } from './masterUpdateModal/MasterUpdateModal'
+import { useNavigate } from 'react-router'
+import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
 
 interface MasterTableDataProps {
 	firstName: string
@@ -21,7 +24,7 @@ interface MasterTableDataProps {
 	row: any
 }
 
-export const Master = () => {
+export const MasterPage = () => {
 	const { dataMaster, isLoadingMaster } = useSelector(
 		(state: any) => state.master,
 	)
@@ -41,14 +44,17 @@ export const Master = () => {
 	const [masterId, setMasterId] = useState(0)
 
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	//function
 
-	function handleDelete(masterId: number) {
+	function handleDelete(masterId: number, event: React.MouseEvent) {
+		event.stopPropagation()
 		dispatch(deleteMaster({ masterId }) as unknown as AnyAction)
 	}
 
-	function handleUpdate(row: MasterTableDataProps) {
+	function handleUpdate(row: MasterTableDataProps, event: React.MouseEvent) {
+		event.stopPropagation()
 		setMasterId(row.id)
 		setMasterModal({
 			masterModalAdd: false,
@@ -64,6 +70,10 @@ export const Master = () => {
 		})
 	}
 
+	function handleToGo(id: number) {
+		navigate(`/master/${id}`)
+	}
+
 	//useEffect
 
 	useEffect(() => {
@@ -72,10 +82,19 @@ export const Master = () => {
 
 	//const
 
+	const BREAD_CRUMBS_MASTERS = [
+		{
+			name: 'Мастеры',
+			to: '/masters',
+			isLoading: isLoadingMaster,
+			path: 1,
+		},
+	]
+
 	const HEADER_DATA_MASTER = [
 		{
 			headerName: '№',
-			field: 'id',
+			field: 'index',
 			flex: 15,
 		},
 		{
@@ -99,13 +118,13 @@ export const Master = () => {
 				return (
 					<div>
 						<IconButton
-							onClick={(event) => handleDelete(row.id)}
+							onClick={(event) => handleDelete(row.id, event)}
 							children={
 								<AiOutlineDelete cursor='pointer' size={22} />
 							}
 						/>
 						<IconButton
-							onClick={(event) => handleUpdate(row)}
+							onClick={(event) => handleUpdate(row, event)}
 							children={
 								<AiOutlineEdit cursor='pointer' size={22} />
 							}
@@ -117,7 +136,7 @@ export const Master = () => {
 	]
 
 	return (
-		<div>
+		<div className={styles.container_master_page}>
 			<MasterAddModal
 				masterModal={masterModal}
 				setMasterModal={setMasterModal}
@@ -131,8 +150,10 @@ export const Master = () => {
 				setMasterData={setMasterData}
 				masterId={masterId}
 			/>
-			<div style={{ margin: '30px' }}>
+			<div className={styles.container_master_header}>
+				<BreadCrumbs paths={BREAD_CRUMBS_MASTERS} />
 				<Button
+					width='180px'
 					onClick={() =>
 						setMasterModal({
 							masterModalAdd: true,
@@ -144,10 +165,11 @@ export const Master = () => {
 			</div>
 			<Table
 				columns={HEADER_DATA_MASTER}
+				data={dataMaster}
 				loading={isLoadingMaster}
 				pagination={true}
 				index={true}
-				data={dataMaster}
+				onClickCard={(row) => handleToGo(row.id)}
 			/>
 		</div>
 	)

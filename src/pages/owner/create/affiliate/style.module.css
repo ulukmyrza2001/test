@@ -60,7 +60,7 @@
 
   .content {
     border: 1px solid var(--ui-background-color);
-    border-radius: 8px;
+    border-radius: 16px;
     height: 600px;
     padding: 50px;
     display: flex;
@@ -80,5 +80,5 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 700px;
+    gap: 50%;
   }

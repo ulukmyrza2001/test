@@ -36,8 +36,11 @@ export const ADMIN_ROUTES = {
   DEFAULT: {
     path: "/",
   },
-  MASTER: {
+  MASTERS: {
     path: "/masters",
+  },
+  MASTER: {
+    path: "/master/:masterID",
   },
   SERVICES: {
     path: "/services",
@@ -63,14 +66,24 @@ export const USER_ROUTES = {
   CONTACTS: {
     path: "/contacts",
   },
-  BRANCHS: {
-    path: "/:id",
+
+  FILTER: {
+    path: "/filter",
   },
   PRIVACY: {
     path: "/privacy",
   },
   TERMS: {
     path: "/terms",
+  },
+  BARBER: {
+    path: "/barber",
+  },
+  APPOINTMENT_BARBER: {
+    path: "/barber/usluga/:id",
+  },
+  BEAUTY_SALON: {
+    path: "/beauty-salon",
   },
 };
 

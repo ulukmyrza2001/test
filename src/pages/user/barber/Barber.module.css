@@ -1,0 +1,60 @@
+.header {
+	width: 35%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	color: #d9d9d9;
+}
+.header span {
+	cursor: pointer;
+}
+.titles {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin: 50px 0;
+	font-size: 20px;
+	color: gold;
+}
+.titles h1 {
+	font-size: 40px;
+}
+.wrapper_services_title {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	text-align: center;
+}
+.wrapper_services_title_card {
+	color: #d9d9d9;
+}
+.wrapper_services_title_card p {
+	width: 180px;
+	color: #d9d9d9;
+}
+.about_barber {
+	width: 70%;
+	background-color: #d9d9d9;
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+	padding: 1rem 2rem;
+	border-radius: 10px;
+	margin-top: 50px;
+}
+.about_text {
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.about_barber hr {
+	width: 2px;
+	background-color: black;
+}
+.wrapper_slider {
+	width: 45%;
+}

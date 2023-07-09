@@ -35,6 +35,7 @@ export default function LoginForm({ active, setActive }: LoginProps) {
       })
     );
     setActive(false);
+    console.log(data);
   };
 
   const hideLoginModal = () => {

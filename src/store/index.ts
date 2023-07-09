@@ -5,8 +5,13 @@ import { calendarSlice } from "./features/calendar-slice";
 import { companiesSlice } from "./features/company-slice";
 import { masterSlice } from "./features/master-slice";
 import { categoryServiceSlice } from "./features/category-service";
-import { branchSlice } from "./features/branch";
+import { branchSlice } from "./features/branch-slice";
 import { adminSlice } from "./features/admin-slice";
+import { categorySlice } from "./features/category-slice";
+import { subCategorySlice } from "./features/sub-category-service";
+import { countriesSlice } from "./features/countries-slice";
+import { regionSlice } from "./features/region-slice";
+import { citySlice } from "./features/city-slice";
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +22,11 @@ export const store = configureStore({
     categoryService: categoryServiceSlice.reducer,
     admin: adminSlice.reducer,
     branch: branchSlice.reducer,
+    category: categorySlice.reducer,
+    subCategory: subCategorySlice.reducer,
+    countries: countriesSlice.reducer,
+    region: regionSlice.reducer,
+    city: citySlice.reducer,
   },
 });
 

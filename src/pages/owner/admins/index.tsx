@@ -1,10 +1,115 @@
 import { useNavigate } from "react-router-dom";
 import Styles from "./style.module.css";
+import { Table } from "../../../components/Tables/Table/Table";
+import { IconButton } from "@mui/material";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AnyAction } from "@reduxjs/toolkit";
+import { adminsDelete, adminsGet } from "../../../store/features/admin-slice";
+import { EditAdmins } from "../edit/admins";
 
 export const AdminsPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { adminData, isLoadingAdmin } = useSelector(
+    (state: any) => state.admin
+  );
+
+  const [data, setData] = useState<{
+    phoneNumber: string;
+    adminId: { label: string; value: string | number } | null;
+    lastName: string;
+    firstName: string;
+    password: string;
+  }>({
+    phoneNumber: "",
+    adminId: null,
+    lastName: "",
+    firstName: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    dispatch(adminsGet() as unknown as AnyAction);
+  }, []);
+
+  const handleDelete = (itemId: any, event: React.MouseEvent) => {
+    event.stopPropagation();
+    console.log(itemId);
+    dispatch(
+      adminsDelete({
+        adminId: itemId,
+      }) as never as AnyAction
+    );
+  };
+
+  const handleEdit = (item: any, event: React.MouseEvent) => {
+    event.stopPropagation();
+    console.log(item.id);
+    setData({
+      ...data,
+      adminId: item.id,
+      firstName: item.firstName,
+      lastName: item.lastName,
+      phoneNumber: item.phoneNumber,
+    });
+    setIsOpen(true);
+  };
+
+  const HEADER_DATA_OWNER = [
+    {
+      headerName: "№",
+      field: "index",
+      flex: 3,
+    },
+    {
+      headerName: "Фамилия",
+      field: "lastName",
+      flex: 10,
+    },
+    {
+      headerName: "Имя",
+      field: "firstName",
+      flex: 10,
+    },
+    {
+      headerName: "Номер",
+      field: "phoneNumber",
+      flex: 10,
+    },
+
+    {
+      headerName: "Действие",
+      field: "action",
+      flex: 5,
+      renderCell: (item: any) => {
+        return (
+          <div>
+            <IconButton
+              onClick={(event) => handleDelete(item.id, event)}
+              children={<AiOutlineDelete cursor="pointer" size={22} />}
+            />
+            <IconButton
+              onClick={(event) => handleEdit(item.row, event)}
+              children={<AiOutlineEdit cursor="pointer" size={22} />}
+            />
+          </div>
+        );
+      },
+    },
+  ];
   return (
     <div className={Styles.adm}>
+      <EditAdmins
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        data={data}
+        setData={setData}
+      />
       <div className={Styles.adm_wrapper}>
         <h1 className={Styles.caption}>Админы</h1>
         <button
@@ -17,7 +122,22 @@ export const AdminsPage = () => {
           </svg>
         </button>
       </div>
-      <div className={Styles.content}></div>
+      <div className={Styles.content}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Table
+            columns={HEADER_DATA_OWNER}
+            data={adminData}
+            loading={isLoadingAdmin}
+            pagination={true}
+            index={true}
+          />
+        </div>
+      </div>
     </div>
   );
 };
