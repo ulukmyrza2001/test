@@ -16,8 +16,6 @@ export const NavBar = () => {
 		dispatch(getCategoryServiceSelect() as never as AnyAction)
 	}, [])
 
-	console.log(categoryServiceSelectData)
-
 	return (
 		<div className={styles.container_navbar}>
 			<div className={styles.container_inside_navbar}>

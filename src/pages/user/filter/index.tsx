@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from './Filter.module.css'
-
 import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
 import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
 import { Filterlayout } from '../../../components/Filter/FilterLayout/FilterLayout'
@@ -11,16 +10,24 @@ import { getBrancheFindById } from '../../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { BiHomeAlt } from 'react-icons/bi'
 import { BreadCrumbs } from '../../../components/UI/BreadCrumbs/BreadCrumbs'
+import { getSingleCategoryServiceSelect } from '../../../store/features/category-service'
 
 export const FilterPage = () => {
 	const { branchFindById, isLoadingBranch } = useSelector(
 		(state: any) => state.branch,
 	)
+	const { categorySingleServiceSelectData, isLoadingCategoryService } =
+		useSelector((state: any) => state.categoryService)
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(getBrancheFindById({ branchId: id }) as never as AnyAction)
+		dispatch(
+			getSingleCategoryServiceSelect({
+				cotegoryID: id,
+			}) as never as AnyAction,
+		)
 	}, [])
 
 	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
@@ -31,12 +38,14 @@ export const FilterPage = () => {
 			path: 1,
 		},
 		{
-			name: 'Парикмахерские услуги',
+			name: categorySingleServiceSelectData?.name,
 			to: `/filter/${id}`,
-			isLoading: isLoadingBranch,
+			isLoading: isLoadingCategoryService,
 			path: 1,
 		},
 	]
+
+	console.log(branchFindById)
 
 	return (
 		<Container

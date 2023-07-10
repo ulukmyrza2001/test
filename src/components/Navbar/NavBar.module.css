@@ -29,11 +29,12 @@
 	justify-content: center;
 	align-items: center;
 	color: #323232;
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 500;
 	line-height: 20px;
 	margin-top: 20px;
 	word-break: keep-all;
+	text-align: center;
 }
 .card_icon {
 	display: flex;

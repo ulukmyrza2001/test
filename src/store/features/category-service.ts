@@ -11,8 +11,21 @@ export const getCategoryServiceSelect = createAsyncThunk(
 	},
 )
 
+export const getSingleCategoryServiceSelect = createAsyncThunk(
+	'category/getSingleCategoryServiceSelect',
+	async ({ cotegoryID }: { cotegoryID: any }) => {
+		try {
+			const response = await axiosInstance.get(
+				`category-service/${cotegoryID}`,
+			)
+			return response.data
+		} catch {}
+	},
+)
+
 const initialState: any = {
 	categoryServiceSelectData: [],
+	categorySingleServiceSelectData: {},
 	isLoadingCategoryService: false,
 }
 
@@ -29,6 +42,20 @@ export const categoryServiceSlice = createSlice({
 			state.isLoadingCategoryService = false
 		})
 		builder.addCase(getCategoryServiceSelect.rejected, (state) => {
+			state.isLoadingCategoryService = false
+		})
+		// ---
+		builder.addCase(getSingleCategoryServiceSelect.pending, (state) => {
+			state.isLoadingCategoryService = true
+		})
+		builder.addCase(
+			getSingleCategoryServiceSelect.fulfilled,
+			(state, action) => {
+				state.categorySingleServiceSelectData = action.payload
+				state.isLoadingCategoryService = false
+			},
+		)
+		builder.addCase(getSingleCategoryServiceSelect.rejected, (state) => {
 			state.isLoadingCategoryService = false
 		})
 	},
