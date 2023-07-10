@@ -121,8 +121,14 @@ export const OWNER_ROUTES = {
 	AFFILIATE: {
 		path: '/affiliate',
 	},
+	AFFILIATECREATE: {
+		path: '/affiliate/create',
+	},
 	ADMINS: {
 		path: '/admins',
+	},
+	ADMINSCREATE: {
+		path: '/admins/create',
 	},
 	SUPPORT: {
 		path: '/supports',

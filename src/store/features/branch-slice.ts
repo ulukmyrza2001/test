@@ -3,8 +3,8 @@ import axiosInstance from "../../api/axios-config";
 import { toast } from "react-hot-toast";
 
 export const getBrancheById = createAsyncThunk(
-  "bbyIdBranches/all",
-  async ({ branchId }: any, { rejectWithValue }) => {
+  "byIdBranches/all",
+  async ({ branchId }: { branchId: number }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`branches/${branchId}`);
       return response.data;
@@ -26,12 +26,37 @@ export const getBranches = createAsyncThunk(
   }
 );
 
+export const getBranchesOwner = createAsyncThunk(
+  "allbranches/owner",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("branches/owner");
+      return response.data;
+    } catch (error) {
+      rejectWithValue((error as Error).message);
+    }
+  }
+);
+
+interface postData {
+  branchData: {
+    phoneNumber: string;
+    regionId: number | undefined;
+    cityId: number | undefined;
+    addressRequest: {
+      name: string;
+      latitude: number | null;
+      longitude: number | null;
+    };
+  };
+}
+
 export const postBranch = createAsyncThunk(
   "branch/post",
-  async ({ brancheData }: any, { rejectWithValue }) => {
+  async ({ branchData }: postData, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post(`branches`, brancheData);
-      toast.success("Успешный успех!");
+      const response = await axiosInstance.post(`branches`, branchData);
+      toast.success("Филлиал успешно создан !");
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -42,10 +67,11 @@ export const postBranch = createAsyncThunk(
 
 export const deleteBranch = createAsyncThunk(
   "branch/delete",
-  async ({ branchId }: any, { rejectWithValue }) => {
+  async ({ branchId }: { branchId: number }, { rejectWithValue, dispatch }) => {
     try {
       const response = await axiosInstance.delete(`branches/${branchId}`);
       toast.success("Успешно удалено!");
+      dispatch(getBranchesOwner());
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -54,11 +80,29 @@ export const deleteBranch = createAsyncThunk(
   }
 );
 
+interface putData {
+  branchId: number;
+
+  branchData: {
+    phoneNumber: string;
+    regionId: number | undefined;
+    cityId: number | undefined;
+    addressRequest: {
+      name: string;
+      latitude: number | null;
+      longitude: number | null;
+    };
+  };
+}
+
 export const putBranch = createAsyncThunk(
   "branch/put",
-  async ({ branchId }: any, { rejectWithValue }) => {
+  async ({ branchId, branchData }: putData, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.put(`branches/${branchId}`);
+      const response = await axiosInstance.put(
+        `branches/${branchId}`,
+        branchData
+      );
       toast.success("Успешно изменено!");
       return response;
     } catch (error) {
@@ -86,6 +130,19 @@ export const branchSlice = createSlice({
       state.branchData = action.payload;
     });
     builder.addCase(getBranches.rejected, (state) => {
+      state.isLoadingBranch = false;
+    });
+
+    // ----------------------------------------------------------->
+
+    builder.addCase(getBranchesOwner.pending, (state) => {
+      state.isLoadingBranch = true;
+    });
+    builder.addCase(getBranchesOwner.fulfilled, (state, action) => {
+      state.isLoadingBranch = false;
+      state.branchData = action.payload;
+    });
+    builder.addCase(getBranchesOwner.rejected, (state) => {
       state.isLoadingBranch = false;
     });
 

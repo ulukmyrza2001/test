@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router'
 import { ADMIN_ROUTES } from '../utils/constants/routes'
 import { DashboardOutlet } from '../layout/dashboard/Dashboard'
-import { MasterPage } from '../pages/admin/master/masterPage/MasterPage'
-import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
 import { Calendar } from '../pages/admin/calendar/Calendar'
+import { MasterPage } from '../pages/admin/master/masterPage/MasterPage'
 import { MasterInnerPage } from '../pages/admin/master/masterInnerPage/MasterInnerPage'
+import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
 import { Appoinments } from '../pages/admin/master/appointments/Appoinments'
 import { Rewievs } from '../pages/admin/master/rewievs/Rewievs'
 

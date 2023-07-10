@@ -1,29 +1,29 @@
-import React from 'react'
-import Select from 'react-select'
-import styles from './LonelySelect.module.css'
+import React from "react";
+import Select from "react-select";
+import styles from "./LonelySelect.module.css";
 
 interface LonelySelectProps {
-  options: { label: string; value: string | number }[] | []
-  label: string
-  placeholder: string
-  noOptionsMessage: (obj: { inputValue: string }) => React.ReactNode
-  value: { label: string; value: string | number } | null
-  onChange: (e: any) => void
-  isClearable: boolean
-  isLoading: boolean
-  isDisabled: boolean
+  options: { label: string; value: string | number }[] | [];
+  label: string;
+  placeholder: string;
+  noOptionsMessage: (obj: { inputValue: string }) => React.ReactNode;
+  value: { label: string; value: string | number } | null;
+  onChange: (e: any) => void;
+  isClearable: boolean;
+  isLoading: boolean;
+  isDisabled: boolean;
 }
 
 export const LonelySelect = ({
   options = [],
-  label = '',
-  placeholder = '',
+  label = "",
+  placeholder = "",
   noOptionsMessage = () => null,
   value = null,
   onChange = () => {},
   isClearable = false,
   isLoading = false,
-  isDisabled = false
+  isDisabled = false,
 }: LonelySelectProps) => {
   return (
     <div className={styles.wrapper}>
@@ -40,5 +40,5 @@ export const LonelySelect = ({
         isSearchable={true}
       />
     </div>
-  )
-}
+  );
+};

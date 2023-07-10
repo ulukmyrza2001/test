@@ -1,0 +1,46 @@
+.wrapper {
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding: 50px 0;
+}
+.wrapper_progres {
+	width: 80%;
+	margin: 0 auto;
+}
+.wrapper_progres_name {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	margin: 0 auto;
+	justify-content: space-around;
+	z-index: 10;
+	top: 18px;
+}
+.progress_name {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+/* -- */
+.wrapper_appointment {
+	width: 80%;
+	margin: 0 auto;
+}
+.main {
+	padding: 1rem 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.amount_apoointment {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	background-color: #f5f5f5;
+	padding: 5px 5px 5px 10px;
+}
