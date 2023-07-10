@@ -60,8 +60,7 @@ export const ServicesBranchContent = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  
-  console.log(serviceData);
+
 
   return (
     <Container
