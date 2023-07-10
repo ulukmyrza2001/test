@@ -15,86 +15,18 @@ import { SiBritishairways } from 'react-icons/si'
 import { GiEyelashes, GiFlowerTwirl } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategory } from '../../store/features/category-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-
-const NAVBAR_DATA = [
-	{
-		name: 'Парикмахерские услуги',
-		icon: HiMiniScissors,
-		link: '/barber',
-	},
-	{
-		name: 'Для мужчин',
-		icon: GiBeard,
-		link: '/filter/for-man',
-	},
-	{
-		name: 'Ногтевой сервис',
-		icon: FaHandHoldingHeart,
-		link: '/filter/manicure',
-	},
-	{
-		name: 'Удаление волос',
-		icon: MdOutlineFaceRetouchingNatural,
-		link: '/filter/depilation',
-	},
-	{
-		name: 'Ресницы',
-		icon: GiEyelashes,
-		link: '/filter/eyelashes',
-	},
-	{
-		name: 'Брови',
-		icon: SiBritishairways,
-		link: '/filter/brows',
-	},
-	{
-		name: 'Уход за телом',
-		icon: BiBody,
-		link: '/filter/body-care',
-	},
-	{
-		name: 'Косметология',
-		icon: GiDoctorFace,
-		link: '/filter',
-	},
-	{
-		name: 'Макияж',
-		icon: MdOutlineFace2,
-		link: '/filter/cosmetology',
-	},
-	{
-		name: 'Стоматология',
-		icon: FaTooth,
-		link: '/filter/dentistry',
-	},
-	{
-		name: 'Медицинские услуги',
-		icon: MdOutlineMedicalServices,
-		link: '/filter/medical-services',
-	},
-	{
-		name: 'Тату и пирсинг',
-		icon: GiFlowerTwirl,
-		link: '/filter/tattoo-and-piercing',
-	},
-	{
-		name: 'Коррекция фигуры',
-		icon: FaPersonRays,
-		link: '/filter/correction',
-	},
-]
+import { getCategory } from '../../store/features/category-service'
 
 export const NavBar = () => {
-	const { category } = useSelector((state: any) => state.category)
+	const { category } = useSelector((state: any) => state.categoryService)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(getCategory() as never as AnyAction)
 	}, [])
 
-	console.log(category)
+	console.log(category?.content)
 
 	return (
 		<div className={styles.container_navbar}>
@@ -113,21 +45,19 @@ export const NavBar = () => {
 					typeButton={false}
 					variableWidth={true}
 				>
-					{NAVBAR_DATA.map(
-						(item: { name: string; icon: any; link: string }) => {
+					{category?.content?.map(
+						(item: { name: string; icon: any; id: string }) => {
 							return (
 								<Link
-									to={item.link}
-									key={item.link}
+									to={`filter/${item.id}/${item.name}`}
+									key={item.id}
 									className={styles.container_card}
 								>
+									<div className={styles.card_icon}>
+										<img src={item?.icon} alt='icon' />
+									</div>
 									<div className={styles.card_title}>
 										{item.name}
-									</div>
-									<div className={styles.card_icon}>
-										{React.createElement(item?.icon, {
-											size: '30',
-										})}
 									</div>
 								</Link>
 							)
