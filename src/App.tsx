@@ -8,6 +8,7 @@ function App() {
 	const { token, role, isAuthenticated } = useSelector(
 		(state: any) => state.auth,
 	)
+	const { branchData } = useSelector((state: any) => state.branch)
 
 	useEffect(() => {
 		if (token) {
@@ -18,7 +19,7 @@ function App() {
 	}, [token, role])
 
 	const { pathname } = useLocation()
-	const path = pathname.slice(1)
+	const path = pathname.split('/')[1]
 
 	return <div className={`App ${path}`}>{AppRoutes() || null}</div>
 }

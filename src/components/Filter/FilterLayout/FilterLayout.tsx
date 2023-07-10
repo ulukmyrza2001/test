@@ -20,12 +20,12 @@ import {
 import './FilterLayout.module.css'
 
 export const Filterlayout = () => {
-	const [expanded, setExpanded] = React.useState<string | false>(false)
+	const [expanded, setExpanded] = React.useState<string | false>('panel1') // Updated state value
 
 	const handleChange =
 		(panel: string) =>
 		(event: React.SyntheticEvent, isExpanded: boolean) => {
-			setExpanded(isExpanded ? panel : false)
+			setExpanded(isExpanded ? panel : false) // Updated to set to false when collapsed
 		}
 
 	const [value, setValue] = React.useState<{
@@ -40,7 +40,7 @@ export const Filterlayout = () => {
 		<Accordion
 			expanded={expanded === 'panel1'}
 			onChange={handleChange('panel1')}
-			sx={{ width: '300px' }}
+			sx={{ width: '20%' }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMoreIcon />}

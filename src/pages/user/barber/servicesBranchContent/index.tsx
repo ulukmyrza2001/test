@@ -6,6 +6,7 @@ import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { AccordionUi } from '../../../../components/UI/Accordion/AccordionUi'
+import { useSelector } from 'react-redux'
 
 const data = [
 	{
@@ -102,6 +103,8 @@ function a11yProps(index: number) {
 }
 
 export const ServicesBranchContent = () => {
+	const { branchData } = useSelector((state: any) => state.branch)
+
 	const [value, setValue] = React.useState(0)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -149,7 +152,7 @@ export const ServicesBranchContent = () => {
 					/>
 				</Tabs>
 				<TabPanel value={value} index={0}>
-					<AccordionUi data={data} />
+					<AccordionUi data={data} branchData={branchData} />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
 					Item Two

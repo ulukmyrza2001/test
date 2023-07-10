@@ -6,21 +6,26 @@ import styles from './ServiceCard.module.css'
 import { Link } from 'react-router-dom'
 
 interface IServiceCard {
-	width?: string
-	height?: string
-	borderRadius?: string
 	isloading?: boolean
+	companyName: string
+	address: string
+	phoneNumber: string
+	categoryName: string
+	branchId: number
 }
 
-export const ServiceCard = (props: IServiceCard) => {
-	const { isloading, ...restProps } = props
+export const ServiceCard = ({
+	isloading,
+	companyName,
+	address,
+	phoneNumber,
+	categoryName,
+	branchId,
+}: IServiceCard) => {
 	return (
-		<Link to='/beauty-salon'>
+		<Link to={`/${categoryName}/${branchId}`}>
 			<Card className={styles.main}>
-				<CardActionArea
-					style={{ ...restProps }}
-					className={styles.mainwrapper}
-				>
+				<CardActionArea className={styles.mainwrapper}>
 					{isloading ? (
 						<ContentLoader
 							viewBox='0 0 500 280'
@@ -75,10 +80,10 @@ export const ServiceCard = (props: IServiceCard) => {
 							<div className={styles.info}>
 								<div>
 									<h4 className={styles.type}>Барбершоп</h4>
-									<h3 className={styles.name}>Garage</h3>
-									<p className={styles.location}>
-										Байтик Баатыра 84
-									</p>
+									<h3 className={styles.name}>
+										{companyName}
+									</h3>
+									<p className={styles.location}>{address}</p>
 								</div>
 								<div className={styles.reviewcontainer}>
 									<h3 className={styles.review}>
@@ -88,7 +93,7 @@ export const ServiceCard = (props: IServiceCard) => {
 										/>
 										4.7
 									</h3>
-									<p>1000 сом</p>
+									<p>{phoneNumber}</p>
 								</div>
 							</div>
 						</div>
