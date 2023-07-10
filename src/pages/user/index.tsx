@@ -25,7 +25,7 @@ export const UserPage = () => {
       <NavBar />
       <Container sx={{ marginTop: "50px" }}>
         {branchData?.map((item: any, index: number) => (
-          <div key={index} style={{ width: "100%" }}>
+          <div key={index} style={{ width: "100%", marginTop: "30px" }}>
             <ContainerSlider
               dots={false}
               infinite={true}
