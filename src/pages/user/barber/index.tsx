@@ -7,10 +7,29 @@ import { AboutContent } from './aboutContent'
 import { OurWorkContent } from './ourWorkContent'
 import { ServicesBranchContent } from './servicesBranchContent'
 import BannerBarber from '../../../assets/image/barber.svg'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBrancheById } from '../../../store/features/branch-slice'
+import { useLocation } from 'react-router-dom'
+import { AnyAction } from '@reduxjs/toolkit'
 
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
+
+	console.log(branchData)
+
+	const dispatch = useDispatch()
+
+	const { pathname } = useLocation()
+
+	const path = pathname.split('/')[1]
+
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
 
 	useEffect(() => {
 		document.title = `${branchData?.companyName} | Cheber`
