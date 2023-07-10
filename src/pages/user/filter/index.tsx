@@ -9,9 +9,13 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBrancheFindById } from '../../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
+import { BiHomeAlt } from 'react-icons/bi'
+import { BreadCrumbs } from '../../../components/UI/BreadCrumbs/BreadCrumbs'
 
 export const FilterPage = () => {
-	const { branchFindById } = useSelector((state: any) => state.branch)
+	const { branchFindById, isLoadingBranch } = useSelector(
+		(state: any) => state.branch,
+	)
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
@@ -19,7 +23,20 @@ export const FilterPage = () => {
 		dispatch(getBrancheFindById({ branchId: id }) as never as AnyAction)
 	}, [])
 
-	console.log(branchFindById)
+	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
+		{
+			name: <BiHomeAlt fontSize={26} color='#31a010' />,
+			to: '/',
+			isLoading: isLoadingBranch,
+			path: 1,
+		},
+		{
+			name: 'Парикмахерские услуги',
+			to: `/filter/${id}`,
+			isLoading: isLoadingBranch,
+			path: 1,
+		},
+	]
 
 	return (
 		<Container
@@ -27,7 +44,7 @@ export const FilterPage = () => {
 				paddingTop: '20px',
 			}}
 		>
-			<h2 className='title'>Парикмахерские услуги</h2>
+			<BreadCrumbs paths={BREAD_CRUMBS_INNER_FILTER_PAGE} />
 			<div className={styles.wrapper}>
 				<Filterlayout />
 				<div className={styles.inner_wrapper}>
