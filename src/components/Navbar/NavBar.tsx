@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './NavBar.module.css'
 import { ContainerSlider } from '../ContainersSliders/ContainerSlider'
 import { HiMiniScissors } from 'react-icons/hi2'
@@ -14,42 +14,45 @@ import {
 import { SiBritishairways } from 'react-icons/si'
 import { GiEyelashes, GiFlowerTwirl } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCategory } from '../../store/features/category-slice'
+import { AnyAction } from '@reduxjs/toolkit'
 
 const NAVBAR_DATA = [
 	{
 		name: 'Парикмахерские услуги',
 		icon: HiMiniScissors,
-		link: '/filter',
+		link: '/filter/barber',
 	},
 	{
 		name: 'Для мужчин',
 		icon: GiBeard,
-		link: '/filter',
+		link: '/filter/for-man',
 	},
 	{
 		name: 'Ногтевой сервис',
 		icon: FaHandHoldingHeart,
-		link: '/filter',
+		link: '/filter/manicure',
 	},
 	{
 		name: 'Удаление волос',
 		icon: MdOutlineFaceRetouchingNatural,
-		link: '/filter',
+		link: '/filter/depilation',
 	},
 	{
 		name: 'Ресницы',
 		icon: GiEyelashes,
-		link: '/filter',
+		link: '/filter/eyelashes',
 	},
 	{
 		name: 'Брови',
 		icon: SiBritishairways,
-		link: '/filter',
+		link: '/filter/brows',
 	},
 	{
 		name: 'Уход за телом',
 		icon: BiBody,
-		link: '/filter',
+		link: '/filter/body-care',
 	},
 	{
 		name: 'Косметология',
@@ -59,31 +62,40 @@ const NAVBAR_DATA = [
 	{
 		name: 'Макияж',
 		icon: MdOutlineFace2,
-		link: '/filter',
+		link: '/filter/cosmetology',
 	},
 	{
 		name: 'Стоматология',
 		icon: FaTooth,
-		link: '/filter',
+		link: '/filter/dentistry',
 	},
 	{
 		name: 'Медицинские услуги',
 		icon: MdOutlineMedicalServices,
-		link: '/filter',
+		link: '/filter/medical-services',
 	},
 	{
 		name: 'Тату и пирсинг',
 		icon: GiFlowerTwirl,
-		link: '/filter',
+		link: '/filter/tattoo-and-piercing',
 	},
 	{
 		name: 'Коррекция фигуры',
 		icon: FaPersonRays,
-		link: '/filter',
+		link: '/filter/correction',
 	},
 ]
 
 export const NavBar = () => {
+	const { category } = useSelector((state: any) => state.category)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getCategory() as never as AnyAction)
+	}, [])
+
+	console.log(category)
+
 	return (
 		<div className={styles.container_navbar}>
 			<div className={styles.container_inside_navbar}>

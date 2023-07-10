@@ -30,6 +30,9 @@ export const UserHeader = () => {
 	const [longitude, setLongitude] = useState<number | null>(null)
 	const [location, setLocation] = useState('')
 
+	console.log(latitude)
+	console.log(longitude)
+
 	useEffect(() => {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(

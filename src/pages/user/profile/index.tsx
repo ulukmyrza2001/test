@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import styles from './Profile.module.css'
 import { Container } from '../../../styles/ContainerStyle/Container'
 
 export const ProfilePage = () => {
@@ -8,5 +9,9 @@ export const ProfilePage = () => {
 			document.title = 'Cheber' // Reset the title when the component unmounts
 		}
 	}, [])
-	return <Container>ProfilePage</Container>
+	return (
+		<Container>
+			<div className={styles.wrapper}>Profile</div>
+		</Container>
+	)
 }
