@@ -12,6 +12,7 @@ import { subCategorySlice } from "./features/sub-category-service";
 import { countriesSlice } from "./features/countries-slice";
 import { regionSlice } from "./features/region-slice";
 import { citySlice } from "./features/city-slice";
+import { serviceSlice } from "./features/service-slice";
 
 export const store = configureStore({
   reducer: {
@@ -27,6 +28,7 @@ export const store = configureStore({
     countries: countriesSlice.reducer,
     region: regionSlice.reducer,
     city: citySlice.reducer,
+    service: serviceSlice.reducer,
   },
 });
 
