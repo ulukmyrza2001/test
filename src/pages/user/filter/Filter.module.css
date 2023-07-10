@@ -5,5 +5,7 @@
 	padding: 1rem;
 }
 .inner_wrapper {
+	width: 80%;
 	padding: 20px 0;
+	max-width: 1440px;
 }

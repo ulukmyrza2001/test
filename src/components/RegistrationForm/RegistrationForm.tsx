@@ -6,6 +6,8 @@ import { InputNumberMask } from "../UI/Inputs/InputMask/InputMask";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { RegistrationUser } from "../../store/features/auth-slice";
+import { Input } from "../UI/Inputs/Input/Input";
+import { InputPassword } from "../UI/Inputs/InputPassword/InputPassword";
 
 interface LoginProps {
   active?: boolean;
@@ -42,30 +44,36 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.input_wrapper}>
-        <label htmlFor="firstName" className="label">
-          Имя:
-        </label>
-        <input
-          className={styles.input}
+        <Input
+          htmlFor="firstName"
+          label="Имя:"
           type="text"
-          {...register("firstName", { min: 3, required: true })}
+          {...register("firstName", {
+            required: "errors",
+            minLength: {
+              value: 3,
+              message: "Minimum 3  symbol",
+            },
+          })}
         />
         {errors.firstName && (
-          <span>Значение должно быть больше или равно 3 буквы</span>
+          <span>{errors?.firstName.message || "min 3"}</span>
         )}
       </div>
       <div className={styles.input_wrapper}>
-        <label htmlFor="lastName" className="label">
-          Фамилия:
-        </label>
-        <input
-          className={styles.input}
+        <Input
+          label="Фамилия:"
+          htmlFor="lastName"
           type="text"
-          {...register("lastName", { min: 3, required: true })}
+          {...register("lastName", {
+            required: "errors",
+            minLength: {
+              value: 3,
+              message: "Minimum 3  symbol",
+            },
+          })}
         />
-        {errors.lastName && (
-          <span>Значение должно быть больше или равно 3 буквы</span>
-        )}
+        {errors.lastName && <span>{errors?.lastName.message || "min 3"}</span>}
       </div>
       <div className={styles.input_wrapper}>
         <InputNumberMask
@@ -73,21 +81,25 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
           onChange={(value) => setValue("authInfoRequest.phoneNumber", value)}
           value={watch("authInfoRequest.phoneNumber")}
         />
-        {errors.authInfoRequest?.phoneNumber && (
+        {errors?.authInfoRequest?.phoneNumber && (
           <span>This field is required</span>
         )}
       </div>
       <div className={styles.input_wrapper}>
-        <label htmlFor="password" className="label">
-          Пароль:
-        </label>
-        <input
-          className={styles.input}
+        <InputPassword
+          htmlFor="password"
+          label="Пароль:"
           type="password"
-          {...register(`authInfoRequest.password`, { min: 6, required: true })}
+          {...register(`authInfoRequest.password`, {
+            required: "error",
+            minLength: {
+              value: 3,
+              message: "Minimum 3  symbol",
+            },
+          })}
         />
-        {errors.authInfoRequest?.password && (
-          <span>Пароль должен содержать больше или равно 6 значение </span>
+        {errors?.authInfoRequest?.password && (
+          <span>{errors?.authInfoRequest?.password.message || "min 6"}</span>
         )}
       </div>
       <Button type="submit">Submit</Button>

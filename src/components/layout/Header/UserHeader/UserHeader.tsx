@@ -5,19 +5,34 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import LoginForm from '../../../LoginForm/LoginForm'
 import { ModalComponent } from '../../../UI/Modal/Modal'
 import { FaUserCircle } from 'react-icons/fa'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { ReactComponent as BeautyIcon } from '../../../../assets/icons/beauty.svg'
 import { GiBeard } from 'react-icons/gi'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBrancheById } from '../../../../store/features/branch-slice'
+import { AnyAction } from '@reduxjs/toolkit'
 
 export const UserHeader = () => {
 	const { pathname } = useLocation()
-	const path = pathname.slice(1)
+
+	const path = pathname.split('/')[1]
+
 	const [showModal, setShowModal] = useState(false)
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const role = Cookies.get('role')
+
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
 
 	const showModalHandler = () => {
 		setShowModal(true)

@@ -3,10 +3,24 @@ import axiosInstance from "../../api/axios-config";
 import { toast } from "react-hot-toast";
 
 export const getBrancheById = createAsyncThunk(
-  "byIdBranches/all",
+  "byIdBranches/getBrancheById",
   async ({ branchId }: { branchId: number }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`branches/${branchId}`);
+      return response.data;
+    } catch (error) {
+      rejectWithValue((error as Error).message);
+    }
+  }
+);
+
+export const getBrancheFindById = createAsyncThunk(
+  "byIdBranches/getBrancheFindById",
+  async ({ branchId }: { branchId: any }, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(
+        `branches/find-by-branch/${branchId}`
+      );
       return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
@@ -119,8 +133,21 @@ export const putBranch = createAsyncThunk(
   }
 );
 
+export const getBranchesMain = createAsyncThunk(
+  "allbranches/main",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("branches/main");
+      return response.data;
+    } catch (error) {
+      rejectWithValue((error as Error).message);
+    }
+  }
+);
+
 const initialState: any = {
   branchData: [],
+  branchFindById: [],
   isLoadingBranch: false,
 };
 
@@ -139,6 +166,17 @@ export const branchSlice = createSlice({
     builder.addCase(getBranches.rejected, (state) => {
       state.isLoadingBranch = false;
     });
+    // ----------------------
+    builder.addCase(getBrancheFindById.pending, (state) => {
+      state.isLoadingBranch = true;
+    });
+    builder.addCase(getBrancheFindById.fulfilled, (state, action) => {
+      state.isLoadingBranch = false;
+      state.branchFindById = action.payload;
+    });
+    builder.addCase(getBrancheFindById.rejected, (state) => {
+      state.isLoadingBranch = false;
+    });
 
     // ----------------------------------------------------------->
 
@@ -150,6 +188,19 @@ export const branchSlice = createSlice({
       state.branchData = action.payload;
     });
     builder.addCase(getBranchesOwner.rejected, (state) => {
+      state.isLoadingBranch = false;
+    });
+
+    // ----------------------------------------------------------->
+
+    builder.addCase(getBranchesMain.pending, (state) => {
+      state.isLoadingBranch = true;
+    });
+    builder.addCase(getBranchesMain.fulfilled, (state, action) => {
+      state.isLoadingBranch = false;
+      state.branchData = action.payload;
+    });
+    builder.addCase(getBranchesMain.rejected, (state) => {
       state.isLoadingBranch = false;
     });
 
