@@ -17,6 +17,7 @@ interface CalendarProps {
 				masterLastName: string
 		  }[]
 		| []
+	dataMaster: []
 	isLoadingCalendar: boolean
 }
 interface CalendarGerProps {
@@ -49,6 +50,7 @@ export const getCalendar = createAsyncThunk(
 
 const initialState: CalendarProps = {
 	dataCalendar: [],
+	dataMaster: [],
 	isLoadingCalendar: false,
 }
 
