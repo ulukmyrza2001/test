@@ -45,8 +45,6 @@ export const FilterPage = () => {
 		},
 	]
 
-	console.log(branchFindById)
-
 	return (
 		<Container
 			sx={{
@@ -62,7 +60,7 @@ export const FilterPage = () => {
 						dots={false}
 						infinite={true}
 						speed={400}
-						slidesToShow={4}
+						slidesToShow={2}
 						slidesToScroll={1}
 						swipeToSlide={true}
 						autoplay={false}
@@ -71,7 +69,9 @@ export const FilterPage = () => {
 						typeButton={true}
 						variableWidth={true}
 					>
-						{/* <ServiceCard /> */}
+						{branchFindById?.map((item: any, index: number) => (
+							<ServiceCard {...item} key={index} />
+						))}
 					</ContainerSlider>
 				</div>
 			</div>

@@ -41,8 +41,6 @@ export const UserPage = () => {
 		(state: any) => state.branch,
 	)
 
-	console.log(branchData)
-
 	useEffect(() => {
 		dispatch(
 			getBranches({
@@ -56,7 +54,7 @@ export const UserPage = () => {
 	return (
 		<Fragment>
 			<NavBar />
-			<Container>
+			<Container sx={{ marginTop: '50px' }}>
 				{DATA.map((item, index) => (
 					<div key={index} style={{ width: '100%' }}>
 						<ContainerSlider
