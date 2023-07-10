@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './Filter.module.css'
 
 import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
 import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
 import { Filterlayout } from '../../../components/Filter/FilterLayout/FilterLayout'
 import { Container } from '../../../styles/ContainerStyle/Container'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBrancheFindById } from '../../../store/features/branch-slice'
+import { AnyAction } from '@reduxjs/toolkit'
 
 export const FilterPage = () => {
+	const { branchFindById } = useSelector((state: any) => state.branch)
+	const { id } = useParams()
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getBrancheFindById({ branchId: id }) as never as AnyAction)
+	}, [])
+
+	console.log(branchFindById)
+
 	return (
 		<Container
 			sx={{

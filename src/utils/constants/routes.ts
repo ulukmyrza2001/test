@@ -68,7 +68,7 @@ export const USER_ROUTES = {
 	},
 
 	FILTER: {
-		path: '/filter/:id/:category',
+		path: '/filter/:id',
 	},
 	PRIVACY: {
 		path: '/privacy',

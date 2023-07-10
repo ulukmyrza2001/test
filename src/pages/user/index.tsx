@@ -35,6 +35,7 @@ export const UserPage = () => {
 	return (
 		<Fragment>
 			<NavBar />
+			<br />
 			<Container sx={{ margin: '50px 0' }}>
 				{DATA.map((item, index) => {
 					return (
