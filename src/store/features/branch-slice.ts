@@ -16,9 +16,16 @@ export const getBrancheById = createAsyncThunk(
 
 export const getBranches = createAsyncThunk(
   "allbranches/all",
-  async (_, { rejectWithValue }) => {
+  async (
+    { search, categoryServiceId, subCategoryServiceId, page, size }: any,
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await axiosInstance.get("branches");
+      const response = await axiosInstance.get(
+        search === ""
+          ? `branches?page=${page}&size=${size}`
+          : `branches?search=${search}&page=${page}&size=${size}`
+      );
       return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
