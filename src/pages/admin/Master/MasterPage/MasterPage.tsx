@@ -71,7 +71,7 @@ export const MasterPage = () => {
 	}
 
 	function handleToGo(id: number) {
-		navigate(`/master/${id}`)
+		navigate(`/master/${id}/appoinments`)
 	}
 
 	//useEffect
