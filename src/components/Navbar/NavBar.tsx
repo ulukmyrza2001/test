@@ -22,7 +22,7 @@ const NAVBAR_DATA = [
 	{
 		name: 'Парикмахерские услуги',
 		icon: HiMiniScissors,
-		link: '/filter/barber',
+		link: '/barber',
 	},
 	{
 		name: 'Для мужчин',
