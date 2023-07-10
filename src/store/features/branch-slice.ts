@@ -29,16 +29,23 @@ export const getBrancheFindById = createAsyncThunk(
 )
 
 export const getBranches = createAsyncThunk(
-	'allbranches/all',
-	async (_, { rejectWithValue }) => {
-		try {
-			const response = await axiosInstance.get('branches')
-			return response.data
-		} catch (error) {
-			rejectWithValue((error as Error).message)
-		}
-	},
-)
+  "allbranches/all",
+  async (
+    { search, categoryServiceId, subCategoryServiceId, page, size }: any,
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await axiosInstance.get(
+        search === ""
+          ? `branches?page=${page}&size=${size}`
+          : `branches?search=${search}&page=${page}&size=${size}`
+      );
+      return response.data;
+    } catch (error) {
+      rejectWithValue((error as Error).message);
+    }
+  }
+);
 
 export const getBranchesOwner = createAsyncThunk(
 	'allbranches/owner',

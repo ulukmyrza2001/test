@@ -5,6 +5,8 @@ import { Calendar } from '../pages/admin/calendar/Calendar'
 import { MasterPage } from '../pages/admin/master/masterPage/MasterPage'
 import { MasterInnerPage } from '../pages/admin/master/masterInnerPage/MasterInnerPage'
 import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
+import { Appoinments } from '../pages/admin/master/appointments/Appoinments'
+import { Rewievs } from '../pages/admin/master/rewievs/Rewievs'
 
 export const AdminRoutes = () => {
 	return (
@@ -24,7 +26,16 @@ export const AdminRoutes = () => {
 				<Route
 					path={ADMIN_ROUTES.MASTER.path}
 					element={<MasterInnerPage />}
-				/>
+				>
+					<Route
+						path={ADMIN_ROUTES.MASTER_APPOINTMENT.path}
+						element={<Appoinments />}
+					/>
+					<Route
+						path={ADMIN_ROUTES.MASTER_REWIEVS.path}
+						element={<Rewievs />}
+					/>
+				</Route>
 				<Route
 					path={ADMIN_ROUTES.SERVICES.path}
 					element={<Services />}

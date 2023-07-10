@@ -71,7 +71,7 @@ export const FilterPage = () => {
 						typeButton={true}
 						variableWidth={true}
 					>
-						<ServiceCard />
+						{/* <ServiceCard /> */}
 					</ContainerSlider>
 				</div>
 			</div>

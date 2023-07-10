@@ -42,6 +42,12 @@ export const ADMIN_ROUTES = {
 	MASTER: {
 		path: '/master/:masterID',
 	},
+	MASTER_APPOINTMENT: {
+		path: '/master/:masterID/appoinments',
+	},
+	MASTER_REWIEVS: {
+		path: '/master/:masterID/rewievs',
+	},
 	SERVICES: {
 		path: '/services',
 	},
