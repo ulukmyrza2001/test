@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, forwardRef, Ref } from "react";
 import styles from "./Input.module.css";
 
 interface IinputProps {
@@ -21,36 +21,39 @@ interface IinputProps {
   onKeyDown?: (value: any) => void;
 }
 
-export const Input = (props: IinputProps) => {
-  const {
-    label,
-    type,
-    onChange,
-    value,
-    placeholder,
-    disabled,
-    htmlFor,
-    onKeyDown,
-    ...perProps
-  } = props;
-  return (
-    <div className={styles.wrapper}>
-      {label && (
-        <label className={styles.label} htmlFor={htmlFor}>
-          {label}
-        </label>
-      )}
-      <input
-        className={styles.input}
-        name={props.label}
-        style={perProps}
-        type={type}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        disabled={disabled}
-        onKeyDown={onKeyDown}
-      />
-    </div>
-  );
-};
+export const Input = forwardRef(
+  (props: IinputProps, ref: Ref<HTMLInputElement>) => {
+    const {
+      label,
+      type,
+      onChange,
+      value,
+      placeholder,
+      disabled,
+      htmlFor,
+      onKeyDown,
+      ...perProps
+    } = props;
+    return (
+      <div className={styles.wrapper}>
+        {label && (
+          <label className={styles.label} htmlFor={htmlFor}>
+            {label}
+          </label>
+        )}
+        <input
+          ref={ref}
+          className={styles.input}
+          name={props.label}
+          {...perProps}
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          disabled={disabled}
+          onKeyDown={onKeyDown}
+        />
+      </div>
+    );
+  }
+);
