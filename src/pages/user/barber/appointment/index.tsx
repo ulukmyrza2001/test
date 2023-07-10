@@ -8,6 +8,7 @@ import { styled } from '@mui/material'
 import { GiBeard, GiCancel } from 'react-icons/gi'
 import { BiSend, BiTimeFive } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
+import { useSelector } from 'react-redux'
 
 const data = [
 	{
@@ -33,10 +34,12 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }))
 
 export const AppointmenBarberPage = () => {
+	const { branchData } = useSelector((state: any) => state.branch)
+
 	const BREAD_APPOINTMENT_MASTER = [
 		{
 			name: 'BARBERSHOP BEYBARS',
-			to: '/barber',
+			to: `/barber/${branchData?.branchId}`,
 			path: 1,
 		},
 		{

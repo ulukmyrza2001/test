@@ -74,7 +74,7 @@ export const USER_ROUTES = {
 	},
 
 	FILTER: {
-		path: '/filter',
+		path: '/filter/:id',
 	},
 	PRIVACY: {
 		path: '/privacy',
@@ -83,10 +83,10 @@ export const USER_ROUTES = {
 		path: '/terms',
 	},
 	BARBER: {
-		path: '/barber',
+		path: '/barber/:branchId',
 	},
 	APPOINTMENT_BARBER: {
-		path: '/barber/usluga/:id',
+		path: '/:id/barber/usluga/:id',
 	},
 	BEAUTY_SALON: {
 		path: '/beauty-salon',

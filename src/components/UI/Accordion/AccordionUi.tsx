@@ -143,7 +143,7 @@ export const AccordionUi = (props: any) => {
 																			</p>
 																		</div>
 																		<Link
-																			to={`/barber/usluga/${elem.id}`}
+																			to={`/${props.branchData?.companyName}/barber/usluga/${elem.id}`}
 																			className={
 																				path ===
 																				'barber'

@@ -7,10 +7,13 @@ import { AboutContent } from './aboutContent'
 import { OurWorkContent } from './ourWorkContent'
 import { ServicesBranchContent } from './servicesBranchContent'
 import BannerBarber from '../../../assets/image/barber.svg'
+import { useSelector } from 'react-redux'
 
 export const BarberPage = () => {
+	const { branchData } = useSelector((state: any) => state.branch)
+
 	useEffect(() => {
-		document.title = 'Barber | Cheber'
+		document.title = `${branchData?.companyName} | Cheber`
 		return () => {
 			document.title = 'Cheber' // Reset the title when the component unmounts
 		}
@@ -34,7 +37,7 @@ export const BarberPage = () => {
 				</div>
 				<div className={styles.titles}>
 					<h2>PREMIUM</h2>
-					<h1>BARBERSHOP BEYBARS</h1>
+					<h1>{branchData?.companyName}</h1>
 				</div>
 				<div className={styles.wrapper_services_title}>
 					<div className={styles.wrapper_services_title_card}>
