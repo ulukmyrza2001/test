@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBranchesMain } from '../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { TypeCompanyGenrate } from '../../utils/helpers/helpers'
+import { Banner } from '../../components/Banner'
 
 export const UserPage = () => {
 	const dispatch = useDispatch()
@@ -18,8 +19,13 @@ export const UserPage = () => {
 	}, [])
 
 	return (
-		<div>
-			<NavBar />
+		<Fragment>
+			<Container sx={{ marginTop: '20px' }}>
+				<Banner />
+			</Container>
+			<Container sx={{ margin: '20px 0' }}>
+				<NavBar />
+			</Container>
 			<Container sx={{ marginTop: '50px' }}>
 				{branchMain?.map((item: any, index: number) => (
 					<div
@@ -53,6 +59,6 @@ export const UserPage = () => {
 					</div>
 				))}
 			</Container>
-		</div>
+		</Fragment>
 	)
 }
