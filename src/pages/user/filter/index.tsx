@@ -1,13 +1,11 @@
 import { useEffect } from 'react'
 import styles from './Filter.module.css'
 import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
-import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
 import { Filterlayout } from '../../../components/Filter/FilterLayout/FilterLayout'
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-	getBrancheFindById,
 	getBranches,
 } from '../../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
@@ -51,7 +49,6 @@ export const FilterPage = () => {
 			path: 1,
 		},
 	]
-	console.log(branchData)
 
 	return (
 		<Container
