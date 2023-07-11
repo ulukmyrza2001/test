@@ -63,12 +63,10 @@ export const AppointmenBarberPage = () => {
 				className='text'
 				style={{
 					color: 'grey',
-				}}
-			>
+				}}>
 				AppointmenBarberPage
 			</span>
 			<br />
-
 			<div className={styles.wrapper}>
 				<div className={styles.wrapper_progres_name}>
 					<div className={styles.progress_name}>

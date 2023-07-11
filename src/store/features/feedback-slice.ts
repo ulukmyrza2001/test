@@ -7,7 +7,25 @@ interface getFeedbackMasterProps {
 
 interface FeedbackInitalStateProps {
 	isLoadingFeedback: boolean
-	feedbackDataMaster: any /// need to full interface
+	feedbackDataMaster: {
+		feedbackResponses: {
+			comment: string | number
+			createdDate: string
+			feedbackId: number
+			images: any
+			rating: number
+			replyToFeedbackResponse: {
+				answer: string
+				representative: string
+			}
+			userResponse: {
+				userId: number
+				fullName: string
+				avatar: string
+			}
+		}
+		totalRating: number
+	} | null
 }
 
 export const getFeedbackMaster = createAsyncThunk(
