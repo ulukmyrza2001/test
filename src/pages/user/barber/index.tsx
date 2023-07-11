@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBrancheById } from '../../../store/features/branch-slice'
 import { useLocation } from 'react-router-dom'
 import { AnyAction } from '@reduxjs/toolkit'
+import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
 
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -53,10 +54,57 @@ export const BarberPage = () => {
 				}}
 			>
 				<div className={styles.header}>
-					<span>Home</span>
-					<span>News</span>
-					<span>About</span>
-					<span>Contacts</span>
+					<div className={styles.inner_header}>
+						<span>Home</span>
+						<span>News</span>
+						<span>About</span>
+						<span>Contacts</span>
+					</div>
+					<div className={styles.info}>
+						<div className={styles.info_title}>
+							<BsGeoAlt fontSize={20} />
+							<div>
+								<span
+									className='text'
+									style={{
+										color: '#d9d9d9',
+									}}
+								>
+									Приходите по адресу:
+								</span>
+								<p
+									className='text'
+									style={{
+										color: '#d9d9d9',
+									}}
+								>
+									г.Бишкек ул.Боконбаева, 14
+								</p>
+							</div>
+						</div>
+						<div className={styles.info_title}>
+							<BsTelephone />
+							<div>
+								<span
+									className='text'
+									style={{
+										color: '#d9d9d9',
+									}}
+								>
+									Ежедневно с 10:00 до 20:00
+								</span>
+								<a
+									href='/'
+									className='text'
+									style={{
+										color: '#d9d9d9',
+									}}
+								>
+									+996 (550) 75-55-95
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div className={styles.titles}>
 					<h2>PREMIUM</h2>
