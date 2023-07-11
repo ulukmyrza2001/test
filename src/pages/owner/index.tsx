@@ -11,7 +11,6 @@ export const OwnerPage = () => {
   const { branchData, isLoadingBranch } = useSelector(
     (state: any) => state.branch
   );
-  console.log(branchData);
 
   useEffect(() => {
     dispatch(getBranchesOwner() as unknown as AnyAction);
