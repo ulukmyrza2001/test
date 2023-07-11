@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router";
 import { ADMIN_ROUTES } from "../utils/constants/routes";
 import { DashboardOutlet } from "../layout/dashboard/Dashboard";
-import { Calendar } from "../pages/admin/Calendar/Calendar";
-import { MasterPage } from "../pages/admin/Master/MasterPage/MasterPage";
-import { MasterInnerPage } from "../pages/admin/Master/MasterInnerPage/MasterInnerPage";
-import { Appoinments } from "../pages/admin/Master/appointments/Appoinments";
-import { Rewievs } from "../pages/admin/Master/rewievs/Rewievs";
-import { Services } from "../pages/admin/Services/ServicesPage/ServicesPage";
+import { Calendar } from "../pages/admin/calendar/Calendar";
+import { MasterPage } from "../pages/admin/master/masterPage/MasterPage";
+import { MasterInnerPage } from "../pages/admin/master/masterInnerPage/MasterInnerPage";
+import { Appointments } from "../pages/admin/master/appointments/Appointments";
+import { Rewievs } from "../pages/admin/master/rewievs/Rewievs";
+import { Services } from "../pages/admin/services/servicesPage/ServicesPage";
 
 export const AdminRoutes = () => {
   return (
@@ -17,7 +17,7 @@ export const AdminRoutes = () => {
         <Route path={ADMIN_ROUTES.MASTER.path} element={<MasterInnerPage />}>
           <Route
             path={ADMIN_ROUTES.MASTER_APPOINTMENT.path}
-            element={<Appoinments />}
+            element={<Appointments />}
           />
           <Route
             path={ADMIN_ROUTES.MASTER_REWIEVS.path}

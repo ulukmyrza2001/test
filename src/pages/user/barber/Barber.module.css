@@ -1,9 +1,30 @@
 .header {
-	width: 35%;
+	width: 90%;
+	padding: 1rem 0;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
+}
+.inner_header {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #d9d9d9 !important;
+}
+.info {
+	display: flex;
+	gap: 10px;
+}
+.info_title {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
 	color: #d9d9d9;
+}
+.info_title div {
+	display: flex;
+	flex-direction: column;
 }
 .header span {
 	cursor: pointer;

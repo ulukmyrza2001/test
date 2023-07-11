@@ -30,7 +30,12 @@ export function Table(props: TableProps) {
 			? props.data.map((row, index) => ({
 					...row,
 					index: index + 1,
-					id: row.value && row.id ? row.id : row.value || row.id,
+					id:
+						row.value && row.id
+							? row.id
+							: row.value
+							? row.value
+							: row.appointmentId || row.id,
 			  }))
 			: []
 
@@ -92,7 +97,7 @@ export function Table(props: TableProps) {
 					width: '100%',
 					height: '100%',
 					minHeight: '370px',
-					maxHeight: '600px',
+					maxHeight: '630px',
 					borderRadius: 4,
 					background: 'white',
 					zIndex: '0',
