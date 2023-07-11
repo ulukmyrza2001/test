@@ -54,3 +54,50 @@
 	width: 45%;
 	cursor: pointer;
 }
+@media only screen and (max-width: 1040px) {
+	.wrapper_input {
+		width: 85%;
+		bottom: 70px !important;
+	}
+}
+@media only screen and (max-width: 700px) {
+	.wrapper_input {
+		width: 96%;
+		top: -30px;
+		bottom: 0 !important;
+	}
+	.wrapper {
+		margin-top: 30px;
+		flex-direction: column;
+		align-items: self-start;
+		justify-content: flex-start;
+		padding: 0 0.6rem;
+		height: 100% !important;
+	}
+	.input {
+		padding: 2rem 0.5rem !important;
+	}
+	.search_input {
+		font-size: 14px;
+	}
+	.block_1 {
+		width: 100%;
+		margin-top: 70px;
+	}
+	.block_1 p {
+		font-size: 14px;
+	}
+	.block_2 {
+		width: 100%;
+		margin-top: 50px;
+	}
+	.block_2 img {
+		object-fit: cover;
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.wrapper_input {
+		width: 94%;
+	}
+}

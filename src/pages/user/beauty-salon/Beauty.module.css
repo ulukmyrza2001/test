@@ -5,12 +5,11 @@
 	display: flex;
 	justify-content: space-between;
 }
-.iner_header {
+.inner_header {
 	width: 50%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	color: #cda582;
 }
 .info {
 	display: flex;
