@@ -147,9 +147,9 @@ export const UserHeader = () => {
 				<div>
 					<Link to='/' className={styles.logo} style={colorText()}>
 						Чебер{' '}
-						{path === 'beauty-salon' ? (
+						{path === 'beauty_salon' ? (
 							<BeautyIcon color='white' />
-						) : path === 'barber' ? (
+						) : path === 'barbershop' ? (
 							<GiBeard fontSize={25} />
 						) : (
 							''
