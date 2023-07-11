@@ -62,6 +62,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 									className={styles.container_inside_week}
 									style={{
 										width: percentage,
+										opacity: item.workingDay ? '1' : '0',
 									}}>
 									{`${item.startTime.slice(
 										0,
