@@ -19,7 +19,7 @@ interface IinputNumberMask {
   onKeyDown?: (value: any) => void;
 }
 
-export function InputNumberMask(props: IinputNumberMask) {
+export const InputNumberMask = (props: IinputNumberMask) => {
   const { onChange, value, onKeyDown, disabled, label, ...restProps } = props;
 
   const handleChange = (value: string) => {
@@ -59,4 +59,4 @@ export function InputNumberMask(props: IinputNumberMask) {
       />
     </div>
   );
-}
+};
