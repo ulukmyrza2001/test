@@ -148,6 +148,7 @@ export const getBranchesMain = createAsyncThunk(
 const initialState: any = {
   branchData: [],
   branchFindById: [],
+  branchMain: [],
   isLoadingBranch: false,
 };
 
@@ -198,7 +199,7 @@ export const branchSlice = createSlice({
     });
     builder.addCase(getBranchesMain.fulfilled, (state, action) => {
       state.isLoadingBranch = false;
-      state.branchData = action.payload;
+      state.branchMain = action.payload;
     });
     builder.addCase(getBranchesMain.rejected, (state) => {
       state.isLoadingBranch = false;

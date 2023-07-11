@@ -5,7 +5,7 @@ import {
   HiOutlineMenu,
   HiMenuAlt3,
 } from "react-icons/hi";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { BiLogIn, BiSupport } from "react-icons/bi";
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { FiUsers } from "react-icons/fi";
@@ -17,6 +17,7 @@ export const OwnerOutlet = () => {
   const [open, setOpen] = useState(false);
 
   const locations = useLocation();
+  const navigate = useNavigate();
 
   const DATA_DASHBOARD = [
     { name: "Dashboard", link: "/dashboard", icon: TbDeviceDesktopAnalytics },
@@ -32,6 +33,7 @@ export const OwnerOutlet = () => {
     document.cookie = `isAuthenticated=${false}; path=/`;
     Cookies.remove("role");
     Cookies.remove("token");
+    navigate("/");
     window.location.reload();
   };
 
