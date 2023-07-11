@@ -19,8 +19,6 @@ export const BarberPage = () => {
 
 	const { pathname } = useLocation()
 
-	const path = pathname.split('/')[1]
-
 	useEffect(() => {
 		dispatch(
 			getBrancheById({
@@ -51,7 +49,7 @@ export const BarberPage = () => {
 					backgroundPosition: 'center',
 					backgroundSize: 'cover',
 					backgroundRepeat: 'no-repeat',
-					padding: '2rem',
+					padding: '1rem',
 				}}
 			>
 				<div className={styles.header}>

@@ -45,6 +45,7 @@
 	border-radius: 10px;
 	margin-top: 50px;
 }
+
 .about_text {
 	width: 45%;
 	display: flex;
@@ -56,5 +57,48 @@
 	background-color: black;
 }
 .wrapper_slider {
-	width: 45%;
+	max-width: 45%;
+}
+.wrapper_slider img {
+	width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+	.about_text {
+		font-size: 12px;
+	}
+}
+@media only screen and (max-width: 800px) {
+	.about_text {
+		width: 100%;
+	}
+	.wrapper_slider {
+		max-width: 100%;
+		width: 100%;
+	}
+	.about_barber {
+		gap: 10px;
+		flex-direction: column;
+	}
+	.about_barber hr {
+		height: 2px;
+		width: 100%;
+		background-color: black;
+	}
+	.header {
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.wrapper_services_title {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+	.about_barber {
+		width: 100%;
+	}
+	.wrapper_services_title_card p {
+		width: 100%;
+	}
 }

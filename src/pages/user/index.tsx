@@ -16,8 +16,6 @@ export const UserPage = () => {
 		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
 
-	console.log(branchMain)
-
 	return (
 		<div>
 			<NavBar />
@@ -31,7 +29,11 @@ export const UserPage = () => {
 							dots={true}
 							infinite={true}
 							speed={400}
-							slidesToShow={item?.branchResponses?.length}
+							slidesToShow={
+								item?.branchResponses?.length < 4
+									? item?.branchResponses?.length
+									: 4
+							}
 							slidesToScroll={1}
 							swipeToSlide={true}
 							autoplay={false}
