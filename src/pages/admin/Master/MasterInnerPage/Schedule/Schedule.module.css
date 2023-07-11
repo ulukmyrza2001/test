@@ -27,18 +27,17 @@
 	height: 30px;
 	border-radius: 6px;
 	background-color: #ede9e9;
-	transition-duration: 500ms;
+	transition: width 500ms;
 }
 .container_inside_week {
 	border-radius: 6px;
 	height: 30px;
-	transition-duration: 500ms;
-	transition-property: width;
+	transition: width 500ms;
 	display: flex;
 	padding-right: 10px;
 	align-items: center;
 	justify-content: flex-end;
 	color: white;
-	width: 100%;
 	background-color: #33a011;
+	width: 0px;
 }
