@@ -16,3 +16,15 @@ export function TranslateWeekShort(name: string) {
 			return 'Вс'
 	}
 }
+
+export const TypeCompanyGenrate = (item: string) => {
+	switch (item) {
+		case 'barbershop':
+			return 'Барбер'
+		case 'beauty_salon':
+			return 'Салон красоты'
+
+		default:
+			break
+	}
+}

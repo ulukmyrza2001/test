@@ -6,6 +6,7 @@ import { NavBar } from '../../components/Navbar/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBranchesMain } from '../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
+import { TypeCompanyGenrate } from '../../utils/helpers/helpers'
 
 export const UserPage = () => {
 	const dispatch = useDispatch()
@@ -15,18 +16,6 @@ export const UserPage = () => {
 	useEffect(() => {
 		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
-
-	const typeCompanyGenrate = (item: string) => {
-		switch (item) {
-			case 'Барбершоп':
-				return 'Барбер'
-			case 'beauty_salon':
-				return 'Салон красоты'
-
-			default:
-				break
-		}
-	}
 
 	return (
 		<div>
@@ -53,7 +42,7 @@ export const UserPage = () => {
 							arrowAndprev={true}
 							typeButton={true}
 							variableWidth={true}
-							label={typeCompanyGenrate(item.categoryType)}
+							label={TypeCompanyGenrate(item.categoryType)}
 						>
 							{item?.branchResponses?.map(
 								(item: any, index: number) => {

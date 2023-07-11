@@ -1,32 +1,29 @@
 import { useEffect } from 'react'
 import styles from './Filter.module.css'
 import { ServiceCard } from '../../../components/Cards/ServiceCard/ServiceCard'
-import { ContainerSlider } from '../../../components/ContainersSliders/ContainerSlider'
 import { Filterlayout } from '../../../components/Filter/FilterLayout/FilterLayout'
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-	getBrancheFindById,
-	getBranches,
-} from '../../../store/features/branch-slice'
+import { getBranchesInnerByID } from '../../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { BiHomeAlt } from 'react-icons/bi'
 import { BreadCrumbs } from '../../../components/UI/BreadCrumbs/BreadCrumbs'
 import { getSingleCategoryServiceSelect } from '../../../store/features/category-service'
 
 export const FilterPage = () => {
-	const { branchData, isLoadingBranch } = useSelector(
-		(state: any) => state.branch,
-	)
-	const { categorySingleServiceSelectData, isLoadingCategoryService } =
-		useSelector((state: any) => state.categoryService)
 	const { id } = useParams()
 	const dispatch = useDispatch()
+	const { branchInnerData, isLoadingBranch } = useSelector(
+		(state: any) => state.branch,
+	)
+
+	const { categorySingleServiceSelectData, isLoadingCategoryService } =
+		useSelector((state: any) => state.categoryService)
 
 	useEffect(() => {
 		dispatch(
-			getBranches({
+			getBranchesInnerByID({
 				categoryServiceId: id,
 			}) as never as AnyAction,
 		)
@@ -51,7 +48,6 @@ export const FilterPage = () => {
 			path: 1,
 		},
 	]
-	console.log(branchData)
 
 	return (
 		<Container
@@ -65,7 +61,7 @@ export const FilterPage = () => {
 				<div className={styles.inner_wrapper}>
 					<span>135 результатов</span>
 					<div className={styles.wrapper_cards}>
-						{branchData?.map((item: any, index: number) => (
+						{branchInnerData?.map((item: any, index: number) => (
 							<ServiceCard {...item} key={index} />
 						))}
 					</div>
