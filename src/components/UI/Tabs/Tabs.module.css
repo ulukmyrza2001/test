@@ -38,7 +38,7 @@
 	width: 100%;
 	height: 3px;
 	border-radius: 100px;
-	background-color: #557a95;
+	background-color: #33a011;
 	transform: scaleX(0);
 	transform-origin: left;
 	transition: transform 0.3s ease-in-out;
