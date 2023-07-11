@@ -18,6 +18,7 @@ interface IinputProps {
   border?: string;
   color?: string;
   htmlFor?: string;
+  className?: string;
   onKeyDown?: (value: any) => void;
 }
 
@@ -26,6 +27,7 @@ export const Input = forwardRef(
     const {
       label,
       type,
+      className,
       onChange,
       value,
       placeholder,
@@ -43,7 +45,7 @@ export const Input = forwardRef(
         )}
         <input
           ref={ref}
-          className={styles.input}
+          className={className ? className : styles.input}
           name={props.label}
           {...perProps}
           type={type}

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Container } from "../../../styles/ContainerStyle/Container";
-import Styles from "./style.module.css";
+import styles from "./style.module.css";
 import { ImagePicker } from "../../../components/UI/ImagePicker/ImagePicker";
+import { Input } from "../../../components/UI/Inputs/Input/Input";
 
 export const ProfilePage = () => {
   useEffect(() => {
@@ -12,23 +13,30 @@ export const ProfilePage = () => {
   }, []);
   return (
     <Container>
-      <div className={Styles.wrapper}>
-        <h1 className={Styles.page_text}>Личный кабинет</h1>
-        <div>
-          <div className={Styles.to_left}>
-            <div className={Styles.current_data}>
-              <div className={Styles.img_picker}>
-                <ImagePicker borderRadius="999px" border="1px solid silver" />
-              </div>
-              <h3 className={Styles.name}>Билли</h3>
-              <p className={Styles.number}>+996708521328</p>
+      <h1 className={styles.page_text}>Личный кабинет</h1>
+      <div className={styles.wrapper}>
+        <div className={styles.to_left}>
+          <div className={styles.current_data}>
+            <div className={styles.img_picker}>
+              <ImagePicker borderRadius="999px" border="1px solid silver" />
             </div>
-            <div className={Styles.tabs}>
-              <div className={Styles.tab}>Редактировать данные</div>
-              <div className={Styles.tab}>Сменить пароль</div>
-            </div>
+            <h3 className={styles.name}>Билли</h3>
+            <p className={styles.number}>+996708521328</p>
           </div>
-          <div className={Styles.to_right}></div>
+          <div className={styles.tabs}>
+            <div className={styles.tab}>Редактировать данные</div>
+            <div className={styles.tab}>Сменить пароль</div>
+          </div>
+        </div>
+        <div className={styles.to_right}>
+          <h2>Редактировать данные</h2>
+          <div className={styles.inputs}>
+            <Input className={styles.input} />
+            <Input className={styles.input} />
+            <Input className={styles.input} />
+            <Input className={styles.input} />
+            <Input className={styles.input} />
+          </div>
         </div>
       </div>
     </Container>
