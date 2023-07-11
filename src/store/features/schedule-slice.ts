@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axiosInstance from '../../api/axios-config'
+import { toast } from 'react-hot-toast'
 
 interface MasterScheduleProps {
 	masterSchedule: {
@@ -18,9 +19,19 @@ interface MasterScheduleProps {
 	} | null
 	isLoadingShedule: boolean
 }
+
 interface GetMasterScheduleProps {
 	masterID: number | string | undefined
 	startWeek: string
+}
+
+interface putMasterScheduleProps {
+	daySchedulesId: number
+	daySchedulesData: {
+		startTime: string
+		endTime: string
+		workingDay: boolean
+	}
 }
 
 export const getMasterSchedule = createAsyncThunk(
@@ -35,6 +46,26 @@ export const getMasterSchedule = createAsyncThunk(
 			)
 			return response.data
 		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const putMasterSchedule = createAsyncThunk(
+	'schedule/putMasterSchedule',
+	async (
+		{ daySchedulesId, daySchedulesData }: putMasterScheduleProps,
+		{ rejectWithValue },
+	) => {
+		try {
+			const response = await axiosInstance.put(
+				`day-schedules/${daySchedulesId}`,
+				daySchedulesData,
+			)
+			toast.success('Successfully toasted!')
+			return response.data
+		} catch (error) {
+			toast.error((error as Error).message)
 			rejectWithValue((error as Error).message)
 		}
 	},

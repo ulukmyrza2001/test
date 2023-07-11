@@ -6,14 +6,17 @@ import { Filterlayout } from '../../../components/Filter/FilterLayout/FilterLayo
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBrancheFindById } from '../../../store/features/branch-slice'
+import {
+	getBrancheFindById,
+	getBranches,
+} from '../../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { BiHomeAlt } from 'react-icons/bi'
 import { BreadCrumbs } from '../../../components/UI/BreadCrumbs/BreadCrumbs'
 import { getSingleCategoryServiceSelect } from '../../../store/features/category-service'
 
 export const FilterPage = () => {
-	const { branchFindById, isLoadingBranch } = useSelector(
+	const { branchData, isLoadingBranch } = useSelector(
 		(state: any) => state.branch,
 	)
 	const { categorySingleServiceSelectData, isLoadingCategoryService } =
@@ -22,7 +25,11 @@ export const FilterPage = () => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(getBrancheFindById({ branchId: id }) as never as AnyAction)
+		dispatch(
+			getBranches({
+				categoryServiceId: id,
+			}) as never as AnyAction,
+		)
 		dispatch(
 			getSingleCategoryServiceSelect({
 				cotegoryID: id,
@@ -32,7 +39,7 @@ export const FilterPage = () => {
 
 	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
 		{
-			name: <BiHomeAlt fontSize={26} color='#31a010' />,
+			name: <BiHomeAlt fontSize={26} color='grey' />,
 			to: '/',
 			isLoading: isLoadingBranch,
 			path: 1,
@@ -44,6 +51,7 @@ export const FilterPage = () => {
 			path: 1,
 		},
 	]
+	console.log(branchData)
 
 	return (
 		<Container
@@ -56,23 +64,11 @@ export const FilterPage = () => {
 				<Filterlayout />
 				<div className={styles.inner_wrapper}>
 					<span>135 результатов</span>
-					<ContainerSlider
-						dots={false}
-						infinite={true}
-						speed={400}
-						slidesToShow={2}
-						slidesToScroll={1}
-						swipeToSlide={true}
-						autoplay={false}
-						pauseOnHover={true}
-						arrowAndprev={true}
-						typeButton={true}
-						variableWidth={true}
-					>
-						{branchFindById?.map((item: any, index: number) => (
+					<div className={styles.wrapper_cards}>
+						{branchData?.map((item: any, index: number) => (
 							<ServiceCard {...item} key={index} />
 						))}
-					</ContainerSlider>
+					</div>
 				</div>
 			</div>
 		</Container>

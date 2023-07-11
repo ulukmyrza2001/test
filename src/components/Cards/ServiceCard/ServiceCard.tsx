@@ -12,6 +12,8 @@ interface IServiceCard {
 	phoneNumber: string
 	categoryName: string
 	branchId: number
+	image: string
+	categoryType: string
 }
 
 export const ServiceCard = ({
@@ -21,9 +23,11 @@ export const ServiceCard = ({
 	phoneNumber,
 	categoryName,
 	branchId,
+	image,
+	categoryType,
 }: IServiceCard) => {
 	return (
-		<Link to={`/${categoryName}/${branchId}`}>
+		<Link to={`/${categoryType}/${branchId}`}>
 			<Card className={styles.main}>
 				<CardActionArea className={styles.mainwrapper}>
 					{isloading ? (
@@ -73,13 +77,15 @@ export const ServiceCard = ({
 							<div className={styles.imgcontainer}>
 								<img
 									className={styles.img}
-									src='https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2020/07/29184719/Cover-20.png'
+									src={image}
 									alt='AMG'
 								/>
 							</div>
 							<div className={styles.info}>
 								<div>
-									<h4 className={styles.type}>Барбершоп</h4>
+									<h4 className={styles.type}>
+										{categoryName}
+									</h4>
 									<h3 className={styles.name}>
 										{companyName}
 									</h3>

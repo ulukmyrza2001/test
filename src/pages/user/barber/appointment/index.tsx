@@ -6,9 +6,10 @@ import LinearProgress, {
 } from '@mui/material/LinearProgress'
 import { styled } from '@mui/material'
 import { GiBeard, GiCancel } from 'react-icons/gi'
-import { BiSend, BiTimeFive } from 'react-icons/bi'
+import { BiHomeAlt, BiSend, BiTimeFive } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { useSelector } from 'react-redux'
+import { useLocation, useParams } from 'react-router-dom'
 
 const data = [
 	{
@@ -34,18 +35,26 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }))
 
 export const AppointmenBarberPage = () => {
-	const { branchData } = useSelector((state: any) => state.branch)
+	const { branchData, isLoadingBranch } = useSelector(
+		(state: any) => state.branch,
+	)
 
 	const BREAD_APPOINTMENT_MASTER = [
 		{
+			name: <BiHomeAlt fontSize={26} color='grey' />,
+			to: '/',
+			isLoading: isLoadingBranch,
+			path: 1,
+		},
+		{
 			name: 'BARBERSHOP BEYBARS',
 			to: `/barber/${branchData?.branchId}`,
-			path: 1,
+			path: 2,
 		},
 		{
 			name: 'ABU',
 			to: '/:id',
-			path: 2,
+			path: 3,
 		},
 	]
 	return (

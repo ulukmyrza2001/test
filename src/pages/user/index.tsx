@@ -4,64 +4,48 @@ import { ContainerSlider } from '../../components/ContainersSliders/ContainerSli
 import { ServiceCard } from '../../components/Cards/ServiceCard/ServiceCard'
 import { NavBar } from '../../components/Navbar/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBranches } from '../../store/features/branch-slice'
+import { getBranchesMain } from '../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-
-const DATA = [
-	{
-		name: 'Стрижка волос',
-	},
-	{
-		name: 'Маникюр',
-	},
-	{
-		name: 'Педикюр',
-	},
-	{
-		name: 'Укладка волос',
-	},
-	{
-		name: 'Снятие покрытия',
-	},
-	{
-		name: 'Коррекция бровей',
-	},
-	{
-		name: 'Шугаринг',
-	},
-	{
-		name: 'Снятие покрытия',
-	},
-]
 
 export const UserPage = () => {
 	const dispatch = useDispatch()
 
-	const { branchData, isLoadingBranch } = useSelector(
-		(state: any) => state.branch,
-	)
+	const { branchMain } = useSelector((state: any) => state.branch)
 
 	useEffect(() => {
-		dispatch(
-			getBranches({
-				search: '',
-				page: 1,
-				size: 10,
-			}) as never as AnyAction,
-		)
+		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
 
+	const typeCompanyGenrate = (item: string) => {
+		switch (item) {
+			case 'Барбершоп':
+				return 'Барбер'
+			case 'beauty_salon':
+				return 'Салон красоты'
+
+			default:
+				break
+		}
+	}
+
 	return (
-		<Fragment>
+		<div>
 			<NavBar />
 			<Container sx={{ marginTop: '50px' }}>
-				{DATA.map((item, index) => (
-					<div key={index} style={{ width: '100%' }}>
+				{branchMain?.map((item: any, index: number) => (
+					<div
+						key={index}
+						style={{ width: '100%', marginTop: '30px' }}
+					>
 						<ContainerSlider
-							dots={false}
+							dots={true}
 							infinite={true}
 							speed={400}
-							slidesToShow={4}
+							slidesToShow={
+								item?.branchResponses?.length < 4
+									? item?.branchResponses?.length
+									: 4
+							}
 							slidesToScroll={1}
 							swipeToSlide={true}
 							autoplay={false}
@@ -69,15 +53,17 @@ export const UserPage = () => {
 							arrowAndprev={true}
 							typeButton={true}
 							variableWidth={true}
-							label={item.name}
+							label={typeCompanyGenrate(item.categoryType)}
 						>
-							{branchData?.map((elem: any, index: number) => (
-								<ServiceCard {...elem} key={index} />
-							))}
+							{item?.branchResponses?.map(
+								(item: any, index: number) => {
+									return <ServiceCard {...item} key={index} />
+								},
+							)}
 						</ContainerSlider>
 					</div>
 				))}
 			</Container>
-		</Fragment>
+		</div>
 	)
 }

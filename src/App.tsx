@@ -8,7 +8,6 @@ function App() {
 	const { token, role, isAuthenticated } = useSelector(
 		(state: any) => state.auth,
 	)
-	const { branchData } = useSelector((state: any) => state.branch)
 
 	useEffect(() => {
 		if (token) {

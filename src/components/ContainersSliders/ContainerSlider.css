@@ -9,8 +9,7 @@
 }
 .header_title {
 	position: relative;
-	top: 30px;
-	width: 100%;
+	top: 0;
 	height: 50%;
 	display: flex;
 	flex-direction: column;

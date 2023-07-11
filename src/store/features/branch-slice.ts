@@ -36,9 +36,16 @@ export const getBranches = createAsyncThunk(
 	) => {
 		try {
 			const response = await axiosInstance.get(
-				search === ''
-					? `branches?page=${page}&size=${size}`
-					: `branches?search=${search}&page=${page}&size=${size}`,
+				`branches?${search ? `search=${search}&` : ''}${
+					categoryServiceId
+						? `categoryServiceId=${categoryServiceId}&`
+						: ''
+				}${
+					subCategoryServiceId
+						? `subCategoryServiceId=${subCategoryServiceId}&`
+						: ''
+				} ${page ? `page=${page}&` : ''} 
+        ${size ? `size=${size}` : ''}`,
 			)
 			return response.data
 		} catch (error) {
@@ -136,9 +143,22 @@ export const putBranch = createAsyncThunk(
 	},
 )
 
+export const getBranchesMain = createAsyncThunk(
+	'allbranches/main',
+	async (_, { rejectWithValue }) => {
+		try {
+			const response = await axiosInstance.get('branches/main')
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
 const initialState: any = {
 	branchData: [],
 	branchFindById: [],
+	branchMain: [],
 	isLoadingBranch: false,
 }
 
@@ -179,6 +199,19 @@ export const branchSlice = createSlice({
 			state.branchData = action.payload
 		})
 		builder.addCase(getBranchesOwner.rejected, (state) => {
+			state.isLoadingBranch = false
+		})
+
+		// ----------------------------------------------------------->
+
+		builder.addCase(getBranchesMain.pending, (state) => {
+			state.isLoadingBranch = true
+		})
+		builder.addCase(getBranchesMain.fulfilled, (state, action) => {
+			state.isLoadingBranch = false
+			state.branchMain = action.payload
+		})
+		builder.addCase(getBranchesMain.rejected, (state) => {
 			state.isLoadingBranch = false
 		})
 

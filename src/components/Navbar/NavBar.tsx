@@ -23,7 +23,7 @@ export const NavBar = () => {
 					dots={false}
 					infinite={true}
 					speed={400}
-					slidesToShow={3}
+					slidesToShow={categoryServiceSelectData?.length}
 					slidesToScroll={1}
 					swipeToSlide={true}
 					autoplay={true}

@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
@@ -10,6 +11,7 @@ export const OwnerPage = () => {
   const { branchData, isLoadingBranch } = useSelector(
     (state: any) => state.branch
   );
+  console.log(branchData);
 
   useEffect(() => {
     dispatch(getBranchesOwner() as unknown as AnyAction);
