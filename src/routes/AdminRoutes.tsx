@@ -8,6 +8,7 @@ import { Appointments } from "../pages/admin/Master/appointments/Appointments";
 import { Rewievs } from "../pages/admin/Master/rewievs/Rewievs";
 import { Services } from "../pages/admin/Services/ServicesPage/ServicesPage";
 
+
 export const AdminRoutes = () => {
   return (
     <Routes>
