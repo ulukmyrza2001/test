@@ -16,3 +16,16 @@ export function TranslateWeekShort(name: string) {
 			return 'Вс'
 	}
 }
+
+export function TranslateAppointmentStatus(name: string) {
+	switch (name) {
+		case 'CONFIRMED':
+			return 'Подтвержден'
+		case 'ARRIVE':
+			return 'Пришел'
+		case 'COMPLETED':
+			return 'Завершенный'
+		case 'CANCELED':
+			return 'Отменен'
+	}
+}

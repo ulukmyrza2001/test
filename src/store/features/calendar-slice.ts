@@ -20,16 +20,23 @@ interface CalendarProps {
 	dataMaster: []
 	isLoadingCalendar: boolean
 }
-interface CalendarGerProps {
+
+interface GetCalendarProps {
 	startTime: string
 	endTime: string
 	masterID: number[]
 }
 
+interface getMasterAppoinmentProps {
+	masterID: number | undefined | string
+	page: number
+	size: number
+}
+
 export const getCalendar = createAsyncThunk(
-	'Calendar/getCalendar',
+	'calendar/getCalendar',
 	async (
-		{ startTime, endTime, masterID }: CalendarGerProps,
+		{ startTime, endTime, masterID }: GetCalendarProps,
 		{ rejectWithValue },
 	) => {
 		try {
@@ -40,6 +47,23 @@ export const getCalendar = createAsyncThunk(
 				masterIDsQueryParam === ''
 					? `appointments/calendar?startDay=${startTime}&endDay=${endTime}`
 					: `appointments/calendar?${masterIDsQueryParam}&startDay=${startTime}&endDay=${endTime}`,
+			)
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const getMasterAppoinment = createAsyncThunk(
+	'calendar/getMasterAppoinment',
+	async (
+		{ masterID, page, size }: getMasterAppoinmentProps,
+		{ rejectWithValue },
+	) => {
+		try {
+			const response = await axiosInstance.get(
+				`appointments/master/${masterID}?page=${page}&size=${size}`,
 			)
 			return response.data
 		} catch (error) {
@@ -59,6 +83,8 @@ export const calendarSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
+		//get
+
 		builder.addCase(getCalendar.pending, (state) => {
 			state.isLoadingCalendar = true
 		})
@@ -67,6 +93,17 @@ export const calendarSlice = createSlice({
 			state.dataCalendar = action.payload
 		})
 		builder.addCase(getCalendar.rejected, (state) => {
+			state.isLoadingCalendar = false
+		})
+
+		builder.addCase(getMasterAppoinment.pending, (state) => {
+			state.isLoadingCalendar = true
+		})
+		builder.addCase(getMasterAppoinment.fulfilled, (state, action) => {
+			state.isLoadingCalendar = false
+			state.dataMaster = action.payload
+		})
+		builder.addCase(getMasterAppoinment.rejected, (state) => {
 			state.isLoadingCalendar = false
 		})
 	},
