@@ -227,11 +227,7 @@ export const AppointmenBarberPage = () => {
           )}
         </div>
         <div className={styles.actions}>
-          {next === 1 && (
-            <div className={styles.add}>
-              Добавить услугу <AccordionUi />
-            </div>
-          )}
+          {next === 1 && <div className={styles.add}>Добавить услугу</div>}
           <div className={styles.btn_wrapper}>
             {next !== 1 && (
               <Button

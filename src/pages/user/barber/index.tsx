@@ -14,27 +14,27 @@ import { AnyAction } from '@reduxjs/toolkit'
 import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
 
 export const BarberPage = () => {
-	const { branchData } = useSelector((state: any) => state.branch)
+  const { branchData } = useSelector((state: any) => state.branch);
 
-	const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-	const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
-	useEffect(() => {
-		dispatch(
-			getBrancheById({
-				branchId: Number(pathname.split('/').pop()),
-			}) as never as AnyAction,
-		)
-	}, [])
+  useEffect(() => {
+    dispatch(
+      getBrancheById({
+        branchId: Number(pathname.split("/").pop()),
+      }) as never as AnyAction
+    );
+  }, []);
 
-	useEffect(() => {
-		dispatch(
-			getBrancheById({
-				branchId: Number(pathname.split('/').pop()),
-			}) as never as AnyAction,
-		)
-	}, [])
+  useEffect(() => {
+    dispatch(
+      getBrancheById({
+        branchId: Number(pathname.split("/").pop()),
+      }) as never as AnyAction
+    );
+  }, []);
 
 	useEffect(() => {
 		document.title = `Barber | Cheber`
