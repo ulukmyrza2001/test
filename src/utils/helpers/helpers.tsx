@@ -27,5 +27,7 @@ export function TranslateAppointmentStatus(name: string) {
 			return 'Завершенный'
 		case 'CANCELED':
 			return 'Отменен'
+		default:
+			return 'Подтвержден'
 	}
 }
