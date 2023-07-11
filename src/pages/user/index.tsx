@@ -10,30 +10,28 @@ import { AnyAction } from '@reduxjs/toolkit'
 export const UserPage = () => {
 	const dispatch = useDispatch()
 
-	const { branchData, isLoadingBranch } = useSelector(
-		(state: any) => state.branch,
-	)
+	const { branchMain } = useSelector((state: any) => state.branch)
 
-	console.log(branchData)
+	console.log(branchMain)
 
 	useEffect(() => {
 		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
 
 	return (
-		<Fragment>
+		<div>
 			<NavBar />
 			<Container sx={{ marginTop: '50px' }}>
-				{branchData?.map((item: any, index: number) => (
+				{branchMain?.map((item: any, index: number) => (
 					<div
 						key={index}
 						style={{ width: '100%', marginTop: '30px' }}
 					>
 						<ContainerSlider
-							dots={false}
+							dots={true}
 							infinite={true}
 							speed={400}
-							slidesToShow={4}
+							slidesToShow={2}
 							slidesToScroll={1}
 							swipeToSlide={true}
 							autoplay={false}
@@ -52,6 +50,6 @@ export const UserPage = () => {
 					</div>
 				))}
 			</Container>
-		</Fragment>
+		</div>
 	)
 }

@@ -24,6 +24,16 @@ export const UserHeader = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const role = Cookies.get('role')
 
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
+
 	const showModalHandler = () => {
 		setShowModal(true)
 	}
