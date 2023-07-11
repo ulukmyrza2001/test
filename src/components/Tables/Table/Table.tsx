@@ -30,7 +30,12 @@ export function Table(props: TableProps) {
 			? props.data.map((row, index) => ({
 					...row,
 					index: index + 1,
-					id: row.value && row.id ? row.id : row.value || row.id,
+					id:
+						row.value && row.id
+							? row.id
+							: row.value
+							? row.value
+							: row.appointmentId || row.id,
 			  }))
 			: []
 

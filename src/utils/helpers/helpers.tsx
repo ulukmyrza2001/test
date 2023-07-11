@@ -17,6 +17,7 @@ export function TranslateWeekShort(name: string) {
 	}
 }
 
+<<<<<<< HEAD
 export const TypeCompanyGenrate = (item: string) => {
 	switch (item) {
 		case 'barbershop':
@@ -26,5 +27,17 @@ export const TypeCompanyGenrate = (item: string) => {
 
 		default:
 			break
+=======
+export function TranslateAppointmentStatus(name: string) {
+	switch (name) {
+		case 'CONFIRMED':
+			return 'Подтвержден'
+		case 'ARRIVE':
+			return 'Пришел'
+		case 'COMPLETED':
+			return 'Завершенный'
+		case 'CANCELED':
+			return 'Отменен'
+>>>>>>> bef97c8526e172977ec36753e31d468f02211b6e
 	}
 }
