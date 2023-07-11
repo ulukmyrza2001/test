@@ -83,13 +83,13 @@ export const USER_ROUTES = {
 		path: '/terms',
 	},
 	BARBER: {
-		path: '/barber/:branchId',
+		path: '/barbershop/:branchId',
 	},
 	APPOINTMENT_BARBER: {
-		path: '/:id/barber/usluga/:id',
+		path: '/:id/barbershop/usluga/:id',
 	},
 	BEAUTY_SALON: {
-		path: '/beauty-salon',
+		path: '/beauty_salon/:beautySalonID',
 	},
 }
 

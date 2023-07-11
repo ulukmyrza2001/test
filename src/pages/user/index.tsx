@@ -16,6 +16,18 @@ export const UserPage = () => {
 		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
 
+	const typeCompanyGenrate = (item: string) => {
+		switch (item) {
+			case 'Барбершоп':
+				return 'Барбер'
+			case 'beauty_salon':
+				return 'Салон красоты'
+
+			default:
+				break
+		}
+	}
+
 	return (
 		<div>
 			<NavBar />
@@ -41,7 +53,7 @@ export const UserPage = () => {
 							arrowAndprev={true}
 							typeButton={true}
 							variableWidth={true}
-							label={item.categoryResponse.name}
+							label={typeCompanyGenrate(item.categoryType)}
 						>
 							{item?.branchResponses?.map(
 								(item: any, index: number) => {

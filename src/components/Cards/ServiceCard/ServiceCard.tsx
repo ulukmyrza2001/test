@@ -13,6 +13,7 @@ interface IServiceCard {
 	categoryName: string
 	branchId: number
 	image: string
+	categoryType: string
 }
 
 export const ServiceCard = ({
@@ -23,9 +24,10 @@ export const ServiceCard = ({
 	categoryName,
 	branchId,
 	image,
+	categoryType,
 }: IServiceCard) => {
 	return (
-		<Link to={`/barber/${branchId}`}>
+		<Link to={`/${categoryType}/${branchId}`}>
 			<Card className={styles.main}>
 				<CardActionArea className={styles.mainwrapper}>
 					{isloading ? (

@@ -110,11 +110,11 @@ export const UserHeader = () => {
 	}
 
 	const stylesHcange = () => {
-		if (path === 'barber') {
+		if (path === 'barbershop') {
 			return {
 				background: '#858585',
 			}
-		} else if (path === 'beauty-salon') {
+		} else if (path === 'beauty_salon') {
 			return {
 				background: '#cda582',
 			}
@@ -126,7 +126,7 @@ export const UserHeader = () => {
 	}
 
 	const colorText = () => {
-		if (path === 'barber') {
+		if (path === 'barbershop') {
 			return {
 				color: 'white',
 			}
@@ -134,7 +134,7 @@ export const UserHeader = () => {
 			return {
 				color: 'black',
 			}
-		} else if (path === 'beauty-salon') {
+		} else if (path === 'beauty_salon') {
 			return {
 				color: 'white',
 			}
