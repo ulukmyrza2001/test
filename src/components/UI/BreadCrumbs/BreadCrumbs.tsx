@@ -8,7 +8,8 @@ export function BreadCrumbs({ paths }: any) {
 		<Breadcrumbs
 			aria-label='breadcrumbs'
 			separator='/'
-			className={styles.breadcrumbs}>
+			className={styles.breadcrumbs}
+		>
 			{paths.map((path: any, index: number) => {
 				const lastIndex = index === paths.length - 1
 				return lastIndex ? (

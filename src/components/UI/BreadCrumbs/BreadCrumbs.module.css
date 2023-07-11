@@ -2,7 +2,7 @@
 	width: 100%;
 }
 .navlink {
-	color: #7395ae;
+	color: grey;
 	text-decoration: none;
 	font-size: 18px;
 	font-weight: 400;
@@ -13,7 +13,8 @@
 	box-sizing: border-box;
 	font-weight: 400;
 	font-family: sans-serif;
-	color: black;
+	color: #31a010;
+	text-decoration: underline;
 }
 .navlink:hover {
 	text-decoration: underline;

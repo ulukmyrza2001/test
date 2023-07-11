@@ -21,6 +21,8 @@ export const FilterPage = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
+	console.log(id)
+
 	useEffect(() => {
 		dispatch(getBrancheFindById({ branchId: id }) as never as AnyAction)
 		dispatch(
@@ -32,7 +34,7 @@ export const FilterPage = () => {
 
 	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
 		{
-			name: <BiHomeAlt fontSize={26} color='#31a010' />,
+			name: <BiHomeAlt fontSize={26} color='grey' />,
 			to: '/',
 			isLoading: isLoadingBranch,
 			path: 1,

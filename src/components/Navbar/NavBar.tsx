@@ -4,16 +4,14 @@ import { ContainerSlider } from '../ContainersSliders/ContainerSlider'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
-import { getCategoryServiceSelect } from '../../store/features/category-service'
+import { getCategorySelect } from '../../store/features/category-slice'
 
 export const NavBar = () => {
-	const { categoryServiceSelectData } = useSelector(
-		(state: any) => state.categoryService,
-	)
+	const { categoryData } = useSelector((state: any) => state.category)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(getCategoryServiceSelect() as never as AnyAction)
+		dispatch(getCategorySelect() as never as AnyAction)
 	}, [])
 
 	return (
@@ -23,7 +21,7 @@ export const NavBar = () => {
 					dots={false}
 					infinite={true}
 					speed={400}
-					slidesToShow={3}
+					slidesToShow={4}
 					slidesToScroll={1}
 					swipeToSlide={true}
 					autoplay={true}
@@ -33,7 +31,7 @@ export const NavBar = () => {
 					typeButton={false}
 					variableWidth={true}
 				>
-					{categoryServiceSelectData?.map(
+					{categoryData?.map(
 						(item: { name: string; icon: any; id: string }) => {
 							return (
 								<Link
