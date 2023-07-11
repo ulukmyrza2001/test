@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router'
 import { ADMIN_ROUTES } from '../utils/constants/routes'
 import { DashboardOutlet } from '../layout/dashboard/Dashboard'
 import { Calendar } from '../pages/admin/calendar/Calendar'
-import { MasterPage } from '../pages/master'
+import { MasterPage } from '../pages/admin/master/masterPage/MasterPage'
 import { MasterInnerPage } from '../pages/admin/master/masterInnerPage/MasterInnerPage'
 import { Appoinments } from '../pages/admin/master/appointments/Appoinments'
 import { Rewievs } from '../pages/admin/master/rewievs/Rewievs'
@@ -13,8 +13,7 @@ export const AdminRoutes = () => {
 		<Routes>
 			<Route
 				path={ADMIN_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}
-			>
+				element={<DashboardOutlet />}>
 				<Route
 					path={ADMIN_ROUTES.DEFAULT.path}
 					element={<Calendar />}
@@ -25,8 +24,7 @@ export const AdminRoutes = () => {
 				/>
 				<Route
 					path={ADMIN_ROUTES.MASTER.path}
-					element={<MasterInnerPage />}
-				>
+					element={<MasterInnerPage />}>
 					<Route
 						path={ADMIN_ROUTES.MASTER_APPOINTMENT.path}
 						element={<Appoinments />}
