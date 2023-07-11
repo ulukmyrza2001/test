@@ -131,25 +131,25 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 												5,
 											)} - ${item.endTime.slice(0, 5)}`}
 										</div>
-										<div className={styles.container_icon}>
-											<MdCreate
-												size={20}
-												cursor='pointer'
-												color='grey'
-												onClick={() =>
-													handleDayScheduleChange(
-														item.dayScheduleId,
-														item.startTime,
-														item.endTime,
-													)
-												}
-											/>
-											<MdDelete
-												size={20}
-												cursor='pointer'
-												color='grey'
-											/>
-										</div>
+									</div>
+									<div className={styles.container_icon}>
+										<MdCreate
+											size={20}
+											cursor='pointer'
+											color='grey'
+											onClick={() =>
+												handleDayScheduleChange(
+													item.dayScheduleId,
+													item.startTime,
+													item.endTime,
+												)
+											}
+										/>
+										<MdDelete
+											size={20}
+											cursor='pointer'
+											color='grey'
+										/>
 									</div>
 								</div>
 							)
