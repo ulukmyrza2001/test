@@ -15,6 +15,10 @@
 	align-items: flex-end;
 	justify-content: space-between;
 }
+.container_master_header_left_box {
+	display: flex;
+	gap: 10px;
+}
 .container_main_master_inner_page {
 	width: 100%;
 	border-top: 1px solid #c2c3c4;

@@ -1,3 +1,4 @@
+import { serviceSlice } from "./features/service-slice";
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { authSlice } from "./features/auth-slice";
@@ -12,6 +13,7 @@ import { subCategorySlice } from "./features/sub-category-service";
 import { countriesSlice } from "./features/countries-slice";
 import { regionSlice } from "./features/region-slice";
 import { citySlice } from "./features/city-slice";
+import { scheduleSlice } from "./features/schedule-slice";
 
 export const store = configureStore({
   reducer: {
@@ -27,6 +29,8 @@ export const store = configureStore({
     countries: countriesSlice.reducer,
     region: regionSlice.reducer,
     city: citySlice.reducer,
+    schedule: scheduleSlice.reducer,
+    service: serviceSlice.reducer,
   },
 });
 

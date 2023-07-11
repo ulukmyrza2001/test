@@ -4,35 +4,8 @@ import { ContainerSlider } from '../../components/ContainersSliders/ContainerSli
 import { ServiceCard } from '../../components/Cards/ServiceCard/ServiceCard'
 import { NavBar } from '../../components/Navbar/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBranches } from '../../store/features/branch-slice'
+import { getBranchesMain } from '../../store/features/branch-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-
-const DATA = [
-	{
-		name: 'Стрижка волос',
-	},
-	{
-		name: 'Маникюр',
-	},
-	{
-		name: 'Педикюр',
-	},
-	{
-		name: 'Укладка волос',
-	},
-	{
-		name: 'Снятие покрытия',
-	},
-	{
-		name: 'Коррекция бровей',
-	},
-	{
-		name: 'Шугаринг',
-	},
-	{
-		name: 'Снятие покрытия',
-	},
-]
 
 export const UserPage = () => {
 	const dispatch = useDispatch()
@@ -41,22 +14,21 @@ export const UserPage = () => {
 		(state: any) => state.branch,
 	)
 
+	console.log(branchData)
+
 	useEffect(() => {
-		dispatch(
-			getBranches({
-				search: '',
-				page: 1,
-				size: 10,
-			}) as never as AnyAction,
-		)
+		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
 
 	return (
 		<Fragment>
 			<NavBar />
 			<Container sx={{ marginTop: '50px' }}>
-				{DATA.map((item, index) => (
-					<div key={index} style={{ width: '100%' }}>
+				{branchData?.map((item: any, index: number) => (
+					<div
+						key={index}
+						style={{ width: '100%', marginTop: '30px' }}
+					>
 						<ContainerSlider
 							dots={false}
 							infinite={true}
@@ -69,15 +41,13 @@ export const UserPage = () => {
 							arrowAndprev={true}
 							typeButton={true}
 							variableWidth={true}
-							label={item.name}
+							label={item.categoryResponse.name}
 						>
-							{branchData?.map((elem: any, index: number) => (
-								<ServiceCard
-									{...elem}
-									key={index}
-									isloading={isLoadingBranch}
-								/>
-							))}
+							{item?.branchResponses?.map(
+								(item: any, index: number) => {
+									return <ServiceCard {...item} key={index} />
+								},
+							)}
 						</ContainerSlider>
 					</div>
 				))}

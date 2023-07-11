@@ -15,13 +15,19 @@ import { AnyAction } from '@reduxjs/toolkit'
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
 
-	console.log(branchData)
-
 	const dispatch = useDispatch()
 
 	const { pathname } = useLocation()
 
 	const path = pathname.split('/')[1]
+
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
 
 	useEffect(() => {
 		dispatch(
