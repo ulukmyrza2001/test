@@ -1,7 +1,6 @@
 import styles from "./About.module.css";
 import Img1 from "../../../../assets/image/imgBarber2.png";
 import { Container } from "../../../../styles/ContainerStyle/Container";
-import { Map } from "../../../../components/Map/Map";
 
 export const AboutContent = () => {
   return (
