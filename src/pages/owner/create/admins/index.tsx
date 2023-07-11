@@ -179,9 +179,7 @@ export const CreateAdmin = () => {
           >
             Сбросить
           </Button>
-          <Button onClick={handlePost} disabled={!validation}>
-            Сохранить
-          </Button>
+          <Button onClick={handlePost}>Сохранить</Button>
         </div>
       </div>
     </div>

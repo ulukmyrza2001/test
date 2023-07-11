@@ -38,10 +38,12 @@
 
 .tabs {
     width: 100%;
+    
 }
 
 .tab {
-    margin-left: 25px;
+    border-right: 3px solid black;
+    margin: 5px 0 5px 25px;
     font-size: 20px;
 }
 
