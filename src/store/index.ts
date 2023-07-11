@@ -1,3 +1,4 @@
+import { usersSlice } from './features/user-slice';
 import { serviceSlice } from './features/service-slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
@@ -33,6 +34,7 @@ export const store = configureStore({
 		schedule: scheduleSlice.reducer,
 		service: serviceSlice.reducer,
 		feedback: feedbackSlice.reducer,
+		users:usersSlice.reducer
 	},
 })
 
