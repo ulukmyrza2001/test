@@ -56,23 +56,11 @@ export const FilterPage = () => {
 				<Filterlayout />
 				<div className={styles.inner_wrapper}>
 					<span>135 результатов</span>
-					<ContainerSlider
-						dots={false}
-						infinite={true}
-						speed={400}
-						slidesToShow={2}
-						slidesToScroll={1}
-						swipeToSlide={true}
-						autoplay={false}
-						pauseOnHover={true}
-						arrowAndprev={true}
-						typeButton={true}
-						variableWidth={true}
-					>
+					<div className={styles.wrapper_cards}>
 						{branchFindById?.map((item: any, index: number) => (
 							<ServiceCard {...item} key={index} />
 						))}
-					</ContainerSlider>
+					</div>
 				</div>
 			</div>
 		</Container>
