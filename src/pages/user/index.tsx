@@ -72,7 +72,11 @@ export const UserPage = () => {
 							label={item.name}
 						>
 							{branchData?.map((elem: any, index: number) => (
-								<ServiceCard {...elem} key={index} />
+								<ServiceCard
+									{...elem}
+									key={index}
+									isloading={isLoadingBranch}
+								/>
 							))}
 						</ContainerSlider>
 					</div>

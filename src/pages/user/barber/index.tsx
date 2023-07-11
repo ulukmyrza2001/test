@@ -32,7 +32,7 @@ export const BarberPage = () => {
 	}, [])
 
 	useEffect(() => {
-		document.title = `${branchData?.companyName} | Cheber`
+		document.title = `Barber | Cheber`
 		return () => {
 			document.title = 'Cheber' // Reset the title when the component unmounts
 		}
