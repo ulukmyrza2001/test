@@ -20,7 +20,6 @@ export const UserHeader = () => {
 
 	const path = pathname.split('/')[1]
 
-	const [showModal, setShowModal] = useState(false)
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const role = Cookies.get('role')
 
@@ -33,13 +32,6 @@ export const UserHeader = () => {
 			}) as never as AnyAction,
 		)
 	}, [])
-
-	const showModalHandler = () => {
-		setShowModal(true)
-	}
-	const hideModalHandler = () => {
-		setShowModal(false)
-	}
 
 	const [latitude, setLatitude] = useState<number | null>(null)
 	const [longitude, setLongitude] = useState<number | null>(null)
@@ -157,20 +149,10 @@ export const UserHeader = () => {
 					</Link>
 				</div>
 				<div className={styles.wrapper_nav}>
-					<div
-						className={styles.wrapper_located}
-						onClick={() => showModalHandler()}
-						style={colorText()}
-					>
+					<div className={styles.wrapper_located} style={colorText()}>
 						<LocationOnIcon />
 						{location}
 					</div>
-					<ModalComponent
-						active={showModal}
-						handleClose={hideModalHandler}
-					>
-						asd
-					</ModalComponent>
 					<Link to='/partner' style={colorText()}>
 						Стать партнером
 					</Link>

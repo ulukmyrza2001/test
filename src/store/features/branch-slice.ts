@@ -56,6 +56,29 @@ export const getBranches = createAsyncThunk(
   }
 );
 
+export const getBranchesInnerByID = createAsyncThunk(
+  "allbranches/getBranchesInnerByID",
+  async (
+    { search, categoryServiceId, subCategoryServiceId, page, size }: any,
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await axiosInstance.get(
+        `branches?${
+          categoryServiceId ? `categoryServiceId=${categoryServiceId}&` : ""
+        }${
+          subCategoryServiceId
+            ? `subCategoryServiceId=${subCategoryServiceId}&`
+            : ""
+        } ${page ? `page=${page}&` : ""} 
+        ${size ? `size=${size}` : ""}`
+      );
+      return response.data;
+    } catch (error) {
+      rejectWithValue((error as Error).message);
+    }
+  }
+);
 export const getBranchesOwner = createAsyncThunk(
   "allbranches/owner",
   async (_, { rejectWithValue }) => {

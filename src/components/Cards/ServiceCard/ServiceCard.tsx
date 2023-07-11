@@ -4,13 +4,13 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import GradeIcon from '@mui/icons-material/Grade'
 import styles from './ServiceCard.module.css'
 import { Link } from 'react-router-dom'
+import { TypeCompanyGenrate } from '../../../utils/helpers/helpers'
 
 interface IServiceCard {
 	isloading?: boolean
 	companyName: string
 	address: string
 	phoneNumber: string
-	categoryName: string
 	branchId: number
 	image: string
 	categoryType: string
@@ -21,7 +21,6 @@ export const ServiceCard = ({
 	companyName,
 	address,
 	phoneNumber,
-	categoryName,
 	branchId,
 	image,
 	categoryType,
@@ -84,7 +83,7 @@ export const ServiceCard = ({
 							<div className={styles.info}>
 								<div>
 									<h4 className={styles.type}>
-										{categoryName}
+										{TypeCompanyGenrate(categoryType)}
 									</h4>
 									<h3 className={styles.name}>
 										{companyName}

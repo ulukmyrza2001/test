@@ -23,6 +23,7 @@
 	padding: 7px;
 	cursor: pointer;
 	margin: 20px 0;
+	object-fit: cover;
 }
 .card_title {
 	display: flex;
@@ -50,4 +51,5 @@
 	height: 97px;
 	margin: 0 auto;
 	border-radius: 50%;
+	object-fit: cover;
 }

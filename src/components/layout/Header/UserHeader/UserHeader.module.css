@@ -36,7 +36,6 @@
 .wrapper_located {
 	display: flex;
 	align-items: center;
-	cursor: pointer;
 }
 .link {
 	color: #404040;
