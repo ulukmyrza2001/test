@@ -17,6 +17,18 @@ export function TranslateWeekShort(name: string) {
 	}
 }
 
+export const TypeCompanyGenrate = (item: string) => {
+	switch (item) {
+		case 'barbershop':
+			return 'Барбер'
+		case 'beauty_salon':
+			return 'Салон красоты'
+
+		default:
+			break
+	}
+}
+
 export function TranslateAppointmentStatus(name: string) {
 	switch (name) {
 		case 'CONFIRMED':

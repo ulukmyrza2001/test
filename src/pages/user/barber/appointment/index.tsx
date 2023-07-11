@@ -5,11 +5,10 @@ import LinearProgress, {
 	linearProgressClasses,
 } from '@mui/material/LinearProgress'
 import { styled } from '@mui/material'
-import { GiBeard, GiCancel } from 'react-icons/gi'
+import { GiBeard } from 'react-icons/gi'
 import { BiHomeAlt, BiSend, BiTimeFive } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { useSelector } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
 
 const data = [
 	{
