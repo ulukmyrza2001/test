@@ -12,11 +12,11 @@ export const UserPage = () => {
 
 	const { branchMain } = useSelector((state: any) => state.branch)
 
-	console.log(branchMain)
-
 	useEffect(() => {
 		dispatch(getBranchesMain() as never as AnyAction)
 	}, [])
+
+	console.log(branchMain)
 
 	return (
 		<div>
@@ -31,7 +31,7 @@ export const UserPage = () => {
 							dots={true}
 							infinite={true}
 							speed={400}
-							slidesToShow={2}
+							slidesToShow={item?.branchResponses?.length}
 							slidesToScroll={1}
 							swipeToSlide={true}
 							autoplay={false}
