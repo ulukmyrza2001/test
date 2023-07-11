@@ -8,6 +8,7 @@ import { ReactComponent as Icon2 } from '../../../assets/icons/002-shampoo (Trac
 import { ReactComponent as Icon3 } from '../../../assets/icons/003-hair-cutting (Traced).svg'
 import { ReactComponent as Icon4 } from '../../../assets/icons/005-toiletries (Traced).svg'
 import { ReviewContent } from './review-content'
+import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
 
 export const BeautySalonPage = () => {
 	useEffect(() => {
@@ -20,10 +21,36 @@ export const BeautySalonPage = () => {
 		<Fragment>
 			<Container>
 				<div className={styles.header}>
-					<span>Home</span>
-					<span>News</span>
-					<span>About</span>
-					<span>Contacts</span>
+					<div className={styles.iner_header}>
+						<span>Home</span>
+						<span>News</span>
+						<span>About</span>
+						<span>Contacts</span>
+					</div>
+					<div className={styles.info}>
+						<div className={styles.info_title}>
+							<BsGeoAlt fontSize={20} />
+							<div>
+								<span className='text'>
+									Приходите по адресу:
+								</span>
+								<p className='text'>
+									г.Бишкек ул.Боконбаева, 14
+								</p>
+							</div>
+						</div>
+						<div className={styles.info_title}>
+							<BsTelephone />
+							<div>
+								<span className='text'>
+									Ежедневно с 10:00 до 20:00
+								</span>
+								<a href='/' className='text'>
+									+996 (550) 75-55-95
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</Container>
 			<Container

@@ -1,11 +1,29 @@
 .header {
-	width: 80%;
+	width: 90%;
 	padding: 1rem 0;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
+}
+.iner_header {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	color: #cda582;
+}
+.info {
+	display: flex;
+	gap: 10px;
+}
+.info_title {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+}
+.info_title div {
+	display: flex;
+	flex-direction: column;
 }
 .header span {
 	cursor: pointer;
