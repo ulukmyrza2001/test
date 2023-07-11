@@ -54,6 +54,31 @@ export const getBranches = createAsyncThunk(
 	},
 )
 
+export const getBranchesInnerByID = createAsyncThunk(
+	'allbranches/getBranchesInnerByID',
+	async (
+		{ search, categoryServiceId, subCategoryServiceId, page, size }: any,
+		{ rejectWithValue },
+	) => {
+		try {
+			const response = await axiosInstance.get(
+				`branches?${
+					categoryServiceId
+						? `categoryServiceId=${categoryServiceId}&`
+						: ''
+				}${
+					subCategoryServiceId
+						? `subCategoryServiceId=${subCategoryServiceId}&`
+						: ''
+				} ${page ? `page=${page}&` : ''} 
+        ${size ? `size=${size}` : ''}`,
+			)
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
 export const getBranchesOwner = createAsyncThunk(
 	'allbranches/owner',
 	async (_, { rejectWithValue }) => {
@@ -157,6 +182,7 @@ export const getBranchesMain = createAsyncThunk(
 
 const initialState: any = {
 	branchData: [],
+	branchInnerData: [],
 	branchFindById: [],
 	branchMain: [],
 	isLoadingBranch: false,
@@ -175,6 +201,17 @@ export const branchSlice = createSlice({
 			state.branchData = action.payload
 		})
 		builder.addCase(getBranches.rejected, (state) => {
+			state.isLoadingBranch = false
+		})
+		// ----------------------
+		builder.addCase(getBranchesInnerByID.pending, (state) => {
+			state.isLoadingBranch = true
+		})
+		builder.addCase(getBranchesInnerByID.fulfilled, (state, action) => {
+			state.isLoadingBranch = false
+			state.branchInnerData = action.payload
+		})
+		builder.addCase(getBranchesInnerByID.rejected, (state) => {
 			state.isLoadingBranch = false
 		})
 		// ----------------------
