@@ -9,9 +9,8 @@ export const AboutContent = () => {
       <div className={styles.wrapper_about}>
         <div className={styles.wrapper_img_about}>
           <img src={Img1} alt="IMG" />
-          <Map />
         </div>
-        <div className={styles.wrapper_map}>asdasd</div>
+        <div className={styles.wrapper_map}>asd</div>
       </div>
     </Container>
   );
