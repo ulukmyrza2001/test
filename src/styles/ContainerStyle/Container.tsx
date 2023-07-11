@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom'
 import styles from './Container.module.css'
 
 interface ContainerProps {
