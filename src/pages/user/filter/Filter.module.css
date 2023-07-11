@@ -9,3 +9,17 @@
 	padding: 20px 0;
 	max-width: 1440px;
 }
+.wrapper_cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+@media only screen and (max-width: 1170px) {
+	.wrapper_cards {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+
+		grid-column-gap: 20px;
+		grid-row-gap: 20px;
+	}
+}
