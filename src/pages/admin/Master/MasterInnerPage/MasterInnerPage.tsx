@@ -11,7 +11,7 @@ import styles from "./MasterInnerPage.module.css";
 import NotUser from "../../../../assets/image/noUser.svg";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Tabs } from "../../../../components/UI/Tabs/Tabs";
-import { Schedule } from "./Schedule/Shedule";
+import { Schedule } from "./schedule/Shedule";
 
 export const MasterInnerPage = () => {
   const { dataMasterById, isLoadingMaster } = useSelector(

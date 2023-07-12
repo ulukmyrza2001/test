@@ -20,6 +20,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import { postAppointment } from "../../../../store/features/appointment";
+import { AppointemntsData } from "./AppoimentsData";
 
 const data = [
   {
@@ -70,13 +71,14 @@ export const AppointmenBarberPage = () => {
     (state: any) => state.branch
   );
 
+  const [dateData, setDateData] = useState({
+    startDate: "",
+    endDate: "",
+  });
+
   const { dataMasterBranch } = useSelector((state: any) => state.master);
 
   const { subCategoryData } = useSelector((state: any) => state.subCategory);
-
-  console.log(postData);
-  console.log(subCategoryName);
-  console.log(id);
 
   useEffect(() => {
     dispatch(getMasterByBranchId({ branchId: id }) as never as AnyAction);
@@ -229,7 +231,17 @@ export const AppointmenBarberPage = () => {
             ))}
           </div>
         )}
-        <div>{next === 2 && <div>Дата</div>}</div>
+        <div>
+          {next === 2 && (
+            <div>
+              <AppointemntsData
+                appointmentData={dateData}
+                setAppointmentData={setDateData}
+                masterId={id}
+              />
+            </div>
+          )}
+        </div>
         <div>
           {next === 3 && (
             <div>
