@@ -1,0 +1,6 @@
+.wrapper {
+	display: flex;
+}
+.caption {
+	color: var(--ui-disabled-color);
+}

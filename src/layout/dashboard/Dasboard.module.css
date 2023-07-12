@@ -78,7 +78,7 @@
 	color: #7c7c7c;
 }
 .dashboard_card_inside:hover {
-	background-color: #533fe3;
+	background-color: #31a010;
 	color: white;
 	* {
 		color: white;
@@ -95,7 +95,7 @@
 	padding: 8px;
 	border-radius: 6px;
 	color: #7c7c7c;
-	background-color: #533fe3;
+	background-color: #31a010;
 	color: white;
 	* {
 		color: white;
@@ -140,7 +140,7 @@
 	font-weight: 500;
 	padding: 8px;
 	border-radius: 6px;
-	background-color: #533fe3;
+	background-color: #31a010;
 	color: white;
 	* {
 		color: white;
