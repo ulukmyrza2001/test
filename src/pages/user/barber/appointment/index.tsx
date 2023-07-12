@@ -46,10 +46,10 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 export const AppointmenBarberPage = () => {
+  const { dataMasterBranch } = useSelector((state: any) => state.master);
+
   const dispatch = useDispatch();
   const { id } = useParams();
-
-  const [next, setNext] = useState<any>(1);
 
   const [postData, setPostData] = useState<any>({
     masterId: 1,
@@ -57,34 +57,36 @@ export const AppointmenBarberPage = () => {
     masterName: "",
     serviceId: [1],
     startDate: "2023-07-11",
-    startTime: "09:00:00",
-    endTime: "09:30:00",
+    startTime: "09:30",
+    endTime: "10:30",
     description: "",
   });
+
+  useEffect(() => {
+    const [hours, minutes] = postData.startTime.split(":");
+    const newEndTime = `${parseInt(hours) + 1}:${minutes}`;
+    setPostData((prevState: any) => ({ ...prevState, endTime: newEndTime }));
+  }, [postData.startTime]);
 
   const [subCategoryName, setSubCategoryName] = useState<any>({
     id: id,
     name: "Стрижка мужская",
   });
 
+  const [next, setNext] = useState<any>(1);
+
   const { branchData, isLoadingBranch } = useSelector(
     (state: any) => state.branch
   );
-
-  const [dateData, setDateData] = useState<any>({
-    newDate: "",
-    startDate: new Date().toISOString().slice(0, 10),
-    endDate: "",
-  });
-
-  const { dataMasterBranch } = useSelector((state: any) => state.master);
 
   const { subCategoryData } = useSelector((state: any) => state.subCategory);
 
   useEffect(() => {
     dispatch(getMasterByBranchId({ branchId: id }) as never as AnyAction);
     dispatch(
-      getSubCategorySelect({ categoryServiceId: 2 }) as never as AnyAction
+      getSubCategorySelect({
+        categoryServiceId: 2,
+      }) as never as AnyAction
     );
   }, []);
 
@@ -97,7 +99,7 @@ export const AppointmenBarberPage = () => {
     },
     {
       name: "BARBERSHOP BEYBARS",
-      to: `/barber/${branchData?.branchId}`,
+      to: `/barbershop/${branchData?.branchId}`,
       path: 2,
     },
     {
@@ -129,8 +131,8 @@ export const AppointmenBarberPage = () => {
           masterId: postData.masterId,
           serviceIds: subCategoryName.id,
           startDate: postData.startDate,
-          startTime: postData.startTime,
-          endTime: postData.endTime,
+          startTime: `${postData.startTime}:00`,
+          endTime: `${postData.endTime}:00`,
           description: postData.description,
         },
       }) as never as AnyAction
@@ -235,11 +237,11 @@ export const AppointmenBarberPage = () => {
         <div>
           {next === 2 && (
             <div>
-              {/* <AppointemntsData
-                appointmentData={dateData}
-                setAppointmentData={setDateData}
+              <AppointemntsData
+                appoinmentData={postData}
+                setAppointmentData={setPostData}
                 masterId={id}
-              /> */}
+              />
             </div>
           )}
         </div>
@@ -273,7 +275,12 @@ export const AppointmenBarberPage = () => {
                       </div>
                       <span>{postData.masterName}</span>
                     </div>
-                    <h5 style={{ fontWeight: "500", color: "gray" }}>
+                    <h5
+                      style={{
+                        fontWeight: "500",
+                        color: "gray",
+                      }}
+                    >
                       от 7000 ₸ 1 ч. 30 мин.
                     </h5>
                   </div>
@@ -328,7 +335,10 @@ export const AppointmenBarberPage = () => {
                   id="panel1bh-header"
                 >
                   <Typography
-                    sx={{ color: "text.secondary", marginRight: "10px" }}
+                    sx={{
+                      color: "text.secondary",
+                      marginRight: "10px",
+                    }}
                   >
                     <AddIcon />
                   </Typography>

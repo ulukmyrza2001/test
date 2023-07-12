@@ -12,21 +12,16 @@ export const AppointemntsData = ({
 }: any) => {
   const { freeTimeMaster } = useSelector((state: any) => state.schedule);
 
-  console.log(freeTimeMaster);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (appoinmentData?.startDate) {
-      // Add a conditional check here
-      dispatch(
-        getFreeTimeScheduler({
-          masterID: masterId,
-          startDate: appoinmentData.startDate,
-        }) as unknown as AnyAction
-      );
-    }
-  }, [appoinmentData?.startDate]); // Update the dependency array
+    dispatch(
+      getFreeTimeScheduler({
+        masterID: masterId,
+        startDate: appoinmentData.startDate,
+      }) as unknown as AnyAction
+    );
+  }, [appoinmentData.startDate]);
 
   return (
     <div style={{ display: "flex", gap: "10px" }}>
@@ -50,9 +45,10 @@ export const AppointemntsData = ({
           gap: "10px",
         }}
       >
-        {freeTimeMaster.map((item: any) => {
+        {freeTimeMaster?.map((item: any, index: number) => {
           return (
             <div
+              key={index}
               onClick={() =>
                 setAppointmentData({
                   ...appoinmentData,
