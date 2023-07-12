@@ -34,8 +34,6 @@ export const FilterPage = () => {
 		)
 	}, [])
 
-	console.log(branchInnerData)
-
 	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
 		{
 			name: <BiHomeAlt fontSize={26} color='grey' />,
@@ -55,8 +53,7 @@ export const FilterPage = () => {
 		<Container
 			sx={{
 				paddingTop: '20px',
-			}}
-		>
+			}}>
 			<BreadCrumbs paths={BREAD_CRUMBS_INNER_FILTER_PAGE} />
 			<div className={styles.wrapper}>
 				<Filterlayout />
