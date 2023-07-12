@@ -70,6 +70,21 @@
 	margin: 6px;
 }
 
+.card_active {
+	width: 130px;
+	height: 160px;
+	border: 1px solid silver;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 7px;
+	border-radius: 6px;
+	cursor: pointer;
+	margin: 6px;
+	background-color: greenyellow;
+}
+
 .ava_wrapper {
 	width: 70px;
 	height: 70px;

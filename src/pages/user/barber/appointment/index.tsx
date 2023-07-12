@@ -4,18 +4,22 @@ import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
 import LinearProgress, {
 	linearProgressClasses,
 } from '@mui/material/LinearProgress'
-import { styled } from '@mui/material'
-import { GiBeard, GiCancel } from 'react-icons/gi'
+import { Typography, styled } from '@mui/material'
+import { GiBeard } from 'react-icons/gi'
 import { BiHomeAlt, BiSend, BiTimeFive } from 'react-icons/bi'
-import { MdDelete } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getMasterByBranchId } from '../../../../store/features/master-slice'
 import { Button } from '../../../../components/UI/Buttons/Button/Button'
 import { Input } from '../../../../components/UI/Inputs/Input/Input'
-import { AccordionUi } from '../../../../components/UI/Accordion/AccordionUi'
+import { getSubCategorySelect } from '../../../../store/features/sub-category-service'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import AddIcon from '@mui/icons-material/Add'
+import { postAppointment } from '../../../../store/features/appointment'
 
 const data = [
 	{
@@ -41,10 +45,26 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }))
 
 export const AppointmenBarberPage = () => {
-	const { serviceData } = useSelector((state: any) => state.service)
+	const { dataMasterBranch } = useSelector((state: any) => state.master)
 
 	const dispatch = useDispatch()
 	const { id } = useParams()
+
+	const [postData, setPostData] = useState<any>({
+		masterId: 1,
+		avatar: '',
+		masterName: '',
+		serviceId: [1],
+		startDate: '2023-07-11',
+		startTime: '09:00:00',
+		endTime: '09.30.00',
+		description: '',
+	})
+
+	const [subCategoryName, setSubCategoryName] = useState<any>({
+		id: id,
+		name: 'Стрижка мужская',
+	})
 
 	const [next, setNext] = useState<any>(1)
 
@@ -52,13 +72,19 @@ export const AppointmenBarberPage = () => {
 		(state: any) => state.branch,
 	)
 
-	const { dataMasterBranch } = useSelector((state: any) => state.master)
+	const { subCategoryData } = useSelector((state: any) => state.subCategory)
 
-	console.log(dataMasterBranch)
+	console.log(postData)
+	console.log(subCategoryName)
 	console.log(id)
 
 	useEffect(() => {
 		dispatch(getMasterByBranchId({ branchId: id }) as never as AnyAction)
+		dispatch(
+			getSubCategorySelect({
+				categoryServiceId: 2,
+			}) as never as AnyAction,
+		)
 	}, [])
 
 	const BREAD_APPOINTMENT_MASTER = [
@@ -70,7 +96,7 @@ export const AppointmenBarberPage = () => {
 		},
 		{
 			name: 'BARBERSHOP BEYBARS',
-			to: `/barbershop/${branchData?.branchId}`,
+			to: `/barber/${branchData?.branchId}`,
 			path: 2,
 		},
 		{
@@ -79,6 +105,37 @@ export const AppointmenBarberPage = () => {
 			path: 3,
 		},
 	]
+
+	const [expanded, setExpanded] = React.useState<string | false>('panel1') // Updated state value
+
+	const handleChange =
+		(panel: string) =>
+		(event: React.SyntheticEvent, isExpanded: boolean) => {
+			setExpanded(isExpanded ? panel : false) // Updated to set to false when collapsed
+		}
+
+	const [value, setValue] = React.useState<{
+		rate: ChangeEvent<HTMLInputElement> | string
+		type: ChangeEvent<HTMLInputElement> | string
+	}>({
+		rate: '',
+		type: '',
+	})
+
+	const handlePost = () => {
+		dispatch(
+			postAppointment({
+				postData: {
+					masterId: postData.masterId,
+					serviceIds: subCategoryName.id,
+					startDate: postData.startDate,
+					startTime: postData.startTime,
+					endTime: postData.endTime,
+					description: postData.description,
+				},
+			}) as never as AnyAction,
+		)
+	}
 	return (
 		<Container>
 			<BreadCrumbs paths={BREAD_APPOINTMENT_MASTER} />
@@ -114,7 +171,10 @@ export const AppointmenBarberPage = () => {
 					</div>
 				</div>
 				<div className={styles.wrapper_progres}>
-					<BorderLinearProgress variant='determinate' value={10} />
+					<BorderLinearProgress
+						variant='determinate'
+						value={next === 1 ? 10 : next === 2 ? 50 : 100}
+					/>
 				</div>
 			</div>
 			<div className={styles.wrapper_appointment}>
@@ -124,10 +184,12 @@ export const AppointmenBarberPage = () => {
 							<div key={index}>
 								<div className={styles.amount_apoointment}>
 									<span>Запись № {index + 1}</span>
-									<MdDelete fontSize={24} />
 								</div>
 								<div className={styles.main}>
-									<p className='title'>{item.name}</p>
+									<p className='title'>
+										{subCategoryName.name}
+									</p>
+
 									<span className='text'>
 										{item.price} {item.valuta} •{' '}
 										{item.duration} Min
@@ -150,8 +212,22 @@ export const AppointmenBarberPage = () => {
 									{dataMasterBranch?.map(
 										(item: any, index: number) => (
 											<div
-												className={styles.card}
+												className={
+													postData.masterId ===
+													item.id
+														? styles.card_active
+														: styles.card
+												}
 												key={index}
+												onClick={() =>
+													setPostData({
+														...postData,
+														masterId: item.id,
+														ava: item.avatar,
+														masterName:
+															item.firstName,
+													})
+												}
 											>
 												<div
 													className={
@@ -191,7 +267,7 @@ export const AppointmenBarberPage = () => {
 								<div className={styles.top}>
 									<h4 className={styles.top_h4}>Запись №1</h4>
 									<h4 className={styles.top_h4}>
-										Стрижка + бритье
+										{subCategoryName.name}
 									</h4>
 									<h4 className={styles.top_h4}>
 										Начало в 19:00
@@ -215,12 +291,12 @@ export const AppointmenBarberPage = () => {
 												}
 											>
 												<img
-													src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU'
+													src={postData.ava}
 													alt=''
 													className={styles.ava}
 												/>
 											</div>
-											<span>Айдана</span>
+											<span>{postData.masterName}</span>
 										</div>
 										<h5
 											style={{
@@ -238,7 +314,7 @@ export const AppointmenBarberPage = () => {
 									className='title'
 									style={{ marginBottom: '20px' }}
 								>
-									Контактные данные
+									Детали броня
 								</h4>
 								<div
 									style={{
@@ -247,8 +323,6 @@ export const AppointmenBarberPage = () => {
 										gap: '20px',
 									}}
 								>
-									<Input placeholder='Ваше имя' />
-									<Input placeholder='ваш номер' />
 									<textarea
 										placeholder='Оставить комментарий'
 										name='das'
@@ -260,6 +334,13 @@ export const AppointmenBarberPage = () => {
 											borderRadius: '6px',
 											fontSize: '24px',
 										}}
+										value={postData.description}
+										onChange={(e) =>
+											setPostData({
+												...postData,
+												description: e.target.value,
+											})
+										}
 									></textarea>
 								</div>
 							</div>
@@ -269,12 +350,59 @@ export const AppointmenBarberPage = () => {
 				<div className={styles.actions}>
 					{next === 1 && (
 						<div className={styles.add}>
-							Добавить услугу{' '}
-							<AccordionUi
-								data={serviceData}
-								branchData={branchData}
-								backgroundColor='#d9d9d9'
-							/>
+							<Accordion
+								expanded={expanded === 'panel1'}
+								onChange={handleChange('panel1')}
+								sx={{ width: '100%' }}
+							>
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon />}
+									aria-controls='panel1bh-content'
+									id='panel1bh-header'
+								>
+									<Typography
+										sx={{
+											color: 'text.secondary',
+											marginRight: '10px',
+										}}
+									>
+										<AddIcon />
+									</Typography>
+									<Typography
+										sx={{ width: '100%', flexShrink: 0 }}
+									>
+										Добавить услугу
+									</Typography>
+								</AccordionSummary>
+								{subCategoryData.map(
+									(item: any, index: number) => (
+										<div
+											key={index}
+											onClick={() =>
+												setSubCategoryName({
+													id: [item.id],
+													name: item.name,
+												})
+											}
+										>
+											<Typography
+												variant='body1'
+												sx={{
+													color: 'gray',
+													margin: '10px 40px',
+													borderBottom:
+														'0.1px solid gray',
+													'&:hover': {
+														color: 'var(--ui-background-color)',
+													},
+												}}
+											>
+												{item.name}
+											</Typography>
+										</div>
+									),
+								)}
+							</Accordion>
 						</div>
 					)}
 					<div className={styles.btn_wrapper}>
@@ -289,7 +417,7 @@ export const AppointmenBarberPage = () => {
 						)}
 
 						{next >= 3 ? (
-							<Button>Записаться</Button>
+							<Button onClick={handlePost}>Записаться</Button>
 						) : (
 							<Button
 								onClick={() => setNext(next + 1)}
