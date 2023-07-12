@@ -41,6 +41,7 @@ const RegistrationForm = ({ setActive }: LoginProps) => {
     });
     setActive(false);
   };
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.input_wrapper}>
