@@ -20,6 +20,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AddIcon from '@mui/icons-material/Add'
 import { postAppointment } from '../../../../store/features/appointment'
+import { AppointemntsData } from './AppoimentsData'
 
 const data = [
 	{
@@ -255,7 +256,17 @@ export const AppointmenBarberPage = () => {
 						))}
 					</div>
 				)}
-				<div>{next === 2 && <div>Дата</div>}</div>
+				<div>
+					{next === 2 && (
+						<div>
+							<AppointemntsData
+								appoinmentData={postData}
+								setAppointmentData={setPostData}
+								masterId={id}
+							/>
+						</div>
+					)}
+				</div>
 				<div>
 					{next === 3 && (
 						<div>
