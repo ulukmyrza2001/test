@@ -2,9 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axiosInstance from '../../api/axios-config'
 import { toast } from 'react-hot-toast'
 
+interface getBrancheByIdProps {
+	branchId: number | string | undefined
+}
+
 export const getBrancheById = createAsyncThunk(
 	'byIdBranches/getBrancheById',
-	async ({ branchId }: { branchId: number }, { rejectWithValue }) => {
+	async ({ branchId }: getBrancheByIdProps, { rejectWithValue }) => {
 		try {
 			const response = await axiosInstance.get(`branches/${branchId}`)
 			return response.data

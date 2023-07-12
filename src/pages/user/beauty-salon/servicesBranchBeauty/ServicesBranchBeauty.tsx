@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./ServicesBranch.module.css";
+import styles from "./ServicesBranchBeauty.module.css";
 import { Container } from "../../../../styles/ContainerStyle/Container";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -45,8 +45,8 @@ function a11yProps(index: number) {
   };
 }
 
-export const ServicesBranchContent = () => {
-  const params = useParams();
+export const ServicesBranchBeauty = () => {
+  const { beautySalonID } = useParams();
   const { branchData } = useSelector((state: any) => state.branch);
   const { serviceData } = useSelector((state: any) => state.service);
 
@@ -54,8 +54,8 @@ export const ServicesBranchContent = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getServices(params.branchId) as never as AnyAction);
-  }, [params.branchId, dispatch]);
+    dispatch(getServices(beautySalonID) as never as AnyAction);
+  }, [beautySalonID, dispatch]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -83,12 +83,12 @@ export const ServicesBranchContent = () => {
           aria-label="Vertical tabs example"
           TabIndicatorProps={{
             style: {
-              backgroundColor: "#d9d9d9",
+              backgroundColor: "#000",
             },
           }}
           sx={{
             borderRight: 1,
-            borderColor: "divider",
+            borderColor: "gray",
           }}
         >
           <Tab
