@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axios-config";
+import { toast } from "react-hot-toast";
 
 export const postAppointment = createAsyncThunk(
   "appointment/post",
   async ({ postData }: any, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("api/appointments", postData);
-      console.log(postData);
+      const response = await axiosInstance.post("appointments", postData);
+      toast.success(response.data.message);
       return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
@@ -19,7 +20,7 @@ export const postAppointmentByUserId = createAsyncThunk(
   async ({ userId, postData }: any, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post(
-        `api/appointments/${userId}`,
+        `appointments/${userId}`,
         postData
       );
       return response.data;
