@@ -68,14 +68,13 @@ export const Appointments = () => {
 			field: 'startTime',
 			flex: 10,
 			renderCell: ({ row }: MasterRowTableProps) => {
-				console.log(row)
 				return (
 					<div>
-						<div>{row.startTime.split(' ')[0]}</div>
-						<div>{`${row.startTime.slice(
+						<div>{row.startTime?.split(' ')[0]}</div>
+						<div>{`${row.startTime?.slice(
 							10,
 							16,
-						)} - ${row.startTime.slice(30, 36)}`}</div>
+						)} - ${row.startTime?.slice(30, 36)}`}</div>
 					</div>
 				)
 			},
