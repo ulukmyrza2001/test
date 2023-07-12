@@ -97,7 +97,7 @@ export const AppointmenBarberPage = () => {
 		},
 		{
 			name: 'BARBERSHOP BEYBARS',
-			to: `/barber/${branchData?.branchId}`,
+			to: `/barbershop/${branchData?.branchId}`,
 			path: 2,
 		},
 		{
