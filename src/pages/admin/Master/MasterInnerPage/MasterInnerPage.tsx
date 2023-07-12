@@ -13,6 +13,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
 import { Schedule } from './Schedule/Shedule'
 import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
+import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
@@ -155,6 +156,7 @@ export const MasterInnerPage = () => {
 				setMasterData={setMasterData}
 				masterId={masterID}
 			/>
+			<AddFullSchedule />
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
