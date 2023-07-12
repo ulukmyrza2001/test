@@ -23,6 +23,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 15px;
+	cursor: pointer;
 }
 /* -- */
 .wrapper_appointment {
@@ -49,8 +50,11 @@
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	gap: 10px;
+	border: 1px solid silver;
+	border-radius: 6px;
 } 
+
+
 
 .card {
 	width: 130px;
@@ -63,6 +67,22 @@
 	gap: 7px;
 	border-radius: 6px;
 	cursor: pointer;
+	margin: 6px;
+}
+
+.card_active {
+	width: 130px;
+	height: 160px;
+	border: 1px solid silver;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 7px;
+	border-radius: 6px;
+	cursor: pointer;
+	margin: 6px;
+	background-color: greenyellow;
 }
 
 .ava_wrapper {
@@ -91,10 +111,57 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	width: 100%;
+	/* padding: 1rem 2rem; */
 }
 
 .add {
 	font-size: 24px;
 	color: var(--ui-background-color);
 	cursor: pointer;
+}
+
+.btn_wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 50px;
+}
+
+.finish_ava_wrapper {
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 999px;
+}
+
+.finish_card {
+	border: 1px solid silver;
+	border-radius: 6px;
+	margin: 25px 0;
+	padding: 15px;
+}
+
+.top {
+	padding-bottom: 5px;
+	border-bottom: 1px solid silver;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.top_h4 {
+	font-size: 18px;
+	color: gray;
+}
+
+.bottom {
+	padding-top: 5px;
+}
+
+.bottom_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
