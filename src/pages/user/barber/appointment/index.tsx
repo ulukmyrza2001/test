@@ -58,7 +58,7 @@ export const AppointmenBarberPage = () => {
     serviceId: [1],
     startDate: "2023-07-11",
     startTime: "09:00:00",
-    endTime: "09.30.00",
+    endTime: "09:30:00",
     description: "",
   });
 
@@ -71,8 +71,9 @@ export const AppointmenBarberPage = () => {
     (state: any) => state.branch
   );
 
-  const [dateData, setDateData] = useState({
-    startDate: "",
+  const [dateData, setDateData] = useState<any>({
+    newDate: "",
+    startDate: new Date().toISOString().slice(0, 10),
     endDate: "",
   });
 
@@ -234,11 +235,11 @@ export const AppointmenBarberPage = () => {
         <div>
           {next === 2 && (
             <div>
-              <AppointemntsData
+              {/* <AppointemntsData
                 appointmentData={dateData}
                 setAppointmentData={setDateData}
                 masterId={id}
-              />
+              /> */}
             </div>
           )}
         </div>

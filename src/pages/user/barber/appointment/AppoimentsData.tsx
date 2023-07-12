@@ -29,7 +29,7 @@ export const AppointemntsData = ({
   }, [appoinmentData?.startDate]); // Update the dependency array
 
   return (
-    <div>
+    <div style={{ display: "flex", gap: "10px" }}>
       <div>
         <Calendar
           onChange={(el: any) =>
@@ -38,13 +38,51 @@ export const AppointemntsData = ({
               startDate: new Date(el).toISOString().slice(0, 10),
             })
           }
-          value={appoinmentData?.startDate}
+          value={appoinmentData.startDate}
         />
       </div>
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+        }}
+      >
+        {freeTimeMaster.map((item: any) => {
+          return (
+            <div
+              onClick={() =>
+                setAppointmentData({
+                  ...appoinmentData,
+                  startTime: item.startTime.slice(0, 5),
+                })
+              }
+              style={{
+                width: "80px",
+                height: "40px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid #acacac",
+                borderRadius: "6px",
+                cursor: "pointer",
+                color:
+                  item.startTime.slice(0, 5) === appoinmentData.startTime
+                    ? "white"
+                    : "",
+                backgroundColor:
+                  item.startTime.slice(0, 5) === appoinmentData.startTime
+                    ? "#33a011"
+                    : "",
+              }}
+            >
+              {item.startTime.slice(0, 5)}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
