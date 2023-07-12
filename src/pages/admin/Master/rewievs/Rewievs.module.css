@@ -1,0 +1,102 @@
+.card_full_rewiev {
+	width: 300px;
+	height: 80px;
+	border: 1px solid #d9d6d6;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 12px;
+}
+.card_full_inside_rewiev {
+	display: flex;
+	flex-direction: column;
+	font-size: 16px;
+	font-family: cursive;
+}
+.container_rewievs {
+	width: 100%;
+	height: 100%;
+}
+.container_header_rewievs {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #bcbaba;
+}
+.header_rewievs_button_container {
+	display: flex;
+	gap: 10px;
+}
+.container_header_rewievs_button_active {
+	width: fit-content;
+	height: fit-content;
+	padding: 8px;
+	border: 1px solid #bcbaba;
+	border-radius: 8px;
+	background-color: #33a011;
+	color: white;
+	cursor: pointer;
+}
+.container_header_rewievs_button_notactive {
+	width: fit-content;
+	height: fit-content;
+	padding: 8px;
+	border: 1px solid #bcbaba;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.title_header_reiwievs {
+	font-size: 14px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #acacac;
+}
+.rewievs_container {
+	width: 100%;
+	height: 100%;
+}
+.rewievs_card {
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #bcbaba;
+}
+.rewievs_card_title {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: 500;
+	color: rgb(152, 148, 148);
+	font-family: Arial, Helvetica, sans-serif;
+}
+.rewievs_card_header {
+	width: 350px;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-start;
+	align-items: center;
+}
+.rewievs_card_main {
+	width: 100%;
+	height: 100%;
+}
+.rewievs_card_main div:nth-child(1) {
+	width: fit-content;
+	height: fit-content;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.rewievs_card_main div:nth-child(2) {
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 20px;
+	border-radius: 12px;
+}
+
+.rewievs_card_main div:nth-child(2) img {
+	width: 50px;
+	height: 50px;
+	border-radius: 12px;
+}

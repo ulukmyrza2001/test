@@ -46,8 +46,6 @@ export const MasterPage = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
-	//function
-
 	function handleDelete(masterId: number, event: React.MouseEvent) {
 		event.stopPropagation()
 		dispatch(deleteMaster({ masterId }) as unknown as AnyAction)
@@ -74,13 +72,9 @@ export const MasterPage = () => {
 		navigate(`/master/${id}/appoinments`)
 	}
 
-	//useEffect
-
 	useEffect(() => {
 		dispatch(getMaster() as unknown as AnyAction)
 	}, [])
-
-	//const
 
 	const BREAD_CRUMBS_MASTERS = [
 		{
@@ -159,7 +153,8 @@ export const MasterPage = () => {
 							masterModalAdd: true,
 							masterModalUpdate: false,
 						})
-					}>
+					}
+				>
 					Добавить мастер
 				</Button>
 			</div>

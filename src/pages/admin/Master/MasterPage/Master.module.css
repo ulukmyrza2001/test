@@ -3,8 +3,8 @@
 	height: 96vh;
 	margin-top: 10px;
 	padding: 20px;
-	border: 1px solid #c2c3c4;
 	border-radius: 12px;
+	border: 1px solid #c2c3c4;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
