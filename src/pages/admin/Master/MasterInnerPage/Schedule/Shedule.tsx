@@ -90,7 +90,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 							</div>
 						)
 				  })
-				: masterSchedule?.dayScheduleResponses?.length === undefined
+				: masterSchedule?.dayScheduleResponses?.length === 0
 				? WEEK.map((element: string) => {
 						return (
 							<div
