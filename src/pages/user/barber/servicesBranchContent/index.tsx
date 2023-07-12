@@ -53,6 +53,7 @@ export const ServicesBranchContent = () => {
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
 
+  console.log(serviceData);
   useEffect(() => {
     dispatch(getServices(params.branchId) as never as AnyAction);
   }, [params.branchId, dispatch]);
