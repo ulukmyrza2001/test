@@ -1,9 +1,9 @@
-import { ModalComponent } from '../../../../../components/UI/Modal/Modal'
-import BasicTimePicker from '../../../../../components/UI/TimePicker/TimePicker'
+import { ModalComponent } from '../../../../../../components/UI/Modal/Modal'
+import BasicTimePicker from '../../../../../../components/UI/TimePicker/TimePicker'
 import styles from './AddDaySchedule.module.css'
-import { Button } from '../../../../../components/UI/Buttons/Button/Button'
+import { Button } from '../../../../../../components/UI/Buttons/Button/Button'
 import { useDispatch } from 'react-redux'
-import { putMasterSchedule } from '../../../../../store/features/schedule-slice'
+import { putMasterSchedule } from '../../../../../../store/features/schedule-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { useParams } from 'react-router-dom'
 
