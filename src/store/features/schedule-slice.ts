@@ -17,6 +17,7 @@ interface MasterScheduleProps {
 			  }[]
 			| []
 	} | null
+	freeTimeMaster: { startTime: string; endTime: string }[] | []
 	isLoadingShedule: boolean
 }
 
@@ -71,8 +72,24 @@ export const putMasterSchedule = createAsyncThunk(
 	},
 )
 
+export const getFreeTimeScheduler = createAsyncThunk(
+	'schedule/getFreeTimeScheduler',
+	async ({ masterID, startDate }: any, { rejectWithValue }) => {
+		try {
+			const response = await axiosInstance.get(
+				`/day-schedules/free-time/${masterID}?appointmentDate=${startDate}
+			`,
+			)
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
 const initialState: MasterScheduleProps = {
 	masterSchedule: null,
+	freeTimeMaster: [],
 	isLoadingShedule: false,
 }
 
@@ -89,6 +106,17 @@ export const scheduleSlice = createSlice({
 			state.masterSchedule = action.payload
 		})
 		build.addCase(getMasterSchedule.rejected, (state) => {
+			state.isLoadingShedule = false
+		})
+
+		build.addCase(getFreeTimeScheduler.pending, (state) => {
+			state.isLoadingShedule = true
+		})
+		build.addCase(getFreeTimeScheduler.fulfilled, (state, action) => {
+			state.isLoadingShedule = false
+			state.freeTimeMaster = action.payload
+		})
+		build.addCase(getFreeTimeScheduler.rejected, (state) => {
 			state.isLoadingShedule = false
 		})
 	},
