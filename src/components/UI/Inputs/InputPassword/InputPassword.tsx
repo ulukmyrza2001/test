@@ -21,6 +21,7 @@ interface InputPasswordProps {
   border?: string;
   color?: string;
   fontSize?: string;
+  className?: string;
   onKeyDown?: (value: any) => void;
 }
 
@@ -34,6 +35,7 @@ export const InputPassword = forwardRef(
       value,
       placeholder,
       disabled,
+      className,
       onKeyDown,
       ...preProps
     } = props;
@@ -48,9 +50,12 @@ export const InputPassword = forwardRef(
         )}
         <div className={styles.inpcontainer}>
           <input
-            ref={ref} 
+            value={value}
+            onChange={onChange}
+            disabled={disabled}
+            ref={ref}
             placeholder={placeholder}
-            className={styles.input}
+            className={className ? className : styles.input}
             type={show ? "text" : "password"}
             {...preProps}
           />

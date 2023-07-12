@@ -15,12 +15,28 @@ interface IinputNumberMask {
   borderRadius?: string;
   background?: string;
   border?: string;
+  boxShadow?: string;
+  fontSize?:string
   color?: string;
+
   onKeyDown?: (value: any) => void;
 }
 
 export const InputNumberMask = (props: IinputNumberMask) => {
-  const { onChange, value, onKeyDown, disabled, label, ...restProps } = props;
+  const {
+    onChange,
+    value,
+    onKeyDown,
+    disabled,
+    label,
+    border,
+    boxShadow,
+    height,
+    width,
+    minWidth,
+    fontSize,
+    ...restProps
+  } = props;
 
   const handleChange = (value: string) => {
     onChange("+" + value);
@@ -35,20 +51,24 @@ export const InputNumberMask = (props: IinputNumberMask) => {
       )}
       <PhoneInput
         {...restProps}
+        disabled={disabled}
         country={"kg"}
         onChange={handleChange}
         onlyCountries={["kg", "kz", "uz"]}
         enableLongNumbers={false}
         countryCodeEditable={false}
         inputStyle={{
-          width: "100%",
-          height: "40px",
-          border: "1px solid #e0d5d5",
+          fontSize: fontSize,
+          width: `${width ? width : "100%"}`,
+          height: `${height ? height : "40px"}`,
+          border: `${border ? border : "1px solid #e0d5d5"}`,
+          boxShadow: boxShadow,
+          minWidth: minWidth,
           // color: "#7e7e7e",
         }}
         buttonStyle={{
           background: "white",
-          border: "0.3px solid var(--ui-disabled-color)",
+          border: `${border ? border : "0.3px solid var(--ui-disabled-color)"}`,
         }}
         value={value}
         masks={{
