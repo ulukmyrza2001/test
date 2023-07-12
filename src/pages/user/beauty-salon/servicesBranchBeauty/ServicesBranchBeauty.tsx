@@ -83,12 +83,12 @@ export const ServicesBranchBeauty = () => {
           aria-label="Vertical tabs example"
           TabIndicatorProps={{
             style: {
-              backgroundColor: "#000",
+              backgroundColor: "rgb(205, 165, 130)",
             },
           }}
           sx={{
             borderRight: 1,
-            borderColor: "gray",
+            borderColor: "rgb(205, 165, 130)",
           }}
         >
           <Tab

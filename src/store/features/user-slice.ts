@@ -2,17 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axios-config";
 import { toast } from "react-hot-toast";
 
-interface IgetUsersId {
-  usersID: number | string | undefined;
-}
-
 interface IputUsersId {
-  usersID: number | string | undefined;
+  usersID: number | string;
   usersData: {
-    firstName: string;
-    lastName: string;
+    firstName: string | undefined;
+    lastName: string | undefined;
     authInfoUpdateRequest: {
-      phoneNumber: string;
+      phoneNumber: string | undefined;
       oldPassword: string;
       newPassword: string;
     };
@@ -21,14 +17,16 @@ interface IputUsersId {
 
 interface UsersInitalStateProps {
   isLoadingUsers: boolean;
-  usersIdData: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    avatar: string | null;
-    role: string;
-  } | null;
+  usersProfileData:
+    | {
+        id: number;
+        firstName: string;
+        lastName: string;
+        phoneNumber: string;
+        avatar: string | null;
+      }
+    | {} | null;
+
   usersAllData:
     | {
         id: number;
@@ -51,14 +49,14 @@ export const getAllUsers = createAsyncThunk(
   }
 );
 
-export const getUsersId = createAsyncThunk(
-  "users/getUsersId",
-  async (usersID: IgetUsersId, { rejectWithValue }) => {
+export const getUsersProfile = createAsyncThunk(
+  "users/getUsersProfile",
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get(`/users//${usersID}`);
+      const response = await axiosInstance.get(`/users/profile`);
       return response.data;
-    } catch (error) {
-      rejectWithValue((error as Error).message);
+    } catch (err) {
+      rejectWithValue((err as Error).message);
     }
   }
 );
@@ -70,10 +68,10 @@ export const putUsersId = createAsyncThunk(
     { rejectWithValue, dispatch }
   ) => {
     try {
-      const response = await axiosInstance.put(`admins/${usersID}`, usersData);
+      const response = await axiosInstance.put(`users/${usersID}`, usersData);
       toast.success("Изменения прошло успешно!");
       dispatch(getAllUsers());
-    //   dispatch(getUsersId(usersID));
+      dispatch(getUsersProfile());
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -84,12 +82,11 @@ export const putUsersId = createAsyncThunk(
 
 export const usersDelete = createAsyncThunk(
   "users/delete",
-  async (usersId: IgetUsersId, { rejectWithValue, dispatch }) => {
+  async (usersId: number | string, { rejectWithValue, dispatch }) => {
     try {
       const response = await axiosInstance.delete(`users/${usersId}`);
       toast.success("Удаление прошло успешно!");
       dispatch(getAllUsers());
-      dispatch(getUsersId(usersId));
       return response;
     } catch (error) {
       toast.error((error as Error).message);
@@ -101,7 +98,7 @@ export const usersDelete = createAsyncThunk(
 const initialState: UsersInitalStateProps = {
   isLoadingUsers: false,
   usersAllData: null,
-  usersIdData: null,
+  usersProfileData: null,
 };
 
 export const usersSlice = createSlice({
@@ -119,15 +116,16 @@ export const usersSlice = createSlice({
     build.addCase(getAllUsers.rejected, (state) => {
       state.isLoadingUsers = false;
     });
+
     ////=========================================================>
-    build.addCase(getUsersId.pending, (state) => {
+    build.addCase(getUsersProfile.pending, (state) => {
       state.isLoadingUsers = true;
     });
-    build.addCase(getUsersId.fulfilled, (state, action) => {
+    build.addCase(getUsersProfile.fulfilled, (state, action) => {
       state.isLoadingUsers = false;
-      state.usersIdData = action.payload;
+      state.usersProfileData = action.payload;
     });
-    build.addCase(getUsersId.rejected, (state) => {
+    build.addCase(getUsersProfile.rejected, (state) => {
       state.isLoadingUsers = false;
     });
     ////=========================================================>
