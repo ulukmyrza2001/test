@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Outlet } from "react-router-dom";
-import { BreadCrumbs } from "../../../../components/UI/BreadCrumbs/BreadCrumbs";
-import { Button } from "../../../../components/UI/Buttons/Button/Button";
-import { getMasterById } from "../../../../store/features/master-slice";
-import { useDispatch, useSelector } from "react-redux";
-import { AnyAction } from "redux";
-import { Skeleton } from "@mui/material";
-import styles from "./MasterInnerPage.module.css";
-import NotUser from "../../../../assets/image/noUser.svg";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { Tabs } from "../../../../components/UI/Tabs/Tabs";
-import { Schedule } from "./Schedule/Shedule";
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { Outlet } from 'react-router-dom'
+import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
+import { Button } from '../../../../components/UI/Buttons/Button/Button'
+import { getMasterById } from '../../../../store/features/master-slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { AnyAction } from 'redux'
+import { Skeleton } from '@mui/material'
+import styles from './MasterInnerPage.module.css'
+import NotUser from '../../../../assets/image/noUser.svg'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+import { Tabs } from '../../../../components/UI/Tabs/Tabs'
+import { Schedule } from './Schedule/Shedule'
+import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
@@ -24,6 +25,18 @@ export const MasterInnerPage = () => {
 	const [endDate, setEndDate] = useState(
 		getSunday(new Date().toISOString().slice(0, 10)),
 	)
+	const [masterData, setMasterData] = useState({
+		firstName: '',
+		lastName: '',
+		authInfoRequest: {
+			phoneNumber: '+996',
+			password: '',
+		},
+	})
+	const [masterModal, setMasterModal] = useState({
+		masterModalAdd: false,
+		masterModalUpdate: false,
+	})
 
 	const { masterID } = useParams()
 	const dispatch = useDispatch()
@@ -92,6 +105,21 @@ export const MasterInnerPage = () => {
 		setEndDate(prevEndDate.toISOString().split('T')[0])
 	}
 
+	function handleUpdate() {
+		setMasterModal({
+			masterModalAdd: false,
+			masterModalUpdate: true,
+		})
+		setMasterData({
+			firstName: dataMasterById.firstName,
+			lastName: dataMasterById.lastName,
+			authInfoRequest: {
+				phoneNumber: dataMasterById.phoneNumber,
+				password: '',
+			},
+		})
+	}
+
 	//const
 
 	const BREAD_CRUMBS_MASTER = [
@@ -120,13 +148,20 @@ export const MasterInnerPage = () => {
 
 	return (
 		<div className={styles.container_master_inner_page}>
+			<MasterUpdateModal
+				masterModal={masterModal}
+				setMasterModal={setMasterModal}
+				masterData={masterData}
+				setMasterData={setMasterData}
+				masterId={masterID}
+			/>
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
 					<Button width='143px' onClick={() => console.log('abu')}>
 						Создать график
 					</Button>
-					<Button width='186px' onClick={() => console.log('abu')}>
+					<Button width='186px' onClick={() => handleUpdate()}>
 						Редактировать мастер
 					</Button>
 				</div>
