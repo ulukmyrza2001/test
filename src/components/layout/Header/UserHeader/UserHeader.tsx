@@ -162,7 +162,11 @@ export const UserHeader = () => {
 					{role ? (
 						<div>
 							<FaUserCircle
-								color='grey'
+								color={
+									path === 'beauty_salon' || 'barbershop'
+										? 'white'
+										: 'grey'
+								}
 								fontSize='28px'
 								cursor='pointer'
 								id='basic-button'
