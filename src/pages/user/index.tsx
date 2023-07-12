@@ -6,6 +6,8 @@ import { NavBar } from "../../components/Navbar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { getBranchesMain } from "../../store/features/branch-slice";
 import { AnyAction } from "@reduxjs/toolkit";
+import { TypeCompanyGenrate } from "../../utils/helpers/helpers";
+import { Banner } from "../../components/Banner";
 
 export const UserPage = () => {
   const dispatch = useDispatch();
@@ -16,21 +18,14 @@ export const UserPage = () => {
     dispatch(getBranchesMain() as never as AnyAction);
   }, []);
 
-  const typeCompanyGenrate = (item: string) => {
-    switch (item) {
-      case "Барбершоп":
-        return "Барбер";
-      case "beauty_salon":
-        return "Салон красоты";
-
-      default:
-        break;
-    }
-  };
-
   return (
     <Fragment>
-      <NavBar />
+      <Container sx={{ marginTop: "20px" }}>
+        <Banner />
+      </Container>
+      <Container sx={{ margin: "20px 0" }}>
+        <NavBar />
+      </Container>
       <Container sx={{ marginTop: "50px" }}>
         {branchMain?.map((item: any, index: number) => (
           <div key={index} style={{ width: "100%", marginTop: "30px" }}>
@@ -50,7 +45,7 @@ export const UserPage = () => {
               arrowAndprev={true}
               typeButton={true}
               variableWidth={true}
-              label={typeCompanyGenrate(item.categoryType)}
+              label={TypeCompanyGenrate(item.categoryType)}
             >
               {item?.branchResponses?.map((item: any, index: number) => {
                 return <ServiceCard {...item} key={index} />;
