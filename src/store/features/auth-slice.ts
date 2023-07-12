@@ -52,6 +52,7 @@ export const RegistrationUser = createAsyncThunk(
       document.cookie = `token=${response.data.token}; path=/`;
       document.cookie = `isAuthenticated=${true}; path=/`;
       toast.success("Successfully toasted!");
+
       return response.data;
     } catch (error) {
       toast.error((error as Error).message);

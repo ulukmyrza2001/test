@@ -6,6 +6,7 @@ export const postAppointment = createAsyncThunk(
   async ({ postData }: any, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("api/appointments", postData);
+      console.log(postData);
       return response.data;
     } catch (error) {
       rejectWithValue((error as Error).message);
