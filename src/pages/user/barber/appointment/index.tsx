@@ -52,10 +52,9 @@ export const AppointmenBarberPage = () => {
   const { id } = useParams();
 
   const [postData, setPostData] = useState<any>({
-    masterId: 1,
+    masterId: 4,
     avatar: "",
     masterName: "",
-    serviceId: [1],
     startDate: "2023-07-11",
     startTime: "09:30",
     endTime: "10:30",
@@ -69,9 +68,11 @@ export const AppointmenBarberPage = () => {
   }, [postData.startTime]);
 
   const [subCategoryName, setSubCategoryName] = useState<any>({
-    id: id,
+    id: [1],
     name: "Стрижка мужская",
   });
+
+  console.log(subCategoryName);
 
   const [next, setNext] = useState<any>(1);
 
