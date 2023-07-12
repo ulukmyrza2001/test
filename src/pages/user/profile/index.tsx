@@ -29,7 +29,13 @@ interface IpasswordData {
 export const ProfilePage = () => {
   const { usersProfileData } = useSelector((state: any) => state.users);
   const dispatch = useDispatch<AppDispatch>();
-  const [profileData, setProfileData] = useState<IprofileData>();
+  const [profileData, setProfileData] = useState<IprofileData>({
+    id: 0,
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    avatar: "",
+  });
   const [disabled, setDisabled] = useState<boolean>(true);
   const [passwordData, setPassswordData] = useState<IpasswordData>({
     oldPassword: "",
@@ -46,15 +52,22 @@ export const ProfilePage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (usersProfileData) {
+    if (!usersProfileData) {
       setProfileData({
-        id: usersProfileData.id,
-        firstName: usersProfileData.firstName,
-        lastName: usersProfileData.lastName,
-        phoneNumber: usersProfileData.phoneNumber,
-        avatar: usersProfileData.avatar,
+        id: 0,
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        avatar: "",
       });
     }
+    setProfileData({
+      id: usersProfileData?.id,
+      firstName: usersProfileData?.firstName,
+      lastName: usersProfileData?.lastName,
+      phoneNumber: usersProfileData?.phoneNumber,
+      avatar: usersProfileData?.avatar,
+    });
   }, [usersProfileData]);
 
   const putSubmitHandler = () => {

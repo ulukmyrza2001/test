@@ -17,21 +17,16 @@ interface IputUsersId {
 
 interface UsersInitalStateProps {
   isLoadingUsers: boolean;
-  usersProfileData: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    avatar: string | null;
-  } | null;
-  usersIdData: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    avatar: string | null;
-    role: string;
-  } | null;
+  usersProfileData:
+    | {
+        id: number;
+        firstName: string;
+        lastName: string;
+        phoneNumber: string;
+        avatar: string | null;
+      }
+    | {} | null;
+
   usersAllData:
     | {
         id: number;
@@ -58,8 +53,8 @@ export const getUsersProfile = createAsyncThunk(
   "users/getUsersProfile",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get(`/users/profile`);
-      return data;
+      const response = await axiosInstance.get(`/users/profile`);
+      return response.data;
     } catch (err) {
       rejectWithValue((err as Error).message);
     }
@@ -103,7 +98,6 @@ export const usersDelete = createAsyncThunk(
 const initialState: UsersInitalStateProps = {
   isLoadingUsers: false,
   usersAllData: null,
-  usersIdData: null,
   usersProfileData: null,
 };
 
