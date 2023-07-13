@@ -38,6 +38,7 @@ export const MasterInnerPage = () => {
 		masterModalAdd: false,
 		masterModalUpdate: false,
 	})
+	const [masterScheduleModal, setMasterScheduleModal] = useState(false)
 
 	const { masterID } = useParams()
 	const dispatch = useDispatch()
@@ -156,11 +157,17 @@ export const MasterInnerPage = () => {
 				setMasterData={setMasterData}
 				masterId={masterID}
 			/>
-			<AddFullSchedule />
+			<AddFullSchedule
+				masterScheduleModal={masterScheduleModal}
+				setMasterScheduleModal={setMasterScheduleModal}
+				startWeek={startDate}
+			/>
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
-					<Button width='143px' onClick={() => console.log('abu')}>
+					<Button
+						width='143px'
+						onClick={() => setMasterScheduleModal(true)}>
 						Создать график
 					</Button>
 					<Button width='186px' onClick={() => handleUpdate()}>
