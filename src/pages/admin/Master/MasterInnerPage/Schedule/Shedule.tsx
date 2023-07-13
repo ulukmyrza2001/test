@@ -79,7 +79,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 						return (
 							<div
 								className={styles.container_name_week}
-								key={el}>
+								key={el}
+							>
 								<h1>{el}:</h1>
 								<Skeleton
 									variant='rectangular'
@@ -95,7 +96,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 						return (
 							<div
 								className={styles.container_name_week}
-								key={element}>
+								key={element}
+							>
 								<h1>{element}:</h1>
 								<div className={styles.container_week}>
 									<div></div>
@@ -113,7 +115,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 							return (
 								<div
 									className={styles.container_name_week}
-									key={item.dayScheduleId}>
+									key={item.dayScheduleId}
+								>
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
@@ -125,7 +128,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 												opacity: item.workingDay
 													? '1'
 													: '0',
-											}}>
+											}}
+										>
 											{`${item.startTime.slice(
 												0,
 												5,

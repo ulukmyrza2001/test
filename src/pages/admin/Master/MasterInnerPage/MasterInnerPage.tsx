@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Outlet } from "react-router-dom";
-import { BreadCrumbs } from "../../../../components/UI/BreadCrumbs/BreadCrumbs";
-import { Button } from "../../../../components/UI/Buttons/Button/Button";
-import { getMasterById } from "../../../../store/features/master-slice";
-import { useDispatch, useSelector } from "react-redux";
-import { AnyAction } from "redux";
-import { Skeleton } from "@mui/material";
-import styles from "./MasterInnerPage.module.css";
-import NotUser from "../../../../assets/image/noUser.svg";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { Tabs } from "../../../../components/UI/Tabs/Tabs";
-import { Schedule } from "./schedule/Shedule";
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { Outlet } from 'react-router-dom'
+import { BreadCrumbs } from '../../../../components/UI/BreadCrumbs/BreadCrumbs'
+import { Button } from '../../../../components/UI/Buttons/Button/Button'
+import { getMasterById } from '../../../../store/features/master-slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { AnyAction } from 'redux'
+import { Skeleton } from '@mui/material'
+import styles from './MasterInnerPage.module.css'
+import NotUser from '../../../../assets/image/noUser.svg'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+import { Tabs } from '../../../../components/UI/Tabs/Tabs'
+import { Schedule } from './schedule/Shedule'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
