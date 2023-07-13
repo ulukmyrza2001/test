@@ -27,7 +27,7 @@
 
 .button:disabled {
 	cursor: not-allowed;
-	color: 'var(--ui-disabled-color)';
+	color: var(--ui-disabled-color);
 	border: 'var(--ui-disabled-color)';
 	background-color: var(--ui-disabled--background);
 }

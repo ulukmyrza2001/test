@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DataPicker } from '../../../../../../components/UI/DataPicker/DataPicker'
 import { ModalComponent } from '../../../../../../components/UI/Modal/Modal'
 import { FULL_WEEK } from '../../../../../../utils/constants/constants'
@@ -23,6 +23,7 @@ export const AddFullSchedule = ({
 	setMasterScheduleModal,
 	startWeek,
 }: AddFullScheduleProps) => {
+	const [addScheduleValidation, setAddScheduleValidation] = useState(false)
 	const [scheduleData, setScheduleData] = useState({
 		startDate: dayjs(new Date()).format('YYYY-MM-DD'),
 		endDate: '',
@@ -75,6 +76,47 @@ export const AddFullSchedule = ({
 	const dispatch = useDispatch()
 	const { masterID } = useParams()
 
+	useEffect(() => {
+		const updatedDayScheduleRequests =
+			scheduleData.dayScheduleRequests.filter(
+				(dayScheduleRequest) =>
+					dayScheduleRequest.startTime !== '' &&
+					dayScheduleRequest.endTime !== '' &&
+					dayScheduleRequest.startTime.split(':')[0] <
+						dayScheduleRequest.endTime.split(':')[0],
+			)
+		if (updatedDayScheduleRequests.length !== 0) {
+			if (
+				scheduleData.startDate !== '' &&
+				scheduleData.endDate !== '' &&
+				scheduleData.startDate < scheduleData.endDate
+			) {
+				setAddScheduleValidation(false)
+			} else {
+				setAddScheduleValidation(true)
+			}
+		} else {
+			setAddScheduleValidation(true)
+		}
+	}, [scheduleData])
+
+	function handleClose() {
+		setMasterScheduleModal(false)
+		setScheduleData({
+			...scheduleData,
+			startDate: dayjs(new Date()).format('YYYY-MM-DD'),
+			endDate: '',
+			dayScheduleRequests: scheduleData.dayScheduleRequests.map(
+				(dayScheduleRequest) => ({
+					...dayScheduleRequest,
+					startTime: '',
+					endTime: '',
+					workingDay: false,
+				}),
+			),
+		})
+	}
+
 	function handlePost() {
 		dispatch(
 			postMasterSchedule({
@@ -86,55 +128,26 @@ export const AddFullSchedule = ({
 		handleClose()
 	}
 
-	function handleClose() {
-		setMasterScheduleModal(false)
+	function handleApplyToAll() {
+		const updatedDayScheduleRequests =
+			scheduleData.dayScheduleRequests.filter(
+				(dayScheduleRequest) =>
+					dayScheduleRequest.startTime !== '' &&
+					dayScheduleRequest.endTime !== '',
+			)
+		const updatedDayScheduleResponse = scheduleData.dayScheduleRequests.map(
+			(dayScheduleRequest) => {
+				return {
+					...dayScheduleRequest,
+					startTime: updatedDayScheduleRequests[0].startTime,
+					endTime: updatedDayScheduleRequests[0].endTime,
+					workingDay: updatedDayScheduleRequests[0].workingDay,
+				}
+			},
+		)
 		setScheduleData({
-			startDate: dayjs(new Date()).format('YYYY-MM-DD'),
-			endDate: '',
-			dayScheduleRequests: [
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'MONDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'TUESDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'WEDNESDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'THURSDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'FRIDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'SATURDAY',
-					workingDay: false,
-				},
-				{
-					startTime: '',
-					endTime: '',
-					dayOfWeek: 'SUNDAY',
-					workingDay: false,
-				},
-			],
+			...scheduleData,
+			dayScheduleRequests: updatedDayScheduleResponse,
 		})
 	}
 
@@ -270,15 +283,24 @@ export const AddFullSchedule = ({
 							width='80px'
 							backgroundColor='white'
 							color='#acacac'
-							border='1px solid #acacac'>
+							border='1px solid #939191'
+							onClick={() => handleClose()}>
 							Отмена
 						</Button>
 					</div>
 					<div>
-						<Button width='157px'>Применить к всем</Button>
+						<Button
+							width='157px'
+							disabled={addScheduleValidation}
+							onClick={() => handleApplyToAll()}>
+							Применить к всем
+						</Button>
 					</div>
 					<div>
-						<Button width='90px' onClick={() => handlePost()}>
+						<Button
+							disabled={addScheduleValidation}
+							width='90px'
+							onClick={() => handlePost()}>
 							Сохранить
 						</Button>
 					</div>
