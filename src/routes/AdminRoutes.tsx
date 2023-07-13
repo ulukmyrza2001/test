@@ -13,7 +13,8 @@ export const AdminRoutes = () => {
 		<Routes>
 			<Route
 				path={ADMIN_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}>
+				element={<DashboardOutlet />}
+			>
 				<Route
 					path={ADMIN_ROUTES.DEFAULT.path}
 					element={<Calendar />}
@@ -24,7 +25,8 @@ export const AdminRoutes = () => {
 				/>
 				<Route
 					path={ADMIN_ROUTES.MASTER.path}
-					element={<MasterInnerPage />}>
+					element={<MasterInnerPage />}
+				>
 					<Route
 						path={ADMIN_ROUTES.MASTER_APPOINTMENT.path}
 						element={<Appointments />}

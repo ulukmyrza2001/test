@@ -73,6 +73,14 @@ export const AddFullSchedule = ({
 		],
 	})
 
+<<<<<<< HEAD
+	return (
+		<ModalComponent
+			active={true}
+			handleClose={() => false}
+			title='Создать график'
+		>
+=======
 	const dispatch = useDispatch()
 	const { masterID } = useParams()
 
@@ -192,6 +200,7 @@ export const AddFullSchedule = ({
 			active={masterScheduleModal}
 			handleClose={() => handleClose()}
 			title='Создать график'>
+>>>>>>> 1bea2fc151188197e47bfcafa4e483f32104fdbc
 			<div className={styles.container_full_schedule}>
 				<div className={styles.container_full_schedule_header}>
 					<DataPicker
@@ -213,6 +222,36 @@ export const AddFullSchedule = ({
 						}
 					/>
 				</div>
+<<<<<<< HEAD
+				{FULL_WEEK.map((item: { nameEN: string; nameRU: string }) => {
+					return (
+						<div
+							key={item.nameRU}
+							className={styles.card_full_schedule}
+						>
+							<Switch
+								checked={true}
+								onChange={(e) => console.log(e)}
+							/>
+							<span>{item.nameRU}</span>
+							<BasicTimePicker
+								value={''}
+								onChange={(e) => console.log(e)}
+								minHours={0}
+								maxHours={23}
+								minutesStep={30}
+							/>
+							<BasicTimePicker
+								value={''}
+								onChange={(e) => console.log(e)}
+								minHours={0}
+								maxHours={23}
+								minutesStep={30}
+							/>
+						</div>
+					)
+				})}
+=======
 				{FULL_WEEK.map(
 					(
 						item: { nameEN: string; nameRU: string },
@@ -277,6 +316,7 @@ export const AddFullSchedule = ({
 						)
 					},
 				)}
+>>>>>>> 1bea2fc151188197e47bfcafa4e483f32104fdbc
 				<div className={styles.container_full_schedule_footer}>
 					<div>
 						<Button
