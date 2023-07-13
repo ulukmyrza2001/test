@@ -21,7 +21,9 @@ export const BeautySalonPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBrancheById({ branchId: beautySalonID }) as never as AnyAction);
+    dispatch(
+      getBrancheById({ branchId: beautySalonID }) as unknown as AnyAction
+    );
   }, []);
 
   useEffect(() => {

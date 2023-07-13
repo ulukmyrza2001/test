@@ -46,13 +46,13 @@ export const CreateAffiliate = () => {
 
   useEffect(() => {
     if (data.countryId === null) {
-      dispatch(getCountriesSelect() as never as AnyAction);
+      dispatch(getCountriesSelect() as unknown as AnyAction);
     }
     if (data.countryId !== null) {
       dispatch(
         getRegionSelect({
           countryId: data.countryId?.value,
-        }) as never as AnyAction
+        }) as unknown as AnyAction
       );
     }
   }, [data.countryId, dispatch]);
@@ -62,7 +62,7 @@ export const CreateAffiliate = () => {
       dispatch(
         getCitySelect({
           regionId: data.regionId?.value,
-        }) as never as AnyAction
+        }) as unknown as AnyAction
       );
     }
   }, [data.regionId, dispatch]);
