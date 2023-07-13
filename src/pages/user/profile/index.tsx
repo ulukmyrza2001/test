@@ -43,7 +43,7 @@ export const ProfilePage = () => {
   });
 
   useEffect(() => {
-    dispatch(getUsersProfile() as never as AnyAction);
+    dispatch(getUsersProfile() as unknown as AnyAction);
 
     document.title = "Profile | Cheber";
     return () => {
@@ -83,7 +83,7 @@ export const ProfilePage = () => {
             newPassword: passwordData?.newPassword,
           },
         },
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
     setDisabled(false);
   };

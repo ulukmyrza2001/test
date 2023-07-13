@@ -55,7 +55,7 @@ export const ServicesBranchContent = () => {
 
   console.log(serviceData);
   useEffect(() => {
-    dispatch(getServices(params.branchId) as never as AnyAction);
+    dispatch(getServices(params.branchId) as unknown as AnyAction);
   }, [params.branchId, dispatch]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
