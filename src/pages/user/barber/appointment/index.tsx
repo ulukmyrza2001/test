@@ -8,7 +8,7 @@ import { Typography, styled } from "@mui/material";
 import { GiBeard } from "react-icons/gi";
 import { BiHomeAlt, BiSend, BiTimeFive } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 import { getMasterByBranchId } from "../../../../store/features/master-slice";
@@ -46,15 +46,17 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 export const AppointmenBarberPage = () => {
+  const navigate = useNavigate();
   const { dataMasterBranch } = useSelector((state: any) => state.master);
 
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const [postData, setPostData] = useState<any>({
-    masterId: 4,
-    avatar: "",
-    masterName: "",
+    masterId: null,
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU",
+    masterName: "Любой мастер",
     startDate: "2023-07-11",
     startTime: "09:30",
     endTime: "10:30",
@@ -72,8 +74,6 @@ export const AppointmenBarberPage = () => {
     name: "Стрижка мужская",
   });
 
-  console.log(subCategoryName);
-
   const [next, setNext] = useState<any>(1);
 
   const { branchData, isLoadingBranch } = useSelector(
@@ -83,11 +83,11 @@ export const AppointmenBarberPage = () => {
   const { subCategoryData } = useSelector((state: any) => state.subCategory);
 
   useEffect(() => {
-    dispatch(getMasterByBranchId({ branchId: id }) as never as AnyAction);
+    dispatch(getMasterByBranchId({ branchId: id }) as unknown as AnyAction);
     dispatch(
       getSubCategorySelect({
         categoryServiceId: 2,
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
   }, []);
 
@@ -110,7 +110,7 @@ export const AppointmenBarberPage = () => {
     },
   ];
 
-  const [expanded, setExpanded] = React.useState<string | false>("panel1"); // Updated state value
+  const [expanded, setExpanded] = React.useState<string | false>(false); // Updated state value
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -129,14 +129,14 @@ export const AppointmenBarberPage = () => {
     dispatch(
       postAppointment({
         postData: {
-          masterId: postData.masterId,
+          masterId: postData.masterId === null ? 1 : postData.mastrtId,
           serviceIds: subCategoryName.id,
           startDate: postData.startDate,
           startTime: `${postData.startTime}:00`,
           endTime: `${postData.endTime}:00`,
           description: postData.description,
         },
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
   };
   return (
@@ -193,7 +193,22 @@ export const AppointmenBarberPage = () => {
                   </span>
                 </div>
                 <div className={styles.cards}>
-                  <div className={styles.card}>
+                  <div
+                    className={
+                      postData.masterId === null
+                        ? styles.card_active
+                        : styles.card
+                    }
+                    onClick={() =>
+                      setPostData({
+                        ...postData,
+                        masterId: null,
+                        masterName: "Любой мастер",
+                        avatar:
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU",
+                      })
+                    }
+                  >
                     <div className={styles.ava_wrapper}>
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU"
@@ -256,7 +271,6 @@ export const AppointmenBarberPage = () => {
               <div className={styles.finish_card}>
                 <div className={styles.top}>
                   <h4 className={styles.top_h4}>Запись №1</h4>
-                  <h4 className={styles.top_h4}>{subCategoryName.name}</h4>
                   <h4 className={styles.top_h4}>Начало в 19:00</h4>
                 </div>
                 <div className={styles.bottom}>
@@ -264,17 +278,38 @@ export const AppointmenBarberPage = () => {
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: "9px",
-                        margin: "10px 0",
+                        flexDirection: "column",
+                        gap: "10px",
                       }}
                     >
-                      <div className={styles.finish_ava_wrapper}>
-                        <img src={postData.ava} alt="" className={styles.ava} />
+                      <h5
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: "500",
+                        }}
+                      >
+                        {subCategoryName.name}
+                      </h5>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: "9px",
+                          margin: "10px 0",
+                        }}
+                      >
+                        <div className={styles.finish_ava_wrapper}>
+                          <img
+                            src={postData.ava}
+                            alt=""
+                            className={styles.ava}
+                          />
+                        </div>
+                        <span>{postData.masterName}</span>
                       </div>
-                      <span>{postData.masterName}</span>
                     </div>
                     <h5
                       style={{
@@ -308,6 +343,7 @@ export const AppointmenBarberPage = () => {
                       height: "100px",
                       borderRadius: "6px",
                       fontSize: "24px",
+                      fontFamily: "sans-serif",
                     }}
                     value={postData.description}
                     onChange={(e) =>
@@ -387,7 +423,9 @@ export const AppointmenBarberPage = () => {
             )}
 
             {next >= 3 ? (
-              <Button onClick={handlePost}>Записаться</Button>
+              <Button onClick={() => (handlePost(), navigate("/history"))}>
+                Записаться
+              </Button>
             ) : (
               <Button onClick={() => setNext(next + 1)} fontSize="20px">
                 Далее

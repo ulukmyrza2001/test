@@ -50,7 +50,7 @@ export const AffiliatePage = () => {
     dispatch(
       deleteBranch({
         branchId: itemId,
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
   };
 
