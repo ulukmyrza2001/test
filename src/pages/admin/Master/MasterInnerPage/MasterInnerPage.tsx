@@ -12,19 +12,19 @@ import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
 import { Schedule } from './Schedule/Shedule'
-import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
 import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
+import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
-		(state: any) => state.master,
+		(state: any) => state.master
 	)
 
 	const [startDate, setStartDate] = useState(
-		getMonday(new Date().toISOString().slice(0, 10)),
+		getMonday(new Date().toISOString().slice(0, 10))
 	)
 	const [endDate, setEndDate] = useState(
-		getSunday(new Date().toISOString().slice(0, 10)),
+		getSunday(new Date().toISOString().slice(0, 10))
 	)
 	const [masterData, setMasterData] = useState({
 		firstName: '',
@@ -82,10 +82,10 @@ export const MasterInnerPage = () => {
 		const currentEndDate = new Date(endDate)
 
 		const nextStartDate = new Date(
-			currentStartDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+			currentStartDate.getTime() + 7 * 24 * 60 * 60 * 1000
 		)
 		const nextEndDate = new Date(
-			currentEndDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+			currentEndDate.getTime() + 7 * 24 * 60 * 60 * 1000
 		)
 
 		setStartDate(nextStartDate.toISOString().split('T')[0])
@@ -97,10 +97,10 @@ export const MasterInnerPage = () => {
 		const currentEndDate = new Date(endDate)
 
 		const prevStartDate = new Date(
-			currentStartDate.getTime() - 7 * 24 * 60 * 60 * 1000,
+			currentStartDate.getTime() - 7 * 24 * 60 * 60 * 1000
 		)
 		const prevEndDate = new Date(
-			currentEndDate.getTime() - 7 * 24 * 60 * 60 * 1000,
+			currentEndDate.getTime() - 7 * 24 * 60 * 60 * 1000
 		)
 
 		setStartDate(prevStartDate.toISOString().split('T')[0])
@@ -165,12 +165,10 @@ export const MasterInnerPage = () => {
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
-					<Button
-						width='143px'
-						onClick={() => setMasterScheduleModal(true)}>
+					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
 						Создать график
 					</Button>
-					<Button width='186px' onClick={() => handleUpdate()}>
+					<Button width="186px" onClick={() => handleUpdate()}>
 						Редактировать мастер
 					</Button>
 				</div>
@@ -181,14 +179,14 @@ export const MasterInnerPage = () => {
 						<img
 							className={styles.container_master_image}
 							src={NotUser}
-							alt='No user'
+							alt="No user"
 						/>
 					</div>
 					<div className={styles.container_master_card_info}>
 						<div className={styles.master_fullname_title}>
 							{isLoadingMaster ? (
 								<Skeleton
-									variant='rectangular'
+									variant="rectangular"
 									width={200}
 									sx={{ borderRadius: '6px' }}
 								/>
@@ -200,7 +198,7 @@ export const MasterInnerPage = () => {
 						<span>
 							{isLoadingMaster ? (
 								<Skeleton
-									variant='rectangular'
+									variant="rectangular"
 									width={140}
 									sx={{ borderRadius: '6px' }}
 								/>
@@ -214,7 +212,7 @@ export const MasterInnerPage = () => {
 							<MdKeyboardArrowLeft
 								onClick={() => prevWeek()}
 								size={20}
-								cursor='pointer'
+								cursor="pointer"
 							/>
 						</div>
 						<div>{`${startDate} - ${endDate}`}</div>
@@ -222,7 +220,7 @@ export const MasterInnerPage = () => {
 							<MdKeyboardArrowRight
 								onClick={() => nextWeek()}
 								size={20}
-								cursor='pointer'
+								cursor="pointer"
 							/>
 						</div>
 					</div>
