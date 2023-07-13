@@ -103,26 +103,28 @@ export const Rewievs = () => {
 			</div>
 			<div className={styles.container_rewievs}>
 				<div className={styles.container_header_rewievs}>
-					<div className={styles.header_rewievs_button_container}>
-						{typeButton.map(
-							(item: { name: string; value: number }) => {
-								return (
-									<div
-										key={item.value}
-										onClick={() =>
-											setTypeRewievs(item.value)
-										}
-										className={
-											item.value === typeRewievs
-												? styles.container_header_rewievs_button_active
-												: styles.container_header_rewievs_button_notactive
-										}>
-										{item.name}
-									</div>
-								)
-							},
-						)}
-					</div>
+					{feedbackDataMaster?.feedbackResponses?.length !== 0 && (
+						<div className={styles.header_rewievs_button_container}>
+							{typeButton.map(
+								(item: { name: string; value: number }) => {
+									return (
+										<div
+											key={item.value}
+											onClick={() =>
+												setTypeRewievs(item.value)
+											}
+											className={
+												item.value === typeRewievs
+													? styles.container_header_rewievs_button_active
+													: styles.container_header_rewievs_button_notactive
+											}>
+											{item.name}
+										</div>
+									)
+								},
+							)}
+						</div>
+					)}
 					<div className={styles.title_header_reiwievs}>
 						{feedbackDataMaster?.feedbackResponses?.length} отзывов
 					</div>
