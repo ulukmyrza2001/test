@@ -16,6 +16,7 @@ import { citySlice } from "./features/city-slice";
 import { scheduleSlice } from "./features/schedule-slice";
 import { feedbackSlice } from "./features/feedback-slice";
 import { appointmentSlice } from "./features/appointment";
+import { usersSlice } from "./features/user-slice";
 
 export const store = configureStore({
   reducer: {
@@ -35,6 +36,7 @@ export const store = configureStore({
     service: serviceSlice.reducer,
     feedback: feedbackSlice.reducer,
     appointment: appointmentSlice.reducer,
+    users: usersSlice.reducer,
   },
 });
 
