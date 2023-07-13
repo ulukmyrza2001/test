@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { postMaster } from '../../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { InputNumberMask } from '../../../../../components/UI/Inputs/InputMask/InputMask'
+import styles from './MasterAddModal.module.css'
 
 interface MasterAddModalProps {
 	masterData: {
@@ -106,37 +107,52 @@ export const MasterAddModal = ({
 			active={masterModal.masterModalAdd}
 			handleClose={handleClose}
 			title='Добавить мастер'>
-			<div>
-				<Input
-					label='Имя'
-					value={masterData.firstName}
-					onChange={(value) =>
-						handleChangeFirsName(value.target.value)
-					}
-				/>
-				<Input
-					label='Фио'
-					value={masterData.lastName}
-					onChange={(value) =>
-						handleChangeLastName(value.target.value)
-					}
-				/>
-				<InputNumberMask
-					label='Номер'
-					value={masterData.authInfoRequest.phoneNumber}
-					onChange={(value) => handleChangePhoneNumber(value)}
-				/>
-				<InputPassword
-					label='Пароль'
-					value={masterData.authInfoRequest.password}
-					onChange={(value) =>
-						handleChangePassword(value.target.value)
-					}
-				/>
+			<div className={styles.container}>
+				<div className={styles.container_one}>
+					<Input
+						label='Имя'
+						placeholder='Имя'
+						value={masterData.firstName}
+						onChange={(value) =>
+							handleChangeFirsName(value.target.value)
+						}
+					/>
+					<Input
+						label='Фио'
+						placeholder='Фио'
+						value={masterData.lastName}
+						onChange={(value) =>
+							handleChangeLastName(value.target.value)
+						}
+					/>
+				</div>
+				<div className={styles.container_one}>
+					<InputNumberMask
+						label='Номер'
+						value={masterData.authInfoRequest.phoneNumber}
+						onChange={(value) => handleChangePhoneNumber(value)}
+					/>
+					<InputPassword
+						label='Пароль'
+						value={masterData.authInfoRequest.password}
+						onChange={(value) =>
+							handleChangePassword(value.target.value)
+						}
+					/>
+				</div>
 			</div>
-			<div>
-				<Button onClick={() => handleClose()}>Отмена</Button>
-				<Button onClick={() => handlePost()}>Сохранить</Button>
+			<div className={styles.container_bottom}>
+				<Button
+					width='80px'
+					backgroundColor='white'
+					color='#acacac'
+					border='1px solid #acacac'
+					onClick={() => handleClose()}>
+					Отмена
+				</Button>
+				<Button width='120px' onClick={() => handlePost()}>
+					Сохранить
+				</Button>
 			</div>
 		</ModalComponent>
 	)

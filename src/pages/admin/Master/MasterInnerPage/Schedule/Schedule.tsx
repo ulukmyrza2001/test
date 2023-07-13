@@ -11,7 +11,7 @@ import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
 import { Skeleton } from '@mui/material'
 import { WEEK } from '../../../../../utils/constants/constants'
 import { MdCreate, MdDelete } from 'react-icons/md'
-import { AddDayShedule } from './AddDaySchedule/AddDaySchedule'
+import { AddDaySchedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
 	startWeek: string
@@ -39,7 +39,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 	const dispatch = useDispatch()
 	const { masterID } = useParams()
 
-	//function
+	// function
 
 	function handleDayScheduleDelete(daySchedulesId: number) {
 		dispatch(
@@ -64,7 +64,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		setDayScheduleModal(true)
 	}
 
-	//useEffect
+	// useEffect
 
 	useEffect(() => {
 		dispatch(
@@ -72,7 +72,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		)
 	}, [startWeek])
 
-	//const
+	// const
 
 	const maxEndTime = masterSchedule?.dayScheduleResponses?.reduce(
 		(max: any, schedule: any) => {
@@ -84,7 +84,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 
 	return (
 		<div className={styles.container_schedule}>
-			<AddDayShedule
+			<AddDaySchedule
 				dayScheduleActive={dayScheduleModal}
 				setDayScheduleActive={setDayScheduleModal}
 				dayScheduleData={dayScheduleData}
@@ -127,6 +127,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 							).getTime()
 							const percentage =
 								((endTime / maxEndTime) * 100).toFixed(2) + '%'
+
 							return (
 								<div
 									className={styles.container_name_week}
@@ -134,9 +135,11 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
-											className={
+											className={`${
 												styles.container_inside_week
-											}
+											} ${
+												item.workingDay ? 'active' : ''
+											}`}
 											style={{
 												width: percentage,
 												opacity: item.workingDay
