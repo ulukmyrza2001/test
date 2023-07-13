@@ -22,15 +22,13 @@ interface ButtonProps {
 export const Button = (props: ButtonProps) => {
 	const { onClick, disabled, children, ...preProps } = props
 	return (
-		<button
-			className={
-				props.type === 'cancel' ? styles.cancel_button : styles.button
-			}
-			onClick={onClick}
-			style={preProps}
-			disabled={disabled}
-		>
-			{children}
-		</button>
-	)
+    <button
+      className={props.type === "cancel" ? styles.cancel_button : styles.button}
+      onClick={onClick}
+      style={preProps}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
 }

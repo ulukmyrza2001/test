@@ -68,6 +68,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		0,
 	)
 
+	const [state, setState] = useState('19:00')
+
 	return (
 		<div className={styles.container_schedule}>
 			<AddDayShedule
