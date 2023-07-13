@@ -1,0 +1,60 @@
+.container_full_schedule {
+	width: 500px;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 10px;
+}
+.container_full_schedule_header {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 10px;
+}
+.card_full_schedule {
+	width: 100%;
+	height: 60px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+}
+.card_full_schedule span {
+	margin-left: 20px;
+}
+.container_time_picker {
+	width: 100%;
+	display: flex;
+	gap: 15px;
+	justify-content: flex-end;
+	align-items: center;
+}
+.container_full_schedule_footer {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	gap: 10px;
+}
+.container_full_schedule_footer div:nth-child(1) {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.container_full_schedule_footer div:nth-child(2) {
+	width: 167px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.container_full_schedule_footer div:nth-child(3) {
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+}

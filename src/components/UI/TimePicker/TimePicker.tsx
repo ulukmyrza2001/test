@@ -22,14 +22,24 @@ export default function BasicTimePicker({
 	minutesStep,
 	disabled,
 }: BasixTimePickerProps) {
+	const today = new Date()
+	const [hours, minutes, seconds] = value.split(':')
+
+	today.setHours(parseInt(hours))
+	today.setMinutes(parseInt(minutes))
+	today.setSeconds(parseInt(seconds))
+
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<DemoContainer
 				components={['TimePicker']}
 				sx={{ overflow: 'initial', paddingTop: 0 }}>
 				<StyledTimePicker
-					value={value}
-					onChange={(time) => onChange(time)}
+					value={dayjs(today)}
+					onChange={(time: any) => {
+						const formattedTime = dayjs(time).format('HH:mm:ss')
+						onChange(formattedTime)
+					}}
 					ampm={false}
 					className='time_picker'
 					format='HH:mm'

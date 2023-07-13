@@ -35,7 +35,7 @@ interface MasterUpdateModalProps {
 		masterModalAdd: boolean
 		masterModalUpdate: boolean
 	}) => void
-	masterId: number
+	masterId: number | string | undefined
 }
 
 export const MasterUpdateModal = ({
@@ -107,7 +107,7 @@ export const MasterUpdateModal = ({
 		<ModalComponent
 			active={masterModal.masterModalUpdate}
 			handleClose={handleClose}
-			title='Добавить мастер'>
+			title='Редактировать мастер'>
 			<div>
 				<Input
 					label='Имя'

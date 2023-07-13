@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFeedbackMaster } from '../../../../store/features/feedback-slice'
+import { getFeedbackMaster } from '../../../../../store/features/feedback-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { useParams } from 'react-router-dom'
 import styles from './Rewievs.module.css'
@@ -130,7 +130,6 @@ export const Rewievs = () => {
 				<div className={styles.rewievs_container}>
 					{fullRewievs?.map(
 						(item: feedbackDataMasterResponseProps) => {
-							console.log(item)
 							return (
 								<div
 									key={item.feedbackId}

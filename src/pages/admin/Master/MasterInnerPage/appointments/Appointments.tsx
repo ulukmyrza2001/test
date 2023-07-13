@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMasterAppoinment } from '../../../../store/features/calendar-slice'
+import { getMasterAppoinment } from '../../../../../store/features/calendar-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-import { Table } from '../../../../components/Tables/Table/Table'
+import { Table } from '../../../../../components/Tables/Table/Table'
 import { useParams } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
-import { TranslateAppointmentStatus } from '../../../../utils/helpers/helpers'
+import { TranslateAppointmentStatus } from '../../../../../utils/helpers/helpers'
 
 interface MasterRowTableProps {
 	appointmentId: number

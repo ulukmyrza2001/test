@@ -27,11 +27,27 @@ interface GetMasterScheduleProps {
 }
 
 interface putMasterScheduleProps {
-	daySchedulesId: number
+	daySchedulesId: number | string | undefined
+	masterID: number | string | undefined
+	startWeek: string
 	daySchedulesData: {
 		startTime: string
 		endTime: string
-		workingDay: boolean
+	}
+}
+
+interface postMasterScheduleProps {
+	masterID: number | string | undefined
+	startWeek: string
+	scheduleData: {
+		startDate: string
+		endDate: string
+		dayScheduleRequests: {
+			startTime: string
+			endTime: string
+			dayOfWeek: string
+			workingDay: boolean
+		}[]
 	}
 }
 
@@ -55,15 +71,41 @@ export const getMasterSchedule = createAsyncThunk(
 export const putMasterSchedule = createAsyncThunk(
 	'schedule/putMasterSchedule',
 	async (
-		{ daySchedulesId, daySchedulesData }: putMasterScheduleProps,
-		{ rejectWithValue },
+		{
+			daySchedulesId,
+			daySchedulesData,
+			startWeek,
+			masterID,
+		}: putMasterScheduleProps,
+		{ rejectWithValue, dispatch },
 	) => {
 		try {
 			const response = await axiosInstance.put(
-				`day-schedules/${daySchedulesId}`,
-				daySchedulesData,
+				`day-schedules/${daySchedulesId}?startTime=${daySchedulesData.startTime}&endTime=${daySchedulesData.endTime}`,
 			)
 			toast.success('Successfully toasted!')
+			dispatch(getMasterSchedule({ masterID, startWeek }))
+			return response.data
+		} catch (error) {
+			toast.error((error as Error).message)
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const postMasterSchedule = createAsyncThunk(
+	'schedule/postMasterSchedule',
+	async (
+		{ masterID, scheduleData, startWeek }: postMasterScheduleProps,
+		{ rejectWithValue, dispatch },
+	) => {
+		try {
+			const response = await axiosInstance.post(
+				`schedules/masters/${masterID}`,
+				scheduleData,
+			)
+			toast.success('Successfully toasted!')
+			dispatch(getMasterSchedule({ masterID, startWeek }))
 			return response.data
 		} catch (error) {
 			toast.error((error as Error).message)

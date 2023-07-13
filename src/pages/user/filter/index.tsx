@@ -34,41 +34,39 @@ export const FilterPage = () => {
     );
   }, []);
 
-  console.log(branchInnerData);
 
-  const BREAD_CRUMBS_INNER_FILTER_PAGE = [
-    {
-      name: <BiHomeAlt fontSize={26} color="grey" />,
-      to: "/",
-      isLoading: isLoadingBranch,
-      path: 1,
-    },
-    {
-      name: categorySingleServiceSelectData?.name,
-      to: `/filter/${id}`,
-      isLoading: isLoadingCategoryService,
-      path: 1,
-    },
-  ];
+	const BREAD_CRUMBS_INNER_FILTER_PAGE = [
+		{
+			name: <BiHomeAlt fontSize={26} color='grey' />,
+			to: '/',
+			isLoading: isLoadingBranch,
+			path: 1,
+		},
+		{
+			name: categorySingleServiceSelectData?.name,
+			to: `/filter/${id}`,
+			isLoading: isLoadingCategoryService,
+			path: 1,
+		},
+	]
 
-  return (
-    <Container
-      sx={{
-        paddingTop: "20px",
-      }}
-    >
-      <BreadCrumbs paths={BREAD_CRUMBS_INNER_FILTER_PAGE} />
-      <div className={styles.wrapper}>
-        <Filterlayout />
-        <div className={styles.inner_wrapper}>
-          <span>135 результатов</span>
-          <div className={styles.wrapper_cards}>
-            {branchInnerData?.map((item: any, index: number) => (
-              <ServiceCard {...item} key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </Container>
-  );
-};
+	return (
+		<Container
+			sx={{
+				paddingTop: '20px',
+			}}>
+			<BreadCrumbs paths={BREAD_CRUMBS_INNER_FILTER_PAGE} />
+			<div className={styles.wrapper}>
+				<Filterlayout />
+				<div className={styles.inner_wrapper}>
+					<span>135 результатов</span>
+					<div className={styles.wrapper_cards}>
+						{branchInnerData?.map((item: any, index: number) => (
+							<ServiceCard {...item} key={index} />
+						))}
+					</div>
+				</div>
+			</div>
+		</Container>
+	)
+}
