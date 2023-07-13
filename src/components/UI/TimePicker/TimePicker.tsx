@@ -29,7 +29,10 @@ export default function BasicTimePicker({
 				sx={{ overflow: 'initial', paddingTop: 0 }}>
 				<StyledTimePicker
 					value={value}
-					onChange={(time) => onChange(time)}
+					onChange={(time: any) => {
+						const formattedTime = dayjs(time).format('HH:mm:ss')
+						onChange(formattedTime)
+					}}
 					ampm={false}
 					className='time_picker'
 					format='HH:mm'

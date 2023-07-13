@@ -130,7 +130,6 @@ export const Rewievs = () => {
 				<div className={styles.rewievs_container}>
 					{fullRewievs?.map(
 						(item: feedbackDataMasterResponseProps) => {
-							console.log(item)
 							return (
 								<div
 									key={item.feedbackId}
