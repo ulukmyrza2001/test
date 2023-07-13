@@ -11,14 +11,16 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './Schedule/Shedule'
+import { Schedule } from './schedule/Schedule'
 import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
+import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
+import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
 		(state: any) => state.master,
 	)
+	const { masterSchedule } = useSelector((state: any) => state.schedule)
 
 	const [startDate, setStartDate] = useState(
 		getMonday(new Date().toISOString().slice(0, 10)),
@@ -122,6 +124,31 @@ export const MasterInnerPage = () => {
 		})
 	}
 
+	function handleDeleteSchedule() {
+		dispatch(
+			deleteMasterFullSchedule({
+				scheduleId: masterSchedule.scheduleId,
+				masterID,
+				startWeek: startDate,
+			}) as unknown as AnyAction,
+		)
+	}
+
+	function hasWorkingDayInRange(scheduleData: any) {
+		if (
+			scheduleData &&
+			typeof scheduleData[Symbol.iterator] === 'function'
+		) {
+			for (const schedule of scheduleData) {
+				const { workingDay } = schedule
+				if (workingDay) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
 	//const
 
 	const BREAD_CRUMBS_MASTER = [
@@ -165,6 +192,21 @@ export const MasterInnerPage = () => {
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
+					<Button
+						backgroundColor='white'
+						color='#acacac'
+						border='1px solid #acacac'
+						width='144px'
+						display={
+							hasWorkingDayInRange(
+								masterSchedule?.dayScheduleResponses,
+							)
+								? 'block'
+								: 'none'
+						}
+						onClick={() => handleDeleteSchedule()}>
+						Удалить график
+					</Button>
 					<Button
 						width='143px'
 						onClick={() => setMasterScheduleModal(true)}>
