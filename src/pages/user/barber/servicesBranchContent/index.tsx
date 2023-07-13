@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './ServicesBranch.module.css'
 import { Container } from '../../../../styles/ContainerStyle/Container'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { AnyAction } from '@reduxjs/toolkit'
@@ -10,6 +8,7 @@ import { AccordionUi } from '../../../../components/UI/Accordion/AccordionUi'
 import { useDispatch, useSelector } from 'react-redux'
 import { getServices } from '../../../../store/features/service-slice'
 import { useParams } from 'react-router-dom'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 interface TabPanelProps {
 	children?: React.ReactNode
@@ -27,7 +26,8 @@ function TabPanel(props: TabPanelProps) {
 			id={`vertical-tabpanel-${index}`}
 			aria-labelledby={`vertical-tab-${index}`}
 			className={styles.tab_content}
-			{...other}>
+			{...other}
+		>
 			{value === index && (
 				<Box sx={{ padding: '0 2rem' }}>
 					<Typography>{children}</Typography>
@@ -63,64 +63,51 @@ export const ServicesBranchContent = () => {
 	return (
 		<Container
 			sx={{
-				minHeight: '400px',
-			}}>
-			<Box
-				sx={{
-					flexGrow: 1,
-					display: 'flex',
-					padding: '1rem 4rem',
-					width: '100%',
-				}}>
-				<Tabs
-					orientation='vertical'
-					variant='scrollable'
-					value={value}
-					onChange={handleChange}
-					aria-label='Vertical tabs example'
-					TabIndicatorProps={{
-						style: {
-							backgroundColor: '#d9d9d9',
-						},
-					}}
-					sx={{
-						borderRight: 1,
-						borderColor: 'divider',
-					}}>
-					<Tab
-						className={styles.tabs_name}
-						label='Популярные'
-						{...a11yProps(1)}
-					/>
-					<Tab
-						className={styles.tabs_name}
-						label='Услуги'
-						{...a11yProps(0)}
-					/>
-					<Tab
-						className={styles.tabs_name}
-						label='Акции'
-						{...a11yProps(1)}
-					/>
-				</Tabs>
-				<TabPanel value={value} index={0}>
-					<AccordionUi
-						data={serviceData}
-						branchData={branchData}
-						backgroundColor='#d9d9d9'
-					/>
-				</TabPanel>
-				<TabPanel value={value} index={1}>
-					<AccordionUi
-						data={serviceData}
-						branchData={branchData}
-						backgroundColor='#d9d9d9'
-					/>
-				</TabPanel>
-				<TabPanel value={value} index={2}>
-					Item Two
-				</TabPanel>
-			</Box>
+				padding: '3rem 0',
+			}}
+		>
+			<div className={styles.wrapper}>
+				<div className={styles.wrapper_services}>
+					<div className={styles.wrapper_services_header}>
+						<div className={styles.wrapper_title}>
+							<h1>• УСЛУГИ •</h1>
+						</div>
+						<div className={styles.wrapper_search_input}>
+							<FaMagnifyingGlass />
+							<input
+								className={styles.search_input}
+								placeholder='Search services...'
+							/>
+						</div>
+					</div>
+
+					<div className={styles.wrapper_accardion}>
+						<div className={styles.wrapper_popular_services}>
+							<p className='title' style={{ color: '#d9d9d9' }}>
+								Популярные
+							</p>
+							<AccordionUi
+								data={serviceData}
+								branchData={branchData}
+								backgroundColor='#d9d9d9'
+							/>
+						</div>
+						<div className={styles.wrapper_popular_services}>
+							<p className='title' style={{ color: '#d9d9d9' }}>
+								Другие
+							</p>
+							<AccordionUi
+								data={serviceData}
+								branchData={branchData}
+								backgroundColor='#d9d9d9'
+							/>
+						</div>
+					</div>
+				</div>
+				<div className={styles.wrapper_shares}>
+					<p className='title'>Акции</p>
+				</div>
+			</div>
 		</Container>
 	)
 }

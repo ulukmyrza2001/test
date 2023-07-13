@@ -13,4 +13,14 @@
 }
 .wrapper_map {
 	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+.wrapper_map img {
+	width: 500px;
+	object-fit: cover;
+	border-radius: 10px;
 }
