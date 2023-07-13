@@ -1,8 +1,10 @@
-
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AnyAction } from '@reduxjs/toolkit'
-import { getMasterSchedule } from '../../../../../store/features/schedule-slice'
+import {
+	deleteMasterSchedule,
+	getMasterSchedule,
+} from '../../../../../store/features/schedule-slice'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './Schedule.module.css'
 import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
@@ -12,33 +14,42 @@ import { MdCreate, MdDelete } from 'react-icons/md'
 import { AddDayShedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
-  startWeek: string;
+	startWeek: string
 }
 interface ScheduleInsideMapProps {
-  dayScheduleId: number;
-  endTime: string;
-  startTime: string;
-  week: string;
-  workingDay: boolean;
+	dayScheduleId: number
+	endTime: string
+	startTime: string
+	week: string
+	workingDay: boolean
 }
 
 export const Schedule = ({ startWeek }: ScheduleProps) => {
-  const { masterSchedule, isLoadingShedule } = useSelector(
-    (state: any) => state.schedule
-  );
+	const { masterSchedule, isLoadingShedule } = useSelector(
+		(state: any) => state.schedule,
+	)
 
-  const [dayScheduleModal, setDayScheduleModal] = useState(false);
-  const [dayScheduleData, setDayScheduleData] = useState({
-    daySchedulesId: 0,
-    startTime: "",
-    endTime: "",
-  });
+	const [dayScheduleModal, setDayScheduleModal] = useState(false)
+	const [dayScheduleData, setDayScheduleData] = useState({
+		daySchedulesId: 0,
+		startTime: '',
+		endTime: '',
+	})
 
-  const dispatch = useDispatch();
-  const { masterID } = useParams();
+	const dispatch = useDispatch()
+	const { masterID } = useParams()
 
-  //function
+	//function
 
+	function handleDayScheduleDelete(daySchedulesId: number) {
+		dispatch(
+			deleteMasterSchedule({
+				daySchedulesId,
+				masterID,
+				startWeek,
+			}) as unknown as AnyAction,
+		)
+	}
 
 	function handleDayScheduleChange(
 		dayScheduleId: number,
@@ -53,24 +64,23 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		setDayScheduleModal(true)
 	}
 
-  //useEffect
+	//useEffect
 
-  useEffect(() => {
-    dispatch(
-      getMasterSchedule({ masterID, startWeek }) as unknown as AnyAction
-    );
-  }, [startWeek]);
+	useEffect(() => {
+		dispatch(
+			getMasterSchedule({ masterID, startWeek }) as unknown as AnyAction,
+		)
+	}, [startWeek])
 
-  //const
+	//const
 
-  const maxEndTime = masterSchedule?.dayScheduleResponses?.reduce(
-    (max: any, schedule: any) => {
-      const endTime = new Date(`1970-01-01T${schedule.endTime}`).getTime();
-      return endTime > max ? endTime : max;
-    },
-    0
-  );
-
+	const maxEndTime = masterSchedule?.dayScheduleResponses?.reduce(
+		(max: any, schedule: any) => {
+			const endTime = new Date(`1970-01-01T${schedule.endTime}`).getTime()
+			return endTime > max ? endTime : max
+		},
+		0,
+	)
 
 	return (
 		<div className={styles.container_schedule}>
@@ -156,6 +166,11 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 											size={20}
 											cursor='pointer'
 											color='grey'
+											onClick={() =>
+												handleDayScheduleDelete(
+													item.dayScheduleId,
+												)
+											}
 										/>
 									</div>
 								</div>
