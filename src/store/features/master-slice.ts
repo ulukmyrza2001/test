@@ -116,6 +116,7 @@ export const putMaster = createAsyncThunk(
 				masterData,
 			)
 			dispatch(getMaster())
+			dispatch(getMasterById({ masterID: masterId }))
 			toast.success('Successfully toasted!')
 			return response.data
 		} catch (error) {
