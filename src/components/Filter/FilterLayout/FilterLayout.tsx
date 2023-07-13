@@ -40,7 +40,7 @@ export const Filterlayout = () => {
 		<Accordion
 			expanded={expanded === 'panel1'}
 			onChange={handleChange('panel1')}
-			sx={{ width: '20%' }}
+			sx={{ width: '24%', minWidth: '250px' }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMoreIcon />}

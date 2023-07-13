@@ -58,12 +58,12 @@ export const AddFullSchedule = () => {
 		],
 	})
 
-	// console.log(scheduleData)
 	return (
 		<ModalComponent
 			active={true}
 			handleClose={() => false}
-			title='Создать график'>
+			title='Создать график'
+		>
 			<div className={styles.container_full_schedule}>
 				<div className={styles.container_full_schedule_header}>
 					<DataPicker
@@ -89,7 +89,8 @@ export const AddFullSchedule = () => {
 					return (
 						<div
 							key={item.nameRU}
-							className={styles.card_full_schedule}>
+							className={styles.card_full_schedule}
+						>
 							<Switch
 								checked={true}
 								onChange={(e) => console.log(e)}
