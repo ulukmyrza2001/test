@@ -11,12 +11,16 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-// import { Schedule } from "./Schedule/Shedule";
+import { Schedule } from './schedule/Schedule'
+import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
+import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
+import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
 		(state: any) => state.master,
 	)
+	const { masterSchedule } = useSelector((state: any) => state.schedule)
 
 	const [startDate, setStartDate] = useState(
 		getMonday(new Date().toISOString().slice(0, 10)),
@@ -24,6 +28,19 @@ export const MasterInnerPage = () => {
 	const [endDate, setEndDate] = useState(
 		getSunday(new Date().toISOString().slice(0, 10)),
 	)
+	const [masterData, setMasterData] = useState({
+		firstName: '',
+		lastName: '',
+		authInfoRequest: {
+			phoneNumber: '+996',
+			password: '',
+		},
+	})
+	const [masterModal, setMasterModal] = useState({
+		masterModalAdd: false,
+		masterModalUpdate: false,
+	})
+	const [masterScheduleModal, setMasterScheduleModal] = useState(false)
 
 	const { masterID } = useParams()
 	const dispatch = useDispatch()
@@ -92,6 +109,46 @@ export const MasterInnerPage = () => {
 		setEndDate(prevEndDate.toISOString().split('T')[0])
 	}
 
+	function handleUpdate() {
+		setMasterModal({
+			masterModalAdd: false,
+			masterModalUpdate: true,
+		})
+		setMasterData({
+			firstName: dataMasterById.firstName,
+			lastName: dataMasterById.lastName,
+			authInfoRequest: {
+				phoneNumber: dataMasterById.phoneNumber,
+				password: '',
+			},
+		})
+	}
+
+	function handleDeleteSchedule() {
+		dispatch(
+			deleteMasterFullSchedule({
+				scheduleId: masterSchedule.scheduleId,
+				masterID,
+				startWeek: startDate,
+			}) as unknown as AnyAction,
+		)
+	}
+
+	function hasWorkingDayInRange(scheduleData: any) {
+		if (
+			scheduleData &&
+			typeof scheduleData[Symbol.iterator] === 'function'
+		) {
+			for (const schedule of scheduleData) {
+				const { workingDay } = schedule
+				if (workingDay) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
 	//const
 
 	const BREAD_CRUMBS_MASTER = [
@@ -120,13 +177,44 @@ export const MasterInnerPage = () => {
 
 	return (
 		<div className={styles.container_master_inner_page}>
+			<MasterUpdateModal
+				masterModal={masterModal}
+				setMasterModal={setMasterModal}
+				masterData={masterData}
+				setMasterData={setMasterData}
+				masterId={masterID}
+			/>
+			<AddFullSchedule
+				masterScheduleModal={masterScheduleModal}
+				setMasterScheduleModal={setMasterScheduleModal}
+				startWeek={startDate}
+			/>
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
-					<Button width='143px' onClick={() => console.log('abu')}>
+					<Button
+						backgroundColor='white'
+						color='#acacac'
+						border='1px solid #acacac'
+						width='144px'
+						display={
+							hasWorkingDayInRange(
+								masterSchedule?.dayScheduleResponses,
+							)
+								? 'block'
+								: 'none'
+						}
+						onClick={() => handleDeleteSchedule()}
+					>
+						Удалить график
+					</Button>
+					<Button
+						width='143px'
+						onClick={() => setMasterScheduleModal(true)}
+					>
 						Создать график
 					</Button>
-					<Button width='186px' onClick={() => console.log('abu')}>
+					<Button width='186px' onClick={() => handleUpdate()}>
 						Редактировать мастер
 					</Button>
 				</div>
@@ -183,7 +271,7 @@ export const MasterInnerPage = () => {
 						</div>
 					</div>
 				</div>
-				{/* <Schedule startWeek={startDate} /> */}
+				<Schedule startWeek={startDate} />
 			</div>
 			<div>
 				<Tabs TabsValue={TabsValue} />

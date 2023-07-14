@@ -26,6 +26,18 @@ interface GetMasterScheduleProps {
 	startWeek: string
 }
 
+interface deleteMasterSchedule {
+	daySchedulesId: number
+	masterID: number | string | undefined
+	startWeek: string
+}
+
+interface deleteMasterFullScheduleProps {
+	scheduleId: number
+	masterID: undefined | string | number
+	startWeek: string
+}
+
 interface putMasterScheduleProps {
 	daySchedulesId: number | string | undefined
 	masterID: number | string | undefined
@@ -63,6 +75,46 @@ export const getMasterSchedule = createAsyncThunk(
 			)
 			return response.data
 		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const deleteMasterSchedule = createAsyncThunk(
+	'schedule/deleteMasterSchedule',
+	async (
+		{ daySchedulesId, masterID, startWeek }: deleteMasterSchedule,
+		{ rejectWithValue, dispatch },
+	) => {
+		try {
+			const response = await axiosInstance.delete(
+				`day-schedules/${daySchedulesId}`,
+			)
+			toast.success('Successfully toasted!')
+			dispatch(getMasterSchedule({ masterID, startWeek }))
+			return response.data
+		} catch (error) {
+			toast.error((error as Error).message)
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
+export const deleteMasterFullSchedule = createAsyncThunk(
+	'schedule/deleteMasterFullSchedule',
+	async (
+		{ scheduleId, masterID, startWeek }: deleteMasterFullScheduleProps,
+		{ rejectWithValue, dispatch },
+	) => {
+		try {
+			const response = await axiosInstance.delete(
+				`schedules/${scheduleId}`,
+			)
+			dispatch(getMasterSchedule({ masterID, startWeek }))
+			toast.success('Successfully toasted!')
+			return response.data
+		} catch (error) {
+			toast.error((error as Error).message)
 			rejectWithValue((error as Error).message)
 		}
 	},
