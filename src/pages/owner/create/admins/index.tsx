@@ -71,7 +71,7 @@ export const CreateAdmin = () => {
             password: data.password,
           },
         },
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
     Reset();
   };

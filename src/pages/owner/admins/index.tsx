@@ -42,7 +42,7 @@ export const AdminsPage = () => {
     dispatch(
       adminsDelete({
         adminId: itemId,
-      }) as never as AnyAction
+      }) as unknown as AnyAction
     );
   };
 

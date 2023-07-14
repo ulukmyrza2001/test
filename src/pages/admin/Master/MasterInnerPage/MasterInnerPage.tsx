@@ -11,9 +11,7 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './schedule/Shedule'
-import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
+// import { Schedule } from "./Schedule/Shedule";
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
@@ -26,18 +24,6 @@ export const MasterInnerPage = () => {
 	const [endDate, setEndDate] = useState(
 		getSunday(new Date().toISOString().slice(0, 10)),
 	)
-	const [masterData, setMasterData] = useState({
-		firstName: '',
-		lastName: '',
-		authInfoRequest: {
-			phoneNumber: '+996',
-			password: '',
-		},
-	})
-	const [masterModal, setMasterModal] = useState({
-		masterModalAdd: false,
-		masterModalUpdate: false,
-	})
 
 	const { masterID } = useParams()
 	const dispatch = useDispatch()
@@ -106,21 +92,6 @@ export const MasterInnerPage = () => {
 		setEndDate(prevEndDate.toISOString().split('T')[0])
 	}
 
-	function handleUpdate() {
-		setMasterModal({
-			masterModalAdd: false,
-			masterModalUpdate: true,
-		})
-		setMasterData({
-			firstName: dataMasterById.firstName,
-			lastName: dataMasterById.lastName,
-			authInfoRequest: {
-				phoneNumber: dataMasterById.phoneNumber,
-				password: '',
-			},
-		})
-	}
-
 	//const
 
 	const BREAD_CRUMBS_MASTER = [
@@ -149,21 +120,13 @@ export const MasterInnerPage = () => {
 
 	return (
 		<div className={styles.container_master_inner_page}>
-			<MasterUpdateModal
-				masterModal={masterModal}
-				setMasterModal={setMasterModal}
-				masterData={masterData}
-				setMasterData={setMasterData}
-				masterId={masterID}
-			/>
-			<AddFullSchedule />
 			<div className={styles.container_master_inner_header}>
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
 					<Button width='143px' onClick={() => console.log('abu')}>
 						Создать график
 					</Button>
-					<Button width='186px' onClick={() => handleUpdate()}>
+					<Button width='186px' onClick={() => console.log('abu')}>
 						Редактировать мастер
 					</Button>
 				</div>
@@ -220,7 +183,7 @@ export const MasterInnerPage = () => {
 						</div>
 					</div>
 				</div>
-				<Schedule startWeek={startDate} />
+				{/* <Schedule startWeek={startDate} /> */}
 			</div>
 			<div>
 				<Tabs TabsValue={TabsValue} />
