@@ -16,3 +16,8 @@ export const translatebuttonText = {
 	week: 'Неделя',
 	list: 'Список',
 }
+
+export const isLoadingSx = {
+	color: '#fff',
+	zIndex: (theme: any) => theme.zIndex.drawer + 1,
+}
