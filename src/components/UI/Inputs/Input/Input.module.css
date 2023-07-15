@@ -6,7 +6,10 @@
 }
 
 .label {
-	color: var(--ui-disabled-color);
+	font-family: 'PT Sans', sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	color: #87939e;
 }
 
 .input {
