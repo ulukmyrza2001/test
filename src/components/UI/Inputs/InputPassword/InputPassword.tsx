@@ -22,6 +22,7 @@ interface InputPasswordProps {
   color?: string;
   fontSize?: string;
   className?: string;
+  containerMinWidth?: string;
   onKeyDown?: (value: any) => void;
 }
 
@@ -36,6 +37,7 @@ export const InputPassword = forwardRef(
       placeholder,
       disabled,
       className,
+      containerMinWidth,
       onKeyDown,
       ...preProps
     } = props;
@@ -48,7 +50,10 @@ export const InputPassword = forwardRef(
             {label}
           </label>
         )}
-        <div className={styles.inpcontainer}>
+        <div
+          style={{ minWidth: containerMinWidth }}
+          className={styles.inpcontainer}
+        >
           <input
             value={value}
             onChange={onChange}
