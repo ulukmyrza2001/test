@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { putMasterSchedule } from '../../../../../../store/features/schedule-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 interface AddDayScheduleModalProps {
 	dayScheduleActive: boolean
@@ -19,13 +20,16 @@ interface AddDayScheduleModalProps {
 	}
 }
 
-export const AddDayShedule = ({
+export const AddDaySchedule = ({
 	dayScheduleActive,
 	setDayScheduleActive,
 	dayScheduleData,
 	setDayScheduleData,
 	startWeek,
 }: AddDayScheduleModalProps) => {
+	const [addDayScheduleValidation, setAddDayScheduleValidation] =
+		useState(false)
+
 	const dispatch = useDispatch()
 	const { masterID } = useParams()
 
@@ -49,6 +53,19 @@ export const AddDayShedule = ({
 		)
 		setDayScheduleActive(false)
 	}
+
+	useEffect(() => {
+		if (
+			dayScheduleData.startTime !== '' &&
+			dayScheduleData.endTime !== '' &&
+			dayScheduleData.startTime.split(':')[0] <
+				dayScheduleData.endTime.split(':')[0]
+		) {
+			setAddDayScheduleValidation(false)
+		} else {
+			setAddDayScheduleValidation(true)
+		}
+	}, [dayScheduleData.startTime, dayScheduleData.endTime])
 
 	return (
 		<ModalComponent
@@ -92,7 +109,10 @@ export const AddDayShedule = ({
 						border='1px solid #acacac'>
 						Отмена
 					</Button>
-					<Button onClick={() => handlePost()} width='100px'>
+					<Button
+						disabled={addDayScheduleValidation}
+						onClick={() => handlePost()}
+						width='100px'>
 						Сохранить
 					</Button>
 				</div>

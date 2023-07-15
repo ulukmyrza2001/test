@@ -1,0 +1,21 @@
+.main_wrapper {
+ width: 100%;
+ margin: 50px 0;
+ display: flex;
+ flex-direction: column ;
+ gap: 30px;
+}
+
+.switcher {
+ display: flex;
+ flex-direction: row;
+ gap: 50px;
+ border-bottom: 1px solid silver;
+ padding-bottom: 15px;
+}
+
+.tabs_title {
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+}

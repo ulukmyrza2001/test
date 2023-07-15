@@ -22,7 +22,7 @@ interface MasterRowTableProps {
 
 export const Appointments = () => {
 	const { dataMaster, isLoadingCalendar } = useSelector(
-		(state: any) => state.calendar,
+		(state: any) => state.calendar
 	)
 
 	const [paginationAppointments, setPaginationAppointments] = useState({
@@ -41,9 +41,9 @@ export const Appointments = () => {
 				size: paginationAppointments.pageSize,
 				page: paginationAppointments.page,
 				masterID: masterID,
-			}) as unknown as AnyAction,
+			}) as unknown as AnyAction
 		)
-	}, [masterID, paginationAppointments])
+	}, [masterID, paginationAppointments, dispatch])
 
 	//const
 
@@ -71,10 +71,10 @@ export const Appointments = () => {
 				return (
 					<div>
 						<div>{row.startTime?.split(' ')[0]}</div>
-						<div>{`${row.startTime?.slice(
-							10,
-							16,
-						)} - ${row.startTime?.slice(30, 36)}`}</div>
+						<div>{`${row.startTime?.slice(10, 16)} - ${row.startTime?.slice(
+							30,
+							36
+						)}`}</div>
 					</div>
 				)
 			},
@@ -95,14 +95,10 @@ export const Appointments = () => {
 				return (
 					<div>
 						<IconButton
-							children={
-								<AiOutlineDelete cursor='pointer' size={22} />
-							}
+							children={<AiOutlineDelete cursor="pointer" size={22} />}
 						/>
 						<IconButton
-							children={
-								<AiOutlineEdit cursor='pointer' size={22} />
-							}
+							children={<AiOutlineEdit cursor="pointer" size={22} />}
 						/>
 					</div>
 				)
