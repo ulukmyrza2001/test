@@ -48,13 +48,13 @@ export const EditAffilate = ({
 
   useEffect(() => {
     if (countriesData === null) {
-      dispatch(getCountriesSelect() as never as AnyAction);
+      dispatch(getCountriesSelect() as unknown as AnyAction);
     }
     if (data.countryId !== null) {
       dispatch(
         getRegionSelect({
           countryId: data.countryId?.value,
-        }) as never as AnyAction
+        }) as unknown as AnyAction
       );
     }
   }, [data.countryId, countriesData, dispatch]);
@@ -64,7 +64,7 @@ export const EditAffilate = ({
       dispatch(
         getCitySelect({
           regionId: data.regionId?.value,
-        }) as never as AnyAction
+        }) as unknown as AnyAction
       );
     }
   }, [data.regionId, dispatch]);

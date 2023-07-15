@@ -54,7 +54,7 @@ export const ServicesBranchBeauty = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getServices(beautySalonID) as never as AnyAction);
+    dispatch(getServices(beautySalonID) as unknown as AnyAction);
   }, [beautySalonID, dispatch]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

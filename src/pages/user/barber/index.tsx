@@ -1,40 +1,40 @@
-import { Fragment, useEffect } from 'react'
-import styles from './Barber.module.css'
-import Img from '../../../assets/image/imgBarber.png'
-import { Container } from '../../../styles/ContainerStyle/Container'
-import { CgShapeRhombus } from 'react-icons/cg'
-import { AboutContent } from './aboutContent'
-import { OurWorkContent } from './ourWorkContent'
-import { ServicesBranchContent } from './servicesBranchContent'
-import BannerBarber from '../../../assets/image/barber.svg'
-import { useDispatch, useSelector } from 'react-redux'
-import { getBrancheById } from '../../../store/features/branch-slice'
-import { useLocation } from 'react-router-dom'
-import { AnyAction } from '@reduxjs/toolkit'
-import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
+import { Fragment, useEffect } from "react";
+import styles from "./Barber.module.css";
+import Img from "../../../assets/image/imgBarber.png";
+import { Container } from "../../../styles/ContainerStyle/Container";
+import { CgShapeRhombus } from "react-icons/cg";
+import { AboutContent } from "./aboutContent";
+import { OurWorkContent } from "./ourWorkContent";
+import { ServicesBranchContent } from "./servicesBranchContent";
+import BannerBarber from "../../../assets/image/barber.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrancheById } from "../../../store/features/branch-slice";
+import { useLocation } from "react-router-dom";
+import { AnyAction } from "@reduxjs/toolkit";
+import { BsGeoAlt, BsTelephone } from "react-icons/bs";
 
 export const BarberPage = () => {
-  const { branchData } = useSelector((state: any) => state.branch);
+	const { branchData } = useSelector((state: any) => state.branch)
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
-  const { pathname } = useLocation();
+	const { pathname } = useLocation()
 
-  useEffect(() => {
-    dispatch(
-      getBrancheById({
-        branchId: Number(pathname.split("/").pop()),
-      }) as never as AnyAction
-    );
-  }, []);
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
 
-  useEffect(() => {
-    dispatch(
-      getBrancheById({
-        branchId: Number(pathname.split("/").pop()),
-      }) as never as AnyAction
-    );
-  }, []);
+	useEffect(() => {
+		dispatch(
+			getBrancheById({
+				branchId: Number(pathname.split('/').pop()),
+			}) as never as AnyAction,
+		)
+	}, [])
 
 	useEffect(() => {
 		document.title = `Barber | Cheber`
@@ -107,7 +107,7 @@ export const BarberPage = () => {
 					</div>
 				</div>
 				<div className={styles.titles}>
-					<h2>PREMIUM</h2>
+					{/* <h2>PREMIUM</h2> */}
 					<h1>{branchData?.companyName}</h1>
 				</div>
 				<div className={styles.wrapper_services_title}>
@@ -120,36 +120,38 @@ export const BarberPage = () => {
 						</p>
 					</div>
 					<div className={styles.wrapper_services_title_card}>
-						<h3>Cool</h3>
+						<h3>Крутой</h3>
 						<CgShapeRhombus color='gold' fontSize={36} />
 						<p>
-							We do our work quickly, time flies by and you are
-							the happy owner of a stylish haircut
+							Мы делаем свою работу быстро, время пролетает
+							незаметно, и вы становитесь счастливым обладателем
+							стильной стрижки
 						</p>
 					</div>
 					<div className={styles.wrapper_services_title_card}>
-						<h3>Expensive</h3>
+						<h3>Дорогой</h3>
 						<CgShapeRhombus color='gold' fontSize={36} />
 						<p>
-							Our masters are professionals and can't be cheap,
-							and doesn't the price give a certain status
+							Наши мастера - профессионалы и не могут стоить
+							дешево, и разве цена не придает определенный статус.
 						</p>
 					</div>
 				</div>
 				<div className={styles.about_barber}>
 					<div className={styles.about_text}>
-						<span className='title'>News</span>
-						<span className='text'>11 JUNE</span>
+						<span className='title'>Новости</span>
+						<span className='text'>11 ИЮНЬ</span>
 						<p>
-							We finally got a mini-bar and a coffee machine, now
-							you can cool down with a cold drink in hot weather,
-							and have a cup of coffee in cold weather.
+							Мы наконец-то получили мини-бар и кофеварку, теперь
+							в жаркую погоду можно охладиться прохладительным
+							напитком, а в холодную - выпить чашечку кофе.
 						</p>
-						<span className='text'>11 JUNE</span>
+						<span className='text'>11 ИЮНЬ</span>
 						<p>
-							Boris "Razor" has many titles and awards in our
-							team, he can give you absolutely any haircut and do
-							something incredible with your beard
+							Борис "Бритва" имеет множество титулов и наград в
+							нашей команде, он может сделать вам абсолютно любую
+							стрижку и сотворить что-то невероятное с вашей
+							бородой
 						</p>
 					</div>
 					<hr />
@@ -158,11 +160,10 @@ export const BarberPage = () => {
 					</div>
 				</div>
 			</Container>
-			<br />
-			<AboutContent />
-			<br />
 			<ServicesBranchContent />
+			<br />
 			<OurWorkContent />
+			<AboutContent />
 		</Fragment>
 	)
 }

@@ -1,5 +1,6 @@
 .button {
 	width: 100%;
+	height: 40px;
 	min-width: 100px;
 	background-color: #33a011;
 	border-radius: 5px;
@@ -27,7 +28,7 @@
 
 .button:disabled {
 	cursor: not-allowed;
-	color: 'var(--ui-disabled-color)';
+	color: var(--ui-disabled-color);
 	border: 'var(--ui-disabled-color)';
 	background-color: var(--ui-disabled--background);
 }

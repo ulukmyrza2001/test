@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AnyAction } from '@reduxjs/toolkit'
-import { getMasterSchedule } from '../../../../../store/features/schedule-slice'
+import {
+	deleteMasterSchedule,
+	getMasterSchedule,
+} from '../../../../../store/features/schedule-slice'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './Schedule.module.css'
 import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
 import { Skeleton } from '@mui/material'
 import { WEEK } from '../../../../../utils/constants/constants'
 import { MdCreate, MdDelete } from 'react-icons/md'
-import { AddDayShedule } from './AddDaySchedule/AddDaySchedule'
+import { AddDaySchedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
 	startWeek: string
@@ -36,7 +39,17 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 	const dispatch = useDispatch()
 	const { masterID } = useParams()
 
-	//function
+	// function
+
+	function handleDayScheduleDelete(daySchedulesId: number) {
+		dispatch(
+			deleteMasterSchedule({
+				daySchedulesId,
+				masterID,
+				startWeek,
+			}) as unknown as AnyAction,
+		)
+	}
 
 	function handleDayScheduleChange(
 		dayScheduleId: number,
@@ -51,7 +64,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		setDayScheduleModal(true)
 	}
 
-	//useEffect
+	// useEffect
 
 	useEffect(() => {
 		dispatch(
@@ -59,7 +72,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 		)
 	}, [startWeek])
 
-	//const
+	// const
 
 	const maxEndTime = masterSchedule?.dayScheduleResponses?.reduce(
 		(max: any, schedule: any) => {
@@ -71,7 +84,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 
 	return (
 		<div className={styles.container_schedule}>
-			<AddDayShedule
+			<AddDaySchedule
 				dayScheduleActive={dayScheduleModal}
 				setDayScheduleActive={setDayScheduleModal}
 				dayScheduleData={dayScheduleData}
@@ -83,7 +96,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 						return (
 							<div
 								className={styles.container_name_week}
-								key={el}>
+								key={el}
+							>
 								<h1>{el}:</h1>
 								<Skeleton
 									variant='rectangular'
@@ -99,7 +113,8 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 						return (
 							<div
 								className={styles.container_name_week}
-								key={element}>
+								key={element}
+							>
 								<h1>{element}:</h1>
 								<div className={styles.container_week}>
 									<div></div>
@@ -114,22 +129,27 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 							).getTime()
 							const percentage =
 								((endTime / maxEndTime) * 100).toFixed(2) + '%'
+
 							return (
 								<div
 									className={styles.container_name_week}
-									key={item.dayScheduleId}>
+									key={item.dayScheduleId}
+								>
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
-											className={
+											className={`${
 												styles.container_inside_week
-											}
+											} ${
+												item.workingDay ? 'active' : ''
+											}`}
 											style={{
 												width: percentage,
 												opacity: item.workingDay
 													? '1'
 													: '0',
-											}}>
+											}}
+										>
 											{`${item.startTime.slice(
 												0,
 												5,
@@ -153,6 +173,11 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 											size={20}
 											cursor='pointer'
 											color='grey'
+											onClick={() =>
+												handleDayScheduleDelete(
+													item.dayScheduleId,
+												)
+											}
 										/>
 									</div>
 								</div>

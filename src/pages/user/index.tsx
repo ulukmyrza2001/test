@@ -15,7 +15,7 @@ export const UserPage = () => {
   const { branchMain } = useSelector((state: any) => state.branch);
 
   useEffect(() => {
-    dispatch(getBranchesMain() as never as AnyAction);
+    dispatch(getBranchesMain() as unknown as AnyAction);
   }, []);
 
   return (
