@@ -204,12 +204,14 @@ export const MasterInnerPage = () => {
 								? 'block'
 								: 'none'
 						}
-						onClick={() => handleDeleteSchedule()}>
+						onClick={() => handleDeleteSchedule()}
+					>
 						Удалить график
 					</Button>
 					<Button
 						width='143px'
-						onClick={() => setMasterScheduleModal(true)}>
+						onClick={() => setMasterScheduleModal(true)}
+					>
 						Создать график
 					</Button>
 					<Button width='186px' onClick={() => handleUpdate()}>

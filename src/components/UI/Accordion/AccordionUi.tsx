@@ -69,14 +69,16 @@ export const AccordionUi = (props: Accordion) => {
 								backgroundColor: `${
 									backgroundColor ? backgroundColor : ''
 								}`,
-							}}>
+							}}
+						>
 							<AccordionSummary
 								className={
 									styles['MuiAccordionSummary-content']
 								}
 								expandIcon={<ExpandMoreIcon />}
 								aria-controls='panel1a-content'
-								id='panel1a-header'>
+								id='panel1a-header'
+							>
 								<img
 									className={styles.icon}
 									src={el?.icon}
@@ -90,17 +92,20 @@ export const AccordionUi = (props: Accordion) => {
 										<Accordion
 											className={styles['MuiPaper-root']}
 											sx={{ boxShadow: 'none' }}
-											key={item.id}>
+											key={item.id}
+										>
 											<AccordionSummary
 												expandIcon={<ExpandMoreIcon />}
 												aria-controls='panel1a-content'
-												id='panel1a-header'>
+												id='panel1a-header'
+											>
 												<Typography>
 													{item?.name}
 												</Typography>
 											</AccordionSummary>
 											<AccordionDetails
-												className={styles.details}>
+												className={styles.details}
+											>
 												{item?.serviceResponses?.map(
 													(elem) => {
 														return (
@@ -108,11 +113,13 @@ export const AccordionUi = (props: Accordion) => {
 																className={
 																	styles.blockItem
 																}
-																key={elem?.id}>
+																key={elem?.id}
+															>
 																<div
 																	className={
 																		styles.title
-																	}>
+																	}
+																>
 																	<p>
 																		{
 																			elem?.name
@@ -121,7 +128,8 @@ export const AccordionUi = (props: Accordion) => {
 																	<p
 																		className={
 																			styles.timePrice
-																		}>
+																		}
+																	>
 																		{
 																			elem?.price
 																		}{' '}
@@ -146,7 +154,8 @@ export const AccordionUi = (props: Accordion) => {
 																			'barbershop'
 																				? styles.barber_icon
 																				: styles.iconLink
-																		}>
+																		}
+																	>
 																		<AiOutlineRightCircle />
 																	</Link>
 																) : (
@@ -159,7 +168,8 @@ export const AccordionUi = (props: Accordion) => {
 																			'barbershop'
 																				? styles.barber_icon
 																				: styles.iconLink
-																		}>
+																		}
+																	>
 																		<AiOutlineRightCircle />
 																	</div>
 																)}
