@@ -14,6 +14,7 @@ import {
 	headerToolbar,
 	translatebuttonText,
 } from './contants'
+import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
 
 interface CalendarThisDataProps {
 	endStr: string
@@ -27,6 +28,10 @@ export const Calendar = () => {
 	const [thisData, setThisData] = useState({
 		startTime: '',
 		endTime: '',
+	})
+	const [appoinmentCalendarModal, setAppoinmentCalendarModal] = useState({
+		create: false,
+		update: false,
 	})
 	const [globalLoading, setGlobalLoading] = useState(false)
 
@@ -73,6 +78,7 @@ export const Calendar = () => {
 
 	return (
 		<div style={{ width: '100%' }}>
+			<AddAppoinmentsModal />
 			<div></div>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
