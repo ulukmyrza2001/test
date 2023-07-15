@@ -23,6 +23,16 @@ interface CalendarThisDataProps {
 	view: any
 }
 
+interface handleChangeSelectedDateProps {
+	allDay: boolean
+	end: Date
+	endStr: string
+	jsEvent: any
+	startStr: string
+	start: Date
+	view: any
+}
+
 export const Calendar = () => {
 	const { dataCalendar } = useSelector((state: any) => state.calendar)
 
@@ -30,15 +40,13 @@ export const Calendar = () => {
 		startTime: '',
 		endTime: '',
 	})
-	const [appoinmentCalendarModal, setAppoinmentCalendarModal] = useState({
+	const [appointmentCalendarModal, setAppointmentCalendarModal] = useState({
 		create: false,
 		update: false,
 	})
 	const [globalLoading, setGlobalLoading] = useState(false)
 
 	const dispatch = useDispatch()
-
-	//const
 
 	//function
 
@@ -52,8 +60,12 @@ export const Calendar = () => {
 		})
 	}
 
-	function handleChangeSelectedDate(event: any) {
+	function handleChangeSelectedDate(event: handleChangeSelectedDateProps) {
 		console.log(event)
+		setAppointmentCalendarModal({
+			create: true,
+			update: false,
+		})
 	}
 
 	//useEffect
@@ -78,7 +90,10 @@ export const Calendar = () => {
 
 	return (
 		<div style={{ width: '100%' }}>
-			<AddAppoinmentsModal active={appoinmentCalendarModal.create} />
+			<AddAppoinmentsModal
+				setAppointmentCalendarModal={setAppointmentCalendarModal}
+				active={appointmentCalendarModal.create}
+			/>
 			<div></div>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
