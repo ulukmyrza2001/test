@@ -12,6 +12,7 @@ import { Backdrop, CircularProgress } from '@mui/material'
 import {
 	calendarTimeFormat,
 	headerToolbar,
+	isLoadingSx,
 	translatebuttonText,
 } from './contants'
 import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
@@ -39,11 +40,6 @@ export const Calendar = () => {
 
 	//const
 
-	const isLoadingSx = {
-		color: '#fff',
-		zIndex: (theme: any) => theme.zIndex.drawer + 1,
-	}
-
 	//function
 
 	function handleThisMoment(event: CalendarThisDataProps) {
@@ -54,6 +50,10 @@ export const Calendar = () => {
 			startTime: startDate.toISOString().split('T')[0],
 			endTime: endDate.toISOString().split('T')[0],
 		})
+	}
+
+	function handleChangeSelectedDate(event: any) {
+		console.log(event)
 	}
 
 	//useEffect
@@ -78,7 +78,7 @@ export const Calendar = () => {
 
 	return (
 		<div style={{ width: '100%' }}>
-			<AddAppoinmentsModal />
+			<AddAppoinmentsModal active={appoinmentCalendarModal.create} />
 			<div></div>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
@@ -109,9 +109,8 @@ export const Calendar = () => {
 				eventStartEditable={true}
 				eventDurationEditable={true}
 				datesSet={(event) => handleThisMoment(event)}
-				select={(w) => console.log(w, 'select')}
+				select={(w) => handleChangeSelectedDate(w)}
 				eventDrop={(e: any) => console.log(e, 'eventDrop')}
-				dateClick={(e: any) => console.log(e, 'dateClick')}
 				eventClick={(w: any) => console.log(w, 'eventClick')}
 				events={dataCalendar?.map((item: any) => ({
 					start: item.startTime,
