@@ -11,9 +11,9 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './Schedule/Schedule'
+import { Schedule } from './schedule/Schedule'
 import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
+import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
 
 export const MasterInnerPage = () => {
