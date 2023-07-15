@@ -49,7 +49,6 @@ export const AccordionUi = (props: Accordion) => {
   const path = pathname.slice(1);
 
   const auth = Cookies.get("isAuthenticated");
-  console.log(auth);
 
   const [showLoginModal, setShowLoginmdal] = useState(false);
 
