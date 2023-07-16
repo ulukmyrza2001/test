@@ -44,6 +44,15 @@ export const Calendar = () => {
 		create: false,
 		update: false,
 	})
+	const [appointmentsCalendarData, setAppointmentsCalendarData] = useState({
+		masterId: 0,
+		serviceIds: [],
+		appointmentStatus: '',
+		startDate: '',
+		startTime: '',
+		endTime: '',
+		description: '',
+	})
 	const [globalLoading, setGlobalLoading] = useState(false)
 
 	const dispatch = useDispatch()
@@ -93,8 +102,9 @@ export const Calendar = () => {
 			<AddAppoinmentsModal
 				setAppointmentCalendarModal={setAppointmentCalendarModal}
 				active={appointmentCalendarModal.create}
+				appointmentsCalendarData={appointmentsCalendarData}
+				setAppointmentsCalendarData={setAppointmentsCalendarData}
 			/>
-			<div></div>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
 			</Backdrop>

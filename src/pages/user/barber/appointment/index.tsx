@@ -81,7 +81,7 @@ export const AppointmenBarberPage = () => {
 	const { subCategoryData } = useSelector((state: any) => state.subCategory)
 
 	useEffect(() => {
-		dispatch(getMasterByBranchId({ branchId: id }) as never as AnyAction)
+		dispatch(getMasterByBranchId({ branchId: id }) as unknown as AnyAction)
 		dispatch(
 			getSubCategorySelect({
 				categoryServiceId: 2,
@@ -145,8 +145,7 @@ export const AppointmenBarberPage = () => {
 				className='text'
 				style={{
 					color: 'grey',
-				}}
-			>
+				}}>
 				AppointmenBarberPage
 			</span>
 			<br />
@@ -155,15 +154,13 @@ export const AppointmenBarberPage = () => {
 				<div className={styles.wrapper_progres_name}>
 					<div
 						className={styles.progress_name}
-						onClick={() => setNext(1)}
-					>
+						onClick={() => setNext(1)}>
 						<GiBeard fontSize={30} />
 						<span>Выберите мастера</span>
 					</div>
 					<div
 						className={styles.progress_name}
-						onClick={() => (next > 2 ? setNext(2) : '')}
-					>
+						onClick={() => (next > 2 ? setNext(2) : '')}>
 						<BiTimeFive fontSize={30} />
 						<span>Выберите дату</span>
 					</div>
@@ -229,13 +226,11 @@ export const AppointmenBarberPage = () => {
 														masterName:
 															item.firstName,
 													})
-												}
-											>
+												}>
 												<div
 													className={
 														styles.ava_wrapper
-													}
-												>
+													}>
 													<img
 														src={item.avatar}
 														alt=''
@@ -295,13 +290,11 @@ export const AppointmenBarberPage = () => {
 												alignItems: 'center',
 												gap: '9px',
 												margin: '10px 0',
-											}}
-										>
+											}}>
 											<div
 												className={
 													styles.finish_ava_wrapper
-												}
-											>
+												}>
 												<img
 													src={postData.ava}
 													alt=''
@@ -314,8 +307,7 @@ export const AppointmenBarberPage = () => {
 											style={{
 												fontWeight: '500',
 												color: 'gray',
-											}}
-										>
+											}}>
 											от 7000 ₸ 1 ч. 30 мин.
 										</h5>
 									</div>
@@ -324,8 +316,7 @@ export const AppointmenBarberPage = () => {
 							<div className={styles.user_contact}>
 								<h4
 									className='title'
-									style={{ marginBottom: '20px' }}
-								>
+									style={{ marginBottom: '20px' }}>
 									Детали броня
 								</h4>
 								<div
@@ -333,8 +324,7 @@ export const AppointmenBarberPage = () => {
 										display: 'flex',
 										flexDirection: 'column',
 										gap: '20px',
-									}}
-								>
+									}}>
 									<textarea
 										placeholder='Оставить комментарий'
 										name='das'
@@ -352,8 +342,7 @@ export const AppointmenBarberPage = () => {
 												...postData,
 												description: e.target.value,
 											})
-										}
-									></textarea>
+										}></textarea>
 								</div>
 							</div>
 						</div>
@@ -365,24 +354,20 @@ export const AppointmenBarberPage = () => {
 							<Accordion
 								expanded={expanded === 'panel1'}
 								onChange={handleChange('panel1')}
-								sx={{ width: '100%' }}
-							>
+								sx={{ width: '100%' }}>
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon />}
 									aria-controls='panel1bh-content'
-									id='panel1bh-header'
-								>
+									id='panel1bh-header'>
 									<Typography
 										sx={{
 											color: 'text.secondary',
 											marginRight: '10px',
-										}}
-									>
+										}}>
 										<AddIcon />
 									</Typography>
 									<Typography
-										sx={{ width: '100%', flexShrink: 0 }}
-									>
+										sx={{ width: '100%', flexShrink: 0 }}>
 										Добавить услугу
 									</Typography>
 								</AccordionSummary>
@@ -395,8 +380,7 @@ export const AppointmenBarberPage = () => {
 													id: [item.id],
 													name: item.name,
 												})
-											}
-										>
+											}>
 											<Typography
 												variant='body1'
 												sx={{
@@ -407,8 +391,7 @@ export const AppointmenBarberPage = () => {
 													'&:hover': {
 														color: 'var(--ui-background-color)',
 													},
-												}}
-											>
+												}}>
 												{item.name}
 											</Typography>
 										</div>
@@ -422,8 +405,7 @@ export const AppointmenBarberPage = () => {
 							<Button
 								onClick={() => setNext(next - 1)}
 								fontSize='20px'
-								backgroundColor='silver'
-							>
+								backgroundColor='silver'>
 								Назад
 							</Button>
 						)}
@@ -433,8 +415,7 @@ export const AppointmenBarberPage = () => {
 						) : (
 							<Button
 								onClick={() => setNext(next + 1)}
-								fontSize='20px'
-							>
+								fontSize='20px'>
 								Далее
 							</Button>
 						)}
