@@ -17,8 +17,33 @@ interface MasterProps {
 		lastName: string
 		phoneNumber: string
 	} | null
+	dataMasterBranch: {
+		companyId: number
+		companyName: string
+		categoryType: string
+		branchId: number
+		address: string
+		phoneNumber: string
+		image: string
+	} | null
+	dataMasterServices:
+		| {
+				id: number
+				name: string
+				icon: string
+				subCategoryServices: {
+					id: number
+					name: string
+					serviceResponses: {
+						id: number
+						name: string
+						price: number
+						duration: number
+					}[]
+				}[]
+		  }[]
+		| []
 	isLoadingMaster: boolean
-	dataMasterBranch: any
 }
 interface deleteMasterProps {
 	masterId: number
@@ -46,6 +71,14 @@ interface putMasterProps {
 		}
 	}
 	masterId: number | string | undefined
+}
+
+interface getMasterServicesProps {
+	masterId: number
+}
+
+interface getMasterByBranchIdProps {
+	branchId: number | string | undefined
 }
 
 export const getMaster = createAsyncThunk(
@@ -128,7 +161,7 @@ export const putMaster = createAsyncThunk(
 
 export const getMasterByBranchId = createAsyncThunk(
 	'master/getMasterByBranchId',
-	async ({ branchId }: any, { rejectWithValue }) => {
+	async ({ branchId }: getMasterByBranchIdProps, { rejectWithValue }) => {
 		try {
 			const response = await axiosInstance.get(
 				`/v1/masters/find-by-branch/${branchId}`,
@@ -140,10 +173,25 @@ export const getMasterByBranchId = createAsyncThunk(
 	},
 )
 
+export const getMasterServices = createAsyncThunk(
+	'master/getMasterServices',
+	async ({ masterId }: getMasterServicesProps, { rejectWithValue }) => {
+		try {
+			const response = await axiosInstance.get(
+				`/api/v2/masters/${masterId}`,
+			)
+			return response.data
+		} catch (error) {
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
 const initialState: MasterProps = {
 	dataMaster: [],
-	dataMasterBranch: [],
+	dataMasterBranch: null,
 	dataMasterById: null,
+	dataMasterServices: [],
 	isLoadingMaster: false,
 }
 
@@ -153,6 +201,16 @@ export const masterSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => [
 		//get
+		builder.addCase(getMasterServices.pending, (state) => {
+			state.isLoadingMaster = true
+		}),
+		builder.addCase(getMasterServices.fulfilled, (state, action) => {
+			state.isLoadingMaster = false
+			state.dataMasterServices = action.payload
+		}),
+		builder.addCase(getMasterServices.rejected, (state) => {
+			state.isLoadingMaster = false
+		}),
 
 		builder.addCase(getMasterByBranchId.pending, (state) => {
 			state.isLoadingMaster = true
