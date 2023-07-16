@@ -1,11 +1,11 @@
 import styles from './AddAppoinments.module.css'
-import { ModalComponent } from '../../../../components/UI/Modal/Modal'
-import { Input } from '../../../../components/UI/Inputs/Input/Input'
-import { MultiSelect } from '../../../../components/UI/Selects/MultiSelect/MultiSelect'
-import { DataPicker } from '../../../../components/UI/DataPicker/DataPicker'
-import { BasicTimePicker } from '../../../../components/UI/TimePickers/BasicTimePicker/BasicTimePicker'
-import { LonelySelect } from '../../../../components/UI/Selects/LonelySelect/LonelySelect'
-import { Button } from '../../../../components/UI/Buttons/Button/Button'
+import { ModalComponent } from '../../../../../../components/UI/Modal/Modal'
+import { Input } from '../../../../../../components/UI/Inputs/Input/Input'
+import { MultiSelect } from '../../../../../../components/UI/Selects/MultiSelect/MultiSelect'
+import { DataPicker } from '../../../../../../components/UI/DataPicker/DataPicker'
+import { BasicTimePicker } from '../../../../../../components/UI/TimePickers/BasicTimePicker/BasicTimePicker'
+import { LonelySelect } from '../../../../../../components/UI/Selects/LonelySelect/LonelySelect'
+import { Button } from '../../../../../../components/UI/Buttons/Button/Button'
 
 interface AddAppoinmentsModalProps {
 	active: boolean
@@ -29,7 +29,7 @@ export const AddAppoinmentsModal = ({
 		<ModalComponent
 			active={active}
 			handleClose={handleClose}
-			title='Новый визит'>
+			title='Master'>
 			<div className={styles.container_appoinment}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
@@ -108,8 +108,7 @@ export const AddAppoinmentsModal = ({
 						width='90px'
 						backgroundColor='white'
 						color='#acacac'
-						border='1px solid #acacac'
-						onClick={() => handleClose()}>
+						border='1px solid #acacac'>
 						Отмена
 					</Button>
 					<Button width='150px'>Сохранить</Button>

@@ -11,10 +11,11 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './Schedule/Schedule'
+import { Schedule } from './schedule/Schedule'
 import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
+import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
+import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
@@ -39,6 +40,10 @@ export const MasterInnerPage = () => {
 	const [masterModal, setMasterModal] = useState({
 		masterModalAdd: false,
 		masterModalUpdate: false,
+	})
+	const [appointmentCalendarModal, setAppointmentCalendarModal] = useState({
+		create: false,
+		update: false,
 	})
 	const [masterScheduleModal, setMasterScheduleModal] = useState(false)
 
@@ -184,6 +189,10 @@ export const MasterInnerPage = () => {
 				setMasterData={setMasterData}
 				masterId={masterID}
 			/>
+			<AddAppoinmentsModal
+				setAppointmentCalendarModal={setAppointmentCalendarModal}
+				active={appointmentCalendarModal.create}
+			/>
 			<AddFullSchedule
 				masterScheduleModal={masterScheduleModal}
 				setMasterScheduleModal={setMasterScheduleModal}
@@ -204,15 +213,23 @@ export const MasterInnerPage = () => {
 								? 'block'
 								: 'none'
 						}
-						onClick={() => handleDeleteSchedule()}
-					>
+						onClick={() => handleDeleteSchedule()}>
 						Удалить график
 					</Button>
 					<Button
 						width='143px'
-						onClick={() => setMasterScheduleModal(true)}
-					>
+						onClick={() => setMasterScheduleModal(true)}>
 						Создать график
+					</Button>
+					<Button
+						onClick={() =>
+							setAppointmentCalendarModal({
+								create: true,
+								update: false,
+							})
+						}
+						width='150px'>
+						Добавить визит
 					</Button>
 					<Button width='186px' onClick={() => handleUpdate()}>
 						Редактировать мастер

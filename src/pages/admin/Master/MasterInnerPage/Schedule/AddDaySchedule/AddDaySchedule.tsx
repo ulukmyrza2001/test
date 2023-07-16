@@ -1,5 +1,5 @@
 import { ModalComponent } from '../../../../../../components/UI/Modal/Modal'
-import BasicTimePicker from '../../../../../../components/UI/TimePicker/TimePicker'
+import { TimePicker } from '../../../../../../components/UI/TimePickers/TimePicker/TimePicker'
 import styles from './AddDaySchedule.module.css'
 import { Button } from '../../../../../../components/UI/Buttons/Button/Button'
 import { useDispatch } from 'react-redux'
@@ -74,7 +74,7 @@ export const AddDaySchedule = ({
 			title='Редактировать время'>
 			<div className={styles.container_modal}>
 				<div className={styles.container_time}>
-					<BasicTimePicker
+					<TimePicker
 						value={dayScheduleData.startTime}
 						onChange={(e) =>
 							setDayScheduleData({
@@ -87,7 +87,7 @@ export const AddDaySchedule = ({
 						minutesStep={30}
 					/>
 					-
-					<BasicTimePicker
+					<TimePicker
 						value={dayScheduleData.endTime}
 						onChange={(e) =>
 							setDayScheduleData({
