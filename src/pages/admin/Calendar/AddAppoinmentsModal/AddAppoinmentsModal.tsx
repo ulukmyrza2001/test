@@ -108,7 +108,8 @@ export const AddAppoinmentsModal = ({
 						width='90px'
 						backgroundColor='white'
 						color='#acacac'
-						border='1px solid #acacac'>
+						border='1px solid #acacac'
+						onClick={() => handleClose()}>
 						Отмена
 					</Button>
 					<Button width='150px'>Сохранить</Button>
