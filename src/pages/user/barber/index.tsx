@@ -1,17 +1,18 @@
-import { Fragment, useEffect } from "react";
-import styles from "./Barber.module.css";
-import Img from "../../../assets/image/imgBarber.png";
-import { Container } from "../../../styles/ContainerStyle/Container";
-import { CgShapeRhombus } from "react-icons/cg";
-import { AboutContent } from "./aboutContent";
-import { OurWorkContent } from "./ourWorkContent";
-import { ServicesBranchContent } from "./servicesBranchContent";
-import BannerBarber from "../../../assets/image/barber.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { getBrancheById } from "../../../store/features/branch-slice";
-import { useLocation } from "react-router-dom";
-import { AnyAction } from "@reduxjs/toolkit";
-import { BsGeoAlt, BsTelephone } from "react-icons/bs";
+import { Fragment, useEffect } from 'react'
+import styles from './Barber.module.css'
+import Img from '../../../assets/image/imgBarber.png'
+import { Container } from '../../../styles/ContainerStyle/Container'
+import { CgShapeRhombus } from 'react-icons/cg'
+import { AboutContent } from './aboutContent'
+import { OurWorkContent } from './ourWorkContent'
+import { ServicesBranchContent } from './servicesBranchContent'
+import BannerBarber from '../../../assets/image/barber.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBrancheById } from '../../../store/features/branch-slice'
+import { useLocation } from 'react-router-dom'
+import { AnyAction } from '@reduxjs/toolkit'
+import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
+import { Masters } from './mastersContent'
 
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -162,6 +163,7 @@ export const BarberPage = () => {
 			</Container>
 			<ServicesBranchContent />
 			<br />
+			<Masters />
 			<OurWorkContent />
 			<AboutContent />
 		</Fragment>
