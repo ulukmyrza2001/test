@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMasterServices } from '../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { translateObject } from '../../../../utils/helpers/helpers'
+import { APPOINTMENT_STATUS } from '../../../../utils/constants/constants'
 
 interface AddAppoinmentsModalProps {
 	active: boolean
@@ -17,7 +18,7 @@ interface AddAppoinmentsModalProps {
 	appointmentsCalendarData: {
 		masterId: { label: string; value: string | number } | null
 		serviceIds: number[] | []
-		appointmentStatus: string
+		appointmentStatus: { label: string; value: string | number } | null
 		startDate: string
 		startTime: string
 		endTime: string
@@ -109,7 +110,15 @@ export const AddAppoinmentsModal = ({
 				</div>
 				<div className={styles.container}>
 					<div style={{ width: '200px' }}>
-						<DataPicker value={''} onChange={() => ''} />
+						<DataPicker
+							value={appointmentsCalendarData.startDate}
+							onChange={(e: string) =>
+								setAppointmentsCalendarData({
+									...appointmentsCalendarData,
+									startDate: e,
+								})
+							}
+						/>
 					</div>
 					<div className={styles.wrapper}>
 						<BasicTimePicker
@@ -135,17 +144,32 @@ export const AddAppoinmentsModal = ({
 				</div>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
-						<Input label='Комментарий' placeholder='Комментарий' />
+						<Input
+							value={appointmentsCalendarData.description}
+							onChange={(e) =>
+								setAppointmentsCalendarData({
+									...appointmentsCalendarData,
+									description: e.target.value,
+								})
+							}
+							label='Комментарий'
+							placeholder='Комментарий'
+						/>
 					</div>
 					<div>
 						<LonelySelect
-							value={null}
-							options={[]}
-							onChange={() => console.log()}
-							isClearable={true}
+							value={appointmentsCalendarData.appointmentStatus}
+							options={APPOINTMENT_STATUS}
+							onChange={(e) =>
+								setAppointmentsCalendarData({
+									...appointmentsCalendarData,
+									appointmentStatus: e,
+								})
+							}
+							isClearable={false}
 							isDisabled={false}
 							isLoading={false}
-							noOptionsMessage={() => 'Нет мастера'}
+							noOptionsMessage={() => ''}
 							placeholder='Статус'
 							label='Статус'
 						/>
