@@ -33,19 +33,6 @@ export const AddAppoinmentsModal = ({
 			<div className={styles.container_appoinment}>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
-						<LonelySelect
-							value={null}
-							options={[]}
-							onChange={() => console.log()}
-							isClearable={true}
-							isDisabled={false}
-							isLoading={false}
-							noOptionsMessage={() => 'Нет мастера'}
-							placeholder='Мастеры'
-							label='Мастеры'
-						/>
-					</div>
-					<div className={styles.wrapper}>
 						<MultiSelect
 							label='Услуги'
 							options={[]}
