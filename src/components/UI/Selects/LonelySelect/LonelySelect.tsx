@@ -29,6 +29,7 @@ export const LonelySelect = ({
 		control: (provided: any, state: any) => ({
 			...provided,
 			height: '40px',
+			minWidth: '200px',
 		}),
 	}
 	return (

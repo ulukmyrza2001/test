@@ -62,7 +62,7 @@ export const Calendar = () => {
 	const [appointmentsCalendarData, setAppointmentsCalendarData] = useState({
 		masterId: null,
 		serviceIds: [],
-		appointmentStatus: '',
+		appointmentStatus: null,
 		startDate: '',
 		startTime: '',
 		endTime: '',
@@ -86,10 +86,13 @@ export const Calendar = () => {
 	}
 
 	function handleChangeSelectedDate(event: handleChangeSelectedDateProps) {
-		console.log(event)
 		setAppointmentCalendarModal({
 			create: true,
 			update: false,
+		})
+		setAppointmentsCalendarData({
+			...appointmentsCalendarData,
+			startDate: event.startStr,
 		})
 	}
 
