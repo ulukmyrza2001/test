@@ -43,7 +43,7 @@ export const BeautySalonPage = () => {
 		<Fragment>
 			<Container>
 				<div className={styles.header}>
-					<div className={styles.iner_header}>
+					<div className={styles.inner_header}>
 						<span>Home</span>
 						<span>News</span>
 						<span>About</span>
