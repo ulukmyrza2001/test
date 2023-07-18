@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styles from './AddAppoinments.module.css'
 import { ModalComponent } from '../../../../components/UI/Modal/Modal'
 import { Input } from '../../../../components/UI/Inputs/Input/Input'
@@ -8,21 +7,15 @@ import { BasicTimePicker } from '../../../../components/UI/TimePickers/BasicTime
 import { LonelySelect } from '../../../../components/UI/Selects/LonelySelect/LonelySelect'
 import { Button } from '../../../../components/UI/Buttons/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-	getMaster,
-	getMasterServices,
-} from '../../../../store/features/master-slice'
+import { getMasterServices } from '../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-import {
-	filterArrayThroughIDBeforeArray,
-	translateObject,
-} from '../../../../utils/helpers/helpers'
+import { translateObject } from '../../../../utils/helpers/helpers'
 
 interface AddAppoinmentsModalProps {
 	active: boolean
 	setAppointmentsCalendarData: any
 	appointmentsCalendarData: {
-		masterId: number
+		masterId: { label: string; value: string | number } | null
 		serviceIds: number[] | []
 		appointmentStatus: string
 		startDate: string
@@ -56,10 +49,6 @@ export const AddAppoinmentsModal = ({
 
 	const dispatch = useDispatch()
 
-	useEffect(() => {
-		dispatch(getMaster() as unknown as AnyAction)
-	}, [])
-
 	function handleClose() {
 		setAppointmentCalendarModal({
 			create: false,
@@ -70,7 +59,7 @@ export const AddAppoinmentsModal = ({
 	function handleChangeMaster(value: string) {
 		setAppointmentsCalendarData({
 			...appointmentsCalendarData,
-			masterId: translateObject(value),
+			masterId: value,
 		})
 		dispatch(
 			getMasterServices({
@@ -88,12 +77,7 @@ export const AddAppoinmentsModal = ({
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
 						<LonelySelect
-							value={filterArrayThroughIDBeforeArray(
-								dataMaster,
-								appointmentsCalendarData.masterId,
-								'id',
-								'firstName-lastName',
-							)}
+							value={appointmentsCalendarData.masterId}
 							options={dataMaster?.map(
 								(item: dataMasterProps) => {
 									return {
@@ -104,7 +88,6 @@ export const AddAppoinmentsModal = ({
 							)}
 							onChange={(e) => handleChangeMaster(e)}
 							isClearable={true}
-							isDisabled={false}
 							isLoading={isLoadingMaster}
 							noOptionsMessage={() => 'Нет мастера'}
 							placeholder='Мастеры'
@@ -121,7 +104,6 @@ export const AddAppoinmentsModal = ({
 							onChange={(e: any) => console.log(e)}
 							isLoading={isLoadingMaster}
 							isClearable={true}
-							isDisabled={false}
 						/>
 					</div>
 				</div>

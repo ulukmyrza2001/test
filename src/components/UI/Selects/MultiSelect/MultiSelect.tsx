@@ -11,7 +11,7 @@ interface MultiSelectProps {
 	onChange: (e: any) => void
 	isClearable: boolean
 	isLoading: boolean
-	isDisabled: boolean
+	isDisabled?: boolean
 }
 
 export const MultiSelect = ({
