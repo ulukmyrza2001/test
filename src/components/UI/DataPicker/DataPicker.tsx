@@ -24,6 +24,18 @@ export const DataPicker = ({ value, onChange }: IdataPicker) => {
 						onChange(formattedDate)
 					}}
 					format='DD.MM.YYYY'
+					slotProps={{
+						textField: {
+							placeholder: '00:00',
+							sx: {
+								'&.MuiTextField-root': {
+									width: '100%',
+									minWidth: '200px',
+									zIndex: 0,
+								},
+							},
+						},
+					}}
 				/>
 			</DemoContainer>
 		</LocalizationProvider>
