@@ -134,11 +134,9 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
-											className={`${
+											className={
 												styles.container_inside_week
-											} ${
-												item.workingDay ? 'active' : ''
-											}`}
+											}
 											style={{
 												width: percentage,
 												opacity: item.workingDay
