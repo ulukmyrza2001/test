@@ -73,8 +73,14 @@ export const filterArrayThroughIDBeforeArray = (
 }
 
 export const translateObject = (item: any) => {
-	if (typeof item === 'object' && item !== null) {
-		return item.value || item.id
+	if (item) {
+		if (item?.length === undefined) {
+			return item.value || item.id
+		} else {
+			return item.map(
+				(el: { label: string | number; value: number }) => el.value,
+			)
+		}
 	} else {
 		return ''
 	}
