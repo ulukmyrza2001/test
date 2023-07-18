@@ -85,13 +85,13 @@
 	width: fit-content;
 	height: fit-content;
 	margin-top: 10px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 .rewievs_card_main div:nth-child(2) {
 	width: 50px;
 	height: 50px;
 	margin-top: 10px;
-	margin-left: 20px;
+	margin-left: 30px;
 	border-radius: 12px;
 }
 
@@ -99,4 +99,28 @@
 	width: 50px;
 	height: 50px;
 	border-radius: 12px;
+}
+
+.rewievs_card_header_admin {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+	align-items: center;
+}
+.rewievs_card_main_admin {
+	width: 100%;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.rewievs_card_main_admin div:nth-child(1) {
+	width: fit-content;
+	height: fit-content;
+	margin-right: 20px;
 }

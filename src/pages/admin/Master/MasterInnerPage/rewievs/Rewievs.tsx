@@ -16,7 +16,7 @@ interface feedbackDataMasterResponseProps {
 	replyToFeedbackResponse: {
 		answer: string
 		representative: string
-	}[]
+	} | null
 	userResponse: {
 		avatar: string
 		fullName: string
@@ -85,6 +85,8 @@ export const Rewievs = () => {
 			value: 2,
 		},
 	]
+
+	console.log(feedbackDataMaster)
 
 	return (
 		<div className={styles.container_rewiev}>
@@ -157,6 +159,32 @@ export const Rewievs = () => {
 											/>
 										</div>
 										<div></div>
+									</div>
+									<div
+										className={
+											styles.rewievs_card_header_admin
+										}>
+										<span
+											className={
+												styles.rewievs_card_title
+											}>
+											{
+												item.replyToFeedbackResponse
+													?.representative
+											}
+										</span>
+										<Avatar alt='ADMIN' src='' />
+									</div>
+									<div
+										className={
+											styles.rewievs_card_main_admin
+										}>
+										<div>
+											{
+												item.replyToFeedbackResponse
+													?.answer
+											}
+										</div>
 									</div>
 								</div>
 							)
