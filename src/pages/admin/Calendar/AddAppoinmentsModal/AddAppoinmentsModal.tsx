@@ -79,8 +79,6 @@ export const AddAppoinmentsModal = ({
 		)
 	}
 
-	console.log(dataMasterServices)
-
 	return (
 		<ModalComponent
 			active={active}

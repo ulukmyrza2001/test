@@ -86,8 +86,6 @@ export const Rewievs = () => {
 		},
 	]
 
-	console.log(feedbackDataMaster)
-
 	return (
 		<div className={styles.container_rewiev}>
 			<div className={styles.card_full_rewiev}>
