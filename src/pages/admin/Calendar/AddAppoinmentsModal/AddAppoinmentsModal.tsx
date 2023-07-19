@@ -10,7 +10,10 @@ import { Button } from '../../../../components/UI/Buttons/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMasterServices } from '../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
-import { translateObject } from '../../../../utils/helpers/helpers'
+import {
+	calculateEndTime,
+	translateObject,
+} from '../../../../utils/helpers/helpers'
 import { APPOINTMENT_STATUS } from '../../../../utils/constants/constants'
 import { getFreeTimeScheduler } from '../../../../store/features/schedule-slice'
 
@@ -19,7 +22,13 @@ interface AddAppoinmentsModalProps {
 	setAppointmentsCalendarData: any
 	appointmentsCalendarData: {
 		masterId: { label: string; value: string | number } | null
-		serviceIds: number[] | []
+		serviceIds:
+			| {
+					label: string | number
+					value: number
+					duration: number
+			  }[]
+			| []
 		appointmentStatus: { label: string; value: string | number } | null
 		startDate: string
 		startTime: string
@@ -38,6 +47,12 @@ interface dataMasterProps {
 	lastName: string
 	phoneNumber: string
 	avatar: string
+}
+
+interface MasterService {
+	label: string | number
+	value: number
+	duration: number
 }
 
 export const AddAppoinmentsModal = ({
@@ -60,6 +75,15 @@ export const AddAppoinmentsModal = ({
 			create: false,
 			update: false,
 		})
+		setAppointmentsCalendarData({
+			masterId: null,
+			serviceIds: [],
+			appointmentStatus: null,
+			startDate: '',
+			startTime: '',
+			endTime: '',
+			description: '',
+		})
 	}
 
 	function handleChangeMaster(value: string, type: string) {
@@ -67,6 +91,7 @@ export const AddAppoinmentsModal = ({
 			setAppointmentsCalendarData({
 				...appointmentsCalendarData,
 				masterId: value,
+				serviceIds: [],
 			})
 			dispatch(
 				getMasterServices({
@@ -103,6 +128,30 @@ export const AddAppoinmentsModal = ({
 		}
 	}
 
+	function handleChangeMasterServices(value: {
+		reduce: any
+		label: string | number
+		value: number
+		duration: number
+	}) {
+		const fullDuration = value.reduce(
+			(acc: number, item: MasterService) => {
+				return acc + item.duration
+			},
+			0,
+		)
+		const endTime = calculateEndTime(
+			appointmentsCalendarData.startTime,
+			fullDuration,
+		)
+
+		setAppointmentsCalendarData({
+			...appointmentsCalendarData,
+			serviceIds: value,
+			endTime: endTime,
+		})
+	}
+
 	const lastArrays = dataMasterServices.map((item: any) =>
 		item.subCategoryServices.map((el: any) => {
 			const lastResponse =
@@ -120,13 +169,10 @@ export const AddAppoinmentsModal = ({
 			return {
 				label: `${lastResponse.name} ${time}`,
 				value: lastResponse.id,
+				duration: lastResponse.duration,
 			}
 		}),
 	)
-
-	console.log(dataMasterServices)
-
-	console.log(masterFreeTimeData)
 
 	return (
 		<ModalComponent
@@ -160,8 +206,8 @@ export const AddAppoinmentsModal = ({
 							options={lastArrays.flat()}
 							placeholder={'Услуги'}
 							noOptionsMessage={() => 'Нет услуги'}
-							value={[]}
-							onChange={(e: any) => console.log(e)}
+							value={appointmentsCalendarData.serviceIds}
+							onChange={(e) => handleChangeMasterServices(e)}
 							isLoading={isLoadingMaster}
 							isClearable={true}
 						/>
@@ -188,7 +234,7 @@ export const AddAppoinmentsModal = ({
 					</div>
 					<div className={styles.wrapper}>
 						<BasicTimePicker
-							value='09:00'
+							value={appointmentsCalendarData.endTime}
 							onChange={(e) => {
 								return e
 							}}
@@ -198,9 +244,9 @@ export const AddAppoinmentsModal = ({
 					</div>
 				</div>
 				<div className={styles.container_schedulers}>
-					{masterFreeTimeData.length !== 0 ? (
+					{masterFreeTimeData?.length !== 0 ? (
 						<div className={styles.container_scheduler}>
-							{masterFreeTimeData.map(
+							{masterFreeTimeData?.map(
 								(item: {
 									startTime: string
 									endTime: string
@@ -209,6 +255,7 @@ export const AddAppoinmentsModal = ({
 										item.startTime.split(':')
 									return (
 										<div
+											key={item.startTime}
 											onClick={() =>
 												setAppointmentsCalendarData({
 													...appointmentsCalendarData,
