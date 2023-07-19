@@ -101,6 +101,6 @@ export function calculateEndTime(
 	}
 	const formattedEndHours = endHours.toString().padStart(2, '0')
 	const formattedEndMinutes = endMinutes.toString().padStart(2, '0')
-	const endTime = `${formattedEndHours}:${formattedEndMinutes}`
+	const endTime = `${formattedEndHours}:${formattedEndMinutes}:00`
 	return endTime
 }
