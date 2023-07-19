@@ -150,6 +150,13 @@ export const AddAppoinmentsModal = ({
 		})
 	}
 
+	function handleChangeStartTime(value: string) {
+		setAppointmentsCalendarData({
+			...appointmentsCalendarData,
+			startTime: value,
+		})
+	}
+
 	const lastArrays = dataMasterServices.map((item: any) =>
 		item.subCategoryServices.map((el: any) => {
 			const lastResponse =
@@ -255,10 +262,9 @@ export const AddAppoinmentsModal = ({
 										<div
 											key={item.startTime}
 											onClick={() =>
-												setAppointmentsCalendarData({
-													...appointmentsCalendarData,
-													startTime: item.startTime,
-												})
+												handleChangeStartTime(
+													item.startTime,
+												)
 											}
 											className={
 												item.startTime ===
