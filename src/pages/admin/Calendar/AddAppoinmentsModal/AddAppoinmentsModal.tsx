@@ -66,7 +66,7 @@ export const AddAppoinmentsModal = ({
 	)
 	const { freeTimeMaster } = useSelector((state: any) => state.schedule)
 
-	const [masterFreeTimeData, setMasterFreeTime] = useState(freeTimeMaster)
+	const [masterFreeTimeData, setMasterFreeTimeData] = useState(freeTimeMaster)
 
 	const dispatch = useDispatch()
 
@@ -105,7 +105,7 @@ export const AddAppoinmentsModal = ({
 				}) as unknown as AnyAction,
 			).then((res: any) => {
 				try {
-					setMasterFreeTime(res.payload)
+					setMasterFreeTimeData(res.payload)
 				} catch (error) {}
 			})
 		} else {
@@ -122,7 +122,7 @@ export const AddAppoinmentsModal = ({
 				}) as unknown as AnyAction,
 			).then((res: any) => {
 				try {
-					setMasterFreeTime(res.payload)
+					setMasterFreeTimeData(res.payload)
 				} catch (error) {}
 			})
 		}
@@ -135,9 +135,7 @@ export const AddAppoinmentsModal = ({
 		duration: number
 	}) {
 		const fullDuration = value.reduce(
-			(acc: number, item: MasterService) => {
-				return acc + item.duration
-			},
+			(acc: number, item: MasterService) => acc + item.duration,
 			0,
 		)
 		const endTime = calculateEndTime(
