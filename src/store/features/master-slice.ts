@@ -177,9 +177,7 @@ export const getMasterServices = createAsyncThunk(
 	'master/getMasterServices',
 	async ({ masterId }: getMasterServicesProps, { rejectWithValue }) => {
 		try {
-			const response = await axiosInstance.get(
-				`/api/v2/masters/${masterId}`,
-			)
+			const response = await axiosInstance.get(`/v2/masters/${masterId}`)
 			return response.data
 		} catch (error) {
 			rejectWithValue((error as Error).message)
