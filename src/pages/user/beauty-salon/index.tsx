@@ -77,111 +77,30 @@ export const BeautySalonPage = () => {
 				backColor={{
 					backgroundColor: '#cda582',
 				}}
-				sx={{
-					padding: '1rem 0',
-				}}
 			>
 				<div className={styles.banner}>
 					<div className={styles.wrapper_titles}>
 						<div className={styles.titles}>
+							<span>Hair Salon, Masseuse, Beauty Salon</span>
 							<p>
 								Салон красоты <br /> {branchData?.companyName}
 							</p>
-							<span>
+							<span className={styles.decs}>
 								Качественные косметические услуги, созданные для
 								вас
 							</span>
-						</div>
-						<div className={styles.wrapper_img_banner}>
 							<button className={styles.service_button_banner}>
 								Услуги
 							</button>
-							<div>
-								<img src={BannerInstrument} alt='' />
-								<img src={BannerMap} alt='' />
-							</div>
 						</div>
 					</div>
 					<div className={styles.wrapper_banner}>
-						<div className={styles.banner_1_star}>
-							<img src={Banner3} alt='Banner' />
-							<img
-								src={BannerStar}
-								alt='star'
-								className={styles.star}
-							/>
-						</div>
-						<div>
-							<img
-								src={Banner2}
-								alt='Banner'
-								className={styles.banner_2}
-							/>
-						</div>
-						<div>
-							<img src={Banner1} alt='Banner' />
-						</div>
+						<img src={Banner1} alt='Banner' />
 					</div>
 				</div>
 			</Container>
 			<Container>
-				<div className={styles.wrapper_about}>
-					<div className={styles.wrapper_about_title}>
-						<p className={styles.about}>bueno beauty</p>
-						<span>
-							Amet minim mollit non deserunt ullamco est sit
-							aliqua dolor do amet sint. Velit officia consequat
-							duis enim velit mollit. Exercitation veniam
-							consequat sunt nostrud amet. Velit officia consequat
-							duis enim velit mollit
-						</span>
-						<div className={styles.about_services}>
-							<div className={styles.card_about}>
-								<Icon1 />
-								<div>
-									<p className='title'>Amet minim mollit</p>
-									<span className='text'>
-										Amet minim mollit non deserunt ullam co
-										est sit.
-									</span>
-								</div>
-							</div>
-							<div className={styles.card_about}>
-								<Icon2 />
-								<div>
-									<p className='title'>Amet minim mollit</p>
-									<span className='text'>
-										Amet minim mollit non deserunt ullam co
-										est sit.
-									</span>
-								</div>
-							</div>
-							<div className={styles.card_about}>
-								<Icon3 />
-								<div>
-									<p className='title'>Amet minim mollit</p>
-									<span className='text'>
-										Amet minim mollit non deserunt ullam co
-										est sit.
-									</span>
-								</div>
-							</div>
-							<div className={styles.card_about}>
-								<Icon4 />
-								<div>
-									<p className=''>Amet minim mollit</p>
-									<span className='text'>
-										Amet minim mollit non deserunt ullam co
-										est sit.
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className={styles.wrapper_about_img}>
-						<img src={AboutSalon} alt='' />
-					</div>
-				</div>
+				<div className={styles.wrapper_about}></div>
 			</Container>
 			<ServicesBranchBeauty />
 			<ReviewContent />
