@@ -9,17 +9,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCalendar } from '../../../store/features/calendar-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { Backdrop, CircularProgress } from '@mui/material'
-import {
-	calendarTimeFormat,
-	headerToolbar,
-	isLoadingSx,
-	translatebuttonText,
-} from './contants'
-import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
 import { MultiSelect } from '../../../components/UI/Selects/MultiSelect/MultiSelect'
 import { getMaster } from '../../../store/features/master-slice'
 import { translateObject } from '../../../utils/helpers/helpers'
 import styles from './Calendar.module.css'
+import {
+	headerToolbar,
+	calendarTimeFormat,
+	isLoadingSx,
+	translatebuttonText,
+} from './contants'
+import { AddAppoinmentsModal } from './addAppoinmentsModal/AddAppoinmentsModal'
 
 interface CalendarThisDataProps {
 	endStr: string

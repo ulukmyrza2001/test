@@ -11,11 +11,11 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './schedule/Schedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
+import { AddFullSchedule } from './schedule/addFullSchedule/AddFullSchedule'
+import { Schedule } from '../../../master/users/userInner/shedule'
 import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
 import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
