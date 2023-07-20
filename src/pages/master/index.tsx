@@ -7,7 +7,6 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
-import { Backdrop, CircularProgress } from '@mui/material'
 import { getCalendar } from '../../store/features/calendar-slice'
 import {
 	calendarTimeFormat,
