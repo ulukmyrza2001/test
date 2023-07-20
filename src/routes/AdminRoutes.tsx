@@ -12,7 +12,7 @@ export const AdminRoutes = () => {
 	return (
 		<Routes>
 			<Route path={ADMIN_ROUTES.DEFAULT.path} element={<DashboardOutlet />}>
-				<Route path={ADMIN_ROUTES.DEFAULT.path} element={<Calendar />} />
+				<Route path={ADMIN_ROUTES.DEFAULT.path} element={<Calendar/>} />
 				<Route path={ADMIN_ROUTES.MASTERS.path} element={<MasterPage />} />
 				<Route path={ADMIN_ROUTES.MASTER.path} element={<MasterInnerPage />}>
 					<Route
