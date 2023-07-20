@@ -49,6 +49,7 @@ export const ServicesBranchBeauty = () => {
 	const { beautySalonID } = useParams()
 	const { branchData } = useSelector((state: any) => state.branch)
 	const { serviceData } = useSelector((state: any) => state.service)
+
 	const [value, setValue] = useState(0)
 	const dispatch = useDispatch()
 

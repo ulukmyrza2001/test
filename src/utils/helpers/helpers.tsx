@@ -43,3 +43,64 @@ export function TranslateAppointmentStatus(name: string) {
 			return 'Подтвержден'
 	}
 }
+
+export const filterArrayThroughIDBeforeArray = (
+	arr: any,
+	id: number,
+	idname: string,
+	label: string,
+) => {
+	if (arr.length !== 0) {
+		const object = arr?.filter((el: any) => el[idname] === id)[0]
+		const labelAll = label.split('-')
+		if (object) {
+			if (labelAll.length >= 2) {
+				return {
+					label: labelAll.map((item: any) => {
+						return `${object[item]} `
+					}),
+					value: object[idname],
+				}
+			} else {
+				return { label: object[label], value: object[idname] }
+			}
+		} else {
+			return null
+		}
+	} else {
+		return null
+	}
+}
+
+export const translateObject = (item: any) => {
+	if (item) {
+		if (item?.length === undefined) {
+			return item.value || item.id
+		} else {
+			return item.map(
+				(el: { label: string | number; value: number }) => el.value,
+			)
+		}
+	} else {
+		return ''
+	}
+}
+
+export function calculateEndTime(
+	startTime: string,
+	fullDuration: number,
+): string {
+	const [startHours, startMinutes] = startTime.split(':').map(Number)
+	let hours = Math.floor(fullDuration / 60)
+	let minutes = fullDuration % 60
+	let endHours = startHours + hours
+	let endMinutes = startMinutes + minutes
+	if (endMinutes >= 60) {
+		endMinutes -= 60
+		endHours++
+	}
+	const formattedEndHours = endHours.toString().padStart(2, '0')
+	const formattedEndMinutes = endMinutes.toString().padStart(2, '0')
+	const endTime = `${formattedEndHours}:${formattedEndMinutes}:00`
+	return endTime
+}

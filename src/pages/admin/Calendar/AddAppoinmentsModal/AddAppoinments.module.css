@@ -1,0 +1,71 @@
+.container_appoinment {
+	width: 600px;
+	margin-top: 10px;
+}
+.container {
+	width: 100%;
+	min-height: 80px;
+	max-height: 80px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.wrapper {
+	width: 100%;
+}
+.container_message {
+	width: 100%;
+	height: 50px;
+	border-radius: 6px;
+	background-color: #fff3cd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container_button {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 10px;
+}
+.container_schedulers {
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container_scheduler {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.card_free_time {
+	width: 70px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	border-radius: 6px;
+	cursor: pointer;
+	background-color: #33a011;
+}
+.card_free_time_active {
+	width: 70px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	border-radius: 6px;
+	cursor: pointer;
+	background-color: #267e0b;
+}

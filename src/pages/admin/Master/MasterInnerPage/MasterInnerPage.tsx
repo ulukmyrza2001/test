@@ -13,6 +13,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
 import { Schedule } from './Schedule/Schedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
+import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
 import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
 import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
 
@@ -39,6 +40,10 @@ export const MasterInnerPage = () => {
 	const [masterModal, setMasterModal] = useState({
 		masterModalAdd: false,
 		masterModalUpdate: false,
+	})
+	const [appointmentCalendarModal, setAppointmentCalendarModal] = useState({
+		create: false,
+		update: false,
 	})
 	const [masterScheduleModal, setMasterScheduleModal] = useState(false)
 
@@ -181,6 +186,10 @@ export const MasterInnerPage = () => {
 				setMasterData={setMasterData}
 				masterId={masterID}
 			/>
+			<AddAppoinmentsModal
+				setAppointmentCalendarModal={setAppointmentCalendarModal}
+				active={appointmentCalendarModal.create}
+			/>
 			<AddFullSchedule
 				masterScheduleModal={masterScheduleModal}
 				setMasterScheduleModal={setMasterScheduleModal}
@@ -205,6 +214,17 @@ export const MasterInnerPage = () => {
 					</Button>
 					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
 						Создать график
+					</Button>
+					<Button
+						onClick={() =>
+							setAppointmentCalendarModal({
+								create: true,
+								update: false,
+							})
+						}
+						width="150px"
+					>
+						Добавить визит
 					</Button>
 					<Button width="186px" onClick={() => handleUpdate()}>
 						Редактировать мастер

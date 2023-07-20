@@ -35,7 +35,40 @@ body {
 	--font-family: 'Rubik', sans-serif;
 	--text: 12px;
 	--title: 16px;
+	/* Calendar */
+	--fc-small-font-size: 0.85em;
+	--fc-page-bg-color: #fff;
+	--fc-neutral-bg-color: hsla(0, 0%, 82%, 0.3);
+	--fc-neutral-text-color: grey;
+	--fc-border-color: #ddd;
+	--fc-button-text-color: #fff;
+	--fc-button-bg-color: #31a010;
+	--fc-button-border-color: #267e0b;
+	--fc-button-hover-bg-color: #267e0b;
+	--fc-button-hover-border-color: #267e0b;
+	--fc-button-active-bg-color: #267e0b;
+	--fc-button-active-border-color: #267e0b;
+	--fc-more-link-bg-color: #3788d8;
+	--fc-more-link-text-color: white;
+	--fc-event-resizer-thickness: 8px;
+	--fc-event-resizer-dot-total-width: 8px;
+	--fc-event-resizer-dot-border-width: 1px;
+	--fc-non-business-color: hsla(0, 0%, 84%, 0.3);
+	--fc-bg-event-color: #8fdf82;
+	--fc-bg-event-opacity: 0.3;
+	--fc-highlight-color: rgba(188, 232, 241, 0.3);
+	--fc-today-bg-color: rgba(255, 220, 40, 0.15);
+	--fc-now-indicator-color: red;
 }
+
+*.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled):active:focus {
+	box-shadow: none;
+}
+.fc .fc-button-primary:focus {
+	box-shadow: none;
+}
+
 .text {
 	color: #383b3e;
 	font-size: 12px;

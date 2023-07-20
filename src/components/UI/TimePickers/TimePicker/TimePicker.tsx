@@ -1,7 +1,7 @@
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import { TimePicker as TimePick } from '@mui/x-date-pickers/TimePicker'
 import { styled } from '@mui/material/styles'
 import dayjs from 'dayjs'
 
@@ -14,7 +14,7 @@ interface BasixTimePickerProps {
 	disabled?: boolean
 }
 
-export default function BasicTimePicker({
+export function TimePicker({
 	value,
 	onChange,
 	minHours,
@@ -88,7 +88,7 @@ export default function BasicTimePicker({
 		</LocalizationProvider>
 	)
 }
-const StyledTimePicker = styled(TimePicker)(() => ({
+const StyledTimePicker = styled(TimePick)(() => ({
 	'& .MuiInputBase-root': {
 		width: '97px',
 		height: '38px',

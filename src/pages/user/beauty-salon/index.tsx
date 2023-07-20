@@ -1,7 +1,13 @@
 import { Fragment, useEffect } from 'react'
 import styles from './Beauty.module.css'
 import AboutSalon from '../../../assets/image/about-salon.svg'
-import BannerSalon from '../../../assets/image/salon.svg'
+import Banner1 from '../../../assets/svg/beauty/Banner1.svg'
+import Banner2 from '../../../assets/svg/beauty/Banner2.svg'
+import Banner3 from '../../../assets/svg/beauty/Banner3.svg'
+import BannerStar from '../../../assets/svg/beauty/Star4.svg'
+import BannerInstrument from '../../../assets/svg/beauty/beauty-instrument.svg'
+import BannerMap from '../../../assets/svg/beauty/map_beauty-salon.svg'
+
 import { Container } from '../../../styles/ContainerStyle/Container'
 import { ReactComponent as Icon1 } from '../../../assets/icons/001-salon (Traced).svg'
 import { ReactComponent as Icon2 } from '../../../assets/icons/002-shampoo (Traced).svg'
@@ -14,7 +20,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getBrancheById } from '../../../store/features/branch-slice'
 import { ServicesBranchBeauty } from './servicesBranchBeauty/ServicesBranchBeauty'
-import { Slider } from '../../../components/UI/VerticalSlider'
 
 export const BeautySalonPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -38,7 +43,7 @@ export const BeautySalonPage = () => {
 		<Fragment>
 			<Container>
 				<div className={styles.header}>
-					<div className={styles.iner_header}>
+					<div className={styles.inner_header}>
 						<span>Home</span>
 						<span>News</span>
 						<span>About</span>
@@ -68,19 +73,37 @@ export const BeautySalonPage = () => {
 				backColor={{
 					backgroundColor: '#cda582',
 				}}
+				sx={{
+					padding: '1rem 0',
+				}}
 			>
 				<div className={styles.banner}>
-					<div className={styles.wrapper_banner}>
-						<img src={BannerSalon} alt="Banner" />
+					<div className={styles.wrapper_titles}>
+						<div className={styles.titles}>
+							<p>
+								Салон красоты <br /> {branchData?.companyName}
+							</p>
+							<span>Качественные косметические услуги, созданные для вас</span>
+						</div>
+						<div className={styles.wrapper_img_banner}>
+							<button className={styles.service_button_banner}>Услуги</button>
+							<div>
+								<img src={BannerInstrument} alt="" />
+								<img src={BannerMap} alt="" />
+							</div>
+						</div>
 					</div>
-					<div className={styles.titles}>
-						<p>
-							Салон красоты <br /> {branchData?.companyName}
-						</p>
-						<span>
-							Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-							amet sint. Velit officia consequat duis enim velit mollit.
-						</span>
+					<div className={styles.wrapper_banner}>
+						<div className={styles.banner_1_star}>
+							<img src={Banner3} alt="Banner" />
+							<img src={BannerStar} alt="star" className={styles.star} />
+						</div>
+						<div>
+							<img src={Banner2} alt="Banner" className={styles.banner_2} />
+						</div>
+						<div>
+							<img src={Banner1} alt="Banner" />
+						</div>
 					</div>
 				</div>
 			</Container>

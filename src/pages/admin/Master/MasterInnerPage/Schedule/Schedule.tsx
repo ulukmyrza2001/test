@@ -118,7 +118,6 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 						(item: ScheduleInsideMapProps) => {
 							const endTime = new Date(`1970-01-01T${item.endTime}`).getTime()
 							const percentage = ((endTime / maxEndTime) * 100).toFixed(2) + '%'
-
 							return (
 								<div
 									className={styles.container_name_week}
@@ -127,15 +126,16 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
-											className={`${styles.container_inside_week} ${
-												item.workingDay ? 'active' : ''
-											}`}
+											className={styles.container_inside_week}
 											style={{
 												width: percentage,
 												opacity: item.workingDay ? '1' : '0',
 											}}
 										>
-											{`${item.startTime.slice(0, 5)}`}
+											{`${item.startTime.slice(0, 5)} - ${item.endTime.slice(
+												0,
+												5
+											)}`}
 										</div>
 									</div>
 									<div className={styles.container_icon}>
