@@ -2,11 +2,11 @@ import './index.css'
 import { useEffect } from 'react'
 import { AppRoutes } from './routes/AppRoutes'
 import { useSelector } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 function App() {
 	const { token, role, isAuthenticated } = useSelector(
-		(state: any) => state.auth,
+		(state: any) => state.auth
 	)
 
 	useEffect(() => {
