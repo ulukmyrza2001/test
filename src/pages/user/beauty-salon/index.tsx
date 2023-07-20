@@ -1,18 +1,7 @@
 import { Fragment, useEffect } from 'react'
 import styles from './Beauty.module.css'
-import AboutSalon from '../../../assets/image/about-salon.svg'
 import Banner1 from '../../../assets/svg/beauty/Banner1.svg'
-import Banner2 from '../../../assets/svg/beauty/Banner2.svg'
-import Banner3 from '../../../assets/svg/beauty/Banner3.svg'
-import BannerStar from '../../../assets/svg/beauty/Star4.svg'
-import BannerInstrument from '../../../assets/svg/beauty/beauty-instrument.svg'
-import BannerMap from '../../../assets/svg/beauty/map_beauty-salon.svg'
-
 import { Container } from '../../../styles/ContainerStyle/Container'
-import { ReactComponent as Icon1 } from '../../../assets/icons/001-salon (Traced).svg'
-import { ReactComponent as Icon2 } from '../../../assets/icons/002-shampoo (Traced).svg'
-import { ReactComponent as Icon3 } from '../../../assets/icons/003-hair-cutting (Traced).svg'
-import { ReactComponent as Icon4 } from '../../../assets/icons/005-toiletries (Traced).svg'
 import { ReviewContent } from './review-content'
 import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
 import { useParams } from 'react-router-dom'
@@ -41,6 +30,13 @@ export const BeautySalonPage = () => {
 			document.title = 'Cheber' // Reset the title when the component unmounts
 		}
 	}, [])
+
+	const scrollToBlock = (blockId: any) => {
+		const blockElement = document.getElementById(blockId)
+		if (blockElement) {
+			blockElement.scrollIntoView({ behavior: 'smooth' })
+		}
+	}
 
 	return (
 		<Fragment>
@@ -92,7 +88,10 @@ export const BeautySalonPage = () => {
 								Качественные косметические услуги, созданные для
 								вас
 							</span>
-							<button className={styles.service_button_banner}>
+							<button
+								className={styles.service_button_banner}
+								onClick={() => scrollToBlock('services')}
+							>
 								Услуги
 							</button>
 						</div>
@@ -104,7 +103,9 @@ export const BeautySalonPage = () => {
 			</Container>
 			<PopularServicesContent />
 			<AboutContent />
-			<ServicesBranchBeauty />
+			<div id={'services'}>
+				<ServicesBranchBeauty />
+			</div>
 			<MastersContent />
 			<ReviewContent />
 		</Fragment>
