@@ -5,34 +5,24 @@ import { UsersPage } from '../pages/master/users'
 import { SupportsPage } from '../pages/master/supports'
 import { MasterPage } from '../pages/master'
 import { DashboardOutlet } from '../layout/dashboard/Dashboard'
+import { UserInner } from '../pages/master/users/userInner'
 
 export const MasterRoutes = () => {
 	return (
 		<Routes>
-			<Route
-				path={MASTER_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}
-			>
+			<Route path={MASTER_ROUTES.DEFAULT.path} element={<DashboardOutlet />}>
 				<Route
-					path='/'
+					path="/"
 					element={<Navigate to={MASTER_ROUTES.DASHBOARD.path} />}
 				/>
-				<Route
-					path={MASTER_ROUTES.DASHBOARD.path}
-					element={<MasterPage />}
-				/>
-				<Route
-					path={MASTER_ROUTES.USERS.path}
-					element={<UsersPage />}
-				/>
+				<Route path={MASTER_ROUTES.DASHBOARD.path} element={<MasterPage />} />
+				<Route path={MASTER_ROUTES.USERS.path} element={<UsersPage />} />
+				<Route path={MASTER_ROUTES.USERS_INNER.path} element={<UserInner />} />
 				<Route
 					path={MASTER_ROUTES.ANNOUNCEMENTS.path}
 					element={<AnnouncementsPage />}
 				/>
-				<Route
-					path={MASTER_ROUTES.SUPPORT.path}
-					element={<SupportsPage />}
-				/>
+				<Route path={MASTER_ROUTES.SUPPORT.path} element={<SupportsPage />} />
 			</Route>
 		</Routes>
 	)

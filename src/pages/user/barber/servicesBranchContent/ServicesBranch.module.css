@@ -1,7 +1,136 @@
-.tabs_name {
-	font-size: 20px !important;
-	color: #d9d9d9 !important;
+.wrapper {
+	display: flex;
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+	gap: 20px;
+	overflow: hidden;
 }
-.tab_content {
+.wrapper_services {
+	width: 70%;
+}
+.wrapper_popular_services {
+	display: flex;
+	flex-direction: column;
+	margin: 0 0 20px 0;
+}
+.wrapper_accardion {
+	overflow-y: scroll;
+	max-height: 800px;
+	padding: 1rem 10px;
+	border-bottom: 2px solid #ffd601;
+}
+.wrapper_services_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid #ffd601;
+	padding: 0.7rem;
+}
+.wrapper_services_header h1 {
+	color: #ffd601;
+	font-weight: 400;
+}
+.wrapper_search_input {
+	width: 50%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background-color: #d9d9d9;
+	padding: 0.5rem;
+	border-radius: 8px;
+}
+
+.search_input {
 	width: 100%;
+	padding: 5px;
+	background: none;
+	font-size: 14px;
+}
+.wrapper_shares {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	color: white;
+	max-height: 800px;
+	background-color: #d9d9d9;
+	border-radius: 10px;
+	padding: 1rem ;
+}
+.wrapper_title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.p {
+	font-size: 16px;
+	color: black;
+}
+
+.divider {
+	width: 100%;
+	height: 1px;
+	background-color: #C8C8C8;
+	margin: 10px 0;
+}
+
+.contact {
+	color: black;
+	font-size: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+}
+
+.btn {
+	height: 30px;
+	padding: 0 10px;
+	border-radius: 8px;
+	border: 1px solid var(--ui-background-color);
+	color: var(--ui-background-color);
+}
+
+.ul {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+} 
+
+.li {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.week {
+	color: #484848;
+	font-size: 15px;
+	font-weight: 400;
+} 
+
+.hour {
+	color: black;
+	font-size: 16px;
+	font-weight: 400;
+	color: #484848;
+}
+
+.location_title {
+	color: black;
+	font-size: 18px;
+	font-weight: 400;
+	margin: 10px 0;
+}
+
+.location {
+	width: 100%;
+	height: 300px;
+	border: 3px solid black;
+	border-style: dotted;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
 }

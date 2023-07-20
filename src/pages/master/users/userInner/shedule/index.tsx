@@ -6,12 +6,11 @@ import {
 	getMasterSchedule,
 } from '../../../../../store/features/schedule-slice'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './Schedule.module.css'
+import styles from './shedule.module.css'
 import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
 import { Skeleton } from '@mui/material'
 import { WEEK } from '../../../../../utils/constants/constants'
 import { MdCreate, MdDelete } from 'react-icons/md'
-import { AddDaySchedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
 	startWeek: string
@@ -82,13 +81,13 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 
 	return (
 		<div className={styles.container_schedule}>
-			<AddDaySchedule
+			{/* <AddDaySchedule
 				dayScheduleActive={dayScheduleModal}
 				setDayScheduleActive={setDayScheduleModal}
 				dayScheduleData={dayScheduleData}
 				setDayScheduleData={setDayScheduleData}
 				startWeek={startWeek}
-			/>
+			/> */}
 			{isLoadingShedule
 				? WEEK.map((el: string) => {
 						return (

@@ -18,4 +18,83 @@
     font-size: 24px;
     font-weight: 400;
     cursor: pointer;
+    height: 100%;
+}
+
+.tabs_title_active {
+    height: 100%;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    border-bottom: 1px solid red;
+}
+
+.history_card {
+    width: 370px;
+    height: 300px;
+    border: 1px solid var(--ui-background-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.date_info {
+    border-bottom: 1px solid silver;
+} 
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: silver;
+} 
+
+.history_card_title {
+    font-size: 15px;
+    font-weight: 500;
+} 
+
+.status {
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 20px 0;
+    background-color: #d2f8dc;
+    color: #18bc42;
+    font-size: 13px;
+    border-radius: 4px;
+} 
+
+.service_name { 
+    font-size: 16px;
+    font-weight: 400;
+    color: gray;
+}
+
+.company_name {
+    font-size: 16px;
+    font-weight: 400; 
+    margin-bottom: 20px;
+}
+
+.pre_title { 
+    font-size: 15px;
+    color: gray;
+}
+
+.title {
+    font-size: 16px;
+    color: black;
+}
+
+
+
+.service_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
 }

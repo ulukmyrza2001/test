@@ -191,7 +191,8 @@ export const AddFullSchedule = ({
 		<ModalComponent
 			active={masterScheduleModal}
 			handleClose={() => handleClose()}
-			title='Создать график'>
+			title='Создать график'
+		>
 			<div className={styles.container_full_schedule}>
 				<div className={styles.container_full_schedule_header}>
 					<DataPicker
@@ -221,7 +222,8 @@ export const AddFullSchedule = ({
 						return (
 							<div
 								key={item.nameRU}
-								className={styles.card_full_schedule}>
+								className={styles.card_full_schedule}
+							>
 								<Switch
 									checked={
 										scheduleData.dayScheduleRequests[index]
@@ -284,7 +286,8 @@ export const AddFullSchedule = ({
 							backgroundColor='white'
 							color='#acacac'
 							border='1px solid #939191'
-							onClick={() => handleClose()}>
+							onClick={() => handleClose()}
+						>
 							Отмена
 						</Button>
 					</div>
@@ -292,7 +295,8 @@ export const AddFullSchedule = ({
 						<Button
 							width='157px'
 							disabled={addScheduleValidation}
-							onClick={() => handleApplyToAll()}>
+							onClick={() => handleApplyToAll()}
+						>
 							Применить к всем
 						</Button>
 					</div>
@@ -300,7 +304,8 @@ export const AddFullSchedule = ({
 						<Button
 							disabled={addScheduleValidation}
 							width='90px'
-							onClick={() => handlePost()}>
+							onClick={() => handlePost()}
+						>
 							Сохранить
 						</Button>
 					</div>
