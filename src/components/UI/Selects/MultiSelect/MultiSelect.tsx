@@ -3,15 +3,15 @@ import styles from './MultiSelect.module.css'
 import Select from 'react-select'
 
 interface MultiSelectProps {
-	options: { label: string; value: string | number }[] | []
+	options: { label: string | number; value: number }[] | []
 	label: string
 	placeholder: string
 	noOptionsMessage: (obj: { inputValue: string }) => React.ReactNode
-	value: { label: string; value: string | number }[] | []
+	value: { label: string | number; value: number }[] | []
 	onChange: (e: any) => void
 	isClearable: boolean
 	isLoading: boolean
-	isDisabled: boolean
+	isDisabled?: boolean
 }
 
 export const MultiSelect = ({

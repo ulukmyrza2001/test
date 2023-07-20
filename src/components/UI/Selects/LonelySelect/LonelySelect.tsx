@@ -11,7 +11,7 @@ interface LonelySelectProps {
 	onChange: (e: any) => void
 	isClearable: boolean
 	isLoading: boolean
-	isDisabled: boolean
+	isDisabled?: boolean
 }
 
 export const LonelySelect = ({
@@ -29,6 +29,7 @@ export const LonelySelect = ({
 		control: (provided: any, state: any) => ({
 			...provided,
 			height: '40px',
+			minWidth: '200px',
 		}),
 	}
 	return (

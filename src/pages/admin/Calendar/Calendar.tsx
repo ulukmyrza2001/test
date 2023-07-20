@@ -16,6 +16,10 @@ import {
 	translatebuttonText,
 } from './contants'
 import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
+import styles from './Calendar.module.css'
+import { MultiSelect } from '../../../components/UI/Selects/MultiSelect/MultiSelect'
+import { getMaster } from '../../../store/features/master-slice'
+import { translateObject } from '../../../utils/helpers/helpers'
 
 interface CalendarThisDataProps {
 	endStr: string
@@ -33,21 +37,32 @@ interface handleChangeSelectedDateProps {
 	view: any
 }
 
+interface dataMasterProps {
+	id: number
+	firstName: string
+	lastName: string
+	phoneNumber: string
+	avatar: string
+}
+
 export const Calendar = () => {
 	const { dataCalendar } = useSelector((state: any) => state.calendar)
-
+	const { dataMaster, isLoadingMaster } = useSelector(
+		(state: any) => state.master,
+	)
 	const [thisData, setThisData] = useState({
 		startTime: '',
 		endTime: '',
+		masterId: [],
 	})
 	const [appointmentCalendarModal, setAppointmentCalendarModal] = useState({
 		create: false,
 		update: false,
 	})
 	const [appointmentsCalendarData, setAppointmentsCalendarData] = useState({
-		masterId: 0,
+		masterId: null,
 		serviceIds: [],
-		appointmentStatus: '',
+		appointmentStatus: null,
 		startDate: '',
 		startTime: '',
 		endTime: '',
@@ -64,16 +79,20 @@ export const Calendar = () => {
 		const endDate = new Date(event.endStr)
 		setGlobalLoading(true)
 		setThisData({
+			...thisData,
 			startTime: startDate.toISOString().split('T')[0],
 			endTime: endDate.toISOString().split('T')[0],
 		})
 	}
 
 	function handleChangeSelectedDate(event: handleChangeSelectedDateProps) {
-		console.log(event)
 		setAppointmentCalendarModal({
 			create: true,
 			update: false,
+		})
+		setAppointmentsCalendarData({
+			...appointmentsCalendarData,
+			startDate: event.startStr,
 		})
 	}
 
@@ -87,18 +106,24 @@ export const Calendar = () => {
 				getCalendar({
 					startTime: thisData.startTime,
 					endTime: thisData.endTime,
-					masterID: [],
+					masterID: translateObject(thisData.masterId),
 				}) as unknown as AnyAction,
 			).then(() => {
-				setTimeout(() => {
+				if (!dataMaster) {
+					setGlobalLoading(dataMaster)
+				} else {
 					setGlobalLoading(false)
-				}, 300)
+				}
 			})
 		}
 	}, [thisData])
 
+	useEffect(() => {
+		dispatch(getMaster() as unknown as AnyAction)
+	}, [])
+
 	return (
-		<div style={{ width: '100%' }}>
+		<div className={styles.container_calendar}>
 			<AddAppoinmentsModal
 				setAppointmentCalendarModal={setAppointmentCalendarModal}
 				active={appointmentCalendarModal.create}
@@ -108,6 +133,28 @@ export const Calendar = () => {
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
 			</Backdrop>
+			<div className={styles.container_calendar_header}>
+				<MultiSelect
+					label=''
+					options={dataMaster?.map((item: dataMasterProps) => {
+						return {
+							value: item.id,
+							label: `${item.firstName} ${item.lastName}`,
+						}
+					})}
+					value={thisData.masterId}
+					onChange={(e) =>
+						setThisData({
+							...thisData,
+							masterId: e,
+						})
+					}
+					placeholder='Выбрать мастера'
+					noOptionsMessage={() => 'Нет мастеры'}
+					isLoading={isLoadingMaster}
+					isClearable={true}
+				/>
+			</div>
 			<FullCalendar
 				plugins={[
 					dayGridPlugin,
