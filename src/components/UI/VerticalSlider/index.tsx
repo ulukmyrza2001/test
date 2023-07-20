@@ -5,29 +5,27 @@ import {
 } from 'react-icons/md'
 import styles from './style.module.css'
 
-interface SLIDER_DATA {
-	data: [
-		{
-			id: number
-			title: string
-			price?: number | string
-			description: string
-			img: string
-		}
-	]
+interface VERTICAL_SLIDER {
+	data: {
+		id?: number
+		title: string
+		price: number
+		description: string
+		img: string
+	}[]
 }
 
-export const Slider = ({ data }: any) => {
+export const VerticalSlider = ({ data }: VERTICAL_SLIDER) => {
 	const [amount, setAmount] = useState<number>(0)
 	const [cord, setCord] = useState<number | null>(100)
 	const [size, setSize] = useState<any>()
 
 	useEffect(() => {
-		setCord(amount * 500)
-		setSize(data.length * 500)
+		setCord(amount * 300)
+		setSize(data?.length * 300)
 	}, [amount])
 
-	const lengthFix = data.length - 1
+	const lengthFix = data?.length - 1
 
 	return (
 		<div id="slider" className={styles.slider}>
@@ -61,7 +59,7 @@ export const Slider = ({ data }: any) => {
 				</div>
 				<div className={styles.Sright}>
 					<div className={styles.img_container} style={{ height: `${size}px` }}>
-						{data.reverse().map((img: any) => (
+						{data?.reverse().map((img: any) => (
 							<div
 								className={styles.img_wrapper}
 								key={img.id}
