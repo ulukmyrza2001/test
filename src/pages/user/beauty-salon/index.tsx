@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from './Beauty.module.css'
 import Banner1 from '../../../assets/svg/beauty/Banner1.svg'
 import { Container } from '../../../styles/ContainerStyle/Container'
@@ -20,8 +20,7 @@ export const BeautySalonPage = () => {
 
 	useEffect(() => {
 		dispatch(
-
-			getBrancheById({ branchId: beautySalonID }) as unknown as AnyAction,
+			getBrancheById({ branchId: beautySalonID }) as unknown as AnyAction
 		)
 	}, [])
 
@@ -40,7 +39,7 @@ export const BeautySalonPage = () => {
 	}
 
 	return (
-		<Fragment>
+		<>
 			<Container>
 				<div className={styles.header}>
 					<div className={styles.inner_header}>
@@ -53,21 +52,15 @@ export const BeautySalonPage = () => {
 						<div className={styles.info_title}>
 							<BsGeoAlt fontSize={20} />
 							<div>
-
-								<span className='text'>
-									Приходите по адресу:
-								</span>
-								<p className='text'>{branchData?.address}</p>
+								<span className="text">Приходите по адресу:</span>
+								<p className="text">{branchData?.address}</p>
 							</div>
 						</div>
 						<div className={styles.info_title}>
 							<BsTelephone />
 							<div>
-
-								<span className='text'>
-									Ежедневно с 10:00 до 20:00
-								</span>
-								<a href='/' className='text'>
+								<span className="text">Ежедневно с 10:00 до 20:00</span>
+								<a href="/" className="text">
 									{branchData?.phoneNumber}
 								</a>
 							</div>
@@ -88,8 +81,7 @@ export const BeautySalonPage = () => {
 								Салон красоты <br /> {branchData?.companyName}
 							</p>
 							<span className={styles.decs}>
-								Качественные косметические услуги, созданные для
-								вас
+								Качественные косметические услуги, созданные для вас
 							</span>
 							<button
 								className={styles.service_button_banner}
@@ -100,7 +92,7 @@ export const BeautySalonPage = () => {
 						</div>
 					</div>
 					<div className={styles.wrapper_banner}>
-						<img src={Banner1} alt='Banner' />
+						<img src={Banner1} alt="Banner" />
 					</div>
 				</div>
 			</Container>
@@ -111,6 +103,6 @@ export const BeautySalonPage = () => {
 			</div>
 			<MastersContent />
 			<ReviewContent />
-		</Fragment>
+		</>
 	)
 }

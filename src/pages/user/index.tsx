@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Container } from '../../styles/ContainerStyle/Container'
 import { ContainerSlider } from '../../components/ContainersSliders/ContainerSlider'
 import { ServiceCard } from '../../components/Cards/ServiceCard/ServiceCard'
@@ -19,7 +19,7 @@ export const UserPage = () => {
 	}, [])
 
 	return (
-		<Fragment>
+		<>
 			<Container sx={{ marginTop: '20px' }}>
 				<Banner />
 			</Container>
@@ -28,10 +28,7 @@ export const UserPage = () => {
 			</Container>
 			<Container sx={{ marginTop: '50px' }}>
 				{branchMain?.map((item: any, index: number) => (
-					<div
-						key={index}
-						style={{ width: '100%', marginTop: '30px' }}
-					>
+					<div key={index} style={{ width: '100%', marginTop: '30px' }}>
 						<ContainerSlider
 							dots={true}
 							infinite={true}
@@ -50,15 +47,13 @@ export const UserPage = () => {
 							variableWidth={true}
 							label={TypeCompanyGenrate(item.categoryType)}
 						>
-							{item?.branchResponses?.map(
-								(item: any, index: number) => {
-									return <ServiceCard {...item} key={index} />
-								},
-							)}
+							{item?.branchResponses?.map((item: any, index: number) => {
+								return <ServiceCard {...item} key={index} />
+							})}
 						</ContainerSlider>
 					</div>
 				))}
 			</Container>
-		</Fragment>
+		</>
 	)
 }

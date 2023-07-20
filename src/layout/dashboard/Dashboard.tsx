@@ -88,49 +88,46 @@ export const DashboardOutlet = () => {
 					open
 						? styles.container_inside_dashboard_open
 						: styles.container_inside_dashboard_close
-				}>
+				}
+			>
 				<div
 					className={
-						open
-							? styles.card_dashboard_open
-							: styles.card_dashboard_close
-					}>
+						open ? styles.card_dashboard_open : styles.card_dashboard_close
+					}
+				>
 					<div className={styles.dashboard_header}>
 						{open ? (
 							<HiMenuAlt3
 								size={26}
-								cursor='pointer'
+								cursor="pointer"
 								onClick={() => setOpen(!open)}
 							/>
 						) : (
 							<HiOutlineMenu
 								size={26}
-								cursor='pointer'
+								cursor="pointer"
 								onClick={() => setOpen(!open)}
 							/>
 						)}
 					</div>
 					<div className={styles.dashboard_main}>
 						{roleDashboard()?.map((item: any, i: number) => (
-							<React.Fragment key={i}>
+							<div key={i}>
 								<Link
 									to={item?.link}
 									key={i}
 									className={
 										`/${
-											locations.pathname.split('/')[1] ===
-											'master'
+											locations.pathname.split('/')[1] === 'master'
 												? 'masters'
-												: locations.pathname.split(
-														'/',
-												  )[1]
+												: locations.pathname.split('/')[1]
 										}` === item.link
 											? styles.dashboard_card_inside_active
-											: locations.pathname ===
-											  item.subLink
+											: locations.pathname === item.subLink
 											? styles.dashboard_card_inside_active
 											: styles.dashboard_card_inside
-									}>
+									}
+								>
 									<div>
 										{React.createElement(item?.icon, {
 											size: '20',
@@ -141,11 +138,12 @@ export const DashboardOutlet = () => {
 											open
 												? styles.dashboard_title_open
 												: styles.dashboard_title_close
-										}>
+										}
+									>
 										{item?.name}
 									</h3>
 								</Link>
-							</React.Fragment>
+							</div>
 						))}
 					</div>
 					<br />
@@ -160,7 +158,8 @@ export const DashboardOutlet = () => {
 								open
 									? styles.dashboard_title_open
 									: styles.dashboard_title_close
-							}>
+							}
+						>
 							Выйти
 						</h3>
 					</div>
