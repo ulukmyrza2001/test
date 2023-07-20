@@ -19,10 +19,10 @@ import {
 	isLoadingSx,
 	translatebuttonText,
 } from '../../../utils/constants/constants'
-import { AddAppoinmentsModal } from './addAppoinmentsModal/AddAppoinmentsModal'
+import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
 
 interface CalendarThisDataProps {
-	endStr: string
+	[x: string]: string | number | Date
 	startStr: string
 	view: any
 }
@@ -176,7 +176,7 @@ export const Calendar = () => {
 				fixedWeekCount={false}
 				eventStartEditable={true}
 				eventDurationEditable={true}
-				datesSet={(event) => handleThisMoment(event)}
+				datesSet={(event: any) => handleThisMoment(event)}
 				select={(w) => handleChangeSelectedDate(w)}
 				eventDrop={(e: any) => console.log(e, 'eventDrop')}
 				eventClick={(w: any) => console.log(w, 'eventClick')}

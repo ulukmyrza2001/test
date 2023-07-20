@@ -11,7 +11,7 @@ import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
 import { Skeleton } from '@mui/material'
 import { WEEK } from '../../../../../utils/constants/constants'
 import { MdCreate, MdDelete } from 'react-icons/md'
-import { AddDaySchedule } from './addDaySchedule/AddDaySchedule'
+import { AddDaySchedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
 	startWeek: string

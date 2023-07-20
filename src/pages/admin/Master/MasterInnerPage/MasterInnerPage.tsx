@@ -12,10 +12,10 @@ import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
-import { AddFullSchedule } from './schedule/addFullSchedule/AddFullSchedule'
+import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
 import { Schedule } from '../../../master/users/userInner/shedule'
 import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
-import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
+import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
