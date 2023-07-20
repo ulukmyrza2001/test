@@ -19,6 +19,7 @@ export const AppointemntsData = ({
 			getFreeTimeScheduler({
 				masterID: masterId,
 				startDate: appoinmentData.startDate,
+				serviceTime: 0,
 			}) as unknown as AnyAction,
 		)
 	}, [appoinmentData.startDate])
@@ -43,8 +44,7 @@ export const AppointemntsData = ({
 					display: 'flex',
 					flexWrap: 'wrap',
 					gap: '10px',
-				}}
-			>
+				}}>
 				{freeTimeMaster?.map((item: any, index: number) => {
 					return (
 						<div
@@ -75,8 +75,7 @@ export const AppointemntsData = ({
 									appoinmentData.startTime
 										? '#33a011'
 										: '',
-							}}
-						>
+							}}>
 							{item.startTime.slice(0, 5)}
 						</div>
 					)

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axiosInstance from '../../api/axios-config'
+import toast from 'react-hot-toast'
 
 interface CalendarProps {
 	dataCalendar:
@@ -31,6 +32,20 @@ interface getMasterAppoinmentProps {
 	masterID: number | undefined | string
 	page: number
 	size: number
+}
+
+interface postAppointmentProps {
+	postData: {
+		masterId: number
+		serviceIds: number[]
+		startDate: string
+		startTime: string
+		endTime: string
+		description: string
+	}
+	startTime: string
+	endTime: string
+	masterID: number[]
 }
 
 export const getCalendar = createAsyncThunk(
@@ -72,6 +87,24 @@ export const getMasterAppoinment = createAsyncThunk(
 	},
 )
 
+export const postAppointment = createAsyncThunk(
+	'calendar/postAppointment',
+	async (
+		{ postData, startTime, endTime, masterID }: postAppointmentProps,
+		{ rejectWithValue, dispatch },
+	) => {
+		try {
+			const response = await axiosInstance.post('/appointments', postData)
+			dispatch(getCalendar({ startTime, endTime, masterID }))
+			toast.success('Successfully toasted!')
+			return response.data
+		} catch (error) {
+			toast.error((error as Error).message)
+			rejectWithValue((error as Error).message)
+		}
+	},
+)
+
 const initialState: CalendarProps = {
 	dataCalendar: [],
 	dataMaster: [],
@@ -104,6 +137,18 @@ export const calendarSlice = createSlice({
 			state.dataMaster = action.payload
 		})
 		builder.addCase(getMasterAppoinment.rejected, (state) => {
+			state.isLoadingCalendar = false
+		})
+
+		//post
+
+		builder.addCase(postAppointment.pending, (state) => {
+			state.isLoadingCalendar = true
+		})
+		builder.addCase(postAppointment.fulfilled, (state) => {
+			state.isLoadingCalendar = false
+		})
+		builder.addCase(postAppointment.rejected, (state) => {
 			state.isLoadingCalendar = false
 		})
 	},

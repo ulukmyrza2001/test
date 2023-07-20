@@ -16,10 +16,10 @@ import {
 	translatebuttonText,
 } from './contants'
 import { AddAppoinmentsModal } from './AddAppoinmentsModal/AddAppoinmentsModal'
-import styles from './Calendar.module.css'
 import { MultiSelect } from '../../../components/UI/Selects/MultiSelect/MultiSelect'
 import { getMaster } from '../../../store/features/master-slice'
 import { translateObject } from '../../../utils/helpers/helpers'
+import styles from './Calendar.module.css'
 
 interface CalendarThisDataProps {
 	endStr: string
@@ -62,7 +62,7 @@ export const Calendar = () => {
 	const [appointmentsCalendarData, setAppointmentsCalendarData] = useState({
 		masterId: null,
 		serviceIds: [],
-		appointmentStatus: null,
+		appointmentStatus: { label: 'Подтвержден', value: 'CONFIRMED' },
 		startDate: '',
 		startTime: '',
 		endTime: '',
@@ -129,6 +129,7 @@ export const Calendar = () => {
 				active={appointmentCalendarModal.create}
 				appointmentsCalendarData={appointmentsCalendarData}
 				setAppointmentsCalendarData={setAppointmentsCalendarData}
+				thisData={thisData}
 			/>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color="inherit" />

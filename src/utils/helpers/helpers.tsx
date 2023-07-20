@@ -104,3 +104,22 @@ export function calculateEndTime(
 	const endTime = `${formattedEndHours}:${formattedEndMinutes}:00`
 	return endTime
 }
+
+export const countDuration = (arr: any) => {
+	if (Array.isArray(arr) && arr.length !== 0) {
+		const value = arr.reduce(
+			(
+				acc: number,
+				item: {
+					label: string | number
+					value: number
+					duration: number
+				},
+			) => acc + item.duration,
+			0,
+		)
+		return value
+	} else {
+		return 0
+	}
+}

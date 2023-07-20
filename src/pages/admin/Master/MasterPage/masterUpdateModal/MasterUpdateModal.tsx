@@ -108,49 +108,45 @@ export const MasterUpdateModal = ({
 		<ModalComponent
 			active={masterModal.masterModalUpdate}
 			handleClose={handleClose}
-			title='Редактировать мастер'>
+			title="Редактировать мастер"
+		>
 			<div className={styles.container}>
 				<div className={styles.container_one}>
 					<Input
-						label='Имя'
+						label="Имя"
 						value={masterData.firstName}
-						onChange={(value) =>
-							handleChangeFirsName(value.target.value)
-						}
+						onChange={(value) => handleChangeFirsName(value.target.value)}
 					/>
 					<Input
-						label='Фио'
+						label="Фио"
 						value={masterData.lastName}
-						onChange={(value) =>
-							handleChangeLastName(value.target.value)
-						}
+						onChange={(value) => handleChangeLastName(value.target.value)}
 					/>
 				</div>
 				<div className={styles.container_one}>
 					<InputNumberMask
-						label='Номер'
+						label="Номер"
 						value={masterData.authInfoRequest.phoneNumber}
 						onChange={(value) => handleChangePhoneNumber(value)}
 					/>
 					<InputPassword
-						label='Пароль'
+						label="Пароль"
 						value={masterData.authInfoRequest.password}
-						onChange={(value) =>
-							handleChangePassword(value.target.value)
-						}
+						onChange={(value) => handleChangePassword(value.target.value)}
 					/>
 				</div>
 			</div>
 			<div className={styles.container_bottom}>
 				<Button
-					width='80px'
-					backgroundColor='white'
-					color='#acacac'
-					border='1px solid #acacac'
-					onClick={() => handleClose()}>
+					width="80px"
+					backgroundColor="white"
+					color="#acacac"
+					border="1px solid #acacac"
+					onClick={() => handleClose()}
+				>
 					Отмена
 				</Button>
-				<Button width='120px' onClick={() => handlePut()}>
+				<Button width="120px" onClick={() => handlePut()}>
 					Сохранить
 				</Button>
 			</div>

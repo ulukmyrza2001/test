@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './AddAppoinments.module.css'
 import { ModalComponent } from '../../../../components/UI/Modal/Modal'
 import { Input } from '../../../../components/UI/Inputs/Input/Input'
@@ -12,10 +12,12 @@ import { getMasterServices } from '../../../../store/features/master-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import {
 	calculateEndTime,
+	countDuration,
 	translateObject,
 } from '../../../../utils/helpers/helpers'
 import { APPOINTMENT_STATUS } from '../../../../utils/constants/constants'
 import { getFreeTimeScheduler } from '../../../../store/features/schedule-slice'
+import { postAppointment } from '../../../../store/features/calendar-slice'
 
 interface AddAppoinmentsModalProps {
 	active: boolean
@@ -39,6 +41,11 @@ interface AddAppoinmentsModalProps {
 		create: boolean
 		update: boolean
 	}) => void
+	thisData: {
+		startTime: string
+		endTime: string
+		masterId: number[]
+	}
 }
 
 interface dataMasterProps {
@@ -60,13 +67,14 @@ export const AddAppoinmentsModal = ({
 	setAppointmentCalendarModal,
 	appointmentsCalendarData,
 	setAppointmentsCalendarData,
+	thisData,
 }: AddAppoinmentsModalProps) => {
 	const { dataMaster, isLoadingMaster, dataMasterServices } = useSelector(
 		(state: any) => state.master,
 	)
 	const { freeTimeMaster } = useSelector((state: any) => state.schedule)
 
-	const [masterFreeTimeData, setMasterFreeTimeData] = useState(freeTimeMaster)
+	const [validationAppointments, setValidationAppointments] = useState(true)
 
 	const dispatch = useDispatch()
 
@@ -78,7 +86,7 @@ export const AddAppoinmentsModal = ({
 		setAppointmentsCalendarData({
 			masterId: null,
 			serviceIds: [],
-			appointmentStatus: null,
+			appointmentStatus: { label: 'Подтвержден', value: 'CONFIRMED' },
 			startDate: '',
 			startTime: '',
 			endTime: '',
@@ -92,6 +100,10 @@ export const AddAppoinmentsModal = ({
 				...appointmentsCalendarData,
 				masterId: value,
 				serviceIds: [],
+				appointmentStatus: { label: 'Подтвержден', value: 'CONFIRMED' },
+				startTime: '',
+				endTime: '',
+				description: '',
 			})
 			dispatch(
 				getMasterServices({
@@ -102,12 +114,11 @@ export const AddAppoinmentsModal = ({
 				getFreeTimeScheduler({
 					masterID: translateObject(value),
 					startDate: appointmentsCalendarData.startDate,
+					serviceTime: countDuration(
+						appointmentsCalendarData.serviceIds,
+					),
 				}) as unknown as AnyAction,
-			).then((res: any) => {
-				try {
-					setMasterFreeTimeData(res.payload)
-				} catch (error) {}
-			})
+			)
 		} else {
 			setAppointmentsCalendarData({
 				...appointmentsCalendarData,
@@ -119,45 +130,47 @@ export const AddAppoinmentsModal = ({
 						appointmentsCalendarData.masterId,
 					),
 					startDate: value,
+					serviceTime: countDuration(
+						appointmentsCalendarData.serviceIds,
+					),
 				}) as unknown as AnyAction,
-			).then((res: any) => {
-				try {
-					setMasterFreeTimeData(res.payload)
-				} catch (error) {}
-			})
+			)
 		}
 	}
 
-	function handleChangeMasterServices(value: {
-		reduce: any
-		label: string | number
-		value: number
-		duration: number
-	}) {
-		const fullDuration = value.reduce(
-			(acc: number, item: MasterService) => acc + item.duration,
-			0,
-		)
+	function handleChangeMasterServices(value: MasterService[]) {
 		const endTime = calculateEndTime(
 			appointmentsCalendarData.startTime,
-			fullDuration,
+			countDuration(value),
 		)
-
 		setAppointmentsCalendarData({
 			...appointmentsCalendarData,
 			serviceIds: value,
 			endTime: endTime,
+			startTime: '',
 		})
+		dispatch(
+			getFreeTimeScheduler({
+				masterID: translateObject(appointmentsCalendarData.masterId),
+				startDate: appointmentsCalendarData.startDate,
+				serviceTime: countDuration(value),
+			}) as unknown as AnyAction,
+		)
 	}
 
 	function handleChangeStartTime(value: string) {
+		const endTime = calculateEndTime(
+			value,
+			countDuration(appointmentsCalendarData.serviceIds),
+		)
 		setAppointmentsCalendarData({
 			...appointmentsCalendarData,
 			startTime: value,
+			endTime: endTime,
 		})
 	}
 
-	const lastArrays = dataMasterServices.map((item: any) =>
+	const lastArrays = dataMasterServices?.map((item: any) =>
 		item.subCategoryServices.map((el: any) => {
 			const lastResponse =
 				el.serviceResponses[el.serviceResponses.length - 1]
@@ -178,6 +191,45 @@ export const AddAppoinmentsModal = ({
 			}
 		}),
 	)
+
+	useEffect(() => {
+		setValidationAppointments(
+			appointmentsCalendarData.masterId === null || ''
+				? true
+				: appointmentsCalendarData.serviceIds.length === 0
+				? true
+				: appointmentsCalendarData.startDate === ''
+				? true
+				: appointmentsCalendarData.startTime === ''
+				? true
+				: appointmentsCalendarData.endTime === ''
+				? true
+				: false,
+		)
+	}, [appointmentsCalendarData])
+
+	function handlePost() {
+		console.log(appointmentsCalendarData)
+		dispatch(
+			postAppointment({
+				postData: {
+					masterId: translateObject(
+						appointmentsCalendarData.masterId,
+					),
+					serviceIds: translateObject(
+						appointmentsCalendarData.serviceIds,
+					),
+					startDate: appointmentsCalendarData.startDate,
+					startTime: appointmentsCalendarData.startTime,
+					endTime: appointmentsCalendarData.endTime,
+					description: appointmentsCalendarData.description,
+				},
+				startTime: thisData.startTime,
+				endTime: thisData.endTime,
+				masterID: thisData.masterId,
+			}) as unknown as AnyAction,
+		)
+	}
 
 	return (
 		<ModalComponent
@@ -249,9 +301,9 @@ export const AddAppoinmentsModal = ({
 					</div>
 				</div>
 				<div className={styles.container_schedulers}>
-					{masterFreeTimeData?.length !== 0 ? (
+					{
 						<div className={styles.container_scheduler}>
-							{masterFreeTimeData?.map(
+							{freeTimeMaster?.map(
 								(item: {
 									startTime: string
 									endTime: string
@@ -276,11 +328,7 @@ export const AddAppoinmentsModal = ({
 								},
 							)}
 						</div>
-					) : (
-						<div className={styles.container_message}>
-							Выберите Доктора
-						</div>
-					)}
+					}
 				</div>
 				<div className={styles.container}>
 					<div className={styles.wrapper}>
@@ -324,7 +372,12 @@ export const AddAppoinmentsModal = ({
 						onClick={() => handleClose()}>
 						Отмена
 					</Button>
-					<Button width='150px'>Сохранить</Button>
+					<Button
+						onClick={() => handlePost()}
+						disabled={validationAppointments}
+						width='150px'>
+						Сохранить
+					</Button>
 				</div>
 			</div>
 		</ModalComponent>
