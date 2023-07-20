@@ -63,6 +63,12 @@ interface postMasterScheduleProps {
 	}
 }
 
+interface getFreeTimeSchedulerProps {
+	masterID: number | string | undefined
+	startDate: string
+	serviceTime: number
+}
+
 export const getMasterSchedule = createAsyncThunk(
 	'schedule/getMasterSchedule',
 	async (
@@ -168,10 +174,13 @@ export const postMasterSchedule = createAsyncThunk(
 
 export const getFreeTimeScheduler = createAsyncThunk(
 	'schedule/getFreeTimeScheduler',
-	async ({ masterID, startDate }: any, { rejectWithValue }) => {
+	async (
+		{ masterID, startDate, serviceTime }: getFreeTimeSchedulerProps,
+		{ rejectWithValue },
+	) => {
 		try {
 			const response = await axiosInstance.get(
-				`/day-schedules/free-time/${masterID}?appointmentDate=${startDate}
+				`/day-schedules/free-time/${masterID}?appointmentDate=${startDate}&serviceTime=${serviceTime}
 			`,
 			)
 			return response.data

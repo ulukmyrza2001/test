@@ -62,7 +62,7 @@ export const Calendar = () => {
 	const [appointmentsCalendarData, setAppointmentsCalendarData] = useState({
 		masterId: null,
 		serviceIds: [],
-		appointmentStatus: null,
+		appointmentStatus: { label: 'Подтвержден', value: 'CONFIRMED' },
 		startDate: '',
 		startTime: '',
 		endTime: '',
@@ -129,6 +129,7 @@ export const Calendar = () => {
 				active={appointmentCalendarModal.create}
 				appointmentsCalendarData={appointmentsCalendarData}
 				setAppointmentsCalendarData={setAppointmentsCalendarData}
+				thisData={thisData}
 			/>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
 				<CircularProgress color='inherit' />
