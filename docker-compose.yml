@@ -1,7 +1,0 @@
-version: '3.9'
-services:
-    fronted:
-        image: cheber-front-dev
-        container_name: fronted
-        ports:
-            - 80:80
