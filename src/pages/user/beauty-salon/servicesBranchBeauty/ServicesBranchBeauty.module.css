@@ -1,7 +1,139 @@
-.tabs_name {
-  font-size: 20px !important;
-  color: rgb(205, 165, 130) !important;
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 3rem 3rem;
+	gap: 30px;
 }
-.tab_content {
-  width: 100%;
+.wrapper_title {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.title {
+	color: #cda582;
+	font-size: 30px;
+	text-align: center;
+	margin: 0 auto;
+	font-weight: 400;
+}
+.wrapper_services_and_time {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+.wrapper_services {
+	width: 70%;
+	overflow-y: scroll;
+}
+
+.wrapper_shares {
+	width: 35%;
+	min-width: 340px;
+	display: flex;
+	flex-direction: column;
+	color: white;
+	max-height: 800px;
+	background-color: #eeeeee;
+	border-radius: 10px;
+	padding: 1rem;
+}
+.wrapper_title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.p {
+	font-size: 16px;
+	color: black;
+}
+
+.divider {
+	width: 100%;
+	height: 1px;
+	background-color: #c8c8c8;
+	margin: 10px 0;
+}
+
+.contact {
+	color: black;
+	font-size: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.wrapper_contact {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.btn {
+	height: 30px;
+	padding: 0 10px;
+	border-radius: 8px;
+	border: 1px solid var(--ui-background-color);
+	color: var(--ui-background-color);
+}
+
+.ul {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.li {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.week {
+	color: #484848;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.hour {
+	color: black;
+	font-size: 16px;
+	font-weight: 400;
+	color: #484848;
+}
+
+.location_title {
+	color: black;
+	font-size: 18px;
+	font-weight: 400;
+	margin: 10px 0;
+}
+
+.location {
+	width: 100%;
+	height: 300px;
+	border: 3px solid black;
+	border-style: dotted;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+}
+@media only screen and (max-width: 900px) {
+	.wrapper {
+		padding: 15px !important;
+	}
+	.wrapper_services_and_time {
+		flex-direction: column;
+	}
+	.wrapper_services {
+		width: 100%;
+	}
+	.wrapper_shares {
+		width: 100%;
+		min-width: auto;
+	}
 }

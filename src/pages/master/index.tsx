@@ -13,7 +13,7 @@ import {
 	calendarTimeFormat,
 	headerToolbar,
 	translatebuttonText,
-} from '../admin/Calendar/contants'
+} from '../admin/calendar/contants'
 
 interface CalendarThisDataProps {
 	endStr: string
@@ -59,7 +59,6 @@ export const MasterPage = () => {
 	}
 
 	function handleChangeSelectedDate(event: handleChangeSelectedDateProps) {
-		console.log(event)
 		setAppointmentCalendarModal({
 			create: true,
 			update: false,

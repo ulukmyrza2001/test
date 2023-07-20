@@ -11,12 +11,11 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './Schedule/Schedule'
+import { Schedule } from './schedule/Schedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
 import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
-import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
-
+import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
+import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
@@ -209,16 +208,14 @@ export const MasterInnerPage = () => {
 								? 'block'
 								: 'none'
 						}
-						onClick={() => handleDeleteSchedule()}>
+						onClick={() => handleDeleteSchedule()}
+					>
 						Удалить график
 					</Button>
 					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
 						Создать график
 					</Button>
-					<Button
-
-						width='143px'
-						onClick={() => setMasterScheduleModal(true)}>
+					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
 						Создать график
 					</Button>
 					<Button
@@ -228,10 +225,11 @@ export const MasterInnerPage = () => {
 								update: false,
 							})
 						}
-						width='150px'>
+						width="150px"
+					>
 						Добавить визит
 					</Button>
-					<Button width='186px' onClick={() => handleUpdate()}>
+					<Button width="186px" onClick={() => handleUpdate()}>
 						Редактировать мастер
 					</Button>
 				</div>

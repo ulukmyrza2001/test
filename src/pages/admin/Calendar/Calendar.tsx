@@ -48,7 +48,7 @@ interface dataMasterProps {
 export const Calendar = () => {
 	const { dataCalendar } = useSelector((state: any) => state.calendar)
 	const { dataMaster, isLoadingMaster } = useSelector(
-		(state: any) => state.master,
+		(state: any) => state.master
 	)
 	const [thisData, setThisData] = useState({
 		startTime: '',
@@ -107,7 +107,7 @@ export const Calendar = () => {
 					startTime: thisData.startTime,
 					endTime: thisData.endTime,
 					masterID: translateObject(thisData.masterId),
-				}) as unknown as AnyAction,
+				}) as unknown as AnyAction
 			).then(() => {
 				if (!dataMaster) {
 					setGlobalLoading(dataMaster)
@@ -131,11 +131,11 @@ export const Calendar = () => {
 				setAppointmentsCalendarData={setAppointmentsCalendarData}
 			/>
 			<Backdrop sx={isLoadingSx} open={globalLoading}>
-				<CircularProgress color='inherit' />
+				<CircularProgress color="inherit" />
 			</Backdrop>
 			<div className={styles.container_calendar_header}>
 				<MultiSelect
-					label=''
+					label=""
 					options={dataMaster?.map((item: dataMasterProps) => {
 						return {
 							value: item.id,
@@ -149,27 +149,22 @@ export const Calendar = () => {
 							masterId: e,
 						})
 					}
-					placeholder='Выбрать мастера'
+					placeholder="Выбрать мастера"
 					noOptionsMessage={() => 'Нет мастеры'}
 					isLoading={isLoadingMaster}
 					isClearable={true}
 				/>
 			</div>
 			<FullCalendar
-				plugins={[
-					dayGridPlugin,
-					timeGridPlugin,
-					interactionPlugin,
-					listPlugin,
-				]}
-				locale='ru'
+				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
+				locale="ru"
 				firstDay={1}
 				height={'89vh'}
 				eventMaxStack={1}
 				slotMinTime={'09:00'}
 				slotMaxTime={'23:00'}
-				initialView='dayGridMonth'
-				noEventsText='Нет Записей'
+				initialView="dayGridMonth"
+				noEventsText="Нет Записей"
 				headerToolbar={headerToolbar}
 				buttonText={translatebuttonText}
 				moreLinkContent={(el) => `${el.shortText} Еще`}

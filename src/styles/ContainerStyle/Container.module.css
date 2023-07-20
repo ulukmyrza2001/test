@@ -13,3 +13,8 @@
 	align-items: baseline;
 	justify-content: initial;
 }
+@media only screen and (max-width: 400px) {
+	.wrapper {
+		padding: 0 0 !important;
+	}
+}
