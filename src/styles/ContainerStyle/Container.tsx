@@ -10,7 +10,8 @@ export const Container = (props: ContainerProps) => {
 	return (
 		<section
 			className={styles.wrapper}
-			style={props.backColor && props.backColor}
+			// style={props.backColor && props.backColor}
+			style={props.backColor}
 		>
 			<div className={styles.inner_wrapper} style={props.sx}>
 				{props.children}
