@@ -1,7 +1,48 @@
-.tabs_name {
-  font-size: 20px !important;
-  color: rgb(205, 165, 130) !important;
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 3rem 3rem;
+	gap: 30px;
 }
-.tab_content {
-  width: 100%;
+.wrapper_title {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.title {
+	color: #cda582;
+	font-size: 30px;
+	text-align: center;
+	margin: 0 auto;
+	font-weight: 400;
+}
+.wrapper_services_and_time {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+.wrapper_services {
+	width: 70%;
+	overflow-y: scroll;
+}
+.wrapper_time {
+	width: 35%;
+	background-color: grey;
+}
+@media only screen and (max-width: 900px) {
+	.wrapper {
+		padding: 15px !important;
+	}
+	.wrapper_services_and_time {
+		flex-direction: column;
+	}
+	.wrapper_services {
+		width: 100%;
+	}
+	.wrapper_time {
+		width: 100%;
+	}
 }
