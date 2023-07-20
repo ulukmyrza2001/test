@@ -5229,12 +5229,7 @@ fs.realpath@^1.0.0:
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
 fsevents@^2.3.2, fsevents@~2.3.2:
-  version "2.3.2"
-<<<<<<< HEAD
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
-=======
   resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
->>>>>>> 0b6462f226c2b4056924a09f685dd205684c9691
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -8327,16 +8322,12 @@ react-phone-input-2@^2.15.1:
     lodash.startswith "^4.2.1"
     prop-types "^15.7.2"
 
-<<<<<<< HEAD
 react-photo-album@^2.2.2:
   version "2.2.2"
   resolved "https://registry.npmjs.org/react-photo-album/-/react-photo-album-2.2.2.tgz"
   integrity sha512-UYtfJCUBNgrXVG50tVzXYStOY/Tljqzo/tPFQqm/qldm6Vr2STrxEMfGdc+7KCpBK7X111Y8ceKEWNaS8T+oGA==
 
 react-redux@^8.1.1:
-=======
-"react-redux@^7.2.1 || ^8.0.2", react-redux@^8.1.1:
->>>>>>> 0b6462f226c2b4056924a09f685dd205684c9691
   version "8.1.1"
   resolved "https://registry.npmjs.org/react-redux/-/react-redux-8.1.1.tgz"
   integrity sha512-5W0QaKtEhj+3bC0Nj0NkqkhIv8gLADH/2kYFMTHxCVqQILiWzLv6MaLuV5wJU3BQEdHKzTfcvPN0WMS6SC1oyA==

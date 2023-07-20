@@ -2,6 +2,7 @@ import { Fragment, useEffect } from 'react'
 import styles from './Barber.module.css'
 import Img from '../../../assets/image/imgBarber.png'
 import { Container } from '../../../styles/ContainerStyle/Container'
+
 import { AboutContent } from './aboutContent'
 import { OurWorkContent } from './ourWorkContent'
 import { ServicesBranchContent } from './servicesBranchContent'
@@ -14,6 +15,7 @@ import { BsDatabaseGear, BsGeoAlt, BsTelephone } from 'react-icons/bs'
 import { CaruselMaster } from './caruselMaster'
 import { GiTrophyCup } from 'react-icons/gi'
 import { BiSupport } from 'react-icons/bi'
+
 
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -166,6 +168,7 @@ export const BarberPage = () => {
 			<ServicesBranchContent />
 			<br />
 			<CaruselMaster />
+
 			<OurWorkContent />
 			<AboutContent />
 		</Fragment>

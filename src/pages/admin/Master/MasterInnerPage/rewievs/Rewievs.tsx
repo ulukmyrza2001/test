@@ -147,14 +147,32 @@ export const Rewievs = () => {
 										</div>
 										<div></div>
 									</div>
-									<div className={styles.rewievs_card_header_admin}>
-										<span className={styles.rewievs_card_title}>
-											{item.replyToFeedbackResponse?.representative}
+
+									<div
+										className={
+											styles.rewievs_card_header_admin
+										}>
+										<span
+											className={
+												styles.rewievs_card_title
+											}>
+											{
+												item.replyToFeedbackResponse
+													?.representative
+											}
 										</span>
-										<Avatar alt="ADMIN" src="" />
+										<Avatar alt='ADMIN' src='' />
 									</div>
-									<div className={styles.rewievs_card_main_admin}>
-										<div>{item.replyToFeedbackResponse?.answer}</div>
+									<div
+										className={
+											styles.rewievs_card_main_admin
+										}>
+										<div>
+											{
+												item.replyToFeedbackResponse
+													?.answer
+											}
+										</div>
 									</div>
 								</div>
 								<div className={styles.rewievs_card_main}>

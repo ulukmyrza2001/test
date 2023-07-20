@@ -22,7 +22,7 @@ function TabPanel(props: TabPanelProps) {
 
 	return (
 		<div
-			role="tabpanel"
+			role='tabpanel'
 			hidden={value !== index}
 			id={`vertical-tabpanel-${index}`}
 			aria-labelledby={`vertical-tab-${index}`}
@@ -76,11 +76,12 @@ export const ServicesBranchBeauty = () => {
 				}}
 			>
 				<Tabs
-					orientation="vertical"
-					variant="scrollable"
+
+					orientation='vertical'
+					variant='scrollable'
 					value={value}
 					onChange={handleChange}
-					aria-label="Vertical tabs example"
+					aria-label='Vertical tabs example'
 					TabIndicatorProps={{
 						style: {
 							backgroundColor: 'rgb(205, 165, 130)',
@@ -93,24 +94,35 @@ export const ServicesBranchBeauty = () => {
 				>
 					<Tab
 						className={styles.tabs_name}
-						label="Популярные"
+
+						label='Популярные'
 						{...a11yProps(1)}
 					/>
-					<Tab className={styles.tabs_name} label="Услуги" {...a11yProps(0)} />
-					<Tab className={styles.tabs_name} label="Акции" {...a11yProps(1)} />
+					<Tab
+						className={styles.tabs_name}
+						label='Услуги'
+						{...a11yProps(0)}
+					/>
+					<Tab
+						className={styles.tabs_name}
+						label='Акции'
+						{...a11yProps(1)}
+					/>
 				</Tabs>
 				<TabPanel value={value} index={0}>
 					<AccordionUi
 						data={serviceData}
 						branchData={branchData}
-						backgroundColor="#d9d9d9"
+
+						backgroundColor='#d9d9d9'
 					/>
 				</TabPanel>
 				<TabPanel value={value} index={1}>
 					<AccordionUi
 						data={serviceData}
 						branchData={branchData}
-						backgroundColor="#d9d9d9"
+
+						backgroundColor='#d9d9d9'
 					/>
 				</TabPanel>
 				<TabPanel value={value} index={2}>
