@@ -10,6 +10,7 @@ import { getServices } from '../../../../store/features/service-slice'
 import { useParams } from 'react-router-dom'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
 import { IoPhonePortraitOutline } from 'react-icons/io5'
+import { VerticalSlider } from '../../../../components/UI/VerticalSlider'
 
 interface TabPanelProps {
 	children?: React.ReactNode
@@ -64,6 +65,41 @@ export const ServicesBranchContent = () => {
 	console.log(serviceData)
 	console.log(branchData)
 
+	const sliderItem = [
+		{
+			id: 1,
+			title: 'Мужская стрижка',
+			price: 500,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://get.wallhere.com/photo/wood-snow-Sun-beams-dawn-frost-snowdrifts-cold-awakening-676946.jpg',
+		},
+		{
+			id: 2,
+			title: 'Детская стрижка',
+			price: 400,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://img1.akspic.ru/attachments/crops/3/0/4/4/6/164403/164403-assassins_creed_valhalla-ubisoft-action_adventure_game-otkrytyj_mir-xbox_serii_x_i_serii_s-1920x1080.jpg',
+		},
+		{
+			id: 3,
+			title: 'Моделирование бороды',
+			price: 300,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://cosmos-online.ru/wp-content/uploads/2018/10/oboi-kosmos-16.jpg',
+		},
+		{
+			id: 4,
+			title: 'Коррекция бороды',
+			price: 224,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://w.wallhaven.cc/full/vq/wallhaven-vqyge5.png',
+		},
+	]
+
 	return (
 		<Container
 			sx={{
@@ -90,11 +126,12 @@ export const ServicesBranchContent = () => {
 							<p className="title" style={{ color: '#d9d9d9' }}>
 								Популярные
 							</p>
-							<AccordionUi
+							{/* <AccordionUi
 								data={serviceData}
 								branchData={branchData}
 								backgroundColor="#d9d9d9"
-							/>
+							/> */}
+							<VerticalSlider data={sliderItem} />
 						</div>
 						<div className={styles.wrapper_popular_services}>
 							<p className="title" style={{ color: '#d9d9d9' }}>
