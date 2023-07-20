@@ -11,22 +11,10 @@ import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
 export const AdminRoutes = () => {
 	return (
 		<Routes>
-			<Route
-				path={ADMIN_ROUTES.DEFAULT.path}
-				element={<DashboardOutlet />}
-			>
-				<Route
-					path={ADMIN_ROUTES.DEFAULT.path}
-					element={<Calendar />}
-				/>
-				<Route
-					path={ADMIN_ROUTES.MASTERS.path}
-					element={<MasterPage />}
-				/>
-				<Route
-					path={ADMIN_ROUTES.MASTER.path}
-					element={<MasterInnerPage />}
-				>
+			<Route path={ADMIN_ROUTES.DEFAULT.path} element={<DashboardOutlet />}>
+				<Route path={ADMIN_ROUTES.DEFAULT.path} element={<Calendar />} />
+				<Route path={ADMIN_ROUTES.MASTERS.path} element={<MasterPage />} />
+				<Route path={ADMIN_ROUTES.MASTER.path} element={<MasterInnerPage />}>
 					<Route
 						path={ADMIN_ROUTES.MASTER_APPOINTMENT.path}
 						element={<Appointments />}
@@ -36,10 +24,7 @@ export const AdminRoutes = () => {
 						element={<Rewievs />}
 					/>
 				</Route>
-				<Route
-					path={ADMIN_ROUTES.SERVICES.path}
-					element={<Services />}
-				/>
+				<Route path={ADMIN_ROUTES.SERVICES.path} element={<Services />} />
 			</Route>
 		</Routes>
 	)

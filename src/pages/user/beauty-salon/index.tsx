@@ -20,6 +20,7 @@ export const BeautySalonPage = () => {
 
 	useEffect(() => {
 		dispatch(
+
 			getBrancheById({ branchId: beautySalonID }) as unknown as AnyAction,
 		)
 	}, [])
@@ -52,6 +53,7 @@ export const BeautySalonPage = () => {
 						<div className={styles.info_title}>
 							<BsGeoAlt fontSize={20} />
 							<div>
+
 								<span className='text'>
 									Приходите по адресу:
 								</span>
@@ -61,6 +63,7 @@ export const BeautySalonPage = () => {
 						<div className={styles.info_title}>
 							<BsTelephone />
 							<div>
+
 								<span className='text'>
 									Ежедневно с 10:00 до 20:00
 								</span>

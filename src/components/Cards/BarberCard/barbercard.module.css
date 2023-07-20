@@ -1,0 +1,66 @@
+.port_card {
+    width: 270px;
+    background-color: #0A0A0A;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0.4px 0.5px 1px  #FFFFFF ;
+}
+.port_card_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.img {
+    width: 100%;
+    transform: translateY(-35px);
+}
+.h5 {
+    font-size: 30px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.position {
+    color: #676767;
+    font-size: 16px;
+    margin: 7px 0;
+}
+.ul {
+    height: 40px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+.li {
+    color: #676767;
+    font-size: 14px;
+}
+
+.red_line {
+    width: 80%;
+    height: 1px;
+    background-color: red;
+    margin: 10px 0;
+}
+
+.btn {
+    width: 50%;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    transition: 0.4s ease-out;
+}
+
+.btn:hover {
+    background-color: #f34444;
+}
+.btn:active {
+    background-color: #bc3d3d;
+}
