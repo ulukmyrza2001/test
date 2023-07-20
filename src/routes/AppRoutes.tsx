@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { AdminRoutes } from './AdminRoutes'
+// import { AdminRoutes } from './AdminRoutes'
 import { SuperAdminRoutes } from './SuperAdminRoutes'
 import { UserRoutes } from './UserRoutes'
 import { MasterRoutes } from './MasterRoutes'
@@ -15,8 +15,8 @@ export const AppRoutes = () => {
 				return <SuperAdminRoutes />
 			case 'OWNER':
 				return <OwnerRoutes />
-			case 'ADMIN':
-				return <AdminRoutes />
+			// case 'ADMIN':
+			// 	return <AdminRoutes />
 			case 'MASTER':
 				return <MasterRoutes />
 			case 'USER':
