@@ -61,9 +61,6 @@ export const ServicesBranchContent = () => {
 		setValue(newValue)
 	}
 
-	console.log(serviceData)
-	console.log(branchData)
-
 	return (
 		<Container
 			sx={{

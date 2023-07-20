@@ -59,7 +59,6 @@ export const MasterPage = () => {
 	}
 
 	function handleChangeSelectedDate(event: handleChangeSelectedDateProps) {
-		console.log(event)
 		setAppointmentCalendarModal({
 			create: true,
 			update: false,
