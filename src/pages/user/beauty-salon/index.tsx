@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getBrancheById } from '../../../store/features/branch-slice'
 import { ServicesBranchBeauty } from './servicesBranchBeauty/ServicesBranchBeauty'
+import { PopularServicesContent } from './popular-services'
+import { AboutContent } from './about'
 
 export const BeautySalonPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -99,9 +101,9 @@ export const BeautySalonPage = () => {
 					</div>
 				</div>
 			</Container>
-			<Container>
-				<div className={styles.wrapper_about}></div>
-			</Container>
+			<PopularServicesContent />
+			<AboutContent />
+
 			<ServicesBranchBeauty />
 			<ReviewContent />
 		</Fragment>
