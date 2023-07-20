@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styles from './ServicesBranchBeauty.module.css'
 import { Container } from '../../../../styles/ContainerStyle/Container'
 import { AnyAction } from '@reduxjs/toolkit'
@@ -6,6 +6,7 @@ import { AccordionUi } from '../../../../components/UI/Accordion/AccordionUi'
 import { useDispatch, useSelector } from 'react-redux'
 import { getServices } from '../../../../store/features/service-slice'
 import { useParams } from 'react-router-dom'
+import { IoPhonePortraitOutline } from 'react-icons/io5'
 
 interface TabPanelProps {
 	children?: React.ReactNode
@@ -206,8 +207,8 @@ export const ServicesBranchBeauty = () => {
 				<div className={styles.wrapper_title}>
 					<h1 className={styles.title}>• Услуги •</h1>
 					<p>
-						Lorem ipsum dolor sit amet consectetur. Eu quis enim
-						tempor et proin neque.
+						Lorem ipsum dolor sit amet consectetur. Eu quis enim tempor et proin
+						neque.
 					</p>
 				</div>
 				<div className={styles.wrapper_services_and_time}>
@@ -216,13 +217,73 @@ export const ServicesBranchBeauty = () => {
 							<AccordionUi
 								data={data}
 								branchData={branchData}
-								backgroundColor='#eeeeee'
+								backgroundColor="#eeeeee"
 							/>
 						) : (
 							'Empty'
 						)}
 					</div>
-					<div className={styles.wrapper_time}>qwe</div>
+					<div className={styles.wrapper_shares}>
+						<p className={styles.p}>Контакты & График работы</p>
+						<span className={styles.divider}></span>
+						<div className={styles.contact}>
+							<div className={styles.wrapper_contact}>
+								<IoPhonePortraitOutline size={20} />
+								+996 (550) 75-55-95
+							</div>
+							<button className={styles.btn}>
+								<a href={`tel:+996550755595`} style={{ color: '#33a011' }}>
+									Позвонить
+								</a>
+							</button>
+						</div>
+						<span className={styles.divider}></span>
+						<ul className={styles.ul}>
+							<li className={styles.li}>
+								<span className={styles.week}>Понедельник</span>
+								<span className={styles.hour}>13:00 16:00</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Вторник</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Среда</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Четверг</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Пятница</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Суббота</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+							<li className={styles.li}>
+								<span className={styles.week}>Воскресенье</span>
+								<span className={styles.hour}>
+									10:00 13:00 <br /> 14:30 19:00
+								</span>
+							</li>
+						</ul>
+						<span className={styles.divider}></span>
+						<span className={styles.location_title}>Местоположение</span>
+						<div className={styles.location}>Место для карты</div>
+					</div>
 				</div>
 			</div>
 		</Container>
