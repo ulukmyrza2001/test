@@ -18,7 +18,7 @@ import {
 	calendarTimeFormat,
 	isLoadingSx,
 	translatebuttonText,
-} from './contants'
+} from '../../../utils/constants/constants'
 import { AddAppoinmentsModal } from './addAppoinmentsModal/AddAppoinmentsModal'
 
 interface CalendarThisDataProps {
