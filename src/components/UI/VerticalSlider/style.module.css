@@ -1,0 +1,140 @@
+.slider {
+    width: 100%;
+    position: relative;
+    height: 300px; 
+    margin-bottom: 20px;
+}
+.slider-wrapper {
+    width: 100%;
+    background-color: #3C3C3C;
+    position: relative;
+    z-index: 1;
+}
+.Sleft {
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    border-top: 1px solid #007aff;
+    border-bottom: 1px solid #007aff;
+}
+.title_container {
+    width: 100%;
+    height: 300px;
+}
+.title_wrapper {
+    width: 100%;
+    height: 300px;
+}
+.h5 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #3C3C3C;
+    color: white;
+    font-size: 28px;
+}
+.span {
+    font-size: 20px;
+}
+.p {
+    width: 70%;
+    text-align: center;
+    font-size: 16px;
+}
+.Sright {
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    overflow: hidden;
+    border-top: 1px solid #007aff;
+    border-bottom: 1px solid #007aff;
+}
+.img_container {
+    width: 100%;
+    height: 300px;
+}
+.img_wrapper {
+    width: 100%;
+    height: 300px;
+}
+.img {
+    width: 100%;
+    height: 300px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: absolute;
+    top: 100px;
+    left: 47%;
+}
+
+.btn {
+    background: none;
+    border: 1px solid #007aff;
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition:all 0.3s ease-in-out; 
+    position: relative;
+    * {
+        color: #007aff;
+    }
+}
+.btn:hover {
+    transform: scale(1.1);
+    border: 3px solid #007aff;
+    background: none;
+}
+.btn:active {
+    transform: scale(0.5);
+        
+}
+.icon {
+    color: white;
+}
+.btn::before {
+    content: '';
+    border: 1px solid #007aff;
+    border-radius: 999px;
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    animation: pulse 1.8s linear infinite;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}

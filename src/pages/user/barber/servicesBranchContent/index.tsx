@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getServices } from '../../../../store/features/service-slice'
 import { useParams } from 'react-router-dom'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
+import { IoPhonePortraitOutline } from 'react-icons/io5'
+import { VerticalSlider } from '../../../../components/UI/VerticalSlider'
 
 interface TabPanelProps {
 	children?: React.ReactNode
@@ -21,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
 
 	return (
 		<div
-			role='tabpanel'
+			role="tabpanel"
 			hidden={value !== index}
 			id={`vertical-tabpanel-${index}`}
 			aria-labelledby={`vertical-tab-${index}`}
@@ -52,14 +54,51 @@ export const ServicesBranchContent = () => {
 	const [value, setValue] = useState(0)
 	const dispatch = useDispatch()
 
-
 	useEffect(() => {
-		dispatch(getServices(params.branchId) as never as AnyAction)
+		dispatch(getServices(params.branchId) as unknown as AnyAction)
 	}, [params.branchId, dispatch])
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue)
 	}
+
+	console.log(serviceData)
+	console.log(branchData)
+
+	const sliderItem = [
+		{
+			id: 1,
+			title: 'Мужская стрижка',
+			price: 500,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://get.wallhere.com/photo/wood-snow-Sun-beams-dawn-frost-snowdrifts-cold-awakening-676946.jpg',
+		},
+		{
+			id: 2,
+			title: 'Детская стрижка',
+			price: 400,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://img1.akspic.ru/attachments/crops/3/0/4/4/6/164403/164403-assassins_creed_valhalla-ubisoft-action_adventure_game-otkrytyj_mir-xbox_serii_x_i_serii_s-1920x1080.jpg',
+		},
+		{
+			id: 3,
+			title: 'Моделирование бороды',
+			price: 300,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://cosmos-online.ru/wp-content/uploads/2018/10/oboi-kosmos-16.jpg',
+		},
+		{
+			id: 4,
+			title: 'Коррекция бороды',
+			price: 224,
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quos nemo sit minima eveniet laborum beatae alias minus ipsam. Facilis quos optio aperiam! Nihil facilis atque placeat reiciendis, laudantium possimus',
+			img: 'https://w.wallhaven.cc/full/vq/wallhaven-vqyge5.png',
+		},
+	]
 
 	return (
 		<Container
@@ -77,36 +116,89 @@ export const ServicesBranchContent = () => {
 							<FaMagnifyingGlass />
 							<input
 								className={styles.search_input}
-								placeholder='Search services...'
+								placeholder="Search services..."
 							/>
 						</div>
 					</div>
 
 					<div className={styles.wrapper_accardion}>
 						<div className={styles.wrapper_popular_services}>
-							<p className='title' style={{ color: '#d9d9d9' }}>
+							<p className="title" style={{ color: '#d9d9d9' }}>
 								Популярные
 							</p>
-							<AccordionUi
+							{/* <AccordionUi
 								data={serviceData}
 								branchData={branchData}
-								backgroundColor='#d9d9d9'
-							/>
+								backgroundColor="#d9d9d9"
+							/> */}
+							<VerticalSlider data={sliderItem} />
 						</div>
 						<div className={styles.wrapper_popular_services}>
-							<p className='title' style={{ color: '#d9d9d9' }}>
+							<p className="title" style={{ color: '#d9d9d9' }}>
 								Другие
 							</p>
 							<AccordionUi
 								data={serviceData}
 								branchData={branchData}
-								backgroundColor='#d9d9d9'
+								backgroundColor="#d9d9d9"
 							/>
 						</div>
 					</div>
 				</div>
 				<div className={styles.wrapper_shares}>
-					<p className='title'>Акции</p>
+					<p className={styles.p}>Контакты & График работы</p>
+					<span className={styles.divider}></span>
+					<div className={styles.contact}>
+						<IoPhonePortraitOutline size={20} />
+						+996 (550) 75-55-95
+						<button className={styles.btn}>Позвонить</button>
+					</div>
+					<span className={styles.divider}></span>
+					<ul className={styles.ul}>
+						<li className={styles.li}>
+							<span className={styles.week}>Понедельник</span>
+							<span className={styles.hour}>13:00 16:00</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Вторник</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Среда</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Четверг</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Пятница</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Суббота</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+						<li className={styles.li}>
+							<span className={styles.week}>Воскресенье</span>
+							<span className={styles.hour}>
+								10:00 13:00 <br /> 14:30 19:00
+							</span>
+						</li>
+					</ul>
+					<span className={styles.divider}></span>
+					<span className={styles.location_title}>Местоположение</span>
+					<div className={styles.location}>Место для карты</div>
 				</div>
 			</div>
 		</Container>

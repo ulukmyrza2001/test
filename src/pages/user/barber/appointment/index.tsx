@@ -8,7 +8,7 @@ import { Typography, styled } from '@mui/material'
 import { GiBeard } from 'react-icons/gi'
 import { BiHomeAlt, BiSend, BiTimeFive } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getMasterByBranchId } from '../../../../store/features/master-slice'
@@ -47,6 +47,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 export const AppointmenBarberPage = () => {
 	const { dataMasterBranch } = useSelector((state: any) => state.master)
+	const navigate = useNavigate()
 
 	const dispatch = useDispatch()
 	const { id } = useParams()
@@ -75,7 +76,7 @@ export const AppointmenBarberPage = () => {
 	const [next, setNext] = useState<any>(1)
 
 	const { branchData, isLoadingBranch } = useSelector(
-		(state: any) => state.branch,
+		(state: any) => state.branch
 	)
 
 	const { subCategoryData } = useSelector((state: any) => state.subCategory)
@@ -85,13 +86,13 @@ export const AppointmenBarberPage = () => {
 		dispatch(
 			getSubCategorySelect({
 				categoryServiceId: 2,
-			}) as never as AnyAction,
+			}) as unknown as AnyAction
 		)
 	}, [])
 
 	const BREAD_APPOINTMENT_MASTER = [
 		{
-			name: <BiHomeAlt fontSize={26} color='grey' />,
+			name: <BiHomeAlt fontSize={26} color="grey" />,
 			to: '/',
 			isLoading: isLoadingBranch,
 			path: 1,
@@ -111,8 +112,7 @@ export const AppointmenBarberPage = () => {
 	const [expanded, setExpanded] = React.useState<string | false>('panel1') // Updated state value
 
 	const handleChange =
-		(panel: string) =>
-		(event: React.SyntheticEvent, isExpanded: boolean) => {
+		(panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
 			setExpanded(isExpanded ? panel : false) // Updated to set to false when collapsed
 		}
 
@@ -135,14 +135,15 @@ export const AppointmenBarberPage = () => {
 					endTime: `${postData.endTime}:00`,
 					description: postData.description,
 				},
-			}) as never as AnyAction,
+			}) as unknown as AnyAction
 		)
+		navigate('/history')
 	}
 	return (
 		<Container>
 			<BreadCrumbs paths={BREAD_APPOINTMENT_MASTER} />
 			<span
-				className='text'
+				className="text"
 				style={{
 					color: 'grey',
 				}}>
@@ -152,9 +153,8 @@ export const AppointmenBarberPage = () => {
 
 			<div className={styles.wrapper}>
 				<div className={styles.wrapper_progres_name}>
-					<div
-						className={styles.progress_name}
-						onClick={() => setNext(1)}>
+					<div className={styles.progress_name} onClick={() => setNext(1)}>
+
 						<GiBeard fontSize={30} />
 						<span>Выберите мастера</span>
 					</div>
@@ -171,7 +171,7 @@ export const AppointmenBarberPage = () => {
 				</div>
 				<div className={styles.wrapper_progres}>
 					<BorderLinearProgress
-						variant='determinate'
+						variant="determinate"
 						value={next === 1 ? 10 : next === 2 ? 50 : 100}
 					/>
 				</div>
@@ -185,68 +185,51 @@ export const AppointmenBarberPage = () => {
 									<span>Запись № {index + 1}</span>
 								</div>
 								<div className={styles.main}>
-									<p className='title'>
-										{subCategoryName.name}
-									</p>
+									<p className="title">{subCategoryName.name}</p>
 
-									<span className='text'>
-										{item.price} {item.valuta} •{' '}
-										{item.duration} Min
+									<span className="text">
+										{item.price} {item.valuta} • {item.duration} Min
 									</span>
 								</div>
 								<div className={styles.cards}>
 									<div className={styles.card}>
 										<div className={styles.ava_wrapper}>
 											<img
-												src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU'
-												alt=''
+												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7csvPWMdfAHEAnhIRTdJKCK5SPK4cHfskow&usqp=CAU"
+												alt=""
 												className={styles.ava}
 											/>
 										</div>
-										<h3 className={styles.name}>
-											любой мастер
-										</h3>
+										<h3 className={styles.name}>любой мастер</h3>
 										<span className={styles.rate}></span>
 									</div>
-									{dataMasterBranch?.map(
-										(item: any, index: number) => (
-											<div
-												className={
-													postData.masterId ===
-													item.id
-														? styles.card_active
-														: styles.card
-												}
-												key={index}
-												onClick={() =>
-													setPostData({
-														...postData,
-														masterId: item.id,
-														ava: item.avatar,
-														masterName:
-															item.firstName,
-													})
-												}>
-												<div
-													className={
-														styles.ava_wrapper
-													}>
-													<img
-														src={item.avatar}
-														alt=''
-														className={styles.ava}
-													/>
-												</div>
-												<h3 className={styles.name}>
-													{item.firstName}{' '}
-													{item.lastName}
-												</h3>
-												<span className={styles.rate}>
-													4.3
-												</span>
+									{dataMasterBranch?.map((item: any, index: number) => (
+										<div
+											className={
+												postData.masterId === item.id
+													? styles.card_active
+													: styles.card
+											}
+											key={index}
+											onClick={() =>
+												setPostData({
+													...postData,
+													masterId: item.id,
+													ava: item.avatar,
+													masterName: item.firstName,
+												})
+											}
+										>
+											<div className={styles.ava_wrapper}>
+												<img src={item.avatar} alt="" className={styles.ava} />
+
 											</div>
-										),
-									)}
+											<h3 className={styles.name}>
+												{item.firstName} {item.lastName}
+											</h3>
+											<span className={styles.rate}>4.3</span>
+										</div>
+									))}
 								</div>
 							</div>
 						))}
@@ -273,12 +256,8 @@ export const AppointmenBarberPage = () => {
 							<div className={styles.finish_card}>
 								<div className={styles.top}>
 									<h4 className={styles.top_h4}>Запись №1</h4>
-									<h4 className={styles.top_h4}>
-										{subCategoryName.name}
-									</h4>
-									<h4 className={styles.top_h4}>
-										Начало в 19:00
-									</h4>
+									<h4 className={styles.top_h4}>{subCategoryName.name}</h4>
+									<h4 className={styles.top_h4}>Начало в 19:00</h4>
 								</div>
 								<div className={styles.bottom}>
 									<div className={styles.bottom_wrapper}>
@@ -290,16 +269,11 @@ export const AppointmenBarberPage = () => {
 												alignItems: 'center',
 												gap: '9px',
 												margin: '10px 0',
-											}}>
-											<div
-												className={
-													styles.finish_ava_wrapper
-												}>
-												<img
-													src={postData.ava}
-													alt=''
-													className={styles.ava}
-												/>
+											}}
+										>
+											<div className={styles.finish_ava_wrapper}>
+												<img src={postData.ava} alt="" className={styles.ava} />
+
 											</div>
 											<span>{postData.masterName}</span>
 										</div>
@@ -314,9 +288,8 @@ export const AppointmenBarberPage = () => {
 								</div>
 							</div>
 							<div className={styles.user_contact}>
-								<h4
-									className='title'
-									style={{ marginBottom: '20px' }}>
+								<h4 className="title" style={{ marginBottom: '20px' }}>
+
 									Детали броня
 								</h4>
 								<div
@@ -326,9 +299,9 @@ export const AppointmenBarberPage = () => {
 										gap: '20px',
 									}}>
 									<textarea
-										placeholder='Оставить комментарий'
-										name='das'
-										id=''
+										placeholder="Оставить комментарий"
+										name="das"
+										id=""
 										style={{
 											border: '1px solid silver',
 											width: '100%',
@@ -357,8 +330,10 @@ export const AppointmenBarberPage = () => {
 								sx={{ width: '100%' }}>
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon />}
-									aria-controls='panel1bh-content'
-									id='panel1bh-header'>
+									aria-controls="panel1bh-content"
+									id="panel1bh-header"
+								>
+
 									<Typography
 										sx={{
 											color: 'text.secondary',
@@ -366,37 +341,36 @@ export const AppointmenBarberPage = () => {
 										}}>
 										<AddIcon />
 									</Typography>
-									<Typography
-										sx={{ width: '100%', flexShrink: 0 }}>
+									<Typography sx={{ width: '100%', flexShrink: 0 }}>
 										Добавить услугу
 									</Typography>
 								</AccordionSummary>
-								{subCategoryData.map(
-									(item: any, index: number) => (
-										<div
-											key={index}
-											onClick={() =>
-												setSubCategoryName({
-													id: [item.id],
-													name: item.name,
-												})
-											}>
-											<Typography
-												variant='body1'
-												sx={{
-													color: 'gray',
-													margin: '10px 40px',
-													borderBottom:
-														'0.1px solid gray',
-													'&:hover': {
-														color: 'var(--ui-background-color)',
-													},
-												}}>
-												{item.name}
-											</Typography>
-										</div>
-									),
-								)}
+								{subCategoryData.map((item: any, index: number) => (
+									<div
+										key={index}
+										onClick={() =>
+											setSubCategoryName({
+												id: [item.id],
+												name: item.name,
+											})
+										}
+									>
+										<Typography
+											variant="body1"
+											sx={{
+												color: 'gray',
+												margin: '10px 40px',
+												borderBottom: '0.1px solid gray',
+												'&:hover': {
+													color: 'var(--ui-background-color)',
+												},
+											}}
+										>
+											{item.name}
+										</Typography>
+									</div>
+								))}
+
 							</Accordion>
 						</div>
 					)}
@@ -404,8 +378,10 @@ export const AppointmenBarberPage = () => {
 						{next !== 1 && (
 							<Button
 								onClick={() => setNext(next - 1)}
-								fontSize='20px'
-								backgroundColor='silver'>
+								fontSize="20px"
+								backgroundColor="silver"
+							>
+
 								Назад
 							</Button>
 						)}
@@ -413,9 +389,8 @@ export const AppointmenBarberPage = () => {
 						{next >= 3 ? (
 							<Button onClick={handlePost}>Записаться</Button>
 						) : (
-							<Button
-								onClick={() => setNext(next + 1)}
-								fontSize='20px'>
+							<Button onClick={() => setNext(next + 1)} fontSize="20px">
+
 								Далее
 							</Button>
 						)}

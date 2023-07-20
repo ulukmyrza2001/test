@@ -1,12 +1,21 @@
-.wrapper {
-	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: column;
-}
-.header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
+
+  
+  .caption {
+    color: var(--ui-disabled-color);
+  }
+  
+  .usr_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .content {
+    border: 1px solid var(--ui-background-color);
+    border-radius: 16px;
+    height: 600px;
+  }

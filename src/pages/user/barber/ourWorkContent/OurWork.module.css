@@ -7,3 +7,143 @@
 .slide_card img {
 	width: 200px;
 }
+
+.gallery_wrapper {
+	position: relative;
+	width: 84%;
+	height: 340px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.right {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	gap: 10px;
+}
+
+.left {
+	background-color: black;
+	display: flex;
+}
+
+.img_container { 
+	width: 300px;
+	background-color: black;
+	display: flex;
+}
+.img {
+	width: 100%;
+	cursor: pointer;
+	transition: 0.2s ease-in;
+}
+
+.main_img {
+	width: 620px;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.img:hover {
+	background-color: rgba(0,0,0,0);
+	opacity: 75%;
+}
+.main_img:hover {
+	background-color: rgba(0,0,0,0);
+	opacity: 75%;
+}
+
+.btn {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	height: 30px;
+	padding: 0 10px;
+	cursor: pointer;
+	border-radius: 6px;
+	background-color: #fff;
+	font-size: 14px;
+	transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+	background-color: #a4a4a4;
+}
+
+.modal {
+	width: 100%;
+	height: 100%;
+	background-color: silver;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modal_header {
+	width: 100%;
+	height: 60px;
+	background-color: gray;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	position: fixed;
+	z-index: 10;
+}
+
+.modal_actions {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+.modal_btn {
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 8px;
+	padding: 7px 5px;
+	transition: 0.3s ease-in-out;
+}
+.modal_btn:hover {
+	background-color: #a4a4a4;
+}
+
+.close_modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 999px;
+	padding: 5px;
+	transition: 0.3s ease-in-out;
+}
+.close_modal:hover {
+	background-color: #a4a4a4;
+	
+}
+
+.photo_wrapper {
+	margin: 100px 0;
+	width: 80%;
+}

@@ -28,6 +28,7 @@ export const BeautySalonPage = () => {
 
 	useEffect(() => {
 		dispatch(
+
 			getBrancheById({ branchId: beautySalonID }) as unknown as AnyAction,
 		)
 	}, [])
@@ -53,6 +54,7 @@ export const BeautySalonPage = () => {
 						<div className={styles.info_title}>
 							<BsGeoAlt fontSize={20} />
 							<div>
+
 								<span className='text'>
 									Приходите по адресу:
 								</span>
@@ -62,6 +64,7 @@ export const BeautySalonPage = () => {
 						<div className={styles.info_title}>
 							<BsTelephone />
 							<div>
+
 								<span className='text'>
 									Ежедневно с 10:00 до 20:00
 								</span>
@@ -87,6 +90,7 @@ export const BeautySalonPage = () => {
 							<p>
 								Салон красоты <br /> {branchData?.companyName}
 							</p>
+
 							<span>
 								Качественные косметические услуги, созданные для
 								вас
@@ -104,6 +108,7 @@ export const BeautySalonPage = () => {
 					</div>
 					<div className={styles.wrapper_banner}>
 						<div className={styles.banner_1_star}>
+
 							<img src={Banner3} alt='Banner' />
 							<img
 								src={BannerStar}
@@ -129,6 +134,7 @@ export const BeautySalonPage = () => {
 					<div className={styles.wrapper_about_title}>
 						<p className={styles.about}>bueno beauty</p>
 						<span>
+
 							Amet minim mollit non deserunt ullamco est sit
 							aliqua dolor do amet sint. Velit officia consequat
 							duis enim velit mollit. Exercitation veniam
@@ -139,6 +145,7 @@ export const BeautySalonPage = () => {
 							<div className={styles.card_about}>
 								<Icon1 />
 								<div>
+
 									<p className='title'>Amet minim mollit</p>
 									<span className='text'>
 										Amet minim mollit non deserunt ullam co
@@ -149,6 +156,7 @@ export const BeautySalonPage = () => {
 							<div className={styles.card_about}>
 								<Icon2 />
 								<div>
+
 									<p className='title'>Amet minim mollit</p>
 									<span className='text'>
 										Amet minim mollit non deserunt ullam co
@@ -159,6 +167,7 @@ export const BeautySalonPage = () => {
 							<div className={styles.card_about}>
 								<Icon3 />
 								<div>
+
 									<p className='title'>Amet minim mollit</p>
 									<span className='text'>
 										Amet minim mollit non deserunt ullam co
@@ -169,6 +178,7 @@ export const BeautySalonPage = () => {
 							<div className={styles.card_about}>
 								<Icon4 />
 								<div>
+
 									<p className=''>Amet minim mollit</p>
 									<span className='text'>
 										Amet minim mollit non deserunt ullam co
@@ -179,6 +189,7 @@ export const BeautySalonPage = () => {
 						</div>
 					</div>
 					<div className={styles.wrapper_about_img}>
+
 						<img src={AboutSalon} alt='' />
 					</div>
 				</div>

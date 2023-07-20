@@ -6,12 +6,11 @@ import {
 	getMasterSchedule,
 } from '../../../../../store/features/schedule-slice'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './Schedule.module.css'
+import styles from './shedule.module.css'
 import { TranslateWeekShort } from '../../../../../utils/helpers/helpers'
 import { Skeleton } from '@mui/material'
 import { WEEK } from '../../../../../utils/constants/constants'
 import { MdCreate, MdDelete } from 'react-icons/md'
-import { AddDaySchedule } from './AddDaySchedule/AddDaySchedule'
 
 interface ScheduleProps {
 	startWeek: string
@@ -82,20 +81,17 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 
 	return (
 		<div className={styles.container_schedule}>
-			<AddDaySchedule
+			{/* <AddDaySchedule
 				dayScheduleActive={dayScheduleModal}
 				setDayScheduleActive={setDayScheduleModal}
 				dayScheduleData={dayScheduleData}
 				setDayScheduleData={setDayScheduleData}
 				startWeek={startWeek}
-			/>
+			/> */}
 			{isLoadingShedule
 				? WEEK.map((el: string) => {
 						return (
-
-							<div
-								className={styles.container_name_week}
-								key={el}>
+							<div className={styles.container_name_week} key={el}>
 								<h1>{el}:</h1>
 								<Skeleton
 									variant="rectangular"
@@ -109,10 +105,7 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 				: masterSchedule?.dayScheduleResponses?.length === 0
 				? WEEK.map((element: string) => {
 						return (
-
-							<div
-								className={styles.container_name_week}
-								key={element}>
+							<div className={styles.container_name_week} key={element}>
 								<h1>{element}:</h1>
 								<div className={styles.container_week}>
 									<div></div>
@@ -122,33 +115,26 @@ export const Schedule = ({ startWeek }: ScheduleProps) => {
 				  })
 				: masterSchedule?.dayScheduleResponses?.map(
 						(item: ScheduleInsideMapProps) => {
+							const endTime = new Date(`1970-01-01T${item.endTime}`).getTime()
+							const percentage = ((endTime / maxEndTime) * 100).toFixed(2) + '%'
 
-							const endTime = new Date(
-								`1970-01-01T${item.endTime}`,
-							).getTime()
-							const percentage =
-								((endTime / maxEndTime) * 100).toFixed(2) + '%'
 							return (
 								<div
 									className={styles.container_name_week}
-									key={item.dayScheduleId}>
+									key={item.dayScheduleId}
+								>
 									<h1>{TranslateWeekShort(item.week)}:</h1>
 									<div className={styles.container_week}>
 										<div
-
-											className={
-												styles.container_inside_week
-											}
+											className={`${styles.container_inside_week} ${
+												item.workingDay ? 'active' : ''
+											}`}
 											style={{
 												width: percentage,
-												opacity: item.workingDay
-													? '1'
-													: '0',
-											}}>
-											{`${item.startTime.slice(
-												0,
-												5
-											)}`}
+												opacity: item.workingDay ? '1' : '0',
+											}}
+										>
+											{`${item.startTime.slice(0, 5)}`}
 										</div>
 									</div>
 									<div className={styles.container_icon}>
