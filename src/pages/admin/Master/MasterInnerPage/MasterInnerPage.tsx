@@ -11,23 +11,24 @@ import styles from './MasterInnerPage.module.css'
 import NotUser from '../../../../assets/image/noUser.svg'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Tabs } from '../../../../components/UI/Tabs/Tabs'
-import { Schedule } from './schedule/Schedule'
-import { MasterUpdateModal } from '../masterPage/masterUpdateModal/MasterUpdateModal'
-import { AddFullSchedule } from './schedule/AddFullSchedule/AddFullSchedule'
+import { Schedule } from './Schedule/Schedule'
 import { deleteMasterFullSchedule } from '../../../../store/features/schedule-slice'
 import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppointmentsModal'
+import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
+import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
+
 
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
-		(state: any) => state.master,
+		(state: any) => state.master
 	)
 	const { masterSchedule } = useSelector((state: any) => state.schedule)
 
 	const [startDate, setStartDate] = useState(
-		getMonday(new Date().toISOString().slice(0, 10)),
+		getMonday(new Date().toISOString().slice(0, 10))
 	)
 	const [endDate, setEndDate] = useState(
-		getSunday(new Date().toISOString().slice(0, 10)),
+		getSunday(new Date().toISOString().slice(0, 10))
 	)
 	const [masterData, setMasterData] = useState({
 		firstName: '',
@@ -89,10 +90,10 @@ export const MasterInnerPage = () => {
 		const currentEndDate = new Date(endDate)
 
 		const nextStartDate = new Date(
-			currentStartDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+			currentStartDate.getTime() + 7 * 24 * 60 * 60 * 1000
 		)
 		const nextEndDate = new Date(
-			currentEndDate.getTime() + 7 * 24 * 60 * 60 * 1000,
+			currentEndDate.getTime() + 7 * 24 * 60 * 60 * 1000
 		)
 
 		setStartDate(nextStartDate.toISOString().split('T')[0])
@@ -104,10 +105,10 @@ export const MasterInnerPage = () => {
 		const currentEndDate = new Date(endDate)
 
 		const prevStartDate = new Date(
-			currentStartDate.getTime() - 7 * 24 * 60 * 60 * 1000,
+			currentStartDate.getTime() - 7 * 24 * 60 * 60 * 1000
 		)
 		const prevEndDate = new Date(
-			currentEndDate.getTime() - 7 * 24 * 60 * 60 * 1000,
+			currentEndDate.getTime() - 7 * 24 * 60 * 60 * 1000
 		)
 
 		setStartDate(prevStartDate.toISOString().split('T')[0])
@@ -135,15 +136,12 @@ export const MasterInnerPage = () => {
 				scheduleId: masterSchedule.scheduleId,
 				masterID,
 				startWeek: startDate,
-			}) as unknown as AnyAction,
+			}) as unknown as AnyAction
 		)
 	}
 
 	function hasWorkingDayInRange(scheduleData: any) {
-		if (
-			scheduleData &&
-			typeof scheduleData[Symbol.iterator] === 'function'
-		) {
+		if (scheduleData && typeof scheduleData[Symbol.iterator] === 'function') {
 			for (const schedule of scheduleData) {
 				const { workingDay } = schedule
 				if (workingDay) {
@@ -202,21 +200,23 @@ export const MasterInnerPage = () => {
 				<BreadCrumbs paths={BREAD_CRUMBS_MASTER} />
 				<div className={styles.container_master_header_left_box}>
 					<Button
-						backgroundColor='white'
-						color='#acacac'
-						border='1px solid #acacac'
-						width='144px'
+						backgroundColor="white"
+						color="#acacac"
+						border="1px solid #acacac"
+						width="144px"
 						display={
-							hasWorkingDayInRange(
-								masterSchedule?.dayScheduleResponses,
-							)
+							hasWorkingDayInRange(masterSchedule?.dayScheduleResponses)
 								? 'block'
 								: 'none'
 						}
 						onClick={() => handleDeleteSchedule()}>
 						Удалить график
 					</Button>
+					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
+						Создать график
+					</Button>
 					<Button
+
 						width='143px'
 						onClick={() => setMasterScheduleModal(true)}>
 						Создать график
@@ -242,14 +242,14 @@ export const MasterInnerPage = () => {
 						<img
 							className={styles.container_master_image}
 							src={NotUser}
-							alt='No user'
+							alt="No user"
 						/>
 					</div>
 					<div className={styles.container_master_card_info}>
 						<div className={styles.master_fullname_title}>
 							{isLoadingMaster ? (
 								<Skeleton
-									variant='rectangular'
+									variant="rectangular"
 									width={200}
 									sx={{ borderRadius: '6px' }}
 								/>
@@ -261,7 +261,7 @@ export const MasterInnerPage = () => {
 						<span>
 							{isLoadingMaster ? (
 								<Skeleton
-									variant='rectangular'
+									variant="rectangular"
 									width={140}
 									sx={{ borderRadius: '6px' }}
 								/>
@@ -275,7 +275,7 @@ export const MasterInnerPage = () => {
 							<MdKeyboardArrowLeft
 								onClick={() => prevWeek()}
 								size={20}
-								cursor='pointer'
+								cursor="pointer"
 							/>
 						</div>
 						<div>{`${startDate} - ${endDate}`}</div>
@@ -283,7 +283,7 @@ export const MasterInnerPage = () => {
 							<MdKeyboardArrowRight
 								onClick={() => nextWeek()}
 								size={20}
-								cursor='pointer'
+								cursor="pointer"
 							/>
 						</div>
 					</div>

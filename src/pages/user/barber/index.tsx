@@ -2,7 +2,7 @@ import { Fragment, useEffect } from 'react'
 import styles from './Barber.module.css'
 import Img from '../../../assets/image/imgBarber.png'
 import { Container } from '../../../styles/ContainerStyle/Container'
-import { CgShapeRhombus } from 'react-icons/cg'
+
 import { AboutContent } from './aboutContent'
 import { OurWorkContent } from './ourWorkContent'
 import { ServicesBranchContent } from './servicesBranchContent'
@@ -11,8 +11,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBrancheById } from '../../../store/features/branch-slice'
 import { useLocation } from 'react-router-dom'
 import { AnyAction } from '@reduxjs/toolkit'
-import { BsGeoAlt, BsTelephone } from 'react-icons/bs'
-import { Masters } from './mastersContent'
+import { BsDatabaseGear, BsGeoAlt, BsTelephone } from 'react-icons/bs'
+import { CaruselMaster } from './caruselMaster'
+import { GiTrophyCup } from 'react-icons/gi'
+import { BiSupport } from 'react-icons/bi'
+
 
 export const BarberPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -25,7 +28,7 @@ export const BarberPage = () => {
 		dispatch(
 			getBrancheById({
 				branchId: Number(pathname.split('/').pop()),
-			}) as never as AnyAction,
+			}) as unknown as AnyAction
 		)
 	}, [])
 
@@ -33,7 +36,7 @@ export const BarberPage = () => {
 		dispatch(
 			getBrancheById({
 				branchId: Number(pathname.split('/').pop()),
-			}) as never as AnyAction,
+			}) as unknown as AnyAction
 		)
 	}, [])
 
@@ -66,7 +69,7 @@ export const BarberPage = () => {
 							<BsGeoAlt fontSize={20} />
 							<div>
 								<span
-									className='text'
+									className="text"
 									style={{
 										color: '#d9d9d9',
 									}}
@@ -74,7 +77,7 @@ export const BarberPage = () => {
 									Приходите по адресу:
 								</span>
 								<p
-									className='text'
+									className="text"
 									style={{
 										color: '#d9d9d9',
 									}}
@@ -87,7 +90,7 @@ export const BarberPage = () => {
 							<BsTelephone />
 							<div>
 								<span
-									className='text'
+									className="text"
 									style={{
 										color: '#d9d9d9',
 									}}
@@ -95,8 +98,8 @@ export const BarberPage = () => {
 									Ежедневно с 10:00 до 20:00
 								</span>
 								<a
-									href='/'
-									className='text'
+									href="/"
+									className="text"
 									style={{
 										color: '#d9d9d9',
 									}}
@@ -113,46 +116,47 @@ export const BarberPage = () => {
 				</div>
 				<div className={styles.wrapper_services_title}>
 					<div className={styles.wrapper_services_title_card}>
-						<h3>Quick</h3>
-						<CgShapeRhombus color='gold' fontSize={36} />
+						<GiTrophyCup color="gold" fontSize={70} />
+						<h2>Quick</h2>
+						<div className={styles.top_divider}></div>
 						<p>
-							We do our work quickly, time flies by and you are
-							the happy owner of a stylish haircut
+							We do our work quickly, time flies by and you are the happy owner
+							of a stylish haircut
 						</p>
 					</div>
 					<div className={styles.wrapper_services_title_card}>
-						<h3>Крутой</h3>
-						<CgShapeRhombus color='gold' fontSize={36} />
+						<BiSupport color="gold" fontSize={70} />
+						<h2>Крутой</h2>
+						<div className={styles.top_divider}></div>
 						<p>
-							Мы делаем свою работу быстро, время пролетает
-							незаметно, и вы становитесь счастливым обладателем
-							стильной стрижки
+							Мы делаем свою работу быстро, время пролетает незаметно, и вы
+							становитесь счастливым обладателем стильной стрижки
 						</p>
 					</div>
 					<div className={styles.wrapper_services_title_card}>
-						<h3>Дорогой</h3>
-						<CgShapeRhombus color='gold' fontSize={36} />
+						<BsDatabaseGear color="gold" fontSize={70} />
+						<h2>Дорогой</h2>
+						<div className={styles.top_divider}></div>
 						<p>
-							Наши мастера - профессионалы и не могут стоить
-							дешево, и разве цена не придает определенный статус.
+							Наши мастера - профессионалы и не могут стоить дешево, и разве
+							цена не придает определенный статус.
 						</p>
 					</div>
 				</div>
 				<div className={styles.about_barber}>
 					<div className={styles.about_text}>
-						<span className='title'>Новости</span>
-						<span className='text'>11 ИЮНЬ</span>
+						<span className="title">Новости</span>
+						<span className="text">11 ИЮНЬ</span>
 						<p>
-							Мы наконец-то получили мини-бар и кофеварку, теперь
-							в жаркую погоду можно охладиться прохладительным
-							напитком, а в холодную - выпить чашечку кофе.
+							Мы наконец-то получили мини-бар и кофеварку, теперь в жаркую
+							погоду можно охладиться прохладительным напитком, а в холодную -
+							выпить чашечку кофе.
 						</p>
-						<span className='text'>11 ИЮНЬ</span>
+						<span className="text">11 ИЮНЬ</span>
 						<p>
-							Борис "Бритва" имеет множество титулов и наград в
-							нашей команде, он может сделать вам абсолютно любую
-							стрижку и сотворить что-то невероятное с вашей
-							бородой
+							Борис "Бритва" имеет множество титулов и наград в нашей команде,
+							он может сделать вам абсолютно любую стрижку и сотворить что-то
+							невероятное с вашей бородой
 						</p>
 					</div>
 					<hr />
@@ -163,7 +167,8 @@ export const BarberPage = () => {
 			</Container>
 			<ServicesBranchContent />
 			<br />
-			<Masters />
+			<CaruselMaster />
+
 			<OurWorkContent />
 			<AboutContent />
 		</Fragment>

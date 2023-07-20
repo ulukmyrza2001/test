@@ -76,6 +76,7 @@ export const ServicesBranchBeauty = () => {
 				}}
 			>
 				<Tabs
+
 					orientation='vertical'
 					variant='scrollable'
 					value={value}
@@ -93,6 +94,7 @@ export const ServicesBranchBeauty = () => {
 				>
 					<Tab
 						className={styles.tabs_name}
+
 						label='Популярные'
 						{...a11yProps(1)}
 					/>
@@ -111,6 +113,7 @@ export const ServicesBranchBeauty = () => {
 					<AccordionUi
 						data={serviceData}
 						branchData={branchData}
+
 						backgroundColor='#d9d9d9'
 					/>
 				</TabPanel>
@@ -118,6 +121,7 @@ export const ServicesBranchBeauty = () => {
 					<AccordionUi
 						data={serviceData}
 						branchData={branchData}
+
 						backgroundColor='#d9d9d9'
 					/>
 				</TabPanel>

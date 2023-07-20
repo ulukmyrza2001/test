@@ -103,6 +103,9 @@ export const MASTER_ROUTES = {
 	USERS: {
 		path: '/users',
 	},
+	USERS_INNER: {
+		path: '/users/:userId',
+	},
 	ANNOUNCEMENTS: {
 		path: '/announcements',
 	},

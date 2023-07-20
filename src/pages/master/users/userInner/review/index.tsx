@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getFeedbackMaster } from '../../../../../store/features/feedback-slice'
 import { AnyAction } from '@reduxjs/toolkit'
 import { useParams } from 'react-router-dom'
-import styles from './Rewievs.module.css'
+import styles from './review.module.css'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 
@@ -16,7 +16,7 @@ interface feedbackDataMasterResponseProps {
 	replyToFeedbackResponse: {
 		answer: string
 		representative: string
-	} | null
+	}[]
 	userResponse: {
 		avatar: string
 		fullName: string
@@ -129,51 +129,15 @@ export const Rewievs = () => {
 				<div className={styles.rewievs_container}>
 					{fullRewievs?.map((item: feedbackDataMasterResponseProps) => {
 						return (
-							<div>
-								<div key={item.feedbackId} className={styles.rewievs_card}>
-									<div className={styles.rewievs_card_header}>
-										<Avatar
-											alt={item.userResponse.fullName}
-											src={item.userResponse.avatar}
-										/>
-										<span className={styles.rewievs_card_title}>
-											{item.userResponse.fullName}
-										</span>
-									</div>
-									<div className={styles.rewievs_card_main}>
-										<div>{item.comment}</div>
-										<div>
-											<img src={item.images} alt="photo" />
-										</div>
-										<div></div>
-									</div>
-
-									<div
-										className={
-											styles.rewievs_card_header_admin
-										}>
-										<span
-											className={
-												styles.rewievs_card_title
-											}>
-											{
-												item.replyToFeedbackResponse
-													?.representative
-											}
-										</span>
-										<Avatar alt='ADMIN' src='' />
-									</div>
-									<div
-										className={
-											styles.rewievs_card_main_admin
-										}>
-										<div>
-											{
-												item.replyToFeedbackResponse
-													?.answer
-											}
-										</div>
-									</div>
+							<div key={item.feedbackId} className={styles.rewievs_card}>
+								<div className={styles.rewievs_card_header}>
+									<Avatar
+										alt={item.userResponse.fullName}
+										src={item.userResponse.avatar}
+									/>
+									<span className={styles.rewievs_card_title}>
+										{item.userResponse.fullName}
+									</span>
 								</div>
 								<div className={styles.rewievs_card_main}>
 									<div>{item.comment}</div>
