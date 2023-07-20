@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
 import { getCalendar } from '../../store/features/calendar-slice'
 import {
+	translatebuttonText,
 	calendarTimeFormat,
 	headerToolbar,
-	translatebuttonText,
-} from '../admin/calendar/contants'
+} from '../../utils/constants/constants'
 
 interface CalendarThisDataProps {
 	endStr: string
