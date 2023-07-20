@@ -146,8 +146,7 @@ export const AppointmenBarberPage = () => {
 				className="text"
 				style={{
 					color: 'grey',
-				}}
-			>
+				}}>
 				AppointmenBarberPage
 			</span>
 			<br />
@@ -155,13 +154,13 @@ export const AppointmenBarberPage = () => {
 			<div className={styles.wrapper}>
 				<div className={styles.wrapper_progres_name}>
 					<div className={styles.progress_name} onClick={() => setNext(1)}>
+
 						<GiBeard fontSize={30} />
 						<span>Выберите мастера</span>
 					</div>
 					<div
 						className={styles.progress_name}
-						onClick={() => (next > 2 ? setNext(2) : '')}
-					>
+						onClick={() => (next > 2 ? setNext(2) : '')}>
 						<BiTimeFive fontSize={30} />
 						<span>Выберите дату</span>
 					</div>
@@ -223,6 +222,7 @@ export const AppointmenBarberPage = () => {
 										>
 											<div className={styles.ava_wrapper}>
 												<img src={item.avatar} alt="" className={styles.ava} />
+
 											</div>
 											<h3 className={styles.name}>
 												{item.firstName} {item.lastName}
@@ -273,6 +273,7 @@ export const AppointmenBarberPage = () => {
 										>
 											<div className={styles.finish_ava_wrapper}>
 												<img src={postData.ava} alt="" className={styles.ava} />
+
 											</div>
 											<span>{postData.masterName}</span>
 										</div>
@@ -280,8 +281,7 @@ export const AppointmenBarberPage = () => {
 											style={{
 												fontWeight: '500',
 												color: 'gray',
-											}}
-										>
+											}}>
 											от 7000 ₸ 1 ч. 30 мин.
 										</h5>
 									</div>
@@ -289,6 +289,7 @@ export const AppointmenBarberPage = () => {
 							</div>
 							<div className={styles.user_contact}>
 								<h4 className="title" style={{ marginBottom: '20px' }}>
+
 									Детали броня
 								</h4>
 								<div
@@ -296,8 +297,7 @@ export const AppointmenBarberPage = () => {
 										display: 'flex',
 										flexDirection: 'column',
 										gap: '20px',
-									}}
-								>
+									}}>
 									<textarea
 										placeholder="Оставить комментарий"
 										name="das"
@@ -315,8 +315,7 @@ export const AppointmenBarberPage = () => {
 												...postData,
 												description: e.target.value,
 											})
-										}
-									></textarea>
+										}></textarea>
 								</div>
 							</div>
 						</div>
@@ -328,19 +327,18 @@ export const AppointmenBarberPage = () => {
 							<Accordion
 								expanded={expanded === 'panel1'}
 								onChange={handleChange('panel1')}
-								sx={{ width: '100%' }}
-							>
+								sx={{ width: '100%' }}>
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon />}
 									aria-controls="panel1bh-content"
 									id="panel1bh-header"
 								>
+
 									<Typography
 										sx={{
 											color: 'text.secondary',
 											marginRight: '10px',
-										}}
-									>
+										}}>
 										<AddIcon />
 									</Typography>
 									<Typography sx={{ width: '100%', flexShrink: 0 }}>
@@ -372,6 +370,7 @@ export const AppointmenBarberPage = () => {
 										</Typography>
 									</div>
 								))}
+
 							</Accordion>
 						</div>
 					)}
@@ -382,6 +381,7 @@ export const AppointmenBarberPage = () => {
 								fontSize="20px"
 								backgroundColor="silver"
 							>
+
 								Назад
 							</Button>
 						)}
@@ -390,6 +390,7 @@ export const AppointmenBarberPage = () => {
 							<Button onClick={handlePost}>Записаться</Button>
 						) : (
 							<Button onClick={() => setNext(next + 1)} fontSize="20px">
+
 								Далее
 							</Button>
 						)}

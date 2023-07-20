@@ -17,6 +17,7 @@ import { AddAppoinmentsModal } from './appointments/addAppointmentsModal/AddAppo
 import { MasterUpdateModal } from '../MasterPage/masterUpdateModal/MasterUpdateModal'
 import { AddFullSchedule } from './Schedule/AddFullSchedule/AddFullSchedule'
 
+
 export const MasterInnerPage = () => {
 	const { dataMasterById, isLoadingMaster } = useSelector(
 		(state: any) => state.master
@@ -208,11 +209,16 @@ export const MasterInnerPage = () => {
 								? 'block'
 								: 'none'
 						}
-						onClick={() => handleDeleteSchedule()}
-					>
+						onClick={() => handleDeleteSchedule()}>
 						Удалить график
 					</Button>
 					<Button width="143px" onClick={() => setMasterScheduleModal(true)}>
+						Создать график
+					</Button>
+					<Button
+
+						width='143px'
+						onClick={() => setMasterScheduleModal(true)}>
 						Создать график
 					</Button>
 					<Button
@@ -222,11 +228,10 @@ export const MasterInnerPage = () => {
 								update: false,
 							})
 						}
-						width="150px"
-					>
+						width='150px'>
 						Добавить визит
 					</Button>
-					<Button width="186px" onClick={() => handleUpdate()}>
+					<Button width='186px' onClick={() => handleUpdate()}>
 						Редактировать мастер
 					</Button>
 				</div>
