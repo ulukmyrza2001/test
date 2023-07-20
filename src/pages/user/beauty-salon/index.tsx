@@ -22,6 +22,7 @@ import { getBrancheById } from '../../../store/features/branch-slice'
 import { ServicesBranchBeauty } from './servicesBranchBeauty/ServicesBranchBeauty'
 import { PopularServicesContent } from './popular-services'
 import { AboutContent } from './about'
+import { MastersContent } from './masters'
 
 export const BeautySalonPage = () => {
 	const { branchData } = useSelector((state: any) => state.branch)
@@ -104,6 +105,7 @@ export const BeautySalonPage = () => {
 			<PopularServicesContent />
 			<AboutContent />
 			<ServicesBranchBeauty />
+			<MastersContent />
 			<ReviewContent />
 		</Fragment>
 	)
