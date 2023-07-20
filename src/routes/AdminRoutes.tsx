@@ -6,13 +6,12 @@ import { MasterInnerPage } from '../pages/admin/master/masterInnerPage/MasterInn
 import { Appointments } from '../pages/admin/master/masterInnerPage/appointments/Appointments'
 import { Rewievs } from '../pages/admin/master/masterInnerPage/rewievs/Rewievs'
 import { Services } from '../pages/admin/services/servicesPage/ServicesPage'
-import { Calendar } from '../pages/admin/calendar/Calendar'
 
 export const AdminRoutes = () => {
 	return (
 		<Routes>
 			<Route path={ADMIN_ROUTES.DEFAULT.path} element={<DashboardOutlet />}>
-				<Route path={ADMIN_ROUTES.DEFAULT.path} element={<Calendar />} />
+				<Route path={ADMIN_ROUTES.DEFAULT.path} element={<div>Calendar</div>} />
 				<Route path={ADMIN_ROUTES.MASTERS.path} element={<MasterPage />} />
 				<Route path={ADMIN_ROUTES.MASTER.path} element={<MasterInnerPage />}>
 					<Route
